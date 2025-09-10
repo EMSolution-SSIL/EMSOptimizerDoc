@@ -21,15 +21,15 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://www.ssil.co.jp/',
+  url: 'https://EMSolution-SSIL.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/EMOptSolutionDoc/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'SSIL', // Usually your GitHub org/user name.
-  projectName: 'EMOptSolution', // Usually your repo name.
+  organizationName: 'EMSolution-SSIL', // Usually your GitHub org/user name.
+  projectName: 'EMOptSolutionDoc', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
