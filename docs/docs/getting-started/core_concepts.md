@@ -28,7 +28,7 @@ EMOptsolutionでは`Individual`ないし`Population`がオブジェクト間を�
 ユーザは既存の実装例を利用するほか、ユーザ自身が修正あるいは新規に作成して自由に組み合わせることが可能です。どの実装を使うかは`optimization.yaml`内で設定します。
 :::info 関連ページ
 - `optimization.yaml`の設定方法→[Guides > Optimization Configuration](../guides/optimization_config.md)
-- 各オブジェクト実装例の詳細や設定→[Guides](../guides/)内の各セクション
+- 各オブジェクト実装例の詳細や設定→Guides内の各セクション
 - コアオブジェクトの自作方法→[Guides > How to Define Core Object](../guides/user_define.md)
 :::
 

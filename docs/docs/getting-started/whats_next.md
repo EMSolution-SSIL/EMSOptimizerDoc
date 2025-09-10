@@ -13,7 +13,7 @@ sidebar_position: 4
 →[Guides > Machine Configuration](../guides/machine_config.md)
 
 - Optimizer等のオブジェクト実装例の詳細と使い方を知りたい
-→ [Guides](../guides/)からそれぞれのセクションを参照
+→ Guidesからそれぞれのセクションを参照
 
 - Optimizer等のオブジェクトを自作したい
 → [Guides > How to Define Core Object](../guides/user_define.md)
