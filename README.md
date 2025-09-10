@@ -31,6 +31,3 @@ $env:GIT_USER="<Your GitHub username>"
 npm run deploy
 ```
 This will build the documentation and deploy it to the `gh-pages` branch of your repository. It might take a few minutes for the changes to be reflected on the live site.
-
-# Additional Information
-For more information on how to use the documentation, please refer to the [Docusaurus documentation](https://docusaurus.io/docs).

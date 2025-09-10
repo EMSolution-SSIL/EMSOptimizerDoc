@@ -1,0 +1,8 @@
+{
+  "label": "Evaluator",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "ここでは、Evaluatorの実装例を紹介します。"
+  }
+}

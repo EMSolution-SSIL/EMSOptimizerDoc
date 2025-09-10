@@ -1,35 +1,37 @@
-import clsx from 'clsx';
 import Heading from '@theme/Heading';
+import clsx from 'clsx';
 import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: '幅広い形状最適化手法のサポート',
+    Svg: require('@site/static/img/shape_optimization.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        EMOptSolutionでは、on/off法ベースのトポロジー最適化を採用しており、特に概念設計のフェーズにおいて威力を発揮します。
+        また、モータ設計およびシミュレーションツール「eMotorSolution」との連携によりモータの寸法最適化を、さらには寸法とトポロジーの同時最適化まで実現可能です。
+        最適化手法は単目的・多目的両方をサポート。実用上重要な制約条件の取り扱いも柔軟です。
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: '使いやすさとカスタマイズ性の両立',
+    Svg: require('@site/static/img/usability.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        基本的に最適化設定はコンフィグファイルのみで完結。
+        一方、独自の最適化アルゴリズムや形状関数を設定したいユーザはpythonによってプラグインを作成し、EMOptSolutionと直接連携させることができます。
+        プラグインは純粋なpythonのインターフェースとして定義されており、容易に拡張が可能。ユーザの研究開発をサポートします。
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'EMSolutionの力を活用',
+    Svg: require('@site/static/img/emsol.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        形状最適化には、複雑かつ高効率な計算が必要です。EMOptSolutionは、強力かつ高効率なシミュレーションエンジンであるEMSolutionによって駆動されています。
+        EMSolutionはPythonにバインドされており、EMOptSolutionの最適化アルゴリズムと併せることで効率的な形状最適化を実現します。
       </>
     ),
   },

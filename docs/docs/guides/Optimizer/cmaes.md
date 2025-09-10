@@ -1,0 +1,43 @@
+---
+sidebar_position: 2
+---
+
+# cmaes
+単目的最適化アルゴリズムCMA-ES\[4\]のpython実装クラスです。  
+アルゴリズム部分はpythonライブラリ`cmaes`\[5\]を呼び出す形で実装しており、このクラスは`cmaes`ライブラリのラッパーとして機能します。
+
+## 概要
+CMA-ESでは、下記のように正規分布から個体$\boldsymbol{x}$を複数サンプリングします\[4\]。
+```math
+\boldsymbol{x} \sim \boldsymbol{m} + \sigma \mathcal{N}(\boldsymbol{0}, \boldsymbol{C})
+```
+CMA-ESでは遺伝的アルゴリズム等とは異なり、明示的な解集団はありません。その代わり、分布パラメータ$\boldsymbol{m}, \sigma, \boldsymbol{C}$を保持します。  
+個体の評価値に基づいて分布パラメータを更新することで、サンプリングされる個体を優れた方向に進化させます。
+
+また、制約違反した個体は以下のように評価します\[12\]。これにより、実行可能解を優先的に評価しつつ、制約違反量を考慮した評価が可能になります。
+```math
+f(\boldsymbol{x}) = f(\boldsymbol{x}_0) + r(\boldsymbol{x})
+```
+$f$: 目的関数  
+$f(\boldsymbol{x}_0)$: 実行可能解の目的関数の最悪値  
+$r(\boldsymbol{x})$: 制約違反量
+
+## 設定可能なキーワード引数一覧
+- `dim: int` ... 最適化問題の次元数$n$。
+:::info
+evaluatorが`pyemsol_shape_evaluator`の場合、`dim`はlevel set functionなどのコンフィグから自動的に設定されます。
+:::
+- `num_obj: int` ... 最適化問題の目的関数の数。CMA-ESにおいては使用されない。
+:::info
+evaluatorが`pyemsol_shape_evaluator`の場合、`num_obj`は`optimization_problem.yaml`から自動的に設定されます。
+:::
+- `mean: np.ndarray` ... $\boldsymbol{m}$初期値。デフォルト値は$\boldsymbol{m} = \boldsymbol{0}$。
+- `sigma: float` ... $\boldsymbol{C}$の標準偏差初期値。デフォルト値は`1`。
+- `bounds: tuple[float, float] | list[tuple[float, float]]` ... 各変数の上下限値。
+:::tip `bounds`の挙動
+- デフォルト値（設定無の場合） ... 上下限無し。
+- `bounds: tuple[float, float]`の場合 ... 与えた数値の組がすべての変数の上下限値に設定される。
+- `bounds: list[tuple[float, float]]`の場合 ... 与えた数値の組のリストが各変数の上下限値に設定される。上下限値の設定は途中までで打ち切ることが可能（この場合、打ち切り以降の上下限値は-1~1に自動設定される）。
+:::
+- `seed: int` ... 乱数シード値。デフォルト値は`null`（乱数シード非固定）。
+- `population_size int` ... 1イテレーションあたりサンプリング個体数。デフォルト値はCMA-ES推奨の $4+\lfloor3\ln{n}\rfloor$。
