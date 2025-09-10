@@ -1,5 +1,5 @@
 # For Users
-The website as accessible through [...]()
+The website as accessible through https://emsolution-ssil.github.io/EMOptSolutionDoc/.
 
 # For Developers
 ## 1. Initial Setup
