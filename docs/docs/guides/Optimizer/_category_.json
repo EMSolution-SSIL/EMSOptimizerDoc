@@ -1,8 +1,0 @@
-{
-  "label": "Optimizer",
-  "position": 4,
-  "link": {
-    "type": "generated-index",
-    "description": "ここでは、Optimizerの実装例を紹介します。"
-  }
-}
