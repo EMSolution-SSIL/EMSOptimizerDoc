@@ -86,17 +86,17 @@ class EvaluatorInterface(ABC):
 EMOptSolution内部では、各種コアオブジェクト実装が対応するインターフェースに沿っているかをチェックする機構が各所に施されています。逆に言えば、**自作コアオブジェクトの実装がインターフェースに沿っていれば、EMOptSolutionは即座にオブジェクトと連携することが可能です**。
 
 ### Registration of Core Object
-EMOptSolutionは内部的にコアオブジェクト（正確にはコアオブジェクトインスタンスを生成するビルダー関数）のレジストリを保持しています。自作コアオブジェクトを利用するためにはレジストリへの登録が必要です。
+EMOptSolutionは内部的にコアオブジェクト（正確にはコアオブジェクトインスタンスを生成するファクトリ関数）のレジストリを保持しています。自作コアオブジェクトを利用するためにはレジストリへの登録が必要です。
 :::tip レジストリの仕組み
 EMOptSolutionは実行時、
 - `optimization.yaml`内で各コアオブジェクトに設定した`name`コンフィグをレジストリ内検索し、
-- `kwargs`コンフィグをキーワード引数として該当するビルダー関数を呼び出し、
-- ビルダー関数によって生成されたコアオブジェクトを最適化計算に利用する
+- `kwargs`コンフィグをキーワード引数として該当するファクトリ関数を呼び出し、
+- ファクトリ関数によって生成されたコアオブジェクトを最適化計算に利用する
 
 仕組みとなっています。レジストリに未登録の名前はコアオブジェクトとして使用できません。
 :::
 
-レジストリへのビルダー関数の登録は`proprietary_free.registry`から呼び出せる各種デコレータ関数によって行います。デコレータ関数への引数（`str`型）がそのままレジストリへの登録名になります。  
+レジストリへのファクトリ関数の登録は`proprietary_free.registry`から呼び出せる各種デコレータ関数によって行います。デコレータ関数への引数（`str`型）がそのままレジストリへの登録名になります。  
 冒頭の例では、
 ```py
 from proprietary_free.registry import evaluator
@@ -104,13 +104,13 @@ from proprietary_free.registry import evaluator
 def build_user_defined_evaluator() -> EvaluatorInterface:
     return UserDefinedEvaluator()
 ```
-となっており、`@evaluator`が`evaluator`レジストリ登録用のデコレータ関数、`user_defined_evaluator`が登録名、`build_user_defined_evaluator()`が自作コアオブジェクトのビルダー関数です。
+となっており、`@evaluator`が`evaluator`レジストリ登録用のデコレータ関数、`user_defined_evaluator`が登録名、`build_user_defined_evaluator()`が自作コアオブジェクトのファクトリ関数です。
 
 デコレータ関数をトリガーするためにはそのpythonファイルをインポートする必要があります。これは各コアオブジェクトフォルダ内の`implementations.py`内で行います。
 ```py
 from .examples import rastrigin, zdt1, user_defined
 ```
-`implementations.py`はEMOptSolution実行時に自動的に読み込まれ、このときにデコレータ関数がトリガーされることでビルダー関数がレジストリへ登録される仕組みになっています。
+`implementations.py`はEMOptSolution実行時に自動的に読み込まれ、このときにデコレータ関数がトリガーされることでファクトリ関数がレジストリへ登録される仕組みになっています。
 
 ### Important Notice for Optimizer
 コアオブジェクトのうち、**`optimizer`は少し特殊なオブジェクトとなっています**。すなわち、
@@ -118,7 +118,7 @@ from .examples import rastrigin, zdt1, user_defined
     - 単目的最適化の基底クラス（`SOOptimizerBase` in `core/optimizer/so_optimizer_base.py`）
     - 多目的最適化の基底クラス（`MOOptimizerBase` in `core/optimizer/mo_optimizer_base.py`）
 - を有している。ユーザは`optimizer`を自作する際、**インターフェースに加えてどちらかの基底クラスを継承する必要がある**。
-- 形状最適化実行時（`pyemsol_shape_evaluator`使用時）、ビルダー関数へ`dim`と`num_obj`というキーワード引数が自動的に設定される。したがって、**`optimizer`のビルダー関数は`dim`と`num_obj`を引数に設定する必要がある**。
+- 形状最適化実行時（`pyemsol_shape_evaluator`使用時）、ファクトリ関数へ`dim`と`num_obj`というキーワード引数が自動的に設定される。したがって、**`optimizer`のファクトリ関数は`dim`と`num_obj`を引数に設定する必要がある**。
 :::info
 この引数の自動設定の仕組みは、「形状最適化時に`dim`と`num_obj`を動的に設定する」ためのものです。形状定義コアオブジェクトや`optimization_problem.yaml`などの設定と齟齬が生じないよう、EMOptSolutionが内部でこれらの引数を自動的に計算・設定します。
 :::
@@ -168,7 +168,7 @@ def build_cmaes(
         population_size=population_size,
     )
 ```
-- `dim: int`, `num_obj: int`をビルダー関数のキーワード引数に受け取っています。このうち`num_obj`は`CMAES`クラスの処理には不要であるため特に使われていません（`optimizer`ビルダー関数の契約上、キーワード引数としては存在しなければならない）。  
+- `dim: int`, `num_obj: int`をファクトリ関数のキーワード引数に受け取っています。このうち`num_obj`は`CMAES`クラスの処理には不要であるため特に使われていません（`optimizer`ファクトリ関数の契約上、キーワード引数としては存在しなければならない）。  
 多目的最適化実装においては`num_obj`を目的関数の数として各種処理に利用できます。
 
 ## Definition of Optimization Problem Function
@@ -201,7 +201,7 @@ def average_torque(working_dir: str, torque_scale: float = 1.0) -> float:
     return res
 ```
 
-コアオブジェクトのビルダー関数の登録時と同様に、デコレータ関数`opt_problem_function`に登録名を渡すことで`optimization_problem.yaml`からその関数を呼び出せるようになります（`core/opt_problem_functions.py`自身がEMOptSolutionに自動インポートされるため、追加のインポート記述は不要です）。
+コアオブジェクトのファクトリ関数の登録時と同様に、デコレータ関数`opt_problem_function`に登録名を渡すことで`optimization_problem.yaml`からその関数を呼び出せるようになります（`core/opt_problem_functions.py`自身がEMOptSolutionに自動インポートされるため、追加のインポート記述は不要です）。
 
 なお、**評価用関数には`working_dir`を引数に必ず含みます**。これはpyemsolによる解析結果が格納されたフォルダ名であり、EMOptSolution内部で自動的に設定されます。  
 `average_torque`の例ではpyemsol解析結果サマリーファイル`output.json`を読み込み、そこからトルク波形を抽出することで平均トルクを計算しています。
