@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.8.1">
 <title data-rh="true">Optimization Problem | EMOptSolution</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://EMSolution-SSIL.github.io/EMOptSolutionDoc/docs/docs/getting-started/opt_problem"><meta data-rh="true" property="og:locale" content="ja"><meta data-rh="true" name="docusaurus_locale" content="ja"><meta data-rh="true" name="docsearch:language" content="ja"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Optimization Problem | EMOptSolution"><meta data-rh="true" name="description" content="ここでは、形状最適化における最適化問題の定義について紹介します。"><meta data-rh="true" property="og:description" content="ここでは、形状最適化における最適化問題の定義について紹介します。"><link data-rh="true" rel="icon" href="/EMOptSolutionDoc/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://EMSolution-SSIL.github.io/EMOptSolutionDoc/docs/docs/getting-started/opt_problem"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMOptSolutionDoc/docs/docs/getting-started/opt_problem" hreflang="ja"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMOptSolutionDoc/docs/docs/getting-started/opt_problem" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Getting Started","item":"https://EMSolution-SSIL.github.io/EMOptSolutionDoc/docs/category/getting-started"},{"@type":"ListItem","position":2,"name":"Optimization Problem","item":"https://EMSolution-SSIL.github.io/EMOptSolutionDoc/docs/docs/getting-started/opt_problem"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/EMOptSolutionDoc/assets/css/styles.3e7e5b65.css">
-<script src="/EMOptSolutionDoc/assets/js/runtime~main.8da86b26.js" defer="defer"></script>
+<script src="/EMOptSolutionDoc/assets/js/runtime~main.e0032c51.js" defer="defer"></script>
 <script src="/EMOptSolutionDoc/assets/js/main.43a7d450.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -38,13 +38,13 @@
 <ul>
 <li><code>function_name: str</code> ... 関数名。実装本体は<code>core/opt_problem_functions.py</code>に記述されています。利用可能な関数名の一覧は<code>show_avl</code>コマンドでも確認できます。</li>
 <li><code>case_name: str | null</code> ... <code>function_name</code>を評価する解析ケース名。<code>optimization_problem.yaml</code> &gt; <code>case_names</code>から選択する。未設定（もしくは<code>null</code>を設定）の場合、<code>case_names</code>の一番上の解析ケースが自動的に使用される。</li>
-<li><code>kwargs: dict</code> ... 関数に渡すpythonキーワード引数。<!-- -->
+<li><code>kwargs: dict</code> ... 関数に渡すpythonキーワード引数。省略可能。<!-- -->
 <ul>
 <li>なお、各関数の引数のうち<code>working_dir</code>は特殊なキーワードに位置付けられています。このキーワード引数はEMOptSolution内部にて自動的に設定されるため、yamlファイル内で設定は不要です（設定しても実行時には無視されます）。</li>
 </ul>
 </li>
-<li><code>coefficient: float</code> ... 重み係数。以下参照。</li>
-<li><code>baseline: float</code> ... バイアス項。以下参照。</li>
+<li><code>coefficient: float</code> ... 重み係数。以下参照。デフォルト値は<code>1.0</code>。</li>
+<li><code>baseline: float</code> ... バイアス項。以下参照。デフォルト値は<code>0.0</code>。</li>
 </ul>
 <p>以上の設定項目から、各個体において関数は以下の式によって計算されます。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>function_name</mtext></mrow><annotation encoding="application/x-tex">\text{function\_name}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0044em;vertical-align:-0.31em"></span><span class="mord text"><span class="mord">function_name</span></span></span></span></span>の計算は<code>case_name</code>と同名の解析ケースフォルダ内の結果ファイルに基づいて実施されます。</p>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>coefficient</mtext><mo>×</mo><mo stretchy="false">(</mo><mtext>function_name</mtext><mo stretchy="false">(</mo><mtext>**kwargs</mtext><mo stretchy="false">)</mo><mo>−</mo><mtext>baseline</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{coefficient} \times (\text{function\_name}(\text{**kwargs}) - \text{baseline})
