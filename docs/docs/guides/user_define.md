@@ -170,3 +170,38 @@ def build_cmaes(
 ```
 - `dim: int`, `num_obj: int`をビルダー関数のキーワード引数に受け取っています。このうち`num_obj`は`CMAES`クラスの処理には不要であるため特に使われていません（`optimizer`ビルダー関数の契約上、キーワード引数としては存在しなければならない）。  
 多目的最適化実装においては`num_obj`を目的関数の数として各種処理に利用できます。
+
+## Definition of Optimization Problem Function
+`optimization_problem.yaml`に設定できる形状最適化時の評価用関数は`core/opt_problem_functions.py`に実装があり、これらの関数も類似のシステムによってレジストリへ登録されています。したがって、ユーザは自作の評価用関数を作成することも可能です。
+
+以下は`average_torque`（平均トルク評価関数）の実装例です。
+```py
+@opt_problem_function("average_torque")
+def average_torque(working_dir: str, torque_scale: float = 1.0) -> float:
+    """
+    Calculate the average value of the torque waveform.
+    Args:
+        working_dir (str): Directory containing analysis result json file
+        torque_scale (float, optional): Torque scale factor. Defaults to 1.0.
+    Returns:
+        float: Average torque value
+    """
+    json_path = Path(working_dir) / "output.json"
+    with json_path.open(encoding="utf-8") as f:
+        result = json.load(f)
+    torque_wave = np.array(
+        [
+            item["forceMZ"]
+            for item in result["postData"]["forceNodal"]["forceNodalData"]
+            if item["propertyNum"] == "rotor"
+        ][0]
+    )
+    torque_wave *= torque_scale
+    res = np.mean(torque_wave)
+    return res
+```
+
+コアオブジェクトのビルダー関数の登録時と同様に、デコレータ関数`opt_problem_function`に登録名を渡すことで`optimization_problem.yaml`からその関数を呼び出せるようになります（`core/opt_problem_functions.py`自身がEMOptSolutionに自動インポートされるため、追加のインポート記述は不要です）。
+
+なお、**評価用関数には`working_dir`を引数に必ず含みます**。これはpyemsolによる解析結果が格納されたフォルダ名であり、EMOptSolution内部で自動的に設定されます。  
+`average_torque`の例ではpyemsol解析結果サマリーファイル`output.json`を読み込み、そこからトルク波形を抽出することで平均トルクを計算しています。

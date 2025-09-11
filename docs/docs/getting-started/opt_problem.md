@@ -30,7 +30,7 @@ $X$: $\boldsymbol{x}$の集合（EMOptSolutionにおいては、$x_i$の上下�
 - 例外として、`other_metrics`リストは最適化計算には使われず、GUI表示やファイル出力に利用されます。
 
 $f_i$, $g_i$, $h_i$はいずれも以下の設定項目を持ちます。
-- `function_name: str` ... 関数名。実装本体は`core/pyemsol_functions.py`に記述されています。利用可能な関数名の一覧は`show_avl`コマンドでも確認できます。
+- `function_name: str` ... 関数名。実装本体は`core/opt_problem_functions.py`に記述されています。利用可能な関数名の一覧は`show_avl`コマンドでも確認できます。
 - `case_name: str | null` ... `function_name`を評価する解析ケース名。`optimization_problem.yaml` > `case_names`から選択する。未設定（もしくは`null`を設定）の場合、`case_names`の一番上の解析ケースが自動的に使用される。
 - `kwargs: dict` ... 関数に渡すpythonキーワード引数。
     - なお、各関数の引数のうち`working_dir`は特殊なキーワードに位置付けられています。このキーワード引数はEMOptSolution内部にて自動的に設定されるため、yamlファイル内で設定は不要です（設定しても実行時には無視されます）。
