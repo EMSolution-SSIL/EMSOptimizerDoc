@@ -32,10 +32,10 @@ $X$: $\boldsymbol{x}$の集合（EMOptSolutionにおいては、$x_i$の上下�
 $f_i$, $g_i$, $h_i$はいずれも以下の設定項目を持ちます。
 - `function_name: str` ... 関数名。実装本体は`core/opt_problem_functions.py`に記述されています。利用可能な関数名の一覧は`show_avl`コマンドでも確認できます。
 - `case_name: str | null` ... `function_name`を評価する解析ケース名。`optimization_problem.yaml` > `case_names`から選択する。未設定（もしくは`null`を設定）の場合、`case_names`の一番上の解析ケースが自動的に使用される。
-- `kwargs: dict` ... 関数に渡すpythonキーワード引数。
+- `kwargs: dict` ... 関数に渡すpythonキーワード引数。省略可能。
     - なお、各関数の引数のうち`working_dir`は特殊なキーワードに位置付けられています。このキーワード引数はEMOptSolution内部にて自動的に設定されるため、yamlファイル内で設定は不要です（設定しても実行時には無視されます）。
-- `coefficient: float` ... 重み係数。以下参照。
-- `baseline: float` ... バイアス項。以下参照。
+- `coefficient: float` ... 重み係数。以下参照。デフォルト値は`1.0`。
+- `baseline: float` ... バイアス項。以下参照。デフォルト値は`0.0`。
 
 以上の設定項目から、各個体において関数は以下の式によって計算されます。$\text{function\_name}$の計算は`case_name`と同名の解析ケースフォルダ内の結果ファイルに基づいて実施されます。
 ```math

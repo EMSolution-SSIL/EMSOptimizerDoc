@@ -62,15 +62,19 @@ enable_progress_gui: bool
 - `optimizer` ... 最適化で使用するEvaluator実装。
     - `name: str` ... 実装名
     - `kwargs: dict[str, Any]` ... キーワード引数
-- `analysis_conditioner` ... 最適化で使用するAnalysisConditioner実装。
+- `analysis_conditioner` ... 最適化で使用するAnalysisConditioner実装。省略可能。
     - `name: str` ... 実装名
     - `kwargs: dict[str, Any]` ... キーワード引数
-- `level_set_function` ... 最適化で使用するLevel set function実装。
+- `level_set_function` ... 最適化で使用するLevel set function実装。省略可能。
     - `name: str` ... 実装名
     - `kwargs: dict[str, Any]` ... キーワード引数
-- `ems_shape_builder` ... 最適化で使用するeMotorSolution Shape Builder実装。
+- `ems_shape_builder` ... 最適化で使用するeMotorSolution Shape Builder実装。省略可能。
     - `name: str` ... 実装名
     - `kwargs: dict[str, Any]` ... キーワード引数
+:::info
+後半3つのコアオブジェクト設定は省略可能です。使用したいもののみ設定してください。  
+特に、`evaluator`にベンチマーク関数を使用した場合は3つすべて省略できます。
+:::
 
 ### Optimization Settings
 - `num_iteration: int` ... 最適化イテレーション数。

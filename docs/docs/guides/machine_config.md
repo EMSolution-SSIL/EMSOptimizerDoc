@@ -34,7 +34,7 @@ ems_project_filepath: str
 
 ## Details
 :::warning
-`machine.yaml`の各種設定は使用する電気機器モデルメッシュおよびpyemsolへの入力用jsonファイルと整合するように設定する必要があります。
+`machine.yaml`の各種設定は使用する電気機器ベースモデルメッシュおよび各解析ケースフォルダ内のpyemsol入力jsonファイルと整合するように設定する必要があります。
 :::
 ### Basic Settings
 - `coordinate: str ("Cartesian" | "Polar")` ... 計算に用いる座標系。
@@ -159,6 +159,7 @@ Implicit Domain Meshingの手法については[Implicit Domain Meshing](./impli
 ### eMotorSolution Link Settings
 `ems_project_filepath: str` ... EMOptSolutionと連携したいeMotorSolutionプロジェクトファイル（.json）へのファイルパス。
 :::info
-`ems_project_filepath`が正しく設定されている場合、**EMOptSolutionプロジェクトにメッシュファイルは不要です。**  
-代わりにeMotorSolutionによってメッシュが動的に生成されるようになります。
+`ems_project_filepath`が正しく設定されている場合、**EMOptSolutionプロジェクトにメッシュファイルおよび解析ケースフォルダは不要です。**  
+代わりにeMotorSolutionによってメッシュが動的に生成されるようになります。  
+また、解析ケースフォルダはプロジェクトからコピーされるようになります（ただし、そのプロジェクトに解析ケースフォルダが必要。また、`optimization_problem.yaml` > `case_names`は設定が必要）。
 :::
