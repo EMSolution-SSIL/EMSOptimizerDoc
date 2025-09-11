@@ -57,6 +57,13 @@ EMOptSolutionにおいては明確な「形状最適化モード」のような�
 したがって、ベンチマーク関数の最適化と全く同じように形状最適化を実行することが可能です（ただし、形状最適化時には`machine.yaml`と`optimization_problem.yaml`の設定が必要です）。
 :::
 
+### AnalysisConditioner (core/analysis_conditioner)
+形状最適化における解析条件（電流位相角、磁化方向など）の動的な設定を担います。`evaluator`に`pyemsol_shape_evaluator`を設定したときに参照され、`Individual`の解候補ベクトルから解析条件に関するパラメータを変更します。  
+すなわち、このオブジェクトによって解析条件を最適化対象に含めることが可能となります。
+
+以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
+- `phase_conditioner`: 電流位相角を変更します。
+
 ### Level Set Function (core/ls_function)
 トポロジー最適化におけるレベルセット関数です。`Individual`の解候補ベクトルからレベルセット関数の出力を計算する役割を担います。  
 `evaluator`に`pyemsol_shape_evaluator`を設定したときに参照され、`machine.yaml`にて定義された設計対象の各位置における関数値を計算します。実際の材料種の割り当ては関数値を元に`pyemsol_shape_evaluator`内で行われます。
@@ -75,13 +82,15 @@ EMOptSolutionでは「設計領域内の各位置で正負の値を返す関数�
 - `dmodel_magnet`: Dmodelの永久磁石定義。`Dmodel_parameter`プロジェクト内で使用されています。
 - `halbach`: 表面型永久磁石モータにおけるハルバッハ配列の永久磁石定義。`GL80_halbach`プロジェクト内で使用されています。
 
-:::tip 寸法・トポロジーの同時最適化
-EMOptSolutionでは`ems_shape_builder`を`ls_function`と同時に設定することで、寸法・トポロジーの同時最適化\[10\]が実行可能です。  
-このとき、`Individual.solution`は以下のように解釈されます。
+:::tip 解析条件・寸法・トポロジーの同時最適化
+EMOptSolutionでは`analysis_conditioner`、`ls_function`、`ems_shape_builder`はすべて独立に・同時に設定可能です。特に、`ems_shape_builder`を`ls_function`と同時に設定することで、寸法・トポロジーの同時最適化\[10\]が実行可能です。  
+より詳細には、`Individual.solution`は以下のように解釈されます。
 ```math
-\boldsymbol{x} = [\boldsymbol{m}^\text{T}, \boldsymbol{w}^\text{T}]^\text{T}
+\boldsymbol{x} = [\boldsymbol{p}^\text{T}, \boldsymbol{d}^\text{T}, \boldsymbol{w}^\text{T}]^\text{T}
 ```
 $\boldsymbol{x}$: Individual.solution 解ベクトル  
-$\boldsymbol{m}$: ems_shape_builderに与えられる寸法情報ベクトル  
-$\boldsymbol{w}$: ls_functionに与えられるレベルセット関数パラメータベクトル
+$\boldsymbol{p}$: `analysis_conditioner`に与えられる解析条件情報ベクトル  
+$\boldsymbol{d}$: `ems_shape_builder`に与えられる寸法情報ベクトル  
+$\boldsymbol{w}$: `ls_function`に与えられるレベルセット関数パラメータベクトル  
+これらのうち、未設定のオブジェクトに対応するベクトルはゼロベクトルと見なされます。
 :::

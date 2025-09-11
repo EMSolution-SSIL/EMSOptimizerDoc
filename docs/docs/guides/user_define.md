@@ -172,7 +172,7 @@ def build_cmaes(
 多目的最適化実装においては`num_obj`を目的関数の数として各種処理に利用できます。
 
 ## Definition of Optimization Problem Function
-`optimization_problem.yaml`に設定できる形状最適化時の評価用関数は`core/opt_problem_functions.py`に実装があり、これらの関数も類似のシステムによってレジストリへ登録されています。したがって、ユーザは自作の評価用関数を作成することも可能です。
+`optimization_problem.yaml`に設定できる形状最適化時の評価用関数は`core/opt_problem_functions.py`に実装があり、これらの関数もコアオブジェクトと類似のシステムによってレジストリへ登録されています。したがって、ユーザは自作の評価用関数を作成することも可能です。
 
 以下は`average_torque`（平均トルク評価関数）の実装例です。
 ```py

@@ -14,6 +14,9 @@ evaluator:
 optimizer:
   name: str
   kwargs: dict[str, Any]
+analysis_conditioner:
+  name: str
+  kwargs: dict[str, Any]
 level_set_function:
   name: str
   kwargs: dict[str, Any]
@@ -48,7 +51,7 @@ enable_progress_gui: bool
 
 ## Details
 :::info
-`evaluator`, `optimizer`, `level_set_function`, `ems_shape_builder`の実装例については各セクションを参照してください。  
+コアオブジェクトの実装例についてはGuides内の各セクションを参照してください。  
 また、`name`と`kwargs`の仕組みについては[How to Define Core Object](./user_define.md)を参照してください。
 :::
 
@@ -57,6 +60,9 @@ enable_progress_gui: bool
     - `name: str` ... 実装名
     - `kwargs: dict[str, Any]` ... キーワード引数
 - `optimizer` ... 最適化で使用するEvaluator実装。
+    - `name: str` ... 実装名
+    - `kwargs: dict[str, Any]` ... キーワード引数
+- `analysis_conditioner` ... 最適化で使用するAnalysisConditioner実装。
     - `name: str` ... 実装名
     - `kwargs: dict[str, Any]` ... キーワード引数
 - `level_set_function` ... 最適化で使用するLevel set function実装。

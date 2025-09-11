@@ -58,6 +58,9 @@ save, loadともyamlファイルの中身を複製しているに過ぎないた
 ## Example 1: Dmodel
 例として、単目的最適化を想定した`Dmodel`プロジェクト内の`optimization_problem.yaml`を見てみましょう。
 ```yaml
+case_names:
+  - transient
+
 objectives:
   - function_name: average_torque
     kwargs:
@@ -81,7 +84,7 @@ other_metrics:
       torque_scale: 4.0
 ```
 
-まず、ここでは制約条件を課していないため、`ineq_constraints`および`eq_constraints`は空配列となっています（なお、設定の記載を省略した場合も空配列と同じ扱いになります）。
+まず、解析ケース名は`transient`（電気角／機械角を動かしながらの多ケース解析）のみです。また、ここでは制約条件を課していないため、`ineq_constraints`および`eq_constraints`は空配列となっています（なお、設定の記載を省略した場合も空配列と同じ扱いになります）。
 
 次に、`objectives`には2つの$f_i$が設定されています。1つ目はモータの平均トルク、2つ目はトルクリプル率（トルク波形のpeak-to-peak振幅を平均トルクによって除した値）を計算する関数です。
 
@@ -110,6 +113,9 @@ $T_\text{rip}$：トルクリプル率 [%]
 ## Example 2: GL80
 より発展的な例として、`GL80`プロジェクト内の`optimization_problem.yaml`を見てみましょう。
 ```yaml
+case_names:
+  - transient
+
 objectives:
   - function_name: torque_ripple_percentage
     kwargs:
