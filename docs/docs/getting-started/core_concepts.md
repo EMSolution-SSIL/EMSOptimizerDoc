@@ -57,13 +57,6 @@ EMOptSolutionにおいては明確な「形状最適化モード」のような�
 したがって、ベンチマーク関数の最適化と全く同じように形状最適化を実行することが可能です（ただし、形状最適化時には`machine.yaml`と`optimization_problem.yaml`の設定が必要です）。
 :::
 
-### AnalysisConditioner (core/analysis_conditioner)
-形状最適化における解析条件（電流位相角、磁化方向など）の動的な設定を担います。`evaluator`に`pyemsol_shape_evaluator`を設定したときに参照され、`Individual`の解候補ベクトルから解析条件に関するパラメータを変更します。  
-すなわち、このオブジェクトによって解析条件を最適化対象に含めることが可能となります。
-
-以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
-- `phase_conditioner`: 電流位相角を変更します。
-
 ### Level Set Function (core/ls_function)
 トポロジー最適化におけるレベルセット関数です。`Individual`の解候補ベクトルからレベルセット関数の出力を計算する役割を担います。  
 `evaluator`に`pyemsol_shape_evaluator`を設定したときに参照され、`machine.yaml`にて定義された設計対象の各位置における関数値を計算します。実際の材料種の割り当ては関数値を元に`pyemsol_shape_evaluator`内で行われます。
@@ -73,7 +66,16 @@ EMOptSolutionでは「設計領域内の各位置で正負の値を返す関数�
 :::
 
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
+- `ls_r`: 半径ごとにレベルをセットするシンプルな実装例。
 - `ngnet`: NGnet関数\[3\]。
+- `ngnet_mixture`: `ls_r`と`ngnet`を組み合わせ、ある半径以内の領域についてNGnet関数を適用する実装例。
+
+### AnalysisConditioner (core/analysis_conditioner)
+形状最適化における解析条件（電流位相角、磁化方向など）の動的な設定を担います。`evaluator`に`pyemsol_shape_evaluator`を設定したときに参照され、`Individual`の解候補ベクトルから解析条件に関するパラメータを変更します。  
+すなわち、このオブジェクトによって解析条件を最適化対象に含めることが可能となります。
+
+以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
+- `phase_conditioner`: 電流位相角を変更します。
 
 ### eMotorSolution Shape Builder (core/ems_shape_builder)
 寸法最適化における形状定義を担います。`evaluator`が`pyemsol_shape_evaluator`、かつeMotorSolutio連携時に使用可能で、`Individual`の解候補ベクトルからモータの部品寸法を設定する役割を担います。
@@ -93,4 +95,9 @@ $\boldsymbol{p}$: `analysis_conditioner`に与えられる解析条件情報ベ�
 $\boldsymbol{d}$: `ems_shape_builder`に与えられる寸法情報ベクトル  
 $\boldsymbol{w}$: `ls_function`に与えられるレベルセット関数パラメータベクトル  
 これらのうち、未設定のオブジェクトに対応するベクトルはゼロベクトルと見なされます。
+:::
+
+:::tip 最適化コントロール
+`evaluator`と`optimizer`とを協働させる役割は`manager/optimization_manager.py`が担っています。  
+`manager`フォルダ内にはほかにもGUIやファイル出力を担当するクラスが定義されていますが、ここでは割愛します。
 :::
