@@ -16,7 +16,7 @@ class UserDefinedEvaluator(EvaluatorInterface):
 ```
 3. 作成したファイル内に、対応するコアオブジェクト生成用デコレータ付きのインスタンス化関数（ファクトリ関数）を定義する。
 ```py
-from proprietary_free.registry import evaluator
+from emopt_engine.registry import evaluator
 @evaluator("user_defined_evaluator")
 def build_user_defined_evaluator(kwarg1: int) -> EvaluatorInterface:
     return UserDefinedEvaluator(kwarg1)
@@ -96,10 +96,10 @@ EMOptSolutionは実行時、
 仕組みとなっています。レジストリに未登録の名前はコアオブジェクトとして使用できません。
 :::
 
-レジストリへのファクトリ関数の登録は`proprietary_free.registry`から呼び出せる各種デコレータ関数によって行います。デコレータ関数への引数（`str`型）がそのままレジストリへの登録名になります。  
+レジストリへのファクトリ関数の登録は`emopt_engine.registry`から呼び出せる各種デコレータ関数によって行います。デコレータ関数への引数（`str`型）がそのままレジストリへの登録名になります。  
 冒頭の例では、
 ```py
-from proprietary_free.registry import evaluator
+from emopt_engine.registry import evaluator
 @evaluator("user_defined_evaluator")
 def build_user_defined_evaluator() -> EvaluatorInterface:
     return UserDefinedEvaluator()
@@ -132,7 +132,7 @@ from cmaes import CMA
 from core.individual import Individual, Population
 from core.optimizer.optimizer_interface import OptimizerInterface
 from core.optimizer.so_optimizer_base import SOOptimizerBase
-from proprietary_free.registry import optimizer
+from emopt_engine.registry import optimizer
 
 
 class CMAES(SOOptimizerBase, OptimizerInterface):
