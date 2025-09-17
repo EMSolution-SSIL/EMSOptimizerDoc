@@ -13,7 +13,7 @@ import remarkMath from 'remark-math';
 const config = {
   title: 'EMOptSolution',
   tagline: '電気機器の形状最適化に特化した数理最適化ライブラリ',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -111,7 +111,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} Science Solutions International Laboratory, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Science Solutions International Laboratory, Inc.`,
       },
       prism: {
         theme: prismThemes.github,
