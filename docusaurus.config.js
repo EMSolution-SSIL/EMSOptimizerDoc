@@ -107,6 +107,11 @@ const config = {
             label: 'SSIL',
             position: 'right',
           },
+          {
+            href: 'https://github.com/EMSolution-SSIL/EMSOptimizer',
+            label: 'GitHub',
+            position: 'right',
+          },
         ],
       },
       footer: {
