@@ -18,13 +18,13 @@ eMotorSolution APIはデフォルトのメッシュ生成ツールとしてgmsh�
 
 ## Features
 ### Dimension Optimization
-eMotorSolutionと連携時、コアオブジェクト`ems_shape_builder`による寸法最適化が実施可能です。また、eMotorSolution連携時はeMotorSolution API経由でメッシュが動的に生成されます（したがって、EMOptSolutionプロジェクトフォルダにメッシュファイルは不要となります）。
+eMotorSolutionと連携時、コアオブジェクト`ems_shape_builder`による寸法最適化が実施可能です。また、eMotorSolution連携時はeMotorSolution API経由でメッシュが動的に生成されます（したがって、EMSOptimizerプロジェクトフォルダにメッシュファイルは不要となります）。
 :::info
 寸法最適化の設定方法については[Getting Started > Core Concepts](../getting-started/core_concepts.md)ページ、[Guides > Optimization Configuration](./optimization_config.md)ページ、Guides > eMotorSolution Shape Builderセクションなどを参照してください。
 :::
 
 ### Analysis Case Control
-eMotorSolutionと連携時は形状解析時、連携先プロジェクトの解析ケースフォルダを参照します。したがって、EMOptSolutionプロジェクトフォルダに解析ケースフォルダは不要となります。
+eMotorSolutionと連携時は形状解析時、連携先プロジェクトの解析ケースフォルダを参照します。したがって、EMSOptimizerプロジェクトフォルダに解析ケースフォルダは不要となります。
 :::warning
 解析ケース名は未連携時と同じく、`optimization_problem.yaml` > `case_names`に正しく設定してください。
 :::

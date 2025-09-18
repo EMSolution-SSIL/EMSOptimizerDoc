@@ -157,9 +157,9 @@ Implicit Domain Meshingの手法については[Implicit Domain Meshing](./impli
 :::
 
 ### eMotorSolution Link Settings
-`ems_project_filepath: str` ... EMOptSolutionと連携したいeMotorSolutionプロジェクトファイル（.json）へのファイルパス。
+`ems_project_filepath: str` ... EMSOptimizerと連携したいeMotorSolutionプロジェクトファイル（.json）へのファイルパス。
 :::info
-`ems_project_filepath`が正しく設定されている場合、**EMOptSolutionプロジェクトにメッシュファイルおよび解析ケースフォルダは不要です。**  
+`ems_project_filepath`が正しく設定されている場合、**EMSOptimizerプロジェクトにメッシュファイルおよび解析ケースフォルダは不要です。**  
 代わりにeMotorSolutionによってメッシュが動的に生成されるようになります。  
 また、解析ケースフォルダはプロジェクトからコピーされるようになります（ただし、そのプロジェクトに解析ケースフォルダが必要。また、`optimization_problem.yaml` > `case_names`は設定が必要）。
 :::

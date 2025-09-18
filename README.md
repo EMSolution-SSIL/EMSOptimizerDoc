@@ -1,5 +1,5 @@
 # For Users
-The website as accessible through https://emsolution-ssil.github.io/EMOptSolutionDoc/.
+The website as accessible through https://emsolution-ssil.github.io/EMSOptimizerDoc/.
 
 # For Developers
 ## 1. Initial Setup
@@ -13,7 +13,7 @@ The website as accessible through https://emsolution-ssil.github.io/EMOptSolutio
     ```
 3. Navigate to the cloned directory in your terminal.
     ```bash
-    cd EMOptSolutionDoc
+    cd EMSOptimizerDoc
     ```
 4. Install the dependencies 
     ```bash

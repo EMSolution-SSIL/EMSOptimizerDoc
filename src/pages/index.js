@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="EMOptSolution site">
+      description="EMSOptimizer site">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

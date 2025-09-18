@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('@site/static/img/shape_optimization.svg').default,
     description: (
       <>
-        EMOptSolutionではon/off法ベースのトポロジー最適化を採用しており、特に電気機器の概念設計のフェーズにおいて威力を発揮します。
+        EMSOptimizerではon/off法ベースのトポロジー最適化を採用しており、特に電気機器の概念設計のフェーズにおいて威力を発揮します。
         また、モータ設計およびシミュレーションツール「eMotorSolution」との連携によりモータの寸法最適化を、さらには寸法とトポロジーの同時最適化まで実現可能です。
         最適化手法は単目的・多目的両方をサポート。実用上重要な制約条件の取り扱いも柔軟です。
       </>
@@ -19,9 +19,9 @@ const FeatureList = [
     Svg: require('@site/static/img/python-logo-only.svg').default,
     description: (
       <>
-        EMOptSolutionはPythonプログラミング言語製の一部公開ソフトウェアです。
+        EMSOptimizerはPythonプログラミング言語製の一部公開ソフトウェアです。
         基本の最適化設定はコンフィグファイルのみで完結する一方で、
-        独自の最適化アルゴリズムや形状関数を設定したいユーザはPython製プラグインを作成し、EMOptSolutionと直接連携させることが可能。
+        独自の最適化アルゴリズムや形状関数を設定したいユーザはPython製プラグインを作成し、EMSOptimizerと直接連携させることが可能。
         ユーザの研究開発をサポートします。
       </>
     ),
@@ -31,8 +31,8 @@ const FeatureList = [
     Svg: require('@site/static/img/emsol.svg').default,
     description: (
       <>
-        形状最適化には、複雑かつ高効率な形状解析が必要です。EMOptSolutionは、強力かつ高効率なシミュレーションエンジンであるEMSolutionによって駆動されています。
-        EMSolutionはPythonにバインドされており、EMOptSolutionの最適化アルゴリズムと連携することで効率的な形状最適化を実現します。
+        形状最適化には、複雑かつ高効率な形状解析が必要です。EMSOptimizerは、強力かつ高効率なシミュレーションエンジンであるEMSolutionによって駆動されています。
+        EMSolutionはPythonにバインドされており、EMSOptimizerの最適化アルゴリズムと連携することで効率的な形状最適化を実現します。
       </>
     ),
   },

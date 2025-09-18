@@ -3,15 +3,15 @@ sidebar_position: 2
 ---
 
 # Core Concepts
-ここでは、EMOptSolutionを使う上でコアとなる概念について紹介します。
+ここでは、EMSOptimizerを使う上でコアとなる概念について紹介します。
 
 ## Overview
-以下の図は、EMOptSolutionの各機能（オブジェクト）がどのように協働するかを示したものです。  
+以下の図は、EMSOptimizerの各機能（オブジェクト）がどのように協働するかを示したものです。  
 
 ![Concepts Overview](/img/concepts_overview.drawio.png)
 
 ## Individual, Population (core/individual.py)
-`Individual`は、EMOptSolution内において個体を表すオブジェクトです。**ここでいう個体は、「最適化過程において生成される解候補ベクトルおよびそれに対する評価値を保有したオブジェクト」のこと**を指します。また、**`Population`は複数の`Individual`をひとまとめにしたオブジェクトです**。
+`Individual`は、EMSOptimizer内において個体を表すオブジェクトです。**ここでいう個体は、「最適化過程において生成される解候補ベクトルおよびそれに対する評価値を保有したオブジェクト」のこと**を指します。また、**`Population`は複数の`Individual`をひとまとめにしたオブジェクトです**。
 :::info
 `Individual`（個体）, `Population`（集団）という名称は、確率的最適化アルゴリズムの代表格である遺伝的アルゴリズムの文脈に倣ったものです。
 :::
@@ -19,12 +19,12 @@ sidebar_position: 2
 `Individual`は以下の情報を保持します。
 - `solution`: 解候補ベクトル。
 - `metrics`: 目的関数および制約関数の値。詳細は[Optimization Problem](./opt_problem.md)ページを参照。
-- `outcome_filepath`: 形状最適化における結果形状のメッシュファイルへのパス。形状最適化実行時、EMOptSolution内で自動的に設定されます。
+- `outcome_filepath`: 形状最適化における結果形状のメッシュファイルへのパス。形状最適化実行時、EMSOptimizer内で自動的に設定されます。
 
-EMOptsolutionでは`Individual`ないし`Population`がオブジェクト間を行き来し、それぞれのオブジェクトが各`Individual`に対して形状定義・形状の電磁界解析と評価・評価に基づく解候補ベクトル更新などの操作を行うことで最適化を進行します。
+EMSOptimizerでは`Individual`ないし`Population`がオブジェクト間を行き来し、それぞれのオブジェクトが各`Individual`に対して形状定義・形状の電磁界解析と評価・評価に基づく解候補ベクトル更新などの操作を行うことで最適化を進行します。
 
 ## Core Objects
-ここでは、オブジェクト群とその実装例を簡単に紹介します。[Overview](#overview)にて示したオブジェクト群の実装方法は様々ですが、EMOptSolutionではすぐに使用できるいくつかの実装例を提供しています。  
+ここでは、オブジェクト群とその実装例を簡単に紹介します。[Overview](#overview)にて示したオブジェクト群の実装方法は様々ですが、EMSOptimizerではすぐに使用できるいくつかの実装例を提供しています。  
 ユーザは既存の実装例を利用するほか、ユーザ自身が修正あるいは新規に作成して自由に組み合わせることが可能です。どの実装を使うかは`optimization.yaml`内で設定します。
 :::info 関連ページ
 - `optimization.yaml`の設定方法→[Guides > Optimization Configuration](../guides/optimization_config.md)
@@ -47,12 +47,12 @@ EMOptsolutionでは`Individual`ないし`Population`がオブジェクト間を�
 - `rastrigin`: 単目的最適化ベンチマークRastrigin関数\[11\]。
 - `zdt1`: 多目的最適化ベンチマークZDT1関数\[9\]。
 - `pyemsol_shape_evaluator`: **pyemsolによる形状最適化の評価実装**。`ls_function`や`ems_shape_builder`によって定義された形状を解析し、`optimization_problem.yaml`に定義された目的関数および制約条件を計算します（`optimizer_problem.yaml`については[Optimization Problem](./opt_problem.md)ページを参照）。
-`pyemsol_shape_evaluator`は例外的にEMOptSolution内部にて定義されおり、`examples`フォルダ内に実装はありません。
+`pyemsol_shape_evaluator`は例外的にEMSOptimizer内部にて定義されおり、`examples`フォルダ内に実装はありません。
 
 なお、前半2つは最適化ベンチマーク関数であり、形状最適化を実行する前に`optimizer`の性能をチェックするために活用することができます。
 
-:::tip EMOptSolutionにおける形状最適化
-EMOptSolutionにおいては明確な「形状最適化モード」のようなものは存在しません。  
+:::tip EMSOptimizerにおける形状最適化
+EMSOptimizerにおいては明確な「形状最適化モード」のようなものは存在しません。  
 単に`evaluator`に`pyemsol_shape_evaluator`を設定することで、その内部で形状に対する諸々の計算が行われます。  
 したがって、ベンチマーク関数の最適化と全く同じように形状最適化を実行することが可能です（ただし、形状最適化時には`machine.yaml`と`optimization_problem.yaml`の設定が必要です）。
 :::
@@ -61,7 +61,7 @@ EMOptSolutionにおいては明確な「形状最適化モード」のような�
 トポロジー最適化におけるレベルセット関数です。`Individual`の解候補ベクトルからレベルセット関数の出力を計算する役割を担います。  
 `evaluator`に`pyemsol_shape_evaluator`を設定したときに参照され、`machine.yaml`にて定義された設計対象の各位置における関数値を計算します。実際の材料種の割り当ては関数値を元に`pyemsol_shape_evaluator`内で行われます。
 :::info
-EMOptSolutionでは「設計領域内の各位置で正負の値を返す関数」全体をレベルセット関数と呼称しています。  
+EMSOptimizerでは「設計領域内の各位置で正負の値を返す関数」全体をレベルセット関数と呼称しています。  
 一般的には「レベルセット法（トポロジー最適化手法の一種）に用いられる、材料境界を表現する関数」を特に指すことが多いです。
 :::
 
@@ -85,7 +85,7 @@ EMOptSolutionでは「設計領域内の各位置で正負の値を返す関数�
 - `halbach`: 表面型永久磁石モータにおけるハルバッハ配列の永久磁石定義。`GL80_halbach`プロジェクト内で使用されています。
 
 :::tip 解析条件・寸法・トポロジーの同時最適化
-EMOptSolutionでは`analysis_conditioner`、`ls_function`、`ems_shape_builder`はすべて独立に・同時に設定可能です。特に、`ems_shape_builder`を`ls_function`と同時に設定することで、寸法・トポロジーの同時最適化\[10\]が実行可能です。  
+EMSOptimizerでは`analysis_conditioner`、`ls_function`、`ems_shape_builder`はすべて独立に・同時に設定可能です。特に、`ems_shape_builder`を`ls_function`と同時に設定することで、寸法・トポロジーの同時最適化\[10\]が実行可能です。  
 より詳細には、`Individual.solution`は以下のように解釈されます。
 ```math
 \boldsymbol{x} = [\boldsymbol{p}^\text{T}, \boldsymbol{d}^\text{T}, \boldsymbol{w}^\text{T}]^\text{T}

@@ -3,7 +3,7 @@ sidebar_position: 4
 ---
 
 # What's Next?
-- EMOptSolutionで使用できるコマンドを把握したい
+- EMSOptimizerで使用できるコマンドを把握したい
 →[Guides > Available Commands](../guides/commands.md)
 
 - 最適化設定（`optimization.yaml`）を詳細に知りたい

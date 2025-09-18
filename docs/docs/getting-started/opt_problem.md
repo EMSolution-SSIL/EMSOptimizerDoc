@@ -6,7 +6,7 @@ sidebar_position: 3
 ここでは、形状最適化における最適化問題の定義について紹介します。
 
 ## About Optimization Problem
-EMOptSolutionでは、形状最適化における最適化問題を`opimization_problem.yaml`によって管理します。
+EMSOptimizerでは、形状最適化における最適化問題を`opimization_problem.yaml`によって管理します。
 `opimization_problem.yaml`を通じて、以下の最適化問題を定義します。
 ```math
 \begin{align*}
@@ -17,7 +17,7 @@ EMOptSolutionでは、形状最適化における最適化問題を`opimization_
 \end{align*}
 ```
 $\boldsymbol{x} = \{x_i\}^\text{T}$: 解候補ベクトル  
-$X$: $\boldsymbol{x}$の集合（EMOptSolutionにおいては、$x_i$の上下限値に対応）
+$X$: $\boldsymbol{x}$の集合（EMSOptimizerにおいては、$x_i$の上下限値に対応）
 :::info
 各変数の上下限値は`optimization.yaml`にて設定可能です。  
 その他、最適化イテレーション数など最適化そのものの設定に関しては[Guides > Optimization Configuration](../guides/optimization_config.md)ページを参照してください。
@@ -33,7 +33,7 @@ $f_i$, $g_i$, $h_i$はいずれも以下の設定項目を持ちます。
 - `function_name: str` ... 関数名。実装本体は`core/opt_problem_functions.py`に記述されています。利用可能な関数名の一覧は`show_avl`コマンドでも確認できます。
 - `case_name: str | null` ... `function_name`を評価する解析ケース名。`optimization_problem.yaml` > `case_names`から選択する。未設定（もしくは`null`を設定）の場合、`case_names`の一番上の解析ケースが自動的に使用される。
 - `kwargs: dict` ... 関数に渡すpythonキーワード引数。省略可能。
-    - なお、各関数の引数のうち`working_dir`は特殊なキーワードに位置付けられています。このキーワード引数はEMOptSolution内部にて自動的に設定されるため、yamlファイル内で設定は不要です（設定しても実行時には無視されます）。
+    - なお、各関数の引数のうち`working_dir`は特殊なキーワードに位置付けられています。このキーワード引数はEMSOptimizer内部にて自動的に設定されるため、yamlファイル内で設定は不要です（設定しても実行時には無視されます）。
 - `coefficient: float` ... 重み係数。以下参照。デフォルト値は`1.0`。
 - `baseline: float` ... バイアス項。以下参照。デフォルト値は`0.0`。
 
@@ -47,11 +47,11 @@ $f_i$, $g_i$, $h_i$はいずれも以下の設定項目を持ちます。
 ## Save / Load Optimization Problem as Template
 `opimization_problem.yaml`の内容は最適化問題テンプレートとして`save_tpl`コマンドによって保存できます。テンプレートは`project/problem_template.yaml`に保存されます。
 ```sh
-python emopt.py save_tpl NewDmodel NewProblem
+python emsopt.py save_tpl NewDmodel NewProblem
 ```
 保存した最適化問題は`load_tpl`によってプロジェクトにコピーできます。
 ```sh
-python emopt.py load_tpl NewDmodel NewProblem
+python emsopt.py load_tpl NewDmodel NewProblem
 ```
 save, loadともyamlファイルの中身を複製しているに過ぎないため、これらの操作は手動で行っても構いません。
 

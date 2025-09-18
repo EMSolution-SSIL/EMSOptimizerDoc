@@ -11,7 +11,7 @@ import remarkMath from 'remark-math';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'EMOptSolution',
+  title: 'EMSOptimizer',
   tagline: '電気機器の形状最適化に特化した数理最適化ライブラリ',
   favicon: 'img/favicon.svg',
 
@@ -24,12 +24,12 @@ const config = {
   url: 'https://EMSolution-SSIL.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/EMOptSolutionDoc/',
+  baseUrl: '/EMSOptimizerDoc/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'EMSolution-SSIL', // Usually your GitHub org/user name.
-  projectName: 'EMOptSolutionDoc', // Usually your repo name.
+  projectName: 'EMSOptimizerDoc', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -84,7 +84,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'EMOptSolution',
+        title: 'EMSOptimizer',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
