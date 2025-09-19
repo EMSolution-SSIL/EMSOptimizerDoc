@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Installation
+# インストール
 ## 前提条件
 - Python 3.11.x 環境およびパッケージ管理ツールpipが必要です。
 - EMSOptimizerの形状最適化機能を有効化するには、EMSolution*のEMSOptimizer専用パッケージをインストールする必要があります。

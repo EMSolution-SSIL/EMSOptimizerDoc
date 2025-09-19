@@ -2,10 +2,10 @@
 sidebar_position: 2
 ---
 
-# Core Concepts
+# EMSOptimizerのコンセプト
 ここでは、EMSOptimizerを使う上でコアとなる概念について紹介します。
 
-## Overview
+## 概要
 以下の図は、EMSOptimizerの各機能（オブジェクト）がどのように協働するかを示したものです。  
 
 ![Concepts Overview](/img/concepts_overview.drawio.png)
@@ -18,18 +18,18 @@ sidebar_position: 2
 
 `Individual`は以下の情報を保持します。
 - `solution`: 解候補ベクトル。
-- `metrics`: 目的関数および制約関数の値。詳細は[Optimization Problem](./opt_problem.md)ページを参照。
+- `metrics`: 目的関数および制約関数の値。詳細は[最適化問題の設定](./opt_problem.md)ページを参照。
 - `outcome_filepath`: 形状最適化における結果形状のメッシュファイルへのパス。形状最適化実行時、EMSOptimizer内で自動的に設定されます。
 
 EMSOptimizerでは`Individual`ないし`Population`がオブジェクト間を行き来し、それぞれのオブジェクトが各`Individual`に対して形状定義・形状の電磁界解析と評価・評価に基づく解候補ベクトル更新などの操作を行うことで最適化を進行します。
 
-## Core Objects
-ここでは、オブジェクト群とその実装例を簡単に紹介します。[Overview](#overview)にて示したオブジェクト群の実装方法は様々ですが、EMSOptimizerではすぐに使用できるいくつかの実装例を提供しています。  
+## コアオブジェクト
+ここでは、EMSOptimizerのコアとなるオブジェクト群とその実装例を簡単に紹介します。冒頭で示したオブジェクト群の実装方法は様々ですが、EMSOptimizerではすぐに使用できるいくつかの実装例を提供しています。  
 ユーザは既存の実装例を利用するほか、ユーザ自身が修正あるいは新規に作成して自由に組み合わせることが可能です。どの実装を使うかは`optimization.yaml`内で設定します。
 :::info 関連ページ
-- `optimization.yaml`の設定方法→[Guides > Optimization Configuration](../guides/optimization_config.md)
-- 各オブジェクト実装例の詳細や設定→Guides内の各セクション
-- コアオブジェクトの自作方法→[Guides > How to Define Core Object](../guides/user_define.md)
+- `optimization.yaml`の設定方法→[ユーザガイド > 最適化の設定](../guides/optimization_config.md)
+- 各オブジェクト実装例の詳細や設定→ユーザガイド内の各セクション
+- コアオブジェクトの自作方法→[ユーザガイド > コアオブジェクトの自作](../guides/user_define.md)
 :::
 
 ### Optimizer (core/optimizer)
@@ -46,7 +46,7 @@ EMSOptimizerでは`Individual`ないし`Population`がオブジェクト間を�
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
 - `rastrigin`: 単目的最適化ベンチマークRastrigin関数\[11\]。
 - `zdt1`: 多目的最適化ベンチマークZDT1関数\[9\]。
-- `pyemsol_shape_evaluator`: **pyemsolによる形状最適化の評価実装**。`ls_function`や`ems_shape_builder`によって定義された形状を解析し、`optimization_problem.yaml`に定義された目的関数および制約条件を計算します（`optimizer_problem.yaml`については[Optimization Problem](./opt_problem.md)ページを参照）。
+- `pyemsol_shape_evaluator`: **pyemsolによる形状最適化の評価実装**。`ls_function`や`ems_shape_builder`によって定義された形状を解析し、`optimization_problem.yaml`に定義された目的関数および制約条件を計算します（`optimizer_problem.yaml`については[最適化問題の設定](./opt_problem.md)ページを参照）。
 `pyemsol_shape_evaluator`は例外的にEMSOptimizer内部にて定義されおり、`examples`フォルダ内に実装はありません。
 
 なお、前半2つは最適化ベンチマーク関数であり、形状最適化を実行する前に`optimizer`の性能をチェックするために活用することができます。

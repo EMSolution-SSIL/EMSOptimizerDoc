@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# References
+# 参考文献
 本ドキュメント内にて引用している文献リストです。
 
 \[1\] IEEJ Investigating R&D committee, IEEJ technical report (in Japanese) Inst. Electr. Eng. Japan, Japan, Tech. Rep. 776, 2000.

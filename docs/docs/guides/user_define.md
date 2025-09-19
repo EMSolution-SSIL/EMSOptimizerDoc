@@ -2,10 +2,10 @@
 sidebar_position: 8
 ---
 
-# How to Define Core Object
+# コアオブジェクトの自作
 ここでは、コアオブジェクト設定の仕組みとユーザ自身がEMSOptimizerのコアオブジェクトを定義する方法を説明します。
 
-## Steps to Define Core Object in Short
+## 手順
 **自作コアオブジェクトを定義するには、以下のステップに従います**。  
 1. 自作コアオブジェクト用の新しいpythonファイルを作成する。
 2. 作成したファイル内に、対応するコアオブジェクトインターフェースを継承したpythonクラスを実装する（下記は`evaluator`の例）。
@@ -38,9 +38,9 @@ evaluator:
 コアオブジェクトの作成手順に迷った場合は、既存の実装例をご覧ください。
 :::
 
-## Configuration System of Core Object
+## コアオブジェクトの仕組み
 ここでは、コアオブジェクト設定の仕組みと実装のヒントについて述べます。
-### Interface
+### インターフェース
 コアオブジェクトの仕様はインターフェースクラスによって定義されています。例えば、`evaluator`のインターフェースクラス（`EvaluatorInterface` in `core/evaluator/evaluator_interface.py`）の定義は下記のようになっています。
 ```py
 class EvaluatorInterface(ABC):
@@ -85,7 +85,7 @@ class EvaluatorInterface(ABC):
 
 EMSOptimizer内部では、各種コアオブジェクト実装が対応するインターフェースに沿っているかをチェックする機構が各所に施されています。逆に言えば、**自作コアオブジェクトの実装がインターフェースに沿っていれば、EMSOptimizerは即座にオブジェクトと連携することが可能です**。
 
-### Registration of Core Object
+### コアオブジェクトの登録
 EMSOptimizerは内部的にコアオブジェクト（正確にはコアオブジェクトインスタンスを生成するファクトリ関数）のレジストリを保持しています。**自作コアオブジェクトを利用するためにはレジストリへの登録が必要です**。
 :::tip レジストリの仕組み
 EMSOptimizerは実行時、
@@ -112,7 +112,7 @@ from .examples import rastrigin, zdt1, user_defined
 ```
 `implementations.py`はEMSOptimizer実行時に自動的に読み込まれ、このときにデコレータ関数がトリガーされることでファクトリ関数がレジストリへ登録される仕組みになっています。
 
-### Important Notice for Optimizer
+### Optimizerについて
 コアオブジェクトのうち、**`optimizer`は少し特殊なオブジェクトとなっています**。すなわち、
 - 継承元としてインターフェース（`OptimizerInterface` in `core/optimizer/optimizer_interface.py`）のほかに、
     - 単目的最適化の基底クラス（`SOOptimizerBase` in `core/optimizer/so_optimizer_base.py`）
@@ -171,7 +171,7 @@ def build_cmaes(
 - `dim: int`, `num_obj: int`をファクトリ関数のキーワード引数に受け取っています。このうち`num_obj`は`CMAES`クラスの処理には不要であるため特に使われていません（`optimizer`ファクトリ関数の契約上、キーワード引数としては存在しなければならない）。  
 多目的最適化実装においては`num_obj`を目的関数の数として各種処理に利用できます。
 
-## Definition of Optimization Problem Function
+## 形状最適化評価用関数の自作
 `optimization_problem.yaml`に設定できる形状最適化時の評価用関数は`core/opt_problem_functions.py`に実装があり、これらの関数もコアオブジェクトと類似のシステムによってレジストリへ登録されています。したがって、ユーザは自作の評価用関数を作成・登録することも可能です。
 
 以下は`average_torque`（平均トルク評価関数）の実装例です。

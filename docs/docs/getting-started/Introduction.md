@@ -2,10 +2,10 @@
 sidebar_position: 1
 ---
 
-# Introduction
+# イントロダクション
 ここでは、EMSOptimizerによる形状最適化の導入を行います。
 
-## Try Example by One Command
+## 形状最適化を試す
 EMSOptimizerの形状最適化がどのように動作するか試すには、以下のコマンドを実行します。
 ```sh
 python emsopt.py run Dmodel
@@ -15,20 +15,20 @@ python emsopt.py run Dmodel
 実際にこの最適化によって得られる結果の例については[Showcase](../../showcase/Dmodel.md)をご覧ください。
 :::
 
-## Basic Flow of Optimization
+## 最適化の基本フロー
 EMSOptimizerでは各最適化ケースを**プロジェクト単位**で管理します。プロジェクトの実体は`project`フォルダ内の各フォルダです。プロジェクトフォルダには以下のファイルが含まれます。
 - **最適化に関するコンフィグ（yamlファイル）**
     - `mahcine.yaml`: 形状最適化において、最適化対象機器に関係するコンフィグ
     - `optimization_problem.yaml`: 形状最適化問題（目的関数や制約条件など）を定義するコンフィグ
     - `optimization.yaml`: 最適化の実行に関するコンフィグ（最適化イテレーション数など）
-- **形状最適化のベースモデルとして用いるメッシュファイル（`pre_geom2D.msh`, `rotor_mesh2D.msh`：運動領域を含む場合）**
+- **形状最適化のベースモデルとして用いるメッシュファイル**（`pre_geom2D.msh`, `rotor_mesh2D.msh`（運動領域を含む場合））
     - ただし、eMotorSolution連携時は不要。代わりにeMotorSolutionプロジェクトを`machine.yaml`にて指定する。
 - **形状最適化解析ケースフォルダ**
     - 各解析ケースフォルダにはそれと同名のpyemsol入力jsonファイルを配置します。
     - 解析ケース名は`optimization_problem.yaml` > `case_names`コンフィグにも設定します。
     - ただし、eMotorSolution連携時は不要。代わりにeMotorSolutionプロジェクトを`machine.yaml`にて指定する。
 :::info
-具体的な設定方法などは[Optimization Problem](./opt_problem.md)ページおよびGuidesセクションに説明があります（ここでは省略しています）。
+具体的な設定方法などは[最適化問題の設定](./opt_problem.md)ページおよびユーザガイドセクションに説明があります（ここでは省略しています）。
 :::
 
 いくつかのプロジェクト例が`project`フォルダ内にすでに配置されています。冒頭の例で指定した`Dmodel`はその一つです。
@@ -55,7 +55,7 @@ level_set_function:
 :::tip NGnetの設定
 具体的には、`sigma`の値はNGnetを構成する各ガウス基底関数の標準偏差に対応します。  
 デフォルトの設定では、基底関数は`design_region`を埋めるよう自動的に配置されます。 
-NGnetの詳細については[Guides > LevelSetFunction > NGnet](../guides/LevelSetFunction/ngnet.md)を参照してください。
+NGnetの詳細については[ユーザガイド > LevelSetFunction > NGnet](../guides/LevelSetFunction/ngnet.md)を参照してください。
 :::
 
 最適化を実行するには、`run`コマンドを実行します。
@@ -73,7 +73,7 @@ GUIは`check`コマンドによってプロセス終了後に起動すること�
 python emsopt.py check NewDmodel
 ```
 
-## Overview of GUI
+## GUI
 ![GUI（単目的最適化）](/img/GUI_soo.png)
 
 ①最適化コントロールパネル。

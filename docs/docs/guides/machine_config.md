@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Machine Configuration
+# 機器設定（machine.yaml）
 ここでは、`machine.yaml`の内容を説明します。
 
 ## Format

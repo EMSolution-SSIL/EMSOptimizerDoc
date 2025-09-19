@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Available Commands
+# コマンドリスト
 ここでは、EMSOptimizerで利用可能なコマンド一覧を紹介します。なお、各コマンドのヘルプは以下のコマンドでも確認できます。
 
 ```sh

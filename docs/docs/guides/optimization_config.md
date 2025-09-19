@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Optimization Configuration
+# 最適化の設定（optimization.yaml）
 ここでは、`optimization.yaml`の内容を説明します。
 
 ## Format
@@ -51,7 +51,7 @@ enable_progress_gui: bool
 
 ## Details
 :::info
-コアオブジェクトの実装例についてはGuides内の各セクションを参照してください。  
+コアオブジェクトの実装例についてはユーザガイド内の各セクションを参照してください。  
 また、`name`と`kwargs`の仕組みについては[How to Define Core Object](./user_define.md)を参照してください。
 :::
 

@@ -2,10 +2,10 @@
 sidebar_position: 3
 ---
 
-# Optimization Problem
+# 最適化問題の設定（optimization_problem.yaml）
 ここでは、形状最適化における最適化問題の定義について紹介します。
 
-## About Optimization Problem
+## 概要
 EMSOptimizerでは、形状最適化における最適化問題を`opimization_problem.yaml`によって管理します。
 `opimization_problem.yaml`を通じて、以下の最適化問題を定義します。
 ```math
@@ -20,7 +20,7 @@ $\boldsymbol{x} = \{x_i\}^\text{T}$: 解候補ベクトル
 $X$: $\boldsymbol{x}$の集合（EMSOptimizerにおいては、$x_i$の上下限値に対応）
 :::info
 各変数の上下限値は`optimization.yaml`にて設定可能です。  
-その他、最適化イテレーション数など最適化そのものの設定に関しては[Guides > Optimization Configuration](../guides/optimization_config.md)ページを参照してください。
+その他、最適化イテレーション数など最適化そのものの設定に関しては[ユーザガイド > 最適化の設定](../guides/optimization_config.md)ページを参照してください。
 :::
 
 各項目は`opimization_problem.yaml`ファイル内の以下のリストに対応しており、最適化中に参照されます。
@@ -44,7 +44,7 @@ $f_i$, $g_i$, $h_i$はいずれも以下の設定項目を持ちます。
 
 計算値は各`Individual`に`metrics`として保存され、optimizer内にて個体更新の処理に利用可能になります。この他に、`metrics`には特殊な値として`fitness`が設定されており、これは各$f_i$の和を計算したものと定義されます。この値は主に単目的最適化の計算に利用できます。
 
-## Save / Load Optimization Problem as Template
+## 最適化問題テンプレートの保存・読込
 `opimization_problem.yaml`の内容は最適化問題テンプレートとして`save_tpl`コマンドによって保存できます。テンプレートは`project/problem_template.yaml`に保存されます。
 ```sh
 python emsopt.py save_tpl NewDmodel NewProblem
