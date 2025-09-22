@@ -8,12 +8,15 @@ sidebar_position: 8
 ## 手順
 **自作コアオブジェクトを定義するには、以下のステップに従います**。  
 1. 自作コアオブジェクト用の新しいpythonファイルを作成する。
-2. 作成したファイル内に、対応するコアオブジェクトインターフェースを継承したpythonクラスを実装する（下記は`evaluator`の例）。
+2. 作成したファイル内に、対応するコアオブジェクトのインターフェースを継承したpythonクラスを実装する（下記は`evaluator`の例）。
 ```py
 class UserDefinedEvaluator(EvaluatorInterface):
     def __init__(self, kwarg1: int):
         ...
 ```
+:::info
+各コアオブジェクトのインターフェースについてはユーザガイドセクション内の各コアオブジェクトのページをご覧ください。
+:::
 3. 作成したファイル内に、対応するコアオブジェクト生成用デコレータ付きのインスタンス化関数（ファクトリ関数）を定義する。
 ```py
 from emsopt_engine.registry import evaluator
