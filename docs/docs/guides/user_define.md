@@ -41,7 +41,7 @@ evaluator:
 ## コアオブジェクトの仕組み
 ここでは、コアオブジェクト設定の仕組みと実装のヒントについて述べます。
 ### インターフェース
-コアオブジェクトの仕様はインターフェースクラスによって定義されています。例えば、`evaluator`のインターフェースクラス（`EvaluatorInterface` in `core/evaluator/evaluator_interface.py`）の定義は下記のようになっています。
+コアオブジェクトの仕様はインターフェースクラスによって定義されています。例えば、`evaluator`のインターフェースクラス（`EvaluatorInterface`）の定義は下記のようになっています。
 ```py
 class EvaluatorInterface(ABC):
     """Interface to evaluate population"""
@@ -114,9 +114,9 @@ from .examples import rastrigin, zdt1, user_defined
 
 ### Optimizerについて
 コアオブジェクトのうち、**`optimizer`は少し特殊なオブジェクトとなっています**。すなわち、
-- 継承元としてインターフェース（`OptimizerInterface` in `core/optimizer/optimizer_interface.py`）のほかに、
-    - 単目的最適化の基底クラス（`SOOptimizerBase` in `core/optimizer/so_optimizer_base.py`）
-    - 多目的最適化の基底クラス（`MOOptimizerBase` in `core/optimizer/mo_optimizer_base.py`）
+- 継承元としてインターフェース（`OptimizerInterface`）のほかに、
+    - 単目的最適化の基底クラス（`SOOptimizerBase`）
+    - 多目的最適化の基底クラス（`MOOptimizerBase`）
 - を有している。ユーザは`optimizer`を自作する際、**インターフェースに加えてどちらかの基底クラスを継承する必要がある**。
 - 形状最適化実行時（`pyemsol_shape_evaluator`使用時）、ファクトリ関数へ`dim`と`num_obj`というキーワード引数が自動的に設定される。したがって、**`optimizer`のファクトリ関数は`dim`と`num_obj`を引数に設定する必要がある**。
 :::info
@@ -203,5 +203,5 @@ def average_torque(working_dir: str, torque_scale: float = 1.0) -> float:
 
 コアオブジェクトのファクトリ関数の登録時と同様に、デコレータ関数`opt_problem_function`に自作関数の登録名を渡すことで`optimization_problem.yaml`からその関数を呼び出せるようになります（`core/opt_problem_functions.py`自身がEMSOptimizerに自動インポートされるため、追加のインポート記述は不要です）。
 
-なお、**評価用関数には`working_dir`を引数に必ず含みます**。これはpyemsolによる解析結果が格納されたフォルダ名であり、EMSOptimizer内部で自動的に設定されます。  
+なお、**評価用関数には`working_dir`を第一引数に必ず含みます**。これはpyemsolによる解析結果が格納されたフォルダ名であり、EMSOptimizer内部で自動的に設定されます。  
 上記の`average_torque`の例ではpyemsol解析結果サマリーファイル`output.json`を読み込み、そこからトルク波形を抽出することで平均トルクを計算しています。

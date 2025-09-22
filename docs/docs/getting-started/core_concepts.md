@@ -10,7 +10,7 @@ sidebar_position: 2
 
 ![Concepts Overview](/img/concepts_overview.drawio.png)
 
-## Individual, Population (core/individual.py)
+## Individual, Population
 `Individual`は、EMSOptimizer内において個体を表すオブジェクトです。**ここでいう個体は、「最適化過程において生成される解候補ベクトルおよびそれに対する評価値を保有したオブジェクト」のこと**を指します。また、**`Population`は複数の`Individual`をひとまとめにしたオブジェクトです**。
 :::info
 `Individual`（個体）, `Population`（集団）という名称は、確率的最適化アルゴリズムの代表格である遺伝的アルゴリズムの文脈に倣ったものです。
