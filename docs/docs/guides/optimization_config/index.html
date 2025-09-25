@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.8.1">
 <title data-rh="true">最適化の設定（optimization.yaml） | EMSOptimizer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/guides/optimization_config"><meta data-rh="true" property="og:locale" content="ja"><meta data-rh="true" name="docusaurus_locale" content="ja"><meta data-rh="true" name="docsearch:language" content="ja"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="最適化の設定（optimization.yaml） | EMSOptimizer"><meta data-rh="true" name="description" content="ここでは、optimization.yamlの内容を説明します。"><meta data-rh="true" property="og:description" content="ここでは、optimization.yamlの内容を説明します。"><link data-rh="true" rel="icon" href="/EMSOptimizerDoc/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/guides/optimization_config"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/guides/optimization_config" hreflang="ja"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/guides/optimization_config" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ユーザガイド","item":"https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/category/ユーザガイド"},{"@type":"ListItem","position":2,"name":"最適化の設定（optimization.yaml）","item":"https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/guides/optimization_config"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/EMSOptimizerDoc/assets/css/styles.1fd97824.css">
-<script src="/EMSOptimizerDoc/assets/js/runtime~main.5fdb0045.js" defer="defer"></script>
-<script src="/EMSOptimizerDoc/assets/js/main.747b2815.js" defer="defer"></script>
+<script src="/EMSOptimizerDoc/assets/js/runtime~main.19e77fd8.js" defer="defer"></script>
+<script src="/EMSOptimizerDoc/assets/js/main.38b2943a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -18,7 +18,7 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="details">Details<a href="#details" class="hash-link" aria-label="Details への直接リンク" title="Details への直接リンク">​</a></h2>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>備考</div><div class="admonitionContent_BuS1"><p>コアオブジェクトの実装例についてはユーザガイド内の各セクションを参照してください。<br>
 <!-- -->また、<code>name</code>と<code>kwargs</code>の仕組みについては<a href="/EMSOptimizerDoc/docs/docs/guides/user_define">How to Define Core Object</a>を参照してください。</p></div></div>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="core-objects">Core Objects<a href="#core-objects" class="hash-link" aria-label="Core Objects への直接リンク" title="Core Objects への直接リンク">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="コアオブジェクト">コアオブジェクト<a href="#コアオブジェクト" class="hash-link" aria-label="コアオブジェクト への直接リンク" title="コアオブジェクト への直接リンク">​</a></h3>
 <ul>
 <li><code>evaluator</code> ... 最適化で使用するEvaluator実装。<!-- -->
 <ul>
@@ -53,7 +53,7 @@
 </ul>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>備考</div><div class="admonitionContent_BuS1"><p>後半3つのコアオブジェクト設定は省略可能です。使用したいもののみ設定してください。<br>
 <!-- -->特に、<code>evaluator</code>にベンチマーク関数を使用した場合は3つすべて省略できます。</p></div></div>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="optimization-settings">Optimization Settings<a href="#optimization-settings" class="hash-link" aria-label="Optimization Settings への直接リンク" title="Optimization Settings への直接リンク">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="最適化設定">最適化設定<a href="#最適化設定" class="hash-link" aria-label="最適化設定 への直接リンク" title="最適化設定 への直接リンク">​</a></h3>
 <ul>
 <li><code>num_iteration: int</code> ... 最適化イテレーション数。</li>
 </ul>
@@ -62,7 +62,7 @@
 <li><code>enable_parallelization: bool</code>... 並列処理の有効化／無効化。</li>
 <li><code>num_processes: int | null</code> ... 並列処理プロセス数。<code>null</code>の場合、PCのCPU数から自動的に設定される。</li>
 </ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="output">Output<a href="#output" class="hash-link" aria-label="Output への直接リンク" title="Output への直接リンク">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="出力設定">出力設定<a href="#出力設定" class="hash-link" aria-label="出力設定 への直接リンク" title="出力設定 への直接リンク">​</a></h3>
 <ul>
 <li><code>output_dir: str</code> ... 最適化経過の出力先フォルダ名。</li>
 <li><code>output_interval: int</code> ... GUIを含む出力全体のインターバル。1なら毎イテレーション、2なら2イテレーションに1回、...と出力します。</li>
@@ -92,6 +92,6 @@
 </ul>
 </li>
 <li><code>enable_progress_gui: bool</code> ... GUIの有効化／無効化。</li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="ドキュメントページ"><a class="pagination-nav__link pagination-nav__link--prev" href="/EMSOptimizerDoc/docs/docs/guides/commands"><div class="pagination-nav__sublabel">前へ</div><div class="pagination-nav__label">コマンドリスト</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/EMSOptimizerDoc/docs/docs/guides/machine_config"><div class="pagination-nav__sublabel">次へ</div><div class="pagination-nav__label">機器設定（machine.yaml）</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#format" class="table-of-contents__link toc-highlight">Format</a></li><li><a href="#details" class="table-of-contents__link toc-highlight">Details</a><ul><li><a href="#core-objects" class="table-of-contents__link toc-highlight">Core Objects</a></li><li><a href="#optimization-settings" class="table-of-contents__link toc-highlight">Optimization Settings</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">Output</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Science Solutions International Laboratory, Inc.</div></div></div></footer></div>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="ドキュメントページ"><a class="pagination-nav__link pagination-nav__link--prev" href="/EMSOptimizerDoc/docs/docs/guides/commands"><div class="pagination-nav__sublabel">前へ</div><div class="pagination-nav__label">コマンドリスト</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/EMSOptimizerDoc/docs/docs/guides/machine_config"><div class="pagination-nav__sublabel">次へ</div><div class="pagination-nav__label">機器設定（machine.yaml）</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#format" class="table-of-contents__link toc-highlight">Format</a></li><li><a href="#details" class="table-of-contents__link toc-highlight">Details</a><ul><li><a href="#コアオブジェクト" class="table-of-contents__link toc-highlight">コアオブジェクト</a></li><li><a href="#最適化設定" class="table-of-contents__link toc-highlight">最適化設定</a></li><li><a href="#出力設定" class="table-of-contents__link toc-highlight">出力設定</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Science Solutions International Laboratory, Inc.</div></div></div></footer></div>
 </body>
 </html>
