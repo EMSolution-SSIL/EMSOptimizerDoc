@@ -5,10 +5,10 @@ sidebar_position: 1
 # インストール
 ## 前提条件
 - Python 3.11.x 環境およびパッケージ管理ツールpipが必要です。
-- EMSOptimizerの形状最適化機能を有効化するには、EMSolution*のEMSOptimizer専用パッケージをインストールする必要があります。
+- EMSOptimizerの形状最適化機能を有効化するには、EMSolution(pyemsol)*のEMSOptimizer専用パッケージをインストールする必要があります。
 - （任意）EMSOptimizerとeMotorSolution* APIを連携したい場合は、eMotorSolution APIをインストールします。
 
-*EMSolutionおよびeMotorSolutionのインストールに関しては、公式の[製品ページ](https://www.ssil.co.jp/product/EMSolution/product/)をご覧ください。
+*EMSolution(pyemsol)およびeMotorSolutionのインストールに関しては、公式の[製品ページ](https://www.ssil.co.jp/product/EMSolution/product/)をご覧ください。
 
 ## インストール手順
 1. Github [EMSOptimizerリポジトリ](https://github.com/EMSolution-SSIL/EMSOptimizer)の"Releases"からEMSOptimizer最新バージョンのzipまたはtar.gzファイル、および付随するwhlファイルをダウンロードします。

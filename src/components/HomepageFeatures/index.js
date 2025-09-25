@@ -32,7 +32,7 @@ const FeatureList = [
     description: (
       <>
         形状最適化には、複雑かつ高効率な形状解析が必要です。EMSOptimizerは、強力かつ高効率なシミュレーションエンジンであるEMSolutionによって駆動されています。
-        EMSolutionはPythonにバインドされており、EMSOptimizerの最適化アルゴリズムと連携することで効率的な形状最適化を実現します。
+        EMSolutionはPythonにバインドされており（pyemsol）、EMSOptimizerの最適化アルゴリズムと連携することで効率的な形状最適化を実現します。
       </>
     ),
   },

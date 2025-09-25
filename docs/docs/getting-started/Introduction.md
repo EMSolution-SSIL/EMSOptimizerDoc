@@ -24,8 +24,8 @@ EMSOptimizerでは各最適化ケースを**プロジェクト単位**で管理�
 - **形状最適化のベースモデルとして用いるメッシュファイル**（`pre_geom2D.msh`, `rotor_mesh2D.msh`（運動領域を含む場合））
     - ただし、eMotorSolution連携時は不要。代わりにeMotorSolutionプロジェクトを`machine.yaml`にて指定する。
 - **形状最適化解析ケースフォルダ**
-    - 各解析ケースフォルダにはそれと同名のpyemsol入力jsonファイルを配置します。
-    - 解析ケース名は`optimization_problem.yaml` > `case_names`コンフィグにも設定します。
+    - 各解析ケースフォルダにはそれと同名のjsonファイルを配置します（jsonファイルは電磁界ソルバーパッケージ`pyemsol`用の入力ファイルです）。
+    - **解析ケース名は`optimization_problem.yaml` > `case_names`コンフィグにも設定します**。
     - ただし、eMotorSolution連携時は不要。代わりにeMotorSolutionプロジェクトを`machine.yaml`にて指定する。
 :::info
 具体的な設定方法などは[最適化問題の設定](./opt_problem.md)ページおよびユーザガイドセクションに説明があります（ここでは省略しています）。

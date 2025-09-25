@@ -23,7 +23,7 @@ $X$: $\boldsymbol{x}$の集合（EMSOptimizerにおいては、$x_i$の上下限
 その他、最適化イテレーション数など最適化そのものの設定に関しては[ユーザガイド > 最適化の設定](../guides/optimization_config.md)ページを参照してください。
 :::
 
-各項目は`opimization_problem.yaml`ファイル内の以下のリストに対応しており、最適化中に参照されます。
+$f_i$, $g_i$, $h_i$は`opimization_problem.yaml`ファイル内の以下のリストに対応しており、最適化中に参照されます。
 - $f_i$: `objectives`
 - $g_i$: `ineq_constraints`
 - $h_i$: `eq_costraints`  
@@ -37,7 +37,7 @@ $f_i$, $g_i$, $h_i$はいずれも以下の設定項目を持ちます。
 - `coefficient: float` ... 重み係数。以下参照。デフォルト値は`1.0`。
 - `baseline: float` ... バイアス項。以下参照。デフォルト値は`0.0`。
 
-以上の設定項目から、各`Individual`において関数は以下の式によって計算されます。ここで、$\text{function\_name}$は`case_name`に設定された解析ケース結果に基づいて計算されます。
+以上の設定項目から、各`Individual`において$f_i$, $g_i$, $h_i$は以下の式によって計算されます。
 ```math
 \text{coefficient} \times (\text{function\_name}(\text{**kwargs}) - \text{baseline})
 ```
@@ -55,7 +55,7 @@ python emsopt.py load_tpl NewDmodel NewProblem
 ```
 save, loadともyamlファイルの中身を複製しているに過ぎないため、これらの操作は手動で行っても構いません。
 
-## Example 1: Dmodel
+## Example: Dmodel
 例として、単目的最適化を想定した`Dmodel`プロジェクト内の`optimization_problem.yaml`を見てみましょう。
 ```yaml
 case_names:
@@ -109,55 +109,3 @@ $T_\text{rip}$：トルクリプル率 [%]
 最適化のプロセスにおいて形状評価が終わると、`Individual.metrics.fitness`に$F$の値が格納されます。これがoptimizer内の処理において`Individual`の更新に利用されることで最適化が進行します。
 
 最後に、`other_metrics`には平均トルクとトルクリプル率（`coefficient`無の生データ）が登録されています。これにより、GUIからこれらの値を確認できるようになっています。
-
-## Example 2: GL80
-より発展的な例として、`GL80`プロジェクト内の`optimization_problem.yaml`を見てみましょう。
-```yaml
-case_names:
-  - transient
-
-objectives:
-  - function_name: torque_ripple_percentage
-    kwargs:
-      torque_scale: 6.0
-
-ineq_constraints:
-  - function_name: average_torque
-    kwargs:
-      torque_scale: 6.0
-    coefficient: -1.0
-    baseline: 0.97
-
-eq_constraints:
-  - function_name: num_connected_components
-    kwargs:
-      phisical_tag: 20
-    baseline: 1.0
-
-other_metrics:
-  - function_name: average_torque
-    kwargs:
-      torque_scale: 6.0
-  - function_name: torque_ripple_percentage
-    kwargs:
-      torque_scale: 6.0
-```
-
-構成は先ほどの例と同じですが、ここでは制約条件付きのトルクリプル率最小化問題が定義されています。なお、プロジェクトに登録されているGL80モデルは6分の1モデルのため、トルク倍率は6となっています。
-
-制約条件は2つあり、1つ目は`ineq_constraints`に記載の平均トルク制約です。`coefficient`が-1、`baseline`が0.97となっており、これは以下の不等式制約を表しています。
-```math
-g_1  = - (T_\text{avg}-0.97) \leq 0 \quad
-```
-
-すなわち、
-
-```math
-T_\text{avg} \geq 0.97 \quad
-```
-
-よって、平均トルクが0.97 Nm以上であることを制約に課しています。
-
-次に、`eq_constraints`記載の連結制約です。ここでは、`phisical_tag`（材料番号）が`20`の領域の連結成分数が1となることを制約条件に課しています。
-
-`GL80`プロジェクト内では`20`はロータコア領域を表しているため、この制約は「**ロータコアが一体となっており、浮いた領域が無いこと（＝ロータコアとして現実的な形状をしていること）**」を課しています。

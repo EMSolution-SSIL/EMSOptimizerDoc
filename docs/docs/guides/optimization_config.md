@@ -55,7 +55,7 @@ enable_progress_gui: bool
 また、`name`と`kwargs`の仕組みについては[How to Define Core Object](./user_define.md)を参照してください。
 :::
 
-### Core Objects
+### コアオブジェクト
 - `evaluator` ... 最適化で使用するEvaluator実装。
     - `name: str` ... 実装名
     - `kwargs: dict[str, Any]` ... キーワード引数
@@ -76,7 +76,7 @@ enable_progress_gui: bool
 特に、`evaluator`にベンチマーク関数を使用した場合は3つすべて省略できます。
 :::
 
-### Optimization Settings
+### 最適化設定
 - `num_iteration: int` ... 最適化イテレーション数。
 :::info
 ここでは、「イテレーション」＝「`optimizer`が`Population`を`evaluator`に渡し、`evaluator`が評価し、`optimizer`が`Population`の更新処理をする一連のプロセス」と定義しています。
@@ -84,7 +84,7 @@ enable_progress_gui: bool
 - `enable_parallelization: bool`... 並列処理の有効化／無効化。
 - `num_processes: int | null` ... 並列処理プロセス数。`null`の場合、PCのCPU数から自動的に設定される。
 
-### Output
+### 出力設定
 - `output_dir: str` ... 最適化経過の出力先フォルダ名。
 - `output_interval: int` ... GUIを含む出力全体のインターバル。1なら毎イテレーション、2なら2イテレーションに1回、...と出力します。
 - `output_control` ... 各出力ファイルの設定。

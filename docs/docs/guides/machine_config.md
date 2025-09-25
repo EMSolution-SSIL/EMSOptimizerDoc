@@ -36,7 +36,7 @@ ems_project_filepath: str
 :::warning
 `machine.yaml`の各種設定は使用する電気機器ベースモデルメッシュおよび各解析ケースフォルダ内のpyemsol入力jsonファイルと整合するように設定する必要があります。
 :::
-### Basic Settings
+### 基本設定
 - `coordinate: str ("Cartesian" | "Polar")` ... 計算に用いる座標系。
 :::info
 直交座標系を用いる一般的な形状最適化では`Cartesian`を指定します。  
@@ -54,7 +54,7 @@ ems_project_filepath: str
 例えば、解析対象となる同期モータモデルが複数極を含む場合にこのオプションを設定します。
 :::
 
-### Material Settings
+### 材料設定
 - `target_ids_and_onoff: dict[int, list[int]]` ... トポロジー最適化において設計対象とする材料ID。`target_id`が割り当てられた領域について、各位置の材料IDをレベルセット関数の値に基づいて`id for level 1`, `id for level 2`, ...に設定します。
   #### Format
   ```yaml
@@ -135,7 +135,7 @@ increment_info:
 ```
 :::
 
-### Implicit Domain Meshing Options
+### Implicit Domain Meshing オプション
 :::info
 Implicit Domain Meshingの手法については[Implicit Domain Meshing](./implicit_domain_meshing.md)ページを参照してください。
 :::

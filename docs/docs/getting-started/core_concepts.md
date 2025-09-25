@@ -82,7 +82,6 @@ EMSOptimizerでは「設計領域内の各位置で正負の値を返す関数�
 
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
 - `dmodel_magnet`: Dmodelの永久磁石定義。`Dmodel_parameter`プロジェクト内で使用されています。
-- `halbach`: 表面型永久磁石モータにおけるハルバッハ配列の永久磁石定義。`GL80_halbach`プロジェクト内で使用されています。
 
 :::tip 解析条件・寸法・トポロジーの同時最適化
 EMSOptimizerでは`analysis_conditioner`、`ls_function`、`ems_shape_builder`はすべて独立に・同時に設定可能です。特に、`ems_shape_builder`を`ls_function`と同時に設定することで、寸法・トポロジーの同時最適化\[10\]が実行可能です。  
