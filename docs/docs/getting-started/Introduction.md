@@ -12,7 +12,7 @@ python emsopt.py run Dmodel
 ```
 これにより、電気学会Dmodel\[1\]の単目的トポロジー最適化（NGnet on/off法\[3\]）が実行されます。
 :::info
-実際にこの最適化によって得られる結果の例については[Showcase](../../showcase/Dmodel.md)をご覧ください。
+実際にこの最適化によって得られる結果の例については[Showcase](../../showcase/Dmodel/basic.md)をご覧ください。
 :::
 
 ## 最適化の基本フロー

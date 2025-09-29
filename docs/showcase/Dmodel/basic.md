@@ -1,10 +1,9 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-# Dmodel
-ここでは、ベンチマークモータモデル「Dmodel」\[1\]の形状最適化例をご紹介します。  
-主に`Dmodel`プロジェクトの内容を中心に解説を行います。
+# Dmodel説明＆基本の最適化例
+ここでは、Dmodelの説明、および`Dmodel`プロジェクトの内容について紹介します。
 ![Dmodel最適化履歴](/img/Dmodel_best_individuals.gif)
 ***ロータコア形状最適化の過程。***
 
@@ -141,7 +140,7 @@ num_processes: Null  # if Null, automatically set from cpu counts
 （出力周りの設定は省略します）
 
 ## optimization_problem.yaml（`Dmodel`プロジェクト）
-最適化問題の設定（`optimization_problem.yaml`）については[基本の使い方 > 最適化問題の設定](../docs/getting-started/opt_problem.md)ページに解説があります。  
+最適化問題の設定（`optimization_problem.yaml`）については[基本の使い方 > 最適化問題の設定](../../docs/getting-started/opt_problem.md)ページに解説があります。  
 ここで定義された最適化問題は以下の通りです。
 ```math
 \text{minimize} \quad F=f_1+f_2=-1.0\frac{T_\text{avg}}{2.1} + 0.1\frac{T_\text{rip}}{54.0} \\
@@ -159,7 +158,7 @@ Implicit Domain Meshing有（`use_implicit_domain_meshing: True`）として最�
 最良の評価値を記録したのは80イテレーション目（図中星印）でした。
 ![Dmodel最適化収束履歴](/img/convergence.png)
 
-また、進化過程はGUIからも確認できます。（GUI有効化して`run`コマンド、もしくは`check`コマンド）
+また、進化過程はGUIからも確認できます。（GUIを有効化して`run`コマンド、もしくは最適化完了後に`check`コマンド）
 ![Dmodel最適化GUI](/img/Dmodel_ex_GUI.gif)
 
 下図が最適化によって得られた最良形状（80イテレーション目）です。平均トルク: 2.21 Nm、トルクリプル率: 10.35 %。  

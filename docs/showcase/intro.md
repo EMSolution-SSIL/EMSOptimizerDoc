@@ -2,5 +2,5 @@
 sidebar_position: 1
 ---
 
-# Introduction
+# イントロダクション
 ここでは、EMSOptimizerを活用した形状最適化の実施例を紹介します。
