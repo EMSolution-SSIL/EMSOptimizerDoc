@@ -6,53 +6,54 @@ sidebar_position: 2
 ここでは、`optimization.yaml`の内容を説明します。
 
 ## Format
+凡例：`{設定項目名}: {型名} = デフォルト値`  
+デフォルト値の無いものは設定必須項目。
 ```yaml
 # Core Objects
 evaluator:
   name: str
-  kwargs: dict[str, Any]
+  kwargs: dict[str, Any] = {}
 optimizer:
   name: str
-  kwargs: dict[str, Any]
-analysis_conditioner:
+  kwargs: dict[str, Any] = {}
+analysis_conditioner: = None
   name: str
-  kwargs: dict[str, Any]
-level_set_function:
+  kwargs: dict[str, Any] = {}
+level_set_function: = None
   name: str
-  kwargs: dict[str, Any]
-ems_shape_builder:
+  kwargs: dict[str, Any] = {}
+ems_shape_builder: = None
   name: str
-  kwargs: dict[str, Any]
-use_implicit_domain_meshing: bool
+  kwargs: dict[str, Any] = {}
 
 # Optimization Settings
 num_iteration: int
-enable_parallelization: bool
-num_processes: int | null
+enable_parallelization: bool = False
+num_processes: int | null = null
 
 # Output
 output_dir: str
-output_interval: int
+output_interval: int = 1
 output_control:
   best_individual:
     filename_base: str
-    enabled: bool
-    output_interval: int
+    enabled: bool = True
+    output_interval: int = 1
   candidate:
     filename_base: str
-    enabled: bool
-    output_interval: int
+    enabled: bool = True
+    output_interval: int = 1
   candidate_plot:
     filename_base: str
-    enabled: bool
-    output_interval: int
-enable_progress_gui: bool
+    enabled: bool = True
+    output_interval: int = 1
+enable_progress_gui: bool = True
 ```
 
 ## Details
 :::info
 コアオブジェクトの実装例についてはユーザガイド内の各セクションを参照してください。  
-また、`name`と`kwargs`の仕組みについては[How to Define Core Object](./user_define.md)を参照してください。
+また、`name`と`kwargs`の仕組みについては[コアオブジェクトの自作ページ](./user_define.md)を参照してください。
 :::
 
 ### コアオブジェクト

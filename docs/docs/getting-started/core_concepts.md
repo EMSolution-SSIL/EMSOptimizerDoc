@@ -16,7 +16,7 @@ sidebar_position: 2
 `Individual`（個体）, `Population`（集団）という名称は、確率的最適化アルゴリズムの代表格である遺伝的アルゴリズムの文脈に倣ったものです。
 :::
 
-`Individual`は以下の情報を保持します。
+`Individual`は以下の情報（メンバ変数）を保持します。
 - `solution`: 解候補ベクトル。
 - `metrics`: 目的関数および制約関数の値。詳細は[最適化問題の設定](./opt_problem.md)ページを参照。
 - `outcome_filepath`: 形状最適化における結果形状のメッシュファイルへのパス。形状最適化実行時、EMSOptimizer内で自動的に設定されます。
@@ -33,7 +33,7 @@ EMSOptimizerでは`Individual`ないし`Population`がオブジェクト間を�
 :::
 
 ### Optimizer (core/optimizer)
-最適化アルゴリズム（`Individual`の生成・更新）を担うオブジェクトです。`evaluator`によって評価された`Individual`を受け取り、更新して新たな`Individual`を生成して`evaluator`に渡す役割を担います。
+最適化アルゴリズム（`Individual`の生成・更新）を担うオブジェクトです。`evaluator`によって評価された`Individual`を受け取り、新たな`Individual`を生成して`evaluator`に渡す役割を担います。
 
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
 - `cmaes`: 単目的最適化アルゴリズムCMA-ES\[4\], \[5\]。
@@ -46,7 +46,7 @@ EMSOptimizerでは`Individual`ないし`Population`がオブジェクト間を�
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
 - `rastrigin`: 単目的最適化ベンチマークRastrigin関数\[11\]。
 - `zdt1`: 多目的最適化ベンチマークZDT1関数\[9\]。
-- `pyemsol_shape_evaluator`: **pyemsolによる形状最適化の評価実装**。`ls_function`や`ems_shape_builder`によって定義された形状を解析し、`optimization_problem.yaml`に定義された目的関数および制約条件を計算します（`optimizer_problem.yaml`については[最適化問題の設定](./opt_problem.md)ページを参照）。
+- `pyemsol_shape_evaluator`: **形状最適化用の評価実装**。`ls_function`や`ems_shape_builder`によって定義された形状を電磁界シミュレータパッケージpyemsolを用いて解析し、`optimization_problem.yaml`に定義された目的関数および制約条件を計算します（`optimizer_problem.yaml`については[最適化問題の設定](./opt_problem.md)ページを参照）。
 `pyemsol_shape_evaluator`は例外的にEMSOptimizer内部にて定義されおり、`examples`フォルダ内に実装はありません。
 
 なお、前半2つは最適化ベンチマーク関数であり、形状最適化を実行する前に`optimizer`の性能をチェックするために活用することができます。
@@ -78,7 +78,11 @@ EMSOptimizerでは「設計領域内の各位置で正負の値を返す関数�
 - `phase_conditioner`: 電流位相角を変更します。
 
 ### eMotorSolution Shape Builder (core/ems_shape_builder)
-寸法最適化における形状定義を担います。`evaluator`が`pyemsol_shape_evaluator`、かつeMotorSolutio連携時に使用可能で、`Individual`の解候補ベクトルからモータの部品寸法を設定する役割を担います。
+寸法最適化における形状定義を担います。`evaluator`が`pyemsol_shape_evaluator`、かつeMotorSolution連携時に使用可能で、`Individual`の解候補ベクトルからモータの部品寸法を設定する役割を担います。
+
+:::info
+eMotorSolution連携については[ユーザガイド > eMotorSolutionとの連携](../guides/link_ems.md)をご覧ください。
+:::
 
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
 - `dmodel_magnet`: Dmodelの永久磁石定義。`Dmodel_parameter`プロジェクト内で使用されています。
@@ -89,11 +93,11 @@ EMSOptimizerでは`analysis_conditioner`、`ls_function`、`ems_shape_builder`�
 ```math
 \boldsymbol{x} = [\boldsymbol{p}^\text{T}, \boldsymbol{d}^\text{T}, \boldsymbol{w}^\text{T}]^\text{T}
 ```
-$\boldsymbol{x}$: Individual.solution 解ベクトル  
+$\boldsymbol{x}$: 解ベクトル（`Individual.solution`）  
 $\boldsymbol{p}$: `analysis_conditioner`に与えられる解析条件情報ベクトル  
 $\boldsymbol{d}$: `ems_shape_builder`に与えられる寸法情報ベクトル  
 $\boldsymbol{w}$: `ls_function`に与えられるレベルセット関数パラメータベクトル  
-これらのうち、未設定のオブジェクトに対応するベクトルはゼロベクトルと見なされます。
+$\boldsymbol{p}$, $\boldsymbol{d}$, $\boldsymbol{w}$ のうち、未設定のオブジェクトに対応するベクトルはゼロベクトルと見なされます。
 :::
 
 :::tip 最適化コントロール

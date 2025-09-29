@@ -29,20 +29,21 @@ $f_i$, $g_i$, $h_i$は`opimization_problem.yaml`ファイル内の以下のリ�
 - $h_i$: `eq_costraints`  
 - 例外として、`other_metrics`リストは最適化計算には使われず、GUI表示やファイル出力に利用されます。
 
-$f_i$, $g_i$, $h_i$はいずれも以下の設定項目を持ちます。
-- `function_name: str` ... 関数名。実装本体は`core/opt_problem_functions.py`に記述されています。利用可能な関数名の一覧は`show_avl`コマンドでも確認できます。
-- `case_name: str | null` ... `function_name`を評価する解析ケース名。`optimization_problem.yaml` > `case_names`から選択する。未設定（もしくは`null`を設定）の場合、`case_names`の一番上の解析ケースが自動的に使用される。
+リスト内の各項目はいずれも以下の設定を持ちます。
+- `function_name: str` ... 関数名。関数名に対応する実装内容は`core/opt_problem_functions.py`に記述されています。利用可能な関数名の一覧は`show_avl`コマンドでも確認できます。
+- `case_name: str | null` ... `function_name`を評価する解析ケース名。解析ケース名の一覧は`optimization_problem.yaml` > `case_names`に設定し、`case_name`はその中から選択する。未設定（もしくは`null`を設定）の場合、`case_names`の一番上の解析ケースが自動的に使用される。
 - `kwargs: dict` ... 関数に渡すpythonキーワード引数。省略可能。
-    - なお、各関数の引数のうち`working_dir`は特殊なキーワードに位置付けられています。このキーワード引数はEMSOptimizer内部にて自動的に設定されるため、yamlファイル内で設定は不要です（設定しても実行時には無視されます）。
-- `coefficient: float` ... 重み係数。以下参照。デフォルト値は`1.0`。
-- `baseline: float` ... バイアス項。以下参照。デフォルト値は`0.0`。
+    - なお、各関数の引数のうち`working_dir`は特殊なキーワードに位置付けられています。このキーワード引数はEMSOptimizer内部にて自動的に設定されるため、yamlファイル内では設定不要です（設定しても実行時には無視されます）。
+- `coefficient: float` ... 重み係数。下式参照。デフォルト値は`1.0`。
+- `baseline: float` ... バイアス項。下式参照。デフォルト値は`0.0`。
 
 以上の設定項目から、各`Individual`において$f_i$, $g_i$, $h_i$は以下の式によって計算されます。
 ```math
-\text{coefficient} \times (\text{function\_name}(\text{**kwargs}) - \text{baseline})
+\text{coefficient} \times (A - \text{baseline}) \\
 ```
+$A$: `function_name`を`case_name`の解析結果に基づき、`kwargs`を与えて計算した結果
 
-計算値は各`Individual`に`metrics`として保存され、optimizer内にて個体更新の処理に利用可能になります。この他に、`metrics`には特殊な値として`fitness`が設定されており、これは各$f_i$の和を計算したものと定義されます。この値は主に単目的最適化の計算に利用できます。
+計算値は各`Individual`に`metrics`として保存され、optimizer内にて個体更新の処理に利用可能になります。また、`metrics`には特殊な値として`fitness`が設定されており、これは各$f_i$の和を計算したものと定義されます。この値は主に単目的最適化の計算に利用できます。
 
 ## 最適化問題テンプレートの保存・読込
 `opimization_problem.yaml`の内容は最適化問題テンプレートとして`save_tpl`コマンドによって保存できます。テンプレートは`project/problem_template.yaml`に保存されます。

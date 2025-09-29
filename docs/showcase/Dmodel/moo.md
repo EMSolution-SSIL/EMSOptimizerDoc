@@ -20,7 +20,7 @@ optimizer:
 ```
 
 ## optimization_problem.yaml（`Dmodel_advanced`プロジェクト）
-`optimization_problem.yaml`の中身は`Dmodel`プロジェクトと変わりませんが、今回は多目的最適化のため、`objectives`はそれぞれが独立した目的関数として認識されます。
+`optimization_problem.yaml`の中身は`Dmodel`プロジェクトと変わりませんが、今回は最適化アルゴリズムが多目的問題用のため、`objectives`はそれぞれが独立した目的関数として認識されます。
 ```yaml
 objectives:
   - function_name: average_torque
@@ -35,8 +35,10 @@ objectives:
 
 すなわち、ここで定義された多目的最適化問題は以下の通りです。
 ```math
-\text{minimize} \quad f_1=-\frac{T_\text{avg}}{2.1} \\
-\text{minimize} \quad f_2=\frac{T_\text{rip}}{54.0} \\
+\begin{align*}
+\text{minimize} \quad & f_1=-\frac{T_\text{avg}}{2.1} \\
+                      & f_2=\frac{T_\text{rip}}{54.0} \\
+\end{align*}
 ```
 $T_\text{avg}$：平均トルク [Nm]  
 $T_\text{rip}$：トルクリプル率 [%]

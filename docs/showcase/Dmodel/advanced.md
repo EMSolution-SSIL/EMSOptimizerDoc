@@ -10,9 +10,9 @@ sidebar_position: 2
 では、`optimization_problem.yaml`の中身を確認します。
 
 ### 解析ケース
-まず、`case_names`が2つ存在します。1つ目は`transient`で、これは`Dmodel`プロジェクトのものと同様の条件（電流3.0Arms, 電流位相角20deg）を与える解析ケースです。  
+一番の変更点として、`case_names`が2つ存在します。1つ目は`transient`で、これは`Dmodel`プロジェクトのものと同様の条件（電流3.0Arms, 電流位相角20deg）を与える解析ケースです。  
 2つ目は`transient_high_current`で、電流値が3.0Armsから9.0Armsに、電流位相角が20degから30degに、それぞれ変更されています。  
-これらと同名の解析ケースフォルダが`Dmodel_advanced`プロジェクトフォルダ内にあり、電流条件（およびその他の解析条件）は各解析ケースフォルダ内の同名jsonファイルに記載されています。jsonファイルのフォーマットについてはEMSolutionのドキュメントをご覧ください。
+これらと同名の解析ケースフォルダが`Dmodel_advanced`プロジェクトフォルダ内にあり、電流条件（およびその他の解析条件）は各解析ケースフォルダ内の同名jsonファイルに記載されています。jsonファイルのフォーマットについては電磁界シミュレータEMSolution(pyemsol)のドキュメントをご覧ください。
 ```yaml
 case_names:
   - transient
@@ -57,9 +57,18 @@ $T_\text{avg}^\text{9.0Arms}$：平均トルク@9.0Arms [Nm]
       torque_scale: 4.0
     baseline: 30.0
 ```
+式で書くと以下の通りです。
+```math
+\begin{align*}
+\text{subject to} \quad & g_1(\boldsymbol{x}) = T_\text{rip}^\text{3.0Arms} - 30.0 \leq 0 \\
+                        & g_2(\boldsymbol{x}) = T_\text{rip}^\text{9.0Arms} - 30.0 \leq 0
+\end{align*}
+```
+$T_\text{rip}^\text{3.0Arms}$：トルクリプル率@3.0Arms [%]  
+$T_\text{rip}^\text{9.0Arms}$：トルクリプル率@9.0Arms [%]  
 
 ### 等式制約
-次に、等式制約（`eq_constraints`）です。ここでは、[基本の最適化](./basic.md)ページの最後に説明があるように、ロータコアに結合制約をかけています。
+次に、等式制約（`eq_constraints`）です。ここでは、[基本の最適化](./basic.md)ページの最後に説明があるように、ロータコアが一体となる（分離した箇所や浮島を生じない）ように制約をかけています。
 ```yaml
 eq_constraints:
   - function_name: num_connected_components
@@ -69,6 +78,6 @@ eq_constraints:
     baseline: 1
 ```
 
-最後に、`other_metrics`では関連する生値をGUI用に出力するよう設定してあります。
+最後に、`other_metrics`では関連する値をGUI用に出力するよう設定してあります。
 
 ## 最適化の実施例

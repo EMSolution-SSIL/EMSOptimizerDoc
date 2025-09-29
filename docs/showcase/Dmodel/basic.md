@@ -126,7 +126,7 @@ level_set_function:
   kwargs:
     sigma: 0.0013
     design_region: [[0.008, 0.0275], [0, 45.0]]
-                 # [[internal, external], [0, sym_deg]]
+                 # [[inner, outer],  [0, sym_deg]]
     coordinate: Polar
 ```
 
@@ -141,7 +141,7 @@ num_processes: Null  # if Null, automatically set from cpu counts
 
 ## optimization_problem.yaml（`Dmodel`プロジェクト）
 最適化問題の設定（`optimization_problem.yaml`）については[基本の使い方 > 最適化問題の設定](../../docs/getting-started/opt_problem.md)ページに解説があります。  
-ここで定義された最適化問題は以下の通りです。
+ここで定義された最適化問題（単目的）は以下の通りです。
 ```math
 \text{minimize} \quad F=f_1+f_2=-1.0\frac{T_\text{avg}}{2.1} + 0.1\frac{T_\text{rip}}{54.0} \\
 ```
@@ -150,7 +150,7 @@ $T_\text{rip}$：トルクリプル率 [%]
 
 ## 最適化例
 Implicit Domain Meshing有（`use_implicit_domain_meshing: True`）として最適化を実施しました。  
-下図は100イテレーションの形状の進化過程です（各イテレーションの最良形状をアニメーション化）。序盤はランダムな形状ですが、徐々に一定の特徴を持った形状に収束していく様子が分かります。
+下図は100イテレーションの形状の進化過程です（各イテレーションの最良形状をアニメーション化）。序盤はランダムな形状ですが、徐々に一定の特徴を持った形状に収束していく様子が分かります。Implicit Domain Meshingを使用しているため、材料境界は滑らかです。
 ![Dmodel最適化履歴](/img/Dmodel_best_individuals.gif)
 
 横軸にイテレーション、縦軸に各イテレーションの最良評価値をプロットしたグラフを下図に示します。10イテレーションほどでオリジナルのDmodel（図中黒破線）を凌駕する解が得られていることがわかります。  

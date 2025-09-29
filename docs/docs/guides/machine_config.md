@@ -6,40 +6,51 @@ sidebar_position: 3
 ここでは、`machine.yaml`の内容を説明します。
 
 ## Format
+凡例：`{設定項目名}: {型名} = デフォルト値`  
+デフォルト値の無いものは設定必須項目。
 ```yaml
 # Basic Settings
-coordinate: str ("Cartesian" | "Polar")
-has_sym_region: bool
-sym_deg: float
-num_rotate: int
+design_target: str ("pre_geom" | "rotor") = "rotor"
+coordinate: str ("Cartesian" | "Polar") = "Cartesian"
+has_sym_region: bool = False
+sym_deg: float = 0
+num_rotate: int = 0
 
 # Material Settings
-target_ids_and_onoff: dict[int, list[int]]
-physical_id_to_name: dict[int, str]
-mirror_id_map: dict[int, int]
-increment_info: dict[int, tuple[int, int, int, str]]
+target_ids_and_onoff: dict[int, list[int]] = []
+physical_id_to_name: dict[int, str] = {}
+mirror_id_map: dict[int, int] = {}
+increment_info: dict[int, tuple[int, int, int, str]] = {}
 
 # Implicit Domain Meshing Options
-use_implicit_domain_meshing: bool
-no_split_ids: list[int]
-no_remesh_ids: list[int]
-design_region_size: float
-hausd_ratio: float
-hmin_ratio: float
-bad_mesh_threshold: float
+use_implicit_domain_meshing: bool = Fales
+no_split_ids: list[int] = []
+no_remesh_ids: list[int] = []
+design_region_size: float = 0.0010
+hausd_ratio: float = 0.0001
+hmin_ratio: float  0.01
+bad_mesh_threshold: float = 0.10
 
 # eMotorSolution Link Settings
-ems_project_filepath: str
+ems_project_filepath: str | null = null
 ```
 
 ## Details
 :::warning
-`machine.yaml`の各種設定は使用する電気機器ベースモデルメッシュおよび各解析ケースフォルダ内のpyemsol入力jsonファイルと整合するように設定する必要があります。
+`machine.yaml`の各種設定は使用する電気機器ベースモデルメッシュおよび各解析ケースフォルダ内のpyemsol入力jsonファイルと整合するように設定する必要があります。  
+実際の設定例は[Showcase](../../showcase/intro.md)をご覧ください。
 :::
 ### 基本設定
+- `design_target: str ("pre_geom" | "rotor")` ... 形状最適化のターゲット。
+:::info
+電磁界シミュレータEMSolution(pyemsol)では入力メッシュファイルが以下の2つに分かれるため、このコンフィグによってどちらを形状最適化するか指定します。   
+`pre_geom`: 運動を伴わないモデルメッシュ 
+`rotor`: スライド運動部モデルメッシュ（モデルがスライド運動を伴う場合のみ入力）  
+例えば、同期モータ等ではステータが`pre_geom`、ロータが`rotor`に当たります。
+:::
 - `coordinate: str ("Cartesian" | "Polar")` ... 計算に用いる座標系。
 :::info
-直交座標系を用いる一般的な形状最適化では`Cartesian`を指定します。  
+直交座標系を用いる形状最適化では`Cartesian`を指定します。  
 一方、例えば同期モータの形状最適化の場合は極座標系（半径と角度）を用いてモデル定義を行うため、`Polar`を指定します。
 :::
 - `has_sym_region: bool` ... 鏡面対称領域の有無。鏡面対称領域には設計領域の形状が鏡面コピーされます。
