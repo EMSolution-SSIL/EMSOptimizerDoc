@@ -85,7 +85,7 @@ eMotorSolution連携については[ユーザガイド > eMotorSolutionとの連
 :::
 
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
-- `dmodel_magnet`: Dmodelの永久磁石定義。`Dmodel_parameter`プロジェクト内で使用されています。
+- `HoleMagnet55`: eMotorSolution HoleMagnet Type 55 永久磁石定義。`IPM8P48S_pto`プロジェクト内で使用されています。
 
 :::tip 解析条件・寸法・トポロジーの同時最適化
 EMSOptimizerでは`analysis_conditioner`、`ls_function`、`ems_shape_builder`はすべて独立に・同時に設定可能です。特に、`ems_shape_builder`を`ls_function`と同時に設定することで、寸法・トポロジーの同時最適化\[10\]が実行可能です。  
