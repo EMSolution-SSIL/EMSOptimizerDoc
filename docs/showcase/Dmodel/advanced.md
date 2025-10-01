@@ -81,3 +81,8 @@ eq_constraints:
 最後に、`other_metrics`では関連する値をGUI用に出力するよう設定してあります。
 
 ## 最適化の実施例
+Implicit Domain Meshing有（`use_implicit_domain_meshing: True`）として最適化を実施しました。100イテレーション最適化完了後のGUIを以下に示します。  
+10イテレーション目まではトルクリプル制約を満たさない解も見られますが、最終的には制約違反値は0となり、トルクリプル制約を満たす解が得られたことが分かります。  
+GUIの図に示しているのが最良形状（93イテレーション目）です（$T_\text{avg}^\text{3.0Arms}$=2.13Nm, $T_\text{avg}^\text{9.0Arms}$=6.91Nm, $T_\text{rip}^\text{3.0Arms}$=26.8%, $T_\text{rip}^\text{9.0Arms}$=16.4%）。[基本の最適化](./basic.md)とは違ったフラックスバリア形状となっていることが分かります。  
+また、磁石両端にわずかではありますが磁性体コアの層が存在しており、（機械的な強度はさておき）結合制約を満たす形状となっています。
+![Dmodel最適化履歴](/img/Dmodel_advanced_check.png)
