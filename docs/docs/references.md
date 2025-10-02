@@ -34,3 +34,5 @@ sidebar_position: 4
 \[14\] Christophe Geuzaine and Jean-François Remacle, Gmsh: a three-dimensional finite element mesh generator with built-in pre- and post-processing facilities, https://gmsh.info/.
 
 \[15\] Mmg's developers and maintainers, https://github.com/MmgTools/mmg.
+
+\[16\] 貝森 弘行、公開可能なバーチャルモータモデルの提案、電学静止器・回転機合同研資、SA-24-025, RM-24-025, 2025.

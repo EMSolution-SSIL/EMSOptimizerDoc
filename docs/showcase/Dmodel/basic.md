@@ -161,7 +161,7 @@ num_processes: Null  # if Null, automatically set from cpu counts
 $T_\text{avg}$：平均トルク [Nm]  
 $T_\text{rip}$：トルクリプル率 [%]
 
-## 最適化例
+## 最適化の実施例
 Implicit Domain Meshing有（`use_implicit_domain_meshing: True`）として最適化を実施しました。  
 下図は100イテレーションの形状の進化過程です（各イテレーションの最良形状をアニメーション化）。序盤はランダムな形状ですが、徐々に一定の特徴を持った形状に収束していく様子が分かります。Implicit Domain Meshingを使用しているため、材料境界は滑らかです。
 ![Dmodel最適化履歴](/img/Dmodel_best_individuals.gif)
