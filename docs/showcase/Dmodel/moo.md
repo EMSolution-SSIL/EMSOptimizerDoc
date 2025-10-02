@@ -6,7 +6,7 @@ sidebar_position: 3
 ここでは、`Dmodel_moo`プロジェクトの内容について紹介します。  
 `Dmodel`プロジェクトと比較して、`Dmodel_moo`では多目的最適化を実施する設定になっています。
 
-## optimization.yaml（`Dmodel`プロジェクト）
+## optimization.yaml（`Dmodel_moo`プロジェクト）
 最適化を設定する`optimization.yaml`の内容を確認します。  
 今回は多目的形状最適化のため、最適化手法に多目的最適化アルゴリズム`decomposition_ensemble`を設定しています。本アルゴリズムの詳細については[docsの該当ページ](../../docs/guides/Optimizer/decomposition_ensemble.md)をご覧ください。  
 ```yaml
@@ -19,7 +19,7 @@ optimizer:
     seed: 42
 ```
 
-## optimization_problem.yaml（`Dmodel_advanced`プロジェクト）
+## optimization_problem.yaml（`Dmodel_moo`プロジェクト）
 `optimization_problem.yaml`の中身は`Dmodel`プロジェクトと変わりませんが、今回は最適化アルゴリズムが多目的問題用のため、`objectives`はそれぞれが独立した目的関数として認識されます。
 ```yaml
 objectives:

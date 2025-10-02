@@ -107,7 +107,7 @@ hmin_ratio: 0.02
 bad_mesh_threshold: 0.05
 ```
 
-## optimization.yaml（`Dmodel`プロジェクト）
+## optimization.yaml（`IPM8P48S`プロジェクト）
 次に、最適化を設定する`optimization.yaml`の内容を確認します。  
 今回は多目的形状最適化のため、最適化手法に多目的最適化アルゴリズム`decomposition_ensemble`を設定しています。本アルゴリズムの詳細については[docsの該当ページ](../../docs/guides/Optimizer/decomposition_ensemble.md)をご覧ください。  
 ```yaml
@@ -139,7 +139,7 @@ num_processes: Null  # if Null, automatically set from cpu counts
 ```
 （出力周りの設定は省略します）
 
-## optimization_problem.yaml（`Dmodel`プロジェクト）
+## optimization_problem.yaml（`IPM8P48S`プロジェクト）
 最適化問題（多目的）は以下の通りです。ここでは、平均トルクとトルクリプル率の両方を考慮しつつ、平均トルクについてはオリジナルモデルの値14.62Nmを超えるよう制約をかけています。また、ロータコアの結合制約も考慮しています。
 ```math
 \begin{align*}
