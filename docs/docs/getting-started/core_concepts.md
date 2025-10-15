@@ -6,22 +6,19 @@ sidebar_position: 2
 ここでは、EMSOptimizerを使う上でコアとなる概念について紹介します。
 
 ## 概要
-以下の図は、EMSOptimizerの各機能（オブジェクト）がどのように協働するかを示したものです。  
+以下の図は、EMSOptimizerの各機能（オブジェクト）がどのように協働するかを示したものです。①→②→...→⑧が一連の処理（イテレーション）の流れとなっており、これを繰り返すことで最適化が進行します。  
 
 ![Concepts Overview](/img/concepts_overview.drawio.png)
 
 ## Individual, Population
-`Individual`は、EMSOptimizer内において個体を表すオブジェクトです。**ここでいう個体は、「最適化過程において生成される解候補ベクトルおよびそれに対する評価値を保有したオブジェクト」のこと**を指します。また、**`Population`は複数の`Individual`をひとまとめにしたオブジェクトです**。
-:::info
-`Individual`（個体）, `Population`（集団）という名称は、確率的最適化アルゴリズムの代表格である遺伝的アルゴリズムの文脈に倣ったものです。
-:::
+`Individual`は、EMSOptimizer内において個体を表すオブジェクトです。**ここでいう個体は、「最適化過程において生成される解候補およびそれに対する評価値を保有したオブジェクト」のこと**を指します。また、**`Population`は複数の`Individual`をひとまとめにしたオブジェクトです**。  
+EMSOptimizerでは`Individual`ないし`Population`がオブジェクト間を行き来し、それぞれのオブジェクトが各`Individual`に対して形状定義・形状の電磁界解析と評価・評価に基づく解候補ベクトル更新などの操作を行うことで最適化を進行します。
 
 `Individual`は以下の情報（メンバ変数）を保持します。
 - `solution`: 解候補ベクトル。
-- `metrics`: 目的関数および制約関数の値。詳細は[最適化問題の設定](./opt_problem.md)ページを参照。
+- `metrics`: 目的関数および制約関数の値をまとめたオブジェクト。詳細は[最適化問題の設定](./opt_problem.md)ページを参照。
 - `outcome_filepath`: 形状最適化における結果形状のメッシュファイルへのパス。形状最適化実行時、EMSOptimizer内で自動的に設定されます。
 
-EMSOptimizerでは`Individual`ないし`Population`がオブジェクト間を行き来し、それぞれのオブジェクトが各`Individual`に対して形状定義・形状の電磁界解析と評価・評価に基づく解候補ベクトル更新などの操作を行うことで最適化を進行します。
 
 ## コアオブジェクト
 ここでは、EMSOptimizerのコアとなるオブジェクト群とその実装例を簡単に紹介します。冒頭で示したオブジェクト群の実装方法は様々ですが、EMSOptimizerではすぐに使用できるいくつかの実装例を提供しています。  
@@ -41,7 +38,7 @@ EMSOptimizerでは`Individual`ないし`Population`がオブジェクト間を�
 - `decomposition_ensemble`: 多目的最適化アルゴリズムMOEA/D\[7\]に基づく実装。多目的最適化を複数の単目的最適化に分解して解く。各単目的最適化問題はCMA-ESによって解く\[8\]。
 
 ### Evaluator (core/evaluator)
-`Indvidual`の評価を担うオブジェクトです。`optimizer`によって生成された`Individual`を評価し、`Individual.metrics`に目的関数値および制約条件値を格納して`optimizer`に返す役割を担います。
+`Indvidual`の評価を担うオブジェクトです。`optimizer`によって生成された`Individual`を評価し、`Individual.metrics`に目的関数値および制約条件値を格納して`optimizer`に返す役割を担います。また、形状最適化においては他のオブジェクトおよび電磁界シミュレータパッケージpyemsolと連携し、形状定義から`metrics`の計算までの一連の処理を担います。
 
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
 - `rastrigin`: 単目的最適化ベンチマークRastrigin関数\[11\]。
@@ -93,7 +90,7 @@ EMSOptimizerでは`analysis_conditioner`、`ls_function`、`ems_shape_builder`�
 ```math
 \boldsymbol{x} = [\boldsymbol{p}^\text{T}, \boldsymbol{d}^\text{T}, \boldsymbol{w}^\text{T}]^\text{T}
 ```
-$\boldsymbol{x}$: 解ベクトル（`Individual.solution`）  
+$\boldsymbol{x}$: 解候補ベクトル（`Individual.solution`）  
 $\boldsymbol{p}$: `analysis_conditioner`に与えられる解析条件情報ベクトル  
 $\boldsymbol{d}$: `ems_shape_builder`に与えられる寸法情報ベクトル  
 $\boldsymbol{w}$: `ls_function`に与えられるレベルセット関数パラメータベクトル  

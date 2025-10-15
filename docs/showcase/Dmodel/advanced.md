@@ -36,10 +36,10 @@ objectives:
 ```
 これを単目的問題として式で書くと（今回も`optmization.yaml`では単目的最適化アルゴリズム`cmaes`を設定）、以下の通りです。
 ```math
-\text{minimize} \quad F=f_1+f_2=-1.0\frac{T_\text{avg}^\text{3.0Arms}}{2.1} - 1.0\frac{T_\text{avg}^\text{9.0Arms}}{6.3} \\
+\text{minimize} \quad F=f_1+f_2=-1.0\frac{T_\text{avg}^\text{3.0Arms20deg}}{2.1} - 1.0\frac{T_\text{avg}^\text{9.0Arms30deg}}{6.3} \\
 ```
-$T_\text{avg}^\text{3.0Arms}$：平均トルク@3.0Arms [Nm]  
-$T_\text{avg}^\text{9.0Arms}$：平均トルク@9.0Arms [Nm]  
+$T_\text{avg}^\text{3.0Arms20deg}$：平均トルク@3.0Arms,20deg [Nm]  
+$T_\text{avg}^\text{9.0Arms30deg}$：平均トルク@9.0Arms,30deg [Nm]  
 なお、各項の分母の値（正規化定数）は同条件下におけるオリジナルのDmodelの平均トルクです。
 
 ### 不等式制約
@@ -60,12 +60,12 @@ $T_\text{avg}^\text{9.0Arms}$：平均トルク@9.0Arms [Nm]
 式で書くと以下の通りです。
 ```math
 \begin{align*}
-\text{subject to} \quad & g_1(\boldsymbol{x}) = T_\text{rip}^\text{3.0Arms} - 30.0 \leq 0 \\
-                        & g_2(\boldsymbol{x}) = T_\text{rip}^\text{9.0Arms} - 30.0 \leq 0
+\text{subject to} \quad & g_1(\boldsymbol{x}) = T_\text{rip}^\text{3.0Arms20deg} - 30.0 \leq 0 \\
+                        & g_2(\boldsymbol{x}) = T_\text{rip}^\text{9.0Arms30deg} - 30.0 \leq 0
 \end{align*}
 ```
-$T_\text{rip}^\text{3.0Arms}$：トルクリプル率@3.0Arms [%]  
-$T_\text{rip}^\text{9.0Arms}$：トルクリプル率@9.0Arms [%]  
+$T_\text{rip}^\text{3.0Arms20deg}$：トルクリプル率@3.0Arms,20deg [%]  
+$T_\text{rip}^\text{9.0Arms30deg}$：トルクリプル率@9.0Arms,30deg [%]  
 
 ### 等式制約
 次に、等式制約（`eq_constraints`）です。ここでは、[基本の最適化](./basic.md)ページの最後に説明があるように、ロータコアが一体となる（分離した箇所や浮島を生じない）ように制約をかけています。
@@ -83,6 +83,6 @@ eq_constraints:
 ## 最適化の実施例
 Implicit Domain Meshing有（`use_implicit_domain_meshing: True`）として最適化を実施しました。100イテレーション最適化完了後のGUIを以下に示します。  
 10イテレーション目まではトルクリプル制約を満たさない解も見られますが、最終的には制約違反値は0となり、トルクリプル制約を満たす解が得られたことが分かります。  
-GUIの図に示しているのが最良形状（93イテレーション目）です（$T_\text{avg}^\text{3.0Arms}$=2.13Nm, $T_\text{avg}^\text{9.0Arms}$=6.91Nm, $T_\text{rip}^\text{3.0Arms}$=26.8%, $T_\text{rip}^\text{9.0Arms}$=16.4%）。[基本の最適化](./basic.md)とは違ったフラックスバリア形状となっていることが分かります。  
-また、磁石両端にわずかではありますが磁性体コアの層が存在しており、（機械的な強度はさておき）結合制約を満たす形状となっています。
+GUIの図に示しているのが最良形状（93イテレーション目）です（$T_\text{avg}^\text{3.0Arms20deg}$=2.13Nm, $T_\text{avg}^\text{9.0Arms30deg}$=6.91Nm, $T_\text{rip}^\text{3.0Arms20deg}$=26.8%, $T_\text{rip}^\text{9.0Arms30deg}$=16.4%）。[基本の最適化](./basic.md)とは違ったフラックスバリア形状となっていることが分かります。  
+また、磁石両端にわずかではありますが磁性体コアの層が存在しており、結合制約を満たす形状となっています。
 ![Dmodel最適化履歴](/img/Dmodel_advanced_check.png)

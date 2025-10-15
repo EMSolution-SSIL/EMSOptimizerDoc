@@ -12,7 +12,7 @@ import remarkMath from 'remark-math';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'EMSOptimizer',
-  tagline: '電気機器の形状最適化に特化した数理最適化ライブラリ',
+  tagline: '電気機器に特化した数理最適化ツール',
   favicon: 'img/favicon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
