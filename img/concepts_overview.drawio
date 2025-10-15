@@ -1,83 +1,101 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" scale="1" border="0" version="27.0.9">
   <diagram name="ページ1" id="NJ7pdIghlIvyIMTVTUN7">
-    <mxGraphModel dx="1123" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#CCCCCC" math="0" shadow="0">
+    <mxGraphModel dx="1429" dy="1022" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#CCCCCC" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="35TULhp3dxbre7FvGnGR-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#cccccc, #ededed);" parent="1" vertex="1">
-          <mxGeometry x="10" y="10" width="810" height="430" as="geometry" />
-        </mxCell>
-        <mxCell id="dqFR3ZQ5dJpkI98ajg3s-5" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFFFFF;" parent="1" vertex="1">
-          <mxGeometry x="20" y="360" width="270" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.634;entryY=0.006;entryDx=0;entryDy=0;strokeWidth=3;entryPerimeter=0;" parent="1" source="bK28Sk0Xmpq5wuMgqPOk-5" target="bK28Sk0Xmpq5wuMgqPOk-7" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry x="10" y="10" width="810" height="520" as="geometry" />
         </mxCell>
         <mxCell id="bK28Sk0Xmpq5wuMgqPOk-7" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;形状定義&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;dashed=1;dashPattern=8 8;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=top;fillColor=#CCCCCC;" parent="1" vertex="1">
-          <mxGeometry x="340" y="270" width="290" height="160" as="geometry" />
+          <mxGeometry x="340" y="350" width="290" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=3;" parent="1" source="bK28Sk0Xmpq5wuMgqPOk-1" target="bK28Sk0Xmpq5wuMgqPOk-5" edge="1">
+        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#CC0000;" parent="1" source="bK28Sk0Xmpq5wuMgqPOk-1" target="bK28Sk0Xmpq5wuMgqPOk-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Optimizer&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;（最適化アルゴリズム）&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFFFFF;" parent="1" vertex="1">
-          <mxGeometry x="20" y="110" width="180" height="50" as="geometry" />
+        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Optimizer&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;（最適化アルゴリズム）&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFFFFF;strokeColor=#CC0000;" parent="1" vertex="1">
+          <mxGeometry x="20" y="190" width="180" height="50" as="geometry" />
         </mxCell>
         <mxCell id="bK28Sk0Xmpq5wuMgqPOk-3" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Level Set Function&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;（トポロジー最適化用）&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFFFFF;" parent="1" vertex="1">
-          <mxGeometry x="360" y="303" width="248" height="50" as="geometry" />
+          <mxGeometry x="360" y="383" width="248" height="50" as="geometry" />
         </mxCell>
         <mxCell id="bK28Sk0Xmpq5wuMgqPOk-4" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;eMotorSolution&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Shape Builder&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;（寸法最適化用）&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFFFFF;" parent="1" vertex="1">
-          <mxGeometry x="360" y="363" width="248" height="50" as="geometry" />
+          <mxGeometry x="360" y="443" width="248" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=3;" parent="1" source="bK28Sk0Xmpq5wuMgqPOk-5" target="bK28Sk0Xmpq5wuMgqPOk-1" edge="1">
+        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#CC0000;" parent="1" source="bK28Sk0Xmpq5wuMgqPOk-5" target="bK28Sk0Xmpq5wuMgqPOk-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.349;exitY=0.002;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeWidth=3;exitPerimeter=0;" parent="1" source="bK28Sk0Xmpq5wuMgqPOk-7" target="bK28Sk0Xmpq5wuMgqPOk-5" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-5" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Evaluator&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;（評価系）&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFFFFF;strokeColor=#CC0000;" parent="1" vertex="1">
+          <mxGeometry x="420" y="190" width="120" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-5" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Evaluator&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;（評価系）&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFFFFF;" parent="1" vertex="1">
-          <mxGeometry x="420" y="110" width="120" height="50" as="geometry" />
+        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-20" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;①生成した解候補&lt;/font&gt;&lt;/b&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=30;position=0.71;position2=0.82;fillColor=default;strokeColor=none;base=19;" parent="1" vertex="1">
+          <mxGeometry x="120" y="140" width="150" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-20" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Optimizerが生成した解候補&lt;/font&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 16px; font-weight: 700; text-align: left;&quot;&gt;群&lt;/span&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=30;position=0.2;position2=0.2;fillColor=default;strokeColor=none;" parent="1" vertex="1">
-          <mxGeometry x="290" y="40" width="170" height="80" as="geometry" />
+        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-22" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;⑧解候補&lt;/font&gt;&lt;/b&gt;&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;の評価結果&lt;/font&gt;&lt;/b&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=30;position=0.2;position2=0.1;direction=west;fillColor=default;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="80" y="233.75" width="160" height="66.25" as="geometry" />
         </mxCell>
-        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-22" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;解候補&lt;/font&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 16px; font-weight: 700; text-align: left;&quot;&gt;群&lt;/span&gt;&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;のEvaluatorによる評価結果&lt;/font&gt;&lt;/b&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=30;position=0.2;position2=0.1;direction=west;fillColor=default;strokeColor=none;" parent="1" vertex="1">
-          <mxGeometry x="40" y="153.75" width="210" height="80" as="geometry" />
+        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-26" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;②解候補の形状情報&lt;/b&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=30;position=0.27;position2=0.19;direction=south;base=12;fillColor=default;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="505" y="320" width="205" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-26" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;解候補ベクトル&lt;/b&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=30;position=0.27;position2=0.19;direction=south;base=12;fillColor=default;strokeColor=none;" parent="1" vertex="1">
-          <mxGeometry x="530" y="240" width="190" height="37" as="geometry" />
-        </mxCell>
-        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-27" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;解候補ベクトル&lt;/b&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;から定義された形状情報&lt;/b&gt;&lt;/span&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=30;position=0.5;position2=0.67;direction=north;base=20;fillColor=default;strokeColor=none;" parent="1" vertex="1">
-          <mxGeometry x="260" y="190" width="190" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="dqFR3ZQ5dJpkI98ajg3s-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;strokeWidth=3;" parent="1" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="30" y="384.5" as="sourcePoint" />
-            <mxPoint x="80" y="385" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="dqFR3ZQ5dJpkI98ajg3s-3" value=": Population&lt;div&gt;（解候補群オブジェクト）&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" parent="1" vertex="1">
-          <mxGeometry x="80" y="370" width="200" height="30" as="geometry" />
+        <mxCell id="bK28Sk0Xmpq5wuMgqPOk-27" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;③解候補&lt;/b&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;から定義された形状&lt;/b&gt;&lt;/span&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=30;position=0.5;position2=0.67;direction=north;base=20;fillColor=default;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="247" y="270" width="210" height="50" as="geometry" />
         </mxCell>
         <mxCell id="9bUFLmq8O_AM5N_clz0a-3" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Analysis Conditioner&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;（動的な解析条件設定）&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFFFFF;" parent="1" vertex="1">
-          <mxGeometry x="630" y="110" width="180" height="50" as="geometry" />
+          <mxGeometry x="630" y="190" width="180" height="50" as="geometry" />
         </mxCell>
         <mxCell id="9bUFLmq8O_AM5N_clz0a-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=3;" parent="1" source="bK28Sk0Xmpq5wuMgqPOk-5" target="9bUFLmq8O_AM5N_clz0a-3" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="420" y="120" as="sourcePoint" />
-            <mxPoint x="640" y="120" as="targetPoint" />
+            <mxPoint x="420" y="200" as="sourcePoint" />
+            <mxPoint x="640" y="200" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="9bUFLmq8O_AM5N_clz0a-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="630" y="150" as="sourcePoint" />
-            <mxPoint x="540" y="150" as="targetPoint" />
+            <mxPoint x="630" y="230" as="sourcePoint" />
+            <mxPoint x="540" y="230" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9bUFLmq8O_AM5N_clz0a-6" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;解候補ベクトル&lt;/b&gt;&lt;/span&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=30;position=0.18;position2=0.19;direction=east;base=21;fillColor=default;strokeColor=none;" parent="1" vertex="1">
-          <mxGeometry x="560" y="60" width="160" height="60" as="geometry" />
+        <mxCell id="9bUFLmq8O_AM5N_clz0a-6" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;④解候補の解析条件情報&lt;/b&gt;&lt;/span&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=20;position=0.14;position2=0.19;direction=east;base=21;fillColor=default;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="560" y="150" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="9bUFLmq8O_AM5N_clz0a-8" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;解候補ベクトル&lt;/b&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;から定義された解析条件&lt;/b&gt;&lt;/span&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=23;position=0.77;position2=0.84;direction=west;base=21;fillColor=default;strokeColor=none;" parent="1" vertex="1">
-          <mxGeometry x="565" y="153.75" width="155" height="72.5" as="geometry" />
+        <mxCell id="9bUFLmq8O_AM5N_clz0a-8" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;⑤解候補&lt;/b&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;から定義された解析条件&lt;/b&gt;&lt;/span&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=23;position=0.77;position2=0.84;direction=west;base=21;fillColor=default;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="565" y="233.75" width="185" height="72.5" as="geometry" />
+        </mxCell>
+        <mxCell id="CrO8v-jebg2z61ZRBqP0-1" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;editableCssRules=.*;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJzdmcxIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjYuNjA4Mjg5NzE4NjI3OTMgMC4zMTE5MTA0MjA2NTYyMDQyIDgxLjc4MzQyNDM3NzQ0MTQgOTQuMzc2MTgyNTU2MTUyMzQiIGhlaWdodD0iMjA4LjYyMTAzNTEyNDEyNjIyIiB3aWR0aD0iMTgwLjc4NDQxMTc4MTcxMjU4Ij48ZGVmcyBpZD0iZGVmczEiPjxjbGlwUGF0aCBpZD0iY2xpcFBhdGg0MiIgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoIGlkPSJwYXRoNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00ODcuMzk1MTQsLTQ1Mi41MzIxMSkiIGQ9Ik0gMCw2MTIuMjg4IEggODU4Ljg5OCBWIDAgSCAwIFoiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iY2xpcFBhdGg0NCIgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoIGlkPSJwYXRoNDQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01NDMuOTM4MDIsLTQzMC4wMDI4MSkiIGQ9Ik0gMCw2MTIuMjg4IEggODU4Ljg5OCBWIDAgSCAwIFoiLz48L2NsaXBQYXRoPjwvZGVmcz48ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCAyLjA5MzAwMiwgLTAuOTk0NDk5KSIgaWQ9ImxheWVyMSI+PGcgdHJhbnNmb3JtPSJtYXRyaXgoMSwgMCwgMCwgMSwgLTY5LjE4MDU4LCAtNzUuMzM3MDQ0KSIgaWQ9ImcxIj48cGF0aCBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGg0MikiIHRyYW5zZm9ybT0ibWF0cml4KDAuMzUyNzc3NzYsMCwwLC0wLjM1Mjc3Nzc2LDEzNS4wMzMzOCw5NS4wNjUwNjUpIiBzdHlsZT0iZGlzcGxheTppbmxpbmU7ZmlsbDojOGUxOTI3O2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIiBkPSJtIDAsMCB2IDAgbCAzNi4wNTUsLTIyLjgxIGMgNS4yNywtMy4zMzMgMTAuMTIsLTguNjM0IDEzLjkxLC0xNC43MzUgMC4xMDQsMC4xNjggMC4yMDcsMC4zMzYgMC4zMSwwLjUwNSAyLjc3NSw0LjU3MSA0Ljk1MSw5LjU2NyA2LjI2OCwxNC41MTEgQyA1My40MDQsLTEwLjc2MiA0NS4zODgsMS4zMTEgMzYuMDU1LDcuMjE1IEwgMCwzMC4wMjUgdiAwIDAgbCAtMTkuMDIxLDEyLjAzMyBjIC0xMC43MDcsNi43NzQgLTI0LjgyMSwxMC4xNiAtMzguOTM2LDEwLjE2IFYgMjIuMTk0IGMgMTQuMTE1LDAgMjguMjI5LC0zLjM4NyAzOC45MzYsLTEwLjE2MSB6IG0gMCwtNDMuOTQ0IHYgMCBsIDI0LjYxOCwtMTUuNTc1IDExLjQzNyw3LjIzNiBjIDMuMTI2LDEuOTc4IDYuMDk4LDQuNjU5IDguNzk0LDcuNzc4IC0yLjY5NiwzLjExOCAtNS42NjgsNS43OTggLTguNzk0LDcuNzc1IEwgMCwtMTMuOTIgdiAwIDAgTCAtMTkuMDIxLC0xLjg4NyBDIC0yOS43MjgsNC44ODcgLTQzLjg0Miw4LjI3NCAtNTcuOTU3LDguMjc0IHYgLTMwLjAyNSBjIDE0LjExNSwwIDI4LjIyOSwtMy4zODYgMzguOTM2LC0xMC4xNiB6IG0gNDQuODY2LC0zMC42MDcgYyAxLjg1NiwtMi4xNDggMy41ODUsLTQuNDk4IDUuMTMsLTYuOTkyIDIuOTE4LDQuNzA5IDUuMjAyLDkuODkxIDYuNTYxLDE1LjAxNCAtMC42MTksMi4zMzYgLTEuNDM4LDQuNjgxIC0yLjQxNSw2Ljk5MSAtMi4zMDEsLTUuNDQgLTUuNTE0LC0xMC42NTggLTkuMjc2LC0xNS4wMTMgTSAwLC01Ny45MyB2IDAgbCAtMTkuMDIxLDEyLjAzMyBjIC0xMC43MDcsNi43NzQgLTI0LjgyMSwxMC4xNjEgLTM4LjkzNiwxMC4xNjEgdiAtMzAuMDYzIGMgMTQuMTE1LDAgMjguMjI5LC0zLjM4NyAzOC45MzYsLTEwLjE2MSBsIDguODI1LC01LjU4MyAxMC4xOTYsNi40NSB2IDAgbCAxMy41NjUsOC41ODIgeiBtIDQ0Ljg0OSwtNjAuNjUgYyAxLjg1LC0yLjEzOSAzLjU3NCwtNC40NzggNS4xMTYsLTYuOTYgMi45MjYsNC43MTEgNS4yMTksOS45MDEgNi41ODQsMTUuMDMyIC0wLjYxOSwyLjMyNSAtMS40MzUsNC42NjEgLTIuNDA3LDYuOTYxIC0yLjMwNCwtNS40NDggLTUuNTI0LC0xMC42NzUgLTkuMjkzLC0xNS4wMzMgbSAtNy42MTEsMzcuMDM3IGMgLTAuMzkzLC0wLjI3MyAtMC43ODUsLTAuNTUxIC0xLjE4MywtMC44MDMgbCAtMjIuNDksLTE0LjIyOCAxMS4wNTMsLTYuOTkzIDExLjQzNyw3LjIzNiBjIDMuMTMzLDEuOTgxIDYuMTEsNC42NyA4LjgxMSw3Ljc5NiAtMi4zNTgsMi43MyAtNC45MjgsNS4xMTIgLTcuNjI4LDYuOTkyIG0gLTE1My4xNTEsLTgxLjU0MiB2IDAgbCAtMzYuMDU2LDIyLjgwOSBjIC01LjI2OSwzLjMzNCAtMTAuMTE5LDguNjM0IC0xMy45MDksMTQuNzM2IC0wLjEwNCwtMC4xNjggLTAuMjA4LC0wLjMzNiAtMC4zMSwtMC41MDUgLTIuNzc2LC00LjU3MiAtNC45NTEsLTkuNTY4IC02LjI2OCwtMTQuNTExIDMuMTM4LC0xMS43NjggMTEuMTU1LC0yMy44NCAyMC40ODcsLTI5Ljc0NCBsIDM2LjA1NiwtMjIuODEgdiAwIGwgMTkuMDIxLC0xMi4wMzMgYyAxMC43MDcsLTYuNzc0IDI0LjgyMSwtMTAuMTYxIDM4LjkzNSwtMTAuMTYxIHYgMzAuMDI1IGMgLTE0LjExNCwwIC0yOC4yMjgsMy4zODcgLTM4LjkzNSwxMC4xNiB6IG0gLTQ0Ljg2Niw3NC41NSBjIC0xLjg1NiwyLjE0OSAtMy41ODUsNC40OTggLTUuMTMxLDYuOTkyIC0yLjkxNywtNC43MDggLTUuMjAyLC05Ljg5MSAtNi41NjEsLTE1LjAxNCAwLjYyLC0yLjMzNSAxLjQzOSwtNC42ODEgMi40MTYsLTYuOTkgMi4zMDEsNS40MzkgNS41MTQsMTAuNjU4IDkuMjc2LDE1LjAxMiBtIDQ0Ljg2NiwtMzAuNjA2IHYgMCAwIGwgLTI0LjYxOCwxNS41NzQgLTExLjQzOCwtNy4yMzUgYyAtMy4xMjYsLTEuOTc4IC02LjA5NywtNC42NiAtOC43OTMsLTcuNzc4IDIuNjk2LC0zLjExOCA1LjY2OCwtNS43OTggOC43OTMsLTcuNzc2IGwgMzYuMDU2LC0yMi44MDkgdiAwIGwgMTkuMDIxLC0xMi4wMzQgYyAxMC43MDcsLTYuNzc0IDI0LjgyMSwtMTAuMTYgMzguOTM1LC0xMC4xNiB2IDMwLjAyNCBjIC0xNC4xMTQsMCAtMjguMjI4LDMuMzg3IC0zOC45MzUsMTAuMTYxIHogbSAtMzcuMjM4LDM3LjU5OCBjIDAuMzkzLDAuMjc0IDAuNzg1LDAuNTUyIDEuMTgyLDAuODA0IGwgMjIuNDkxLDE0LjIyOCAtMTEuMDUzLDYuOTkyIC0xMS40MzgsLTcuMjM1IGMgLTMuMTMyLC0xLjk4MiAtNi4xMDksLTQuNjcgLTguODEsLTcuNzk3IDIuMzU4LC0yLjcyOSA0LjkyOCwtNS4xMTEgNy42MjgsLTYuOTkyIG0gNDcuNDMzLDAgLTEwLjE5NSwtNi40NSB2IDAgbCAtMTMuNTY1LC04LjU4MSAxMy41NjUsLTguNTgyIHYgMCAwIGwgMTkuMDIxLC0xMi4wMzMgYyAxMC43MDcsLTYuNzc0IDI0LjgyMSwtMTAuMTYxIDM4LjkzNSwtMTAuMTYxIHYgMzAuMDYzIGMgLTE0LjExNCwwIC0yOC4yMjgsMy4zODcgLTM4LjkzNSwxMC4xNjEgeiBtIC01NS4wNDQsMzcuMDM4IGMgLTEuODUsMi4xMzkgLTMuNTc0LDQuNDc3IC01LjExNiw2Ljk2IC0yLjkyNiwtNC43MTIgLTUuMjE5LC05LjkwMiAtNi41ODQsLTE1LjAzMiAwLjYxOCwtMi4zMjYgMS40MzQsLTQuNjYyIDIuNDA3LC02Ljk2MSAyLjMwNCw1LjQ0OCA1LjUyMywxMC42NzQgOS4yOTMsMTUuMDMzIiBpZD0icGF0aDQxIi8+PHBhdGggY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoNDQpIiB0cmFuc2Zvcm09Im1hdHJpeCgwLjM1Mjc3Nzc2LDAsMCwtMC4zNTI3Nzc3NiwxNTQuOTgwNDUsMTAzLjAxMjkpIiBzdHlsZT0iZGlzcGxheTppbmxpbmU7ZmlsbDojZGExOTNiO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIiBkPSJtIDAsMCBjIC0xLjMxNywtNC45NDMgLTMuNDkyLC05Ljk0IC02LjI2OCwtMTQuNTExIC0wLjEwMiwtMC4xNjkgLTAuMjA2LC0wLjMzNyAtMC4zMSwtMC41MDUgLTEuNTQyLC0yLjQ4MiAtMy4yNjYsLTQuODIxIC01LjExNiwtNi45NiAtMi42OTYsLTMuMTE5IC01LjY2OCwtNS44IC04Ljc5MywtNy43NzggbCAtMTEuNDM4LC03LjIzNSAtMTEuMDUzLC02Ljk5MyAtMTMuNTY1LC04LjU4MSB2IDAgbCAtMTAuMTk1LC02LjQ1IC04LjgyNiwtNS41ODQgYyAtMTAuNzA3LC02Ljc3MyAtMjQuODIxLC0xMC4xNiAtMzguOTM1LC0xMC4xNiB2IC0zMC4wNjMgYyAxNC4xMTQsMCAyOC4yMjgsMy4zODYgMzguOTM1LDEwLjE2IGwgMTkuMDIxLDEyLjAzNCB2IDAgMCBsIDEzLjU2NSw4LjU4MSAyMi40OTEsMTQuMjI4IGMgMC4zOTcsMC4yNTIgMC43ODksMC41MyAxLjE4MiwwLjgwNCAyLjcsMS44OCA1LjI3LDQuMjYyIDcuNjI4LDYuOTkxIDMuNzYyLDQuMzU1IDYuOTc2LDkuNTc0IDkuMjc2LDE1LjAxMyAwLjk3MywyLjMgMS43ODgsNC42MzUgMi40MDcsNi45NjEgMC4wNDUsMC4xNjggMC4wODksMC4zMzcgMC4xMzIsMC41MDUgMC44MjUsMy4yNDIgMS4yNzYsNi40NTMgMS4yNzYsOS40OTggdiAxMC4wMTggQyAxLjQxNCwtNi44MTcgMC45MTIsLTMuNDIxIDAsMCBtIC02LjU0NiwtNTkuMDEzIGMgLTEuNTQ2LC0yLjQ5NCAtMy4yNzUsLTQuODQ0IC01LjEzMSwtNi45OTIgLTIuNzAxLC0zLjEyNyAtNS42NzgsLTUuODE1IC04LjgxLC03Ljc5NyBsIC0xMS40MzgsLTcuMjM2IC0yNC42MTgsLTE1LjU3NCB2IDAgMCBsIC0xOS4wMjEsLTEyLjAzMyBjIC0xMC43MDcsLTYuNzc0IC0yNC44MjEsLTEwLjE2MSAtMzguOTM1LC0xMC4xNjEgdiAtMzAuMDI0IGMgMTQuMTE0LDAgMjguMjI4LDMuMzg3IDM4LjkzNSwxMC4xNjEgbCAxOS4wMjEsMTIuMDMzIHYgMCBsIDM2LjA1NiwyMi44MDkgYyAzLjEyNSwxLjk3OCA2LjA5Nyw0LjY1OCA4Ljc5Myw3Ljc3NiAzLjc3LDQuMzU5IDYuOTg5LDkuNTg1IDkuMjkzLDE1LjAzMyAwLjk3NywyLjMwOSAxLjc5Niw0LjY1NSAyLjQxNiw2Ljk5MSAwLjkwMywzLjQwMiAxLjM5OSw2Ljc3OSAxLjM5OSw5Ljk3MiB2IDEwLjA4MyBjIDAsMy4xOTQgLTAuNDk2LDYuNTcgLTEuMzk5LDkuOTczIC0xLjM2LC01LjEyMyAtMy42NDQsLTEwLjMwNiAtNi41NjEsLTE1LjAxNCBtIDYuNTUyLC0yOC45NjYgYyAtMS4zNjUsLTUuMTMxIC0zLjY1OCwtMTAuMzIgLTYuNTg0LC0xNS4wMzIgLTMuNzksLTYuMTAyIC04LjY0LC0xMS40MDIgLTEzLjkwOSwtMTQuNzM1IGwgLTM2LjA1NiwtMjIuODEgdiAwIGwgLTE5LjAyMSwtMTIuMDMzIGMgLTEwLjcwNywtNi43NzQgLTI0LjgyMSwtMTAuMTYxIC0zOC45MzUsLTEwLjE2MSB2IC0zMC4wMjUgYyAxNC4xMTQsMCAyOC4yMjgsMy4zODcgMzguOTM1LDEwLjE2MSBsIDE5LjAyMSwxMi4wMzMgdiAwIGwgMzYuMDU2LDIyLjgxIGMgOS4zMzIsNS45MDQgMTcuMzQ5LDE3Ljk3NiAyMC40ODcsMjkuNzQ0IDAuOTEyLDMuNDIxIDEuNDE0LDYuODE3IDEuNDE0LDEwLjAyNyB2IDEwLjAxOCBjIDAsMy4wNDUgLTAuNDUxLDYuMjU2IC0xLjI3Niw5LjQ5OCAtMC4wNDMsMC4xNjggLTAuMDg3LDAuMzM3IC0wLjEzMiwwLjUwNSBtIC0xMTQuNTA1LDc0Ljc3MiBjIC0xNC4xMTUsMCAtMjguMjI5LC0zLjM4NiAtMzguOTM2LC0xMC4xNiBMIC0xNzIuNDU2LC0zNS40IHYgMCBsIC0xMy41NjUsLTguNTgyIC0yMi40OSwtMTQuMjI4IGMgLTAuMzk4LC0wLjI1MiAtMC43OSwtMC41MyAtMS4xODMsLTAuODAzIC0yLjY5OSwtMS44ODEgLTUuMjcsLTQuMjYzIC03LjYyOCwtNi45OTIgLTMuNzYyLC00LjM1NSAtNi45NzUsLTkuNTczIC05LjI3NiwtMTUuMDEzIC0wLjk3MiwtMi4zIC0xLjc4OCwtNC42MzUgLTIuNDA3LC02Ljk2MSAtMC4wNDUsLTAuMTY4IC0wLjA4OSwtMC4zMzcgLTAuMTMyLC0wLjUwNSAtMC44MjUsLTMuMjQyIC0xLjI3NiwtNi40NTMgLTEuMjc2LC05LjQ5OCBWIC0xMDggYyAwLC0zLjIxIDAuNTAyLC02LjYwNiAxLjQxNCwtMTAuMDI3IDEuMzE3LDQuOTQzIDMuNDkyLDkuOTQgNi4yNjgsMTQuNTExIDAuMTAyLDAuMTY5IDAuMjA2LDAuMzM3IDAuMzEsMC41MDUgMS41NDIsMi40ODIgMy4yNjYsNC44MjEgNS4xMTYsNi45NiAyLjY5NiwzLjExOSA1LjY2OCw1LjggOC43OTQsNy43NzggbCAxMS40MzcsNy4yMzUgMTEuMDUzLDYuOTkzIDEzLjU2NSw4LjU4MiB2IDAgbCAxMC4xOTYsNi40NSA4LjgyNSw1LjU4MyBjIDEwLjcwNyw2Ljc3NCAyNC44MjEsMTAuMTYgMzguOTM2LDEwLjE2IHogbSAtMTA3Ljk1MywtNDUuODA2IGMgMS41NDUsMi40OTMgMy4yNzQsNC44NDMgNS4xMyw2Ljk5MSAyLjcwMSwzLjEyNyA1LjY3OCw1LjgxNiA4LjgxMSw3Ljc5NyBsIDExLjQzNyw3LjIzNiAyNC42MTgsMTUuNTc0IHYgMCBsIDE5LjAyMSwxMi4wMzMgYyAxMC43MDcsNi43NzQgMjQuODIxLDEwLjE2MSAzOC45MzYsMTAuMTYxIHYgMzAuMDI0IGMgLTE0LjExNSwwIC0yOC4yMjksLTMuMzg3IC0zOC45MzYsLTEwLjE2IEwgLTE3Mi40NTYsOC42MDkgdiAwIDAgTCAtMjA4LjUxMSwtMTQuMiBjIC0zLjEyNiwtMS45NzggLTYuMDk4LC00LjY1OCAtOC43OTQsLTcuNzc2IC0zLjc3LC00LjM1OSAtNi45ODksLTkuNTg1IC05LjI5MywtMTUuMDMzIC0wLjk3NywtMi4zMDkgLTEuNzk2LC00LjY1NSAtMi40MTYsLTYuOTkgLTAuOTAzLC0zLjQwMyAtMS4zOTksLTYuNzc5IC0xLjM5OSwtOS45NzMgdiAtMTAuMDgzIGMgMCwtMy4xOTMgMC40OTYsLTYuNTcgMS4zOTksLTkuOTczIDEuMzYsNS4xMjQgMy42NDQsMTAuMzA2IDYuNTYyLDE1LjAxNSBtIC02LjU1MywyOC45NjUgYyAxLjM2NSw1LjEzMSAzLjY1OCwxMC4zMiA2LjU4NCwxNS4wMzIgMy43OSw2LjEwMiA4LjY0LDExLjQwMiAxMy45MSwxNC43MzYgbCAzNi4wNTUsMjIuODA5IHYgMCBsIDE5LjAyMSwxMi4wMzQgYyAxMC43MDcsNi43NzMgMjQuODIxLDEwLjE2IDM4LjkzNiwxMC4xNiB2IDMwLjAyNSBjIC0xNC4xMTUsMCAtMjguMjI5LC0zLjM4NyAtMzguOTM2LC0xMC4xNjEgbCAtMTkuMDIxLC0xMi4wMzMgdiAwIDAgbCAtMzYuMDU1LC0yMi44MSBDIC0yMTcuODQ0LDIzLjg0IC0yMjUuODYsMTEuNzY4IC0yMjguOTk5LDAgYyAtMC45MTIsLTMuNDIxIC0xLjQxNCwtNi44MTcgLTEuNDE0LC0xMC4wMjcgdiAtMTAuMDE4IGMgMCwtMy4wNDUgMC40NTEsLTYuMjU2IDEuMjc2LC05LjQ5OCAwLjA0MywtMC4xNjggMC4wODcsLTAuMzM3IDAuMTMyLC0wLjUwNSIgaWQ9InBhdGg0MyIvPjwvZz48L2c+PC9zdmc+;imageBorder=none;" parent="1" vertex="1">
+          <mxGeometry x="436.7" y="20" width="86.6" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="CrO8v-jebg2z61ZRBqP0-3" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.569;entryY=0.019;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;" parent="1" target="bK28Sk0Xmpq5wuMgqPOk-7" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="504.57" y="240" as="sourcePoint" />
+            <mxPoint x="499.99999999999994" y="330.80000000000007" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CrO8v-jebg2z61ZRBqP0-4" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.569;entryY=0.019;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460.43" y="353" as="sourcePoint" />
+            <mxPoint x="460" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CrO8v-jebg2z61ZRBqP0-5" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.569;entryY=0.019;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" parent="1" source="CrO8v-jebg2z61ZRBqP0-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="501.94999999999993" y="77" as="sourcePoint" />
+            <mxPoint x="502.38" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CrO8v-jebg2z61ZRBqP0-6" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="457.81" y="190" as="sourcePoint" />
+            <mxPoint x="457" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CrO8v-jebg2z61ZRBqP0-7" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;⑦解析結果&lt;/b&gt;&lt;/span&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=30;position=0.18;position2=0;direction=east;base=21;fillColor=default;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="505" y="110" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CrO8v-jebg2z61ZRBqP0-10" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;⑥定義された形状と解析条件&lt;/b&gt;&lt;/span&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeWidth=3;size=20;position=0.58;position2=0.79;direction=north;base=10;fillColor=default;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="290" y="134" width="167" height="47.5" as="geometry" />
+        </mxCell>
+        <mxCell id="CrO8v-jebg2z61ZRBqP0-12" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;pyemsol&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="376.7" y="20" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
