@@ -25,11 +25,11 @@ $r(\boldsymbol{x})$: 制約違反量
 ## 設定可能なキーワード引数一覧
 - `dim: int` ... 最適化問題の次元数$n$。
 :::info
-evaluatorが`pyemsol_shape_evaluator`の場合、`dim`はlevel set functionなどのコンフィグから自動的に設定されます。
+`dim`はlevel set functionなどのコンフィグから自動的に設定されます。
 :::
 - `num_obj: int` ... 最適化問題の目的関数の数。CMA-ESにおいては使用されない。
 :::info
-evaluatorが`pyemsol_shape_evaluator`の場合、`num_obj`は`optimization_problem.yaml`から自動的に設定されます。
+`num_obj`は`optimization_problem.yaml`から自動的に設定されます。
 :::
 - `mean: np.ndarray` ... $\boldsymbol{m}$初期値。デフォルト値は$\boldsymbol{m} = \boldsymbol{0}$。
 - `sigma: float` ... $\boldsymbol{C}$の標準偏差初期値。デフォルト値は`1`。

@@ -121,7 +121,7 @@ from .examples import rastrigin, zdt1, user_defined
     - 単目的最適化の基底クラス（`SOOptimizerBase`）
     - 多目的最適化の基底クラス（`MOOptimizerBase`）
 - を有している。ユーザは`optimizer`を自作する際、**インターフェースに加えてどちらかの基底クラスを継承する必要がある**。
-- 形状最適化実行時（`pyemsol_shape_evaluator`使用時）、ファクトリ関数へ`dim`と`num_obj`というキーワード引数が自動的に設定される。したがって、**`optimizer`のファクトリ関数は`dim`と`num_obj`を引数に設定する必要がある**。
+- ファクトリ関数へ`dim`と`num_obj`というキーワード引数が自動的に設定される。したがって、**`optimizer`のファクトリ関数は`dim`と`num_obj`を引数に設定する必要がある**。
 :::info
 この引数の自動設定の仕組みは、「形状最適化時に`dim`と`num_obj`を動的に設定する」ためのものです。ほかのコアオブジェクトや`optimization_problem.yaml`などの設定と齟齬が生じないよう、EMSOptimizerが内部でこれらの引数を自動的に計算・設定します。
 :::
