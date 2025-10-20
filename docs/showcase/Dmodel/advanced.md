@@ -74,7 +74,6 @@ eq_constraints:
   - function_name: num_connected_components
     kwargs:
       physical_tag: 20
-      element_type: triangle
     baseline: 1
 ```
 

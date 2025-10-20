@@ -171,7 +171,6 @@ eq_constraints:
   - function_name: num_connected_components
     kwargs:
       physical_tag: 20
-      element_type: "triangle"
     baseline: 1.0
 ```
 `num_connected_components`は指定した材料の連結成分数（＝ひと繋がりになっている領域の数）を計算する関数です。これを`baseline: 1.0`として`eq_constraints`（等式制約リスト）に追加することで、以下の制約条件が最適化に課されます。
