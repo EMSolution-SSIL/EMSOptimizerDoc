@@ -77,7 +77,7 @@ $\boldsymbol{w}$: `ls_function`に与えられるレベルセット関数パラ�
 \begin{align*}
 \text{minimize} \quad & f_1=T_\text{rip} \\
 \text{subject to} \quad & g_1=-(T_\text{avg}-14.62) \leq 0 \\
-                        & h_1=N-1 \leq 0 \\
+                        & h_1=N-1 = 0 \\
 \end{align*}
 ```
 $T_\text{avg}$：平均トルク [Nm]  

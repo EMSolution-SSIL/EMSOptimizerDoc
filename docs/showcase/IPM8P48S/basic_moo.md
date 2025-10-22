@@ -146,7 +146,7 @@ num_processes: Null  # if Null, automatically set from cpu counts
 \text{minimize} \quad & f_1=-\frac{T_\text{avg}}{14.62} \\
                       & f_2=\frac{T_\text{rip}}{35.34} \\
 \text{subject to} \quad & g_1=-(T_\text{avg}-14.62) \leq 0 \\
-                        & h_1=N-1 \leq 0 \\
+                        & h_1=N-1 = 0 \\
 \end{align*}
 ```
 $T_\text{avg}$：平均トルク [Nm]  
