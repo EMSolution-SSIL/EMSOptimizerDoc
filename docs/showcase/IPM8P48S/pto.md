@@ -32,7 +32,7 @@ ems_project_filepath: "Path/To/EMSOptimizer/projects/IPM8P48S_pto/IPM8P48S.json"
 同時に、`ems_shape_builder`を`HoleMagnet55`に設定しています。これは、IPM8P48Sオリジナルモデルにも使用されているeMotorSolution Hole Magnet Type55（ロータ永久磁石＋フラックスバリアモデル）の寸法を10の設計変数から設定するオブジェクトです。  
 これを`level_set_function`と同時に設定することで、
 - ロータの部品構造は`HoleMagnet55`によって決定し、
-- ロータ表面の細かいトポロジーの修正はNGnet on/off法により決定する
+- ロータ表面の細かいトポロジーの修正はNGnet on/off法により行う  
 という形状決定が行われます。
 ```yaml
 level_set_function:
