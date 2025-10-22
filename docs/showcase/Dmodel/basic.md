@@ -72,7 +72,7 @@ mirror_id_map:
 increment_info: {}
 ```
 
-### Implicit domain Meshing オプション
+### Implicit Domain Meshing オプション
 デフォルトではImplicit Domain Meshingは無効化されていますが、`True`にすることで有効化できます。
 ```yaml
 use_implicit_domain_meshing: False
