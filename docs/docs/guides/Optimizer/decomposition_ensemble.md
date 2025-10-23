@@ -16,14 +16,6 @@ MOEA/Dとは、多目的最適化を適切なアプローチによって複数�
 :::
 
 ## 設定可能なキーワード引数一覧
-- `dim: int` ... 最適化問題の次元数$n$。
-:::info
-`dim`はlevel set functionなどのコンフィグから自動的に設定されます。
-:::
-- `num_obj: int` ... 最適化問題の目的関数の数。
-:::info
-`num_obj`は`optimization_problem.yaml`から自動的に設定されます。
-:::
 - `num_decomposition: int` ... 多目的最適化の分解数。デフォルト値は`10`。
 :::tip `num_decomposition`による計算時間・パレート解密度のトレードオフ
 `num_decomposition`を大きく設定するほど多目的最適化が「細かく」分解されるため、より密なパレート解が得られるようになります。  

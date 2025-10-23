@@ -16,14 +16,6 @@ NSGA-IIでは、非優越ソートによって個体にランクを付けます�
 この優先関係の定義を各個体間に適用し、被優越数が0の個体群をランク1、ランク1の個体群を除いたときに被優越数が0となる個体群をランク2、...とランク付けします。
 
 ## 設定可能なキーワード引数一覧
-- `dim: int` ... 最適化問題の次元数$n$。
-:::info
-`dim`はlevel set functionなどのコンフィグから自動的に設定されます。
-:::
-- `num_obj: int` ... 最適化問題の目的関数の数。
-:::info
-`num_obj`は`optimization_problem.yaml`から自動的に設定されます。
-:::
 - `population_size: int` ... 集団サイズ。デフォルト値は $n \times 10$。
 - `num_children int` ... 1イテレーションあたりに生成する子個体数。デフォルトでは`population_size`と同じ値が設定される。
 - `bounds: tuple[float, float] | list[tuple[float, float]]` ... 各変数の上下限値。

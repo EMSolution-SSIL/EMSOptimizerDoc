@@ -23,16 +23,8 @@ $f(\boldsymbol{x}_0)$: 実行可能解の目的関数の最悪値
 $r(\boldsymbol{x})$: 制約違反量
 
 ## 設定可能なキーワード引数一覧
-- `dim: int` ... 最適化問題の次元数$n$。
-:::info
-`dim`はlevel set functionなどのコンフィグから自動的に設定されます。
-:::
-- `num_obj: int` ... 最適化問題の目的関数の数。CMA-ESにおいては使用されない。
-:::info
-`num_obj`は`optimization_problem.yaml`から自動的に設定されます。
-:::
 - `mean: np.ndarray` ... $\boldsymbol{m}$初期値。デフォルト値は$\boldsymbol{m} = \boldsymbol{0}$。
-- `sigma: float` ... $\boldsymbol{C}$の標準偏差初期値。デフォルト値は`1`。
+- `sigma: float` ...ステップサイズ初期値。デフォルト値は`1`。
 - `bounds: tuple[float, float] | list[tuple[float, float]]` ... 各変数の上下限値。
 :::tip `bounds`の挙動
 - デフォルト値（設定無の場合） ... 上下限無し。
