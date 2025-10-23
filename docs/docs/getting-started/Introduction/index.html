@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.1">
 <title data-rh="true">イントロダクション | EMSOptimizer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/getting-started/Introduction"><meta data-rh="true" property="og:locale" content="ja"><meta data-rh="true" name="docusaurus_locale" content="ja"><meta data-rh="true" name="docsearch:language" content="ja"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="イントロダクション | EMSOptimizer"><meta data-rh="true" name="description" content="ここでは、EMSOptimizerによる形状最適化の導入を行います。"><meta data-rh="true" property="og:description" content="ここでは、EMSOptimizerによる形状最適化の導入を行います。"><link data-rh="true" rel="icon" href="/EMSOptimizerDoc/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/getting-started/Introduction"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/getting-started/Introduction" hreflang="ja"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/getting-started/Introduction" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"基本の使い方","item":"https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/category/基本の使い方"},{"@type":"ListItem","position":2,"name":"イントロダクション","item":"https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/getting-started/Introduction"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/EMSOptimizerDoc/assets/css/styles.1631125e.css">
-<script src="/EMSOptimizerDoc/assets/js/runtime~main.fe3b6af6.js" defer="defer"></script>
+<script src="/EMSOptimizerDoc/assets/js/runtime~main.302a6fe9.js" defer="defer"></script>
 <script src="/EMSOptimizerDoc/assets/js/main.e2fac788.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -18,6 +18,8 @@
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">python emsopt.py run Dmodel</span><br></span></code></pre></div></div>
 <p>これにより、永久磁石同期モータのベンチマークモデル「Dmodel」[1]の単目的トポロジー最適化が実行されます。</p>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>備考</div><div class="admonitionContent_BuS1"><p>実際にこの最適化によって得られる結果の例については<a href="/EMSOptimizerDoc/docs/showcase/Dmodel/basic">Showcase</a>をご覧ください。</p></div></div>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>備考</div><div class="admonitionContent_BuS1"><p>形状最適化の実行にはpyemsolおよびライセンスファイルが必要です。<br>
+<!-- -->ただし、これらが無くてもベンチマーク関数による最適化アルゴリズムのテストは実行可能です。これには以下のコマンドを実行します。</p><div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">python emsopt.py run soo_base</span><br></span></code></pre></div></div><p>これにより、単目的最適化ベンチマークRastrigin関数[11]のCMAES[4]アルゴリズムによる最適化が実行されます。</p></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="emsoptimizerの概要">EMSOptimizerの概要<a href="#emsoptimizerの概要" class="hash-link" aria-label="EMSOptimizerの概要 への直接リンク" title="EMSOptimizerの概要 への直接リンク" translate="no">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="emsoptimizerプロジェクト">EMSOptimizerプロジェクト<a href="#emsoptimizerプロジェクト" class="hash-link" aria-label="EMSOptimizerプロジェクト への直接リンク" title="EMSOptimizerプロジェクト への直接リンク" translate="no">​</a></h3>
 <p>EMSOptimizerでは各最適化ケースを<strong>プロジェクト単位</strong>で管理します。プロジェクトの実体は<code>project</code>フォルダ内の各フォルダです。プロジェクトフォルダには以下のファイルが含まれます。</p>
@@ -38,16 +40,20 @@
 </ul>
 <p>いくつかのプロジェクト例が<code>project</code>フォルダ内にすでに配置されています。冒頭の例で指定した<code>Dmodel</code>はその一つです。</p>
 <p>下図は<code>Dmodel</code>プロジェクトの実際の構成です。<code>pre_geom2D.msh</code>、<code>rotor_mesh2D.msh</code>はそれぞれステータ、ロータのメッシュファイルです。また、解析ケースとして<code>transient</code>が格納されています。</p>
-<p><img decoding="async" loading="lazy" alt="プロジェクトフォルダ例" src="/EMSOptimizerDoc/assets/images/project_folder-41a90911c787219f8aed8b06918a36c1.png" width="858" height="229" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="プロジェクトフォルダ例" src="/EMSOptimizerDoc/assets/images/project_folder-41a90911c787219f8aed8b06918a36c1.png" width="1019" height="278" class="img_ev3q"></p>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>備考</div><div class="admonitionContent_BuS1"><p>具体的な設定方法などは<a href="/EMSOptimizerDoc/docs/docs/getting-started/opt_problem">最適化問題の設定</a>ページおよびユーザガイドセクションに説明があります（ここでは省略しています）。</p></div></div>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="最適化の基本フロー">最適化の基本フロー<a href="#最適化の基本フロー" class="hash-link" aria-label="最適化の基本フロー への直接リンク" title="最適化の基本フロー への直接リンク" translate="no">​</a></h3>
 <p><strong>以下はEMSOptimizerを使用した最適化の基本フローです。</strong></p>
 <ol>
 <li>プロジェクトフォルダを<code>project</code>フォルダ配下に新規作成するか、CLIから<code>cp_proj</code>コマンドにより既存のプロジェクトを複製する。</li>
-<li>作成したプロジェクトフォルダにメッシュファイルと解析ケースフォルダを格納する。</li>
-<li><code>machine.yaml</code>をメッシュファイル、解析ケースに合わせて設定する。</li>
-<li><code>optimization_problem.yaml</code>に解きたい最適化問題（例：平均トルク最大化など）を定義する。</li>
-<li><code>optimization.yaml</code>に最適化手法などのコンフィグを設定する。</li>
+<li>（形状最適化の場合）作成したプロジェクトフォルダにメッシュファイルと解析ケースフォルダを格納する。</li>
+<li>（形状最適化の場合）<code>machine.yaml</code>をメッシュファイル、解析ケースに合わせて設定する。</li>
+<li>（形状最適化の場合）<code>optimization_problem.yaml</code>に解きたい最適化問題（例：平均トルク最大化など）を定義する。</li>
+<li><code>optimization.yaml</code>に最適化手法などのコンフィグを設定する。<!-- -->
+<ul>
+<li>形状最適化の場合、後述の<code>evaluator</code>に<code>pyemsol_shape_evaluator</code>を設定する。</li>
+</ul>
+</li>
 <li>CLIから<code>run</code>コマンドにより最適化を実行する。</li>
 <li>最適化完了後、必要があれば<code>check</code>コマンドにより最適化結果を確認する。</li>
 </ol>
