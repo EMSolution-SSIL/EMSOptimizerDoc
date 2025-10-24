@@ -43,6 +43,7 @@ EMSOptimizerでは`Individual`ないし`Population`がオブジェクト間を�
 `Indvidual`の評価を担うオブジェクトです。`optimizer`によって生成された`Individual`を評価し、`Individual.metrics`に目的関数値および制約条件値を格納して`optimizer`に返す役割を担います。また、形状最適化においては他のオブジェクトおよび電磁界シミュレータパッケージpyemsolと連携し、形状定義から`metrics`の計算までの一連の処理を担います。
 
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
+- `sphere`: 単目的最適化ベンチマークSphere関数\[11\]。
 - `rastrigin`: 単目的最適化ベンチマークRastrigin関数\[11\]。
 - `zdt1`: 多目的最適化ベンチマークZDT1関数\[9\]。
 - `pyemsol_shape_evaluator`: **形状最適化用の評価実装**。`ls_function`や`ems_shape_builder`によって定義された形状を電磁界シミュレータパッケージpyemsolを用いて解析し、`optimization_problem.yaml`に定義された目的関数および制約条件を計算します（`optimizer_problem.yaml`については[最適化問題の設定](./opt_problem.md)ページを参照）。

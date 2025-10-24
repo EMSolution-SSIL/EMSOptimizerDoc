@@ -23,7 +23,7 @@ mirror_id_map: dict[int, int] = {}
 increment_info: dict[int, tuple[int, int, int, str]] = {}
 
 # Implicit Domain Meshing Options
-use_implicit_domain_meshing: bool = Fales
+use_implicit_domain_meshing: bool = False
 no_split_ids: list[int] = []
 no_remesh_ids: list[int] = []
 design_region_size: float = 0.0010
