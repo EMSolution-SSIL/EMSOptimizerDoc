@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.1">
 <title data-rh="true">インストール | EMSOptimizer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/intro"><meta data-rh="true" property="og:locale" content="ja"><meta data-rh="true" name="docusaurus_locale" content="ja"><meta data-rh="true" name="docsearch:language" content="ja"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="インストール | EMSOptimizer"><meta data-rh="true" name="description" content="前提条件"><meta data-rh="true" property="og:description" content="前提条件"><link data-rh="true" rel="icon" href="/EMSOptimizerDoc/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/intro"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/intro" hreflang="ja"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/intro" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"インストール","item":"https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/intro"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/EMSOptimizerDoc/assets/css/styles.1631125e.css">
-<script src="/EMSOptimizerDoc/assets/js/runtime~main.302a6fe9.js" defer="defer"></script>
-<script src="/EMSOptimizerDoc/assets/js/main.e2fac788.js" defer="defer"></script>
+<script src="/EMSOptimizerDoc/assets/js/runtime~main.fae43a54.js" defer="defer"></script>
+<script src="/EMSOptimizerDoc/assets/js/main.08a82a23.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -18,19 +18,23 @@
 <li>EMSOptimizerの形状最適化機能を有効化するには以下の2点が必要です。<!-- -->
 <ul>
 <li>EMSolution(pyemsol)*のEMSOptimizer専用パッケージ</li>
-<li>ライセンスファイル（無償版／有償版）*</li>
+<li>EMSOptimizerライセンスファイル（無償版／有償版）*</li>
 </ul>
 </li>
-<li>（任意）EMSOptimizerとeMotorSolution* APIを連携したい場合は、eMotorSolution APIをインストールします。</li>
+<li>（任意）EMSOptimizerとeMotorSolution* APIを連携するには、eMotorSolution APIをインストールします。</li>
 </ul>
 <p>*必要パッケージおよびライセンスの入手については公式の<a href="https://www.ssil.co.jp/product/EMSolution/product/" target="_blank" rel="noopener noreferrer">製品ページ</a>をご覧ください。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="インストール手順">インストール手順<a href="#インストール手順" class="hash-link" aria-label="インストール手順 への直接リンク" title="インストール手順 への直接リンク" translate="no">​</a></h2>
 <ol>
 <li>
-<p>Github <a href="https://github.com/EMSolution-SSIL/EMSOptimizer" target="_blank" rel="noopener noreferrer">EMSOptimizerリポジトリ</a>の&quot;Releases&quot;からEMSOptimizer最新バージョンのzipまたはtar.gzファイル、および付随するwhlファイルをダウンロードします。</p>
+<p>Github <a href="https://github.com/EMSolution-SSIL/EMSOptimizer" target="_blank" rel="noopener noreferrer">EMSOptimizerリポジトリ</a>の&quot;Releases&quot;から以下の2点をダウンロードします。</p>
+<ol>
+<li>EMSOptimizer最新バージョンのzipまたはtar.gzファイル</li>
+<li>i.に付随するwhlファイル（emsopt_engine）</li>
+</ol>
 </li>
 <li>
-<p>ダウンロードしたzipファイルをPCの任意の場所に展開します。</p>
+<p>ダウンロードしたzipまたはtar.gzファイルをPCの任意の場所に展開します。</p>
 </li>
 <li>
 <p>ダウンロードしたwhlファイルをコマンドラインから<code>pip install</code>します。</p>
