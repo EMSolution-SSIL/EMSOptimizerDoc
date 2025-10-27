@@ -24,6 +24,10 @@ python emsopt.py run Dmodel
 :::info
 実際にこの最適化によって得られる結果の例については[Showcase](../../showcase/Dmodel/basic.md)をご覧ください。
 :::
+:::info
+形状最適化の実行にはpyemsolおよびライセンスファイルが必要です。  
+詳細は[インストール](../intro.md)ページをご参照ください。
+:::
 
 ## EMSOptimizerの概要
 ### EMSOptimizerプロジェクト
@@ -48,7 +52,7 @@ python emsopt.py run {プロジェクト名}
 ```
 
 :::info
-具体的な設定方法などは[最適化問題の設定](./opt_problem.md)ページおよびユーザガイドセクションに説明があります（ここでは省略しています）。
+具体的な設定方法などは[最適化問題の設定](./opt_problem.md)ページおよびユーザガイドセクションにて説明します（ここでは省略しています）。
 :::
 
 ### 最適化の基本フロー
@@ -58,7 +62,6 @@ python emsopt.py run {プロジェクト名}
 3. （形状最適化の場合）`machine.yaml`をメッシュファイル、解析ケースに合わせて設定する。
 4. （形状最適化の場合）`optimization_problem.yaml`に解きたい最適化問題（例：平均トルク最大化など）を定義する。
 5. `optimization.yaml`に最適化手法などのコンフィグを設定する。
-    - 形状最適化の場合、後述の`evaluator`に`pyemsol_shape_evaluator`を設定する。
 6. CLIから`run`コマンドにより最適化を実行する。
 7. 最適化完了後、必要があれば`check`コマンドにより最適化結果を確認する。
 
@@ -93,7 +96,7 @@ NGnetの詳細については[ユーザガイド > LevelSetFunction > NGnet](../
 python emsopt.py run NewDmodel
 ```
 
-`run`コマンドを実行すると最適化が始まると同時に、デフォルトで最適化経過をチェックするためのGUIが立ち上がります（オフにするには`optimization.yaml`内の`enable_progress_gui`を`False`に設定します）。
+`run`コマンドを実行すると最適化が始まると同時に、デフォルトで最適化経過をチェックするためのGUIが立ち上がります（この機能をオフにするには`optimization.yaml`内の`enable_progress_gui`を`False`に設定します）。
 ![GUI例](/img/GUI_ex.png)
 
 既定の回数の最適化イテレーションが経過するか、GUI上から停止されると最適化計算が完了状態になります。完了後もGUIは自由に操作でき、GUIを閉じるかCUI（コマンドライン）上で`Ctrl+C`を入力することでプロセスを完全に終了します。

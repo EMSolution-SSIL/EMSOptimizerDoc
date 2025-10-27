@@ -31,3 +31,6 @@ NGnet on/off法では、重みベクトル$\boldsymbol{w}$を最適化するこ�
 下図において各円がガウス基底関数の配置を表しており、その半径は標準偏差を表しています。この図は形状最適化実行時に`gaussian.png`という名前でEMSOptimizerフォルダ直下に出力されます。  
 ![ガウス基底関数の配置](/img/gaussian_arrangement.png)
 :::
+- `normalize_output: bool` ... NGnet出力を正規化するかどうか。`False`にすると、  
+$y(\boldsymbol{w}, \boldsymbol{x}) = \sum_{i=1}^{N} w_i G_i(\boldsymbol{x}) \\$
+となります。デフォルト値は`True`。
