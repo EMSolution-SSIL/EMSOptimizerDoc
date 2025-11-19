@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.1">
 <title data-rh="true">EMSOptimizerのコンセプト | EMSOptimizer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/getting-started/core_concepts"><meta data-rh="true" property="og:locale" content="ja"><meta data-rh="true" name="docusaurus_locale" content="ja"><meta data-rh="true" name="docsearch:language" content="ja"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="EMSOptimizerのコンセプト | EMSOptimizer"><meta data-rh="true" name="description" content="ここでは、EMSOptimizerを使う上でコアとなる概念について紹介します。"><meta data-rh="true" property="og:description" content="ここでは、EMSOptimizerを使う上でコアとなる概念について紹介します。"><link data-rh="true" rel="icon" href="/EMSOptimizerDoc/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/getting-started/core_concepts"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/getting-started/core_concepts" hreflang="ja"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/getting-started/core_concepts" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"基本の使い方","item":"https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/category/基本の使い方"},{"@type":"ListItem","position":2,"name":"EMSOptimizerのコンセプト","item":"https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/getting-started/core_concepts"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/EMSOptimizerDoc/assets/css/styles.1631125e.css">
-<script src="/EMSOptimizerDoc/assets/js/runtime~main.43ef78d4.js" defer="defer"></script>
+<script src="/EMSOptimizerDoc/assets/js/runtime~main.f2146bba.js" defer="defer"></script>
 <script src="/EMSOptimizerDoc/assets/js/main.60af9800.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -38,21 +38,21 @@
 <p>最適化アルゴリズム（<code>Individual</code>の生成・更新）を担うオブジェクトです。<code>evaluator</code>によって評価された<code>Individual</code>を受け取り、新たな<code>Individual</code>を生成して<code>evaluator</code>に渡す役割を担います。</p>
 <p>以下の実装例（<code>examples</code>フォルダ内）がデフォルトで利用可能です。</p>
 <ul>
-<li><code>cmaes</code>: 単目的最適化アルゴリズムCMA-ES[4], [5]。</li>
-<li><code>nsga2</code>: 多目的最適化アルゴリズムNSGA-II[6]。</li>
-<li><code>decomposition_ensemble</code>: 多目的最適化アルゴリズムMOEA/D[7]に基づく実装。多目的最適化を複数の単目的最適化に分解して解く。各単目的最適化問題はCMA-ESによって解く[8]。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/Optimizer/cmaes"><code>cmaes</code></a>: 単目的最適化アルゴリズムCMA-ES[4], [5]。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/Optimizer/nsga2"><code>nsga2</code></a>: 多目的最適化アルゴリズムNSGA-II[6]。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/Optimizer/decomposition_ensemble"><code>decomposition_ensemble</code></a>: 多目的最適化アルゴリズムMOEA/D[7]に基づく実装。多目的最適化を複数の単目的最適化に分解して解く。各単目的最適化問題はCMA-ESによって解く[8]。</li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="evaluator-coreevaluator">Evaluator (core/evaluator)<a href="#evaluator-coreevaluator" class="hash-link" aria-label="Evaluator (core/evaluator) への直接リンク" title="Evaluator (core/evaluator) への直接リンク" translate="no">​</a></h3>
 <p><code>Indvidual</code>の評価を担うオブジェクトです。<code>optimizer</code>によって生成された<code>Individual</code>を評価し、<code>Individual.metrics</code>に目的関数値および制約条件値を格納して<code>optimizer</code>に返す役割を担います。また、形状最適化においては他のオブジェクトおよび電磁界シミュレータパッケージpyemsolと連携し、形状定義から<code>metrics</code>の計算までの一連の処理を担います。</p>
 <p>以下の実装例（<code>examples</code>フォルダ内）がデフォルトで利用可能です。</p>
 <ul>
-<li><code>sphere</code>: 単目的最適化ベンチマークSphere関数[11]。</li>
-<li><code>rastrigin</code>: 単目的最適化ベンチマークRastrigin関数[11]。</li>
-<li><code>zdt1</code>: 多目的最適化ベンチマークZDT1関数[9]。</li>
-<li><code>pyemsol_shape_evaluator</code>: <strong>形状最適化用の評価実装</strong>。<code>ls_function</code>や<code>ems_shape_builder</code>によって定義された形状を電磁界シミュレータパッケージpyemsolを用いて解析し、<code>optimization_problem.yaml</code>に定義された目的関数および制約条件を計算します（<code>optimizer_problem.yaml</code>については<a href="/EMSOptimizerDoc/docs/docs/getting-started/opt_problem">最適化問題の設定</a>ページを参照）。
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/Evaluator/sphere"><code>sphere</code></a>: 単目的最適化ベンチマークSphere関数[11]。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/Evaluator/rastrigin"><code>rastrigin</code></a>: 単目的最適化ベンチマークRastrigin関数[11]。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/Evaluator/zdt1"><code>zdt1</code></a>: 多目的最適化ベンチマークZDT1関数[9]。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/Evaluator/pyemsol_shape_evaluator"><code>pyemsol_shape_evaluator</code></a>: <strong>形状最適化用の評価実装</strong>。<code>ls_function</code>や<code>ems_shape_builder</code>によって定義された形状を電磁界シミュレータパッケージpyemsolを用いて解析し、<code>optimization_problem.yaml</code>に定義された目的関数および制約条件を計算します（<code>optimizer_problem.yaml</code>については<a href="/EMSOptimizerDoc/docs/docs/getting-started/opt_problem">最適化問題の設定</a>ページを参照）。
 <code>pyemsol_shape_evaluator</code>は例外的にEMSOptimizer内部にて定義されおり、<code>examples</code>フォルダ内に実装はありません。</li>
 </ul>
-<p>なお、前半2つは最適化ベンチマーク関数であり、形状最適化を実行する前に<code>optimizer</code>の性能をチェックするために活用することができます。</p>
+<p>なお、<code>sphere</code>, <code>rastrigin</code>, <code>zdt1</code>は最適化ベンチマーク関数であり、形状最適化を実行する前に<code>optimizer</code>の性能をチェックするために活用することができます。</p>
 <div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>EMSOptimizerにおける形状最適化</div><div class="admonitionContent_BuS1"><p>EMSOptimizerにおいては明確な「形状最適化モード」のようなものは存在しません。<br>
 <!-- -->単に<code>evaluator</code>に<code>pyemsol_shape_evaluator</code>を設定することで、その内部で形状に対する諸々の計算が行われます。<br>
 <!-- -->したがって、ベンチマーク関数の最適化と全く同じように形状最適化を実行することが可能です（ただし、形状最適化時には<code>machine.yaml</code>と<code>optimization_problem.yaml</code>の設定が必要です）。</p></div></div>
@@ -63,23 +63,23 @@
 <!-- -->一般的には「レベルセット法（トポロジー最適化手法の一種）に用いられる、材料境界を表現する関数」を特に指すことが多いです。</p></div></div>
 <p>以下の実装例（<code>examples</code>フォルダ内）がデフォルトで利用可能です。</p>
 <ul>
-<li><code>ls_r</code>: 半径ごとにレベルをセットするシンプルな実装例。</li>
-<li><code>ngnet</code>: NGnet関数[3]。</li>
-<li><code>ngnet_mixture</code>: <code>ls_r</code>と<code>ngnet</code>を組み合わせ、ある半径以内の領域についてNGnet関数を適用する実装例。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/LevelSetFunction/ls_r"><code>ls_r</code></a>: 半径ごとにレベルをセットするシンプルな実装例。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/LevelSetFunction/ngnet"><code>ngnet</code></a>: NGnet関数[3]。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/LevelSetFunction/ngnet_mixture"><code>ngnet_mixture</code></a>: <code>ls_r</code>と<code>ngnet</code>を組み合わせ、ある半径以内（または以外）の領域についてNGnet関数を適用する実装例。</li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="analysisconditioner-coreanalysis_conditioner">AnalysisConditioner (core/analysis_conditioner)<a href="#analysisconditioner-coreanalysis_conditioner" class="hash-link" aria-label="AnalysisConditioner (core/analysis_conditioner) への直接リンク" title="AnalysisConditioner (core/analysis_conditioner) への直接リンク" translate="no">​</a></h3>
 <p>形状最適化における解析条件（電流位相角、磁化方向など）の動的な設定を担います。<code>evaluator</code>に<code>pyemsol_shape_evaluator</code>を設定したときに参照され、<code>Individual</code>の解候補ベクトルから解析条件に関するパラメータを変更します。<br>
 <!-- -->すなわち、このオブジェクトによって解析条件を最適化対象に含めることが可能となります。</p>
 <p>以下の実装例（<code>examples</code>フォルダ内）がデフォルトで利用可能です。</p>
 <ul>
-<li><code>phase_conditioner</code>: 電流位相角を変更します。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/AnalysisConditioner/phase_conditioner"><code>phase_conditioner</code></a>: 電流位相角を変更します。</li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="emotorsolution-shape-builder-coreems_shape_builder">eMotorSolution Shape Builder (core/ems_shape_builder)<a href="#emotorsolution-shape-builder-coreems_shape_builder" class="hash-link" aria-label="eMotorSolution Shape Builder (core/ems_shape_builder) への直接リンク" title="eMotorSolution Shape Builder (core/ems_shape_builder) への直接リンク" translate="no">​</a></h3>
 <p>寸法最適化における形状定義を担います。<code>evaluator</code>が<code>pyemsol_shape_evaluator</code>、かつeMotorSolution連携時に使用可能で、<code>Individual</code>の解候補ベクトルからモータの部品寸法を設定する役割を担います。</p>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>備考</div><div class="admonitionContent_BuS1"><p>eMotorSolution連携については<a href="/EMSOptimizerDoc/docs/docs/guides/link_ems">ユーザガイド &gt; eMotorSolutionとの連携</a>をご覧ください。</p></div></div>
 <p>以下の実装例（<code>examples</code>フォルダ内）がデフォルトで利用可能です。</p>
 <ul>
-<li><code>HoleMagnet55</code>: eMotorSolution HoleMagnet Type 55 永久磁石定義。<code>IPM8P48S_pto</code>プロジェクト内で使用されています。</li>
+<li><a href="/EMSOptimizerDoc/docs/docs/guides/EMSShapeBuilder/holemagnet55"><code>HoleMagnet55</code></a>: eMotorSolution HoleMagnet Type 55 永久磁石定義。<code>IPM8P48S_pto</code>プロジェクト内で使用されています。</li>
 </ul>
 <div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>解析条件・寸法・トポロジーの同時最適化</div><div class="admonitionContent_BuS1"><p>EMSOptimizerでは<code>analysis_conditioner</code>、<code>ls_function</code>、<code>ems_shape_builder</code>はすべて独立に・同時に設定可能です。特に、<code>ems_shape_builder</code>を<code>ls_function</code>と同時に設定することで、寸法・トポロジーの同時最適化[10]が実行可能です。<br>
 <!-- -->より詳細には、<code>Individual.solution</code>は以下のように解釈されます。</p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="bold-italic">x</mi><mo>=</mo><mo stretchy="false">[</mo><msup><mi mathvariant="bold-italic">p</mi><mtext>T</mtext></msup><mo separator="true">,</mo><msup><mi mathvariant="bold-italic">d</mi><mtext>T</mtext></msup><mo separator="true">,</mo><msup><mi mathvariant="bold-italic">w</mi><mtext>T</mtext></msup><msup><mo stretchy="false">]</mo><mtext>T</mtext></msup></mrow><annotation encoding="application/x-tex">\boldsymbol{x} = [\boldsymbol{p}^\text{T}, \boldsymbol{d}^\text{T}, \boldsymbol{w}^\text{T}]^\text{T}
