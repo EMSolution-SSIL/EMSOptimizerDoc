@@ -32,3 +32,6 @@ MOEA/Dとは、多目的最適化を適切なアプローチによって複数�
 - `bounds: list[tuple[float, float]]`の場合 ... 与えた数値の組のリストが各変数の上下限値に設定される。上下限値の設定は途中までで打ち切ることが可能（この場合、打ち切り以降の上下限値は-1~1に自動設定される）。
 :::
 - `population_size int` ... CMA-ESの1イテレーションあたりサンプリング個体数。デフォルト値はCMA-ES推奨の $4+\lfloor3\ln{n}\rfloor$。
+:::info
+最適化1イテレーション当たりのサンプリング個体数は`population_size`×`num_decomposition`となります。
+:::

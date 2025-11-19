@@ -4,14 +4,14 @@ sidebar_position: 2
 
 # IPM8P48S寸法およびトポロジー同時最適化
 ここでは`IPM8P48S_pto`プロジェクトの内容について紹介します。  
-このプロジェクトでは、IPM8P48Sモデルの寸法および同時最適化を実行します。
+このプロジェクトでは、IPM8P48Sモデルの寸法およびトポロジーの同時最適化を実行します。
 :::info
 本プロジェクトの最適化の実施にはeMotorSolution APIが必要です。
 :::
 
 ## 最適化概要
 `IPM8P48S_pto`プロジェクトでは下図のように、ロータの部品構造（永久磁石＋フラックスバリア）は寸法パラメータによって表現し、ロータ表面の細かいトポロジーはNGnet on/off法によって決定します。  
-ロータ表面構造は特にトルクリプルに寄与することが知られています。そのため、本最適化ではトルクリプルの最小化を目的として、部品構造には単純な寸法パラメータを採用しつつ、新規的なロータ表面の構造の獲得を狙います。  
+ロータ表面構造は特にトルクリプルに寄与することが一般に知られています。そのため、本最適化ではトルクリプルの最小化を目的として、部品構造には単純な寸法パラメータを採用しつつ、新規的なロータ表面の構造の獲得を狙います。  
 ![IPM8P48S PTO説明](/img/IPM8P48S_pto_ex.png)
 
 ## machine.yaml（`IPM8P48S_pto`プロジェクト）
@@ -21,14 +21,17 @@ sidebar_position: 2
 # ems functionality link
 ems_project_filepath: "Path/To/EMSOptimizer/projects/IPM8P48S_pto/IPM8P48S.json"
 ```
+:::info
+上記のファイルパスはご使用のEMSOptimizerのインストール先に合わせて設定してください。
+:::
 
 ### Implicit Domain Meshing オプション
-[最適化概要](#最適化概要)で述べた通り、今回はロータ表面のみを細かくトポロジー最適化によって変形させます。  
+冒頭で述べた通り、今回はロータ表面のみを細かくトポロジー最適化によって変形させます。  
 このような場合、Implicit Domain Meshingではメッシュが細かくなりすぎる可能性があるため、`IPM8P48S_pto`プロジェクトではデフォルトでオフにしています。
 
 ## optimization.yaml（`IPM8P48S_pto`プロジェクト）
 まず、形状決定にかかわるオブジェクトから説明します。  
-レベルセット関数に`ngnet_mixture`を設定し、半径が78.2mm以上（からロータ半径である80.2mm以下）の範囲に限ってNGnet on/off法によるトポロジー最適化を実施します。  
+レベルセット関数に`ngnet_mixture`を設定し、半径78.2mm以上（からロータ半径である80.2mm以下）の範囲に限ってNGnet on/off法によるトポロジー最適化を実施します。  
 同時に、`ems_shape_builder`を`HoleMagnet55`に設定しています。これは、IPM8P48Sオリジナルモデルにも使用されているeMotorSolution Hole Magnet Type55（ロータ永久磁石＋フラックスバリアモデル）の寸法を10の設計変数から設定するオブジェクトです。  
 これを`level_set_function`と同時に設定することで、
 - ロータの部品構造は`HoleMagnet55`によって決定し、
@@ -68,7 +71,7 @@ $\boldsymbol{x}$: 解候補ベクトル（`Individual.solution`）
 $\boldsymbol{d}$: `ems_shape_builder`に与えられる寸法情報ベクトル  
 $\boldsymbol{w}$: `ls_function`に与えられるレベルセット関数パラメータベクトル
 
-`bounds`は今回10次元ベクトルの$\boldsymbol{d}$に対する上下限値を設定しています。このとき、$\boldsymbol{w}$の上下限値は-1~1に自動設定されます。
+`bounds`は今回10次元ベクトルの$\boldsymbol{d}$に対する上下限値を設定しています。なお、設定されなかった$\boldsymbol{w}$の上下限値は自動的に\[-1, 1\]に設定されます。
 :::
 
 ## optimization_problem.yaml（`IPM8P48S_pto`プロジェクト）
