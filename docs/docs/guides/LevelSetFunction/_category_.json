@@ -1,8 +1,8 @@
 {
   "label": "Level Set Function",
-  "position": 7,
+  "position": 8,
   "link": {
     "type": "generated-index",
-    "description": "ここでは、Level Set Functionの実装例を紹介します。"
+    "description": "ここでは、Level Set Functionの実装例 (EMSOptimizer内core/ls_function)を紹介します。"
   }
 }

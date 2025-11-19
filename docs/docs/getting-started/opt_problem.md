@@ -5,13 +5,6 @@ sidebar_position: 3
 # 最適化問題の設定（optimization_problem.yaml）
 ここでは、形状最適化における最適化問題の定義について紹介します。
 
-## `case_names`について
-EMSOptimizerにおいては、複数解析ケースに対して目的関数を設定することが可能です。これはモータ等において複数の運転点における性能を同時に最適化したい場合などに活用できます。  
-解析ケース名の一覧は`optimization_problem.yaml` > `case_names`にリストとして設定します。また、同名の解析ケースフォルダ群をプロジェクトフォルダ内に格納します。  
-:::info
-実際に複数解析ケースを活用した最適化については[Dmodel_advanced](../../showcase/Dmodel/advanced.md)の例をご覧ください。
-:::
-
 ## 最適化問題の設定
 EMSOptimizerでは、形状最適化における最適化問題を`opimization_problem.yaml`によって管理します。
 `opimization_problem.yaml`を通じて、以下の最適化問題を定義します。
@@ -37,20 +30,30 @@ $f_i$, $g_i$, $h_i$は`opimization_problem.yaml`ファイル内の以下のリ�
 - 例外として、`other_metrics`リストは最適化計算には使われず、GUI表示やファイル出力に利用されます。
 
 リスト内の各項目はいずれも以下の設定を持ちます。
-- `function_name: str` ... 関数名。関数名に対応する実装内容は`core/opt_problem_functions.py`に記述されています。利用可能な関数名の一覧は`show_avl`コマンドでも確認できます。
-- `case_name: str | null` ... `function_name`を評価する解析ケース名。冒頭で説明した`case_names`の中から選択する。未設定（もしくは`null`を設定）の場合、`case_names`の一番上の解析ケースが自動的に使用されます。
-- `kwargs: dict` ... 関数に渡すpythonキーワード引数。省略可能。
-    - なお、各関数の引数のうち`working_dir`は特殊なキーワードに位置付けられています。このキーワード引数はEMSOptimizer内部にて自動的に設定されるため、yamlファイル内では設定不要です（設定しても実行時には無視されます）。
+- `function_name: str` ... 評価用関数名（下記参照）。
+- `case_name: str | null` ... `function_name`を評価する解析ケース名（下記参照）。
+- `kwargs: dict` ... 評価用関数に渡すpythonキーワード引数。省略可能。
 - `coefficient: float` ... 重み係数。下式参照。デフォルト値は`1.0`。
 - `baseline: float` ... バイアス項。下式参照。デフォルト値は`0.0`。
+:::info
+`function_name`に指定可能な評価用関数群、およびそれらの引数`kwargs`の一覧は[ユーザガイド > 評価用関数実装例](../guides/opt_problem_ex.md)をご覧ください。
+:::
+:::tip `case_names`について
+EMSOptimizerにおいては、複数解析ケースに対して目的関数を設定することが可能です。これはモータ等において複数の運転点における性能を同時に最適化したい場合などに活用できます。  
+解析ケース名の一覧は`optimization_problem.yaml` > `case_names`にリストとして設定します。また、同名の解析ケースフォルダ群をプロジェクトフォルダ内に格納します。  
+実際に複数解析ケースを活用した最適化については[Dmodel_advanced](../../showcase/Dmodel/advanced.md)の例をご覧ください。
+:::
 
-以上の設定項目から、各`Individual`において$f_i$, $g_i$, $h_i$は以下の式によって計算されます。
+以上の設定項目から、各個体に対して$f_i$, $g_i$, $h_i$は以下の式によって計算されます。
 ```math
 \text{coefficient} \times (A - \text{baseline}) \\
 ```
-$A$: `case_name`の解析結果に基づき、`function_name`に`kwargs`を与えて計算した結果値
+$A$: `case_name`の解析結果に基づき、評価用関数に`kwargs`を与えて計算した結果値
 
-計算値は各`Individual`に`metrics`として保存され、optimizer内にて個体更新の処理に利用可能になります。また、`metrics`には特殊な値として`fitness`が設定されており、これは各$f_i$の和を計算したものと定義されます。この値は主に単目的最適化の計算に利用できます。
+計算値は各個体に紐づけて保存され、optimizer内にて個体更新の処理に利用されます。
+:::info
+個体や計算値の管理方法の技術的詳細については[ユーザガイド > individual関連オブジェクト API](../guides/individual.md)をご覧ください。
+:::
 
 ## 最適化問題テンプレートの保存・読込
 `opimization_problem.yaml`の内容は最適化問題テンプレートとして`save_tpl`コマンドによって保存できます。テンプレートは`project/problem_template.yaml`に保存されます。
@@ -112,7 +115,5 @@ w \frac{f_i}{T^\text{ref}}
 ```
 $T_\text{avg}$：平均トルク [Nm]  
 $T_\text{rip}$：トルクリプル率 [%]
-
-最適化のプロセスにおいて形状評価が終わると、`Individual.metrics.objectives`に$f_1,f_2$の値が、`Individual.metrics.fitness`に$F$の値が、それぞれ格納されます。これらの値がoptimizer内の処理において`Individual`の更新に利用されることで最適化が進行します。
 
 最後に、`other_metrics`には平均トルクとトルクリプル率（`coefficient`無の生データ）が登録されています。これにより、GUIからこれらの値を確認できるようになっています。
