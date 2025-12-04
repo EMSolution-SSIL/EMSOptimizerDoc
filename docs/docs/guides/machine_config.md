@@ -148,7 +148,7 @@ increment_info:
 
 ### Implicit Domain Meshing オプション
 :::info
-Implicit Domain Meshingの手法については[Implicit Domain Meshing](./implicit_domain_meshing.md)ページを参照してください。
+Implicit Domain Meshingの手法については[Implicit Domain Meshing](../advanced/implicit_domain_meshing.md)ページを参照してください。
 :::
 - `use_implicit_domain_meshing: bool` ... Implicit Domain Meshingの有効化／無効化。
 - `no_split_ids: list[int]` ... Implicit Domain Meshing適用時、領域変形の対象外とする材料IDのリスト（ただし、領域内のリメッシュは許容）。

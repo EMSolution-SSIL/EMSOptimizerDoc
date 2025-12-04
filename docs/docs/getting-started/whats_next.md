@@ -16,10 +16,10 @@ sidebar_position: 4
 → ユーザガイドからそれぞれのセクションを参照
 
 - Optimizer等のオブジェクトを自作したい
-→ [ユーザガイド > コアオブジェクトの自作](../guides/user_define.md)
+→ [発展的なトピック > コアオブジェクトの自作](../advanced/user_define.md)
 
 - eMotorSolutionと連携したモータの最適化について知りたい
-→ [ユーザガイド > eMotorSolutionとの連携](../guides/link_ems.md)
+→ [発展的なトピック > eMotorSolutionとの連携](../advanced/link_ems.md)
 
 - 形状最適化の実施例を見たい
 → [Showcase](../../showcase/intro.md)

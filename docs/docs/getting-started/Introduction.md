@@ -25,8 +25,8 @@ python emsopt.py run Dmodel
 実際にこの最適化によって得られる結果の例については[Showcase](../../showcase/Dmodel/basic.md)をご覧ください。
 :::
 :::info
-形状最適化の実行にはpyemsolおよびライセンスファイルが必要です。  
-詳細は[インストール](../intro.md)ページをご参照ください。
+形状最適化の実行には解析用モジュール等が必要です。  
+詳細は[インストールガイド](../intro.md)ページをご参照ください。
 :::
 
 ## EMSOptimizerの概要

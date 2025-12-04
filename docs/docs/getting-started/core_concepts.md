@@ -8,7 +8,7 @@ sidebar_position: 2
 ## 概要
 以下の図は、EMSOptimizerの各機能（オブジェクト）がどのように協働するかを示したものです。①→②→...→⑧が一連の処理（イテレーション）の流れとなっており、これを繰り返すことで最適化が進行します。  
 :::info
-②～⑦は形状最適化（＝`evaluator`が後述の`pyemsol_shape_evaluator`）の場合のみ実行されます。
+②～⑦は形状最適化（＝`evaluator`が後述の`pyemsol_shape_evaluator`）の場合のみ実行されます。これらの処理は`emsopt_analyzer`モジュールに含まれるため、形状最適化の実行には`emsopt_analyzer`が必要です。
 :::
 ![Concepts Overview](/img/concepts_overview.drawio.png)
 
@@ -18,7 +18,7 @@ EMSOptimizerではすぐに使用できるオブジェクトの実装例を提�
 :::info 関連ページ
 - `optimization.yaml`の設定方法→[ユーザガイド > 最適化の設定](../guides/optimization_config.md)
 - 各オブジェクト実装例の詳細や設定→ユーザガイド内の各セクション
-- コアオブジェクトの自作方法→[ユーザガイド > コアオブジェクトの自作](../guides/user_define.md)
+- コアオブジェクトの自作方法→[発展的なトピック > コアオブジェクトの自作](../advanced/user_define.md)
 :::
 
 ### Optimizer
@@ -60,6 +60,7 @@ EMSOptimizerでは「設計領域内の各位置で正負の値を返す関数�
 - [`ls_r`](../guides/LevelSetFunction/ls_r.md): 半径ごとにレベルをセットするシンプルな実装例。
 - [`ngnet`](../guides/LevelSetFunction/ngnet.md): NGnet関数\[3\]。
 - [`ngnet_mixture`](../guides/LevelSetFunction/ngnet_mixture.md): `ls_r`と`ngnet`を組み合わせ、ある半径以内（または以外）の領域についてNGnet関数を適用する実装例。
+- [`ngnet_multi_material`](../guides/LevelSetFunction/ngnet_multi_material.md): 多材料表現型のNGnet関数\[3\]。
 
 ### AnalysisConditioner
 形状最適化における解析条件（電流位相角、磁化方向など）の動的な設定を担います。`evaluator`に`pyemsol_shape_evaluator`を設定したときに参照され、解候補ベクトル内の対応する変数を元に解析条件に関するパラメータを変更します。  
@@ -71,7 +72,7 @@ EMSOptimizerでは「設計領域内の各位置で正負の値を返す関数�
 ### eMotorSolution Shape Builder
 寸法最適化における形状定義を担います。`evaluator`が`pyemsol_shape_evaluator`、かつeMotorSolution連携時に使用可能で、解候補ベクトル内の対応する変数を元にモータの部品寸法を設定する役割を担います。
 :::info
-eMotorSolution連携については[ユーザガイド > eMotorSolutionとの連携](../guides/link_ems.md)をご覧ください。
+eMotorSolution連携については[発展的なトピック > eMotorSolutionとの連携](../advanced/link_ems.md)をご覧ください。
 :::
 
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
