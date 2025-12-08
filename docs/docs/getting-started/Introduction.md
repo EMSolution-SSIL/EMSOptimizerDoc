@@ -92,8 +92,12 @@ NGnetの詳細については[ユーザガイド > LevelSetFunction > NGnet](../
 python emsopt.py run NewDmodel
 ```
 
-`run`コマンドを実行すると最適化が始まると同時に、デフォルトで最適化経過をチェックするためのGUIが立ち上がります（この機能をオフにするには`optimization.yaml`内の`enable_progress_gui`を`False`に設定します）。
-![GUI例](/img/GUI_ex.png)
+`run`コマンドを実行すると最適化が始まると同時に、デフォルトで最適化経過をチェックするためのGUIが立ち上がります。  
+![GUI例](/img/GUI_ex.png)  
+:::info
+なお、GUI機能をオフにするには`optimization.yaml`内の`enable_progress_gui`を`False`に設定します。  
+その他、最適化に関するコンフィグの詳細は[ユーザガイド > 最適化の設定](../guides/optimization_config.md)をご覧ください。
+:::
 
 既定の回数の最適化イテレーションが経過するか、GUI上から停止されると最適化計算が完了状態になります。完了後もGUIは自由に操作でき、GUIを閉じるかCUI（コマンドライン）上で`Ctrl+C`を入力することでプロセスを完全に終了します。
 

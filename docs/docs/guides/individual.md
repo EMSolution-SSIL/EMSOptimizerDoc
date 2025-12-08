@@ -4,7 +4,8 @@ sidebar_position: 4
 
 # individual関連オブジェクト API
 ここでは、EMSOptimizer全体で使用される個体（individual）を管理するためのクラス群を紹介します。  
-`emsopt_engine.individual`からimport可能です。
+`emsopt_engine.individual`からimport可能です。  
+これらのクラス群は特に`optimizer`, `evaluator`間における個体情報のやり取りに利用されます。
 
 ## `OptimizationProblemMetrics`
 ```python

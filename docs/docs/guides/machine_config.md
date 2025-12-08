@@ -151,6 +151,11 @@ increment_info:
 Implicit Domain Meshingの手法については[Implicit Domain Meshing](../advanced/implicit_domain_meshing.md)ページを参照してください。
 :::
 - `use_implicit_domain_meshing: bool` ... Implicit Domain Meshingの有効化／無効化。
+:::warning 制限事項
+Implicit Domain Meshingの有効化時は以下の点を確認してください。
+- プロジェクトに格納するメッシュファイルは三角形メッシュのみで構成されていること。四角形メッシュ等のImplicit Domain Meshingは実行不可です。
+- `target_ids_and_onoff`に`id for level 3`以上の材料IDが設定されていないこと。
+:::
 - `no_split_ids: list[int]` ... Implicit Domain Meshing適用時、領域変形の対象外とする材料IDのリスト（ただし、領域内のリメッシュは許容）。
 - `no_remesh_ids: list[int]` ... Implicit Domain Meshing適用時、リメッシュの対象外とする材料IDのリスト。
 :::info
@@ -159,7 +164,7 @@ Implicit Domain Meshingの手法については[Implicit Domain Meshing](../adva
 :::
 - `design_region_size: float` ... 設計領域の（大まかな）大きさ \[m\]。以下の`hausd_ratio`および`hmin_ratio`と併せて、リメッシュ時の材料境界の精度に影響します。
 - `hausd_ratio: float` ... リメッシュ時の材料境界の許容誤差率。具体的には、`hausd_raito`×`design_region_size`の値がリメッシュ時に許容誤差として参照されます。
-- `hmin_ratio: float` ... リメッシュ時の要素エッジ長の最小値率。具体的には、`hmin_raito`×`design_region_size`の値がリメッシュ時に最小エッジ長として参照されます。
+- `hmin_ratio: float` ... リメッシュ時の要素エッジ長の最小値率。具体的には、`hmin_ratio`×`design_region_size`の値がリメッシュ時に最小エッジ長として参照されます。
 - `bad_mesh_threshold: float` ... リメッシュ時にメッシュの質を表す指標（0~1, 1が最良）がこの値を下回った場合、その形状は評価をスキップする。評価がスキップされた形状には大きなペナルティが与えられるため、最適化アルゴリズムにより淘汰されやすくなります。
 :::tip 推奨設定値
 - `hausd_ratio` ... 0.001程度。値が小さいほどレベルセット関数に対する材料境界の忠実度が高くなる代わりにメッシュ要素数が増加し、解析に要する時間が増加します（ただし、メッシュ要素数は`hmin_ratio`によって制限されます）。
@@ -170,7 +175,5 @@ Implicit Domain Meshingの手法については[Implicit Domain Meshing](../adva
 ### eMotorSolution Link Settings
 `ems_project_filepath: str` ... EMSOptimizerと連携したいeMotorSolutionプロジェクトファイル（.json）へのファイルパス。
 :::info
-`ems_project_filepath`が正しく設定されている場合、**EMSOptimizerプロジェクトにメッシュファイルおよび解析ケースフォルダは不要です。**  
-代わりにeMotorSolutionによってメッシュが動的に生成されるようになります。  
-また、解析ケースフォルダはプロジェクトからコピーされるようになります（ただし、そのプロジェクトに解析ケースフォルダが必要。また、`optimization_problem.yaml` > `case_names`は設定が必要）。
+eMotorSlution連携については[発展的なトピック > eMotorSolutionとの連携](../advanced/link_ems.md)をご覧ください。
 :::

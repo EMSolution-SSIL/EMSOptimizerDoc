@@ -8,7 +8,8 @@ sidebar_position: 2
 ## 概要
 以下の図は、EMSOptimizerの各機能（オブジェクト）がどのように協働するかを示したものです。①→②→...→⑧が一連の処理（イテレーション）の流れとなっており、これを繰り返すことで最適化が進行します。  
 :::info
-②～⑦は形状最適化（＝`evaluator`が後述の`pyemsol_shape_evaluator`）の場合のみ実行されます。これらの処理は`emsopt_analyzer`モジュールに含まれるため、形状最適化の実行には`emsopt_analyzer`が必要です。
+②～⑦は形状最適化（＝`evaluator`が後述の`pyemsol_shape_evaluator`）の場合のみ実行されます。  
+これらの処理は`emsopt_analyzer`モジュールに含まれます。
 :::
 ![Concepts Overview](/img/concepts_overview.drawio.png)
 
@@ -31,15 +32,17 @@ EMSOptimizerではすぐに使用できるオブジェクトの実装例を提�
 
 ### Evaluator
 解候補の評価を担うオブジェクトです。`optimizer`によって生成された解候補を評価（目的関数値および制約条件値を計算）して`optimizer`に返す役割を担います。  
-形状最適化においては他のオブジェクトおよび電磁界シミュレータパッケージpyemsolと連携し、形状定義から`metrics`の計算までの一連の処理を担います。
+形状最適化においては他のオブジェクトおよび電磁界シミュレータパッケージpyemsolと連携し、形状定義から評価値計算までの一連の処理を担います。
 
 以下の実装例（`examples`フォルダ内）がデフォルトで利用可能です。
 - [`sphere`](../guides/Evaluator/sphere.md): 単目的最適化ベンチマークSphere関数\[11\]。
 - [`rastrigin`](../guides/Evaluator/rastrigin.md): 単目的最適化ベンチマークRastrigin関数\[11\]。
 - [`zdt1`](../guides/Evaluator/zdt1.md): 多目的最適化ベンチマークZDT1関数\[9\]。
-- [`pyemsol_shape_evaluator`](../guides/Evaluator/pyemsol_shape_evaluator.md): **形状最適化用の評価実装**。`ls_function`や`ems_shape_builder`によって定義された形状を電磁界シミュレータパッケージpyemsolを用いて解析し、`optimization_problem.yaml`に定義された目的関数および制約条件を計算します（`optimizer_problem.yaml`については[最適化問題の設定](./opt_problem.md)ページを参照）。
-`pyemsol_shape_evaluator`は例外的にEMSOptimizer内部にて定義されおり、`examples`フォルダ内に実装はありません。
-
+- [`pyemsol_shape_evaluator`](../guides/Evaluator/pyemsol_shape_evaluator.md): **形状最適化用の評価実装**。`ls_function`や`ems_shape_builder`によって定義された形状を電磁界シミュレータパッケージpyemsolを用いて解析し、`optimization_problem.yaml`に定義された目的関数および制約条件を計算します（`optimizer_problem.yaml`については[最適化問題の設定](./opt_problem.md)ページを参照）。  
+:::info
+`pyemsol_shape_evaluator`は`emsopt_analyzer`モジュールにて定義されおり、`examples`フォルダ内に実装はありません。  
+また、`pyemsol_shape_evaluator`による形状最適化の実行には`emsopt_analyzer`のインストールが必要です。
+:::
 なお、`sphere`, `rastrigin`, `zdt1`は最適化ベンチマーク関数であり、形状最適化を実行する前に`optimizer`の性能をチェックするために活用することができます。
 
 :::tip EMSOptimizerにおける形状最適化

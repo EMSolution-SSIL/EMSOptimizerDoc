@@ -11,15 +11,15 @@ CMA-ESでは、下記のように正規分布から個体$\boldsymbol{x}$を複�
 ```math
 \boldsymbol{x} \sim \boldsymbol{m} + \sigma \mathcal{N}(\boldsymbol{0}, \boldsymbol{C})
 ```
-CMA-ESでは遺伝的アルゴリズム等とは異なり、明示的な解集団はありません。その代わり、分布パラメータ$\boldsymbol{m}, \sigma, \boldsymbol{C}$を保持します。  
-個体の評価値に基づいて分布パラメータを更新することで、サンプリングされる個体を優れた方向に進化させます。
+CMA-ESでは遺伝的アルゴリズム等とは異なり、明示的な解集団はありません。その代わり、分布パラメータ$\boldsymbol{m}, \sigma, \boldsymbol{C}$等を保持します。  
+個体の優劣関係に基づいて分布パラメータを更新することで、サンプリングされる個体を優れた方向に進化させます。
 
 また、制約違反した個体は以下のように評価します\[12\]。これにより、実行可能解を優先的に評価しつつ、制約違反量を考慮した評価が可能になります。
 ```math
 f(\boldsymbol{x}) = f(\boldsymbol{x}_0) + r(\boldsymbol{x})
 ```
 $f$: 目的関数  
-$f(\boldsymbol{x}_0)$: 実行可能解の目的関数の最悪値  
+$f(\boldsymbol{x}_0)$: サンプリング個体中の目的関数の最悪値  
 $r(\boldsymbol{x})$: 制約違反量
 
 ## 設定可能なキーワード引数一覧

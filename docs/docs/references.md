@@ -38,3 +38,5 @@ sidebar_position: 5
 \[16\] 貝森 弘行、公開可能なバーチャルモータモデルの提案、電学静止器・回転機合同研資、SA-24-025, RM-24-025, 2025.
 
 \[17\] H. Sato, S. Hiruma and H. Igarashi, "Multi-material Topology Optimization of Permanent Magnet Motor with Arbitrary Adjacency Relationship of Materials," 2020 IEEE 19th Biennial Conference on Electromagnetic Field Computation (CEFC), Pisa, Italy, 2020, pp. 1-4.
+
+\[18\] Dask core developers, https://www.dask.org/.

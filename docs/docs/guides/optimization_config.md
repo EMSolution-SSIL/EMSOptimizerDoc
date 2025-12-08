@@ -30,8 +30,12 @@ ems_shape_builder: = None
 num_iteration: int
 enable_parallelization: bool = False
 num_processes: int | null = null
+enable_dask_distribution: bool = False
+dask_scheduler_url: str | null = null
+num_chunks: int | null = null
 
 # Output
+resource_dir: str | null = null
 output_dir: str
 output_interval: int = 1
 output_control:
@@ -82,10 +86,20 @@ enable_progress_gui: bool = True
 :::info
 ここでは、「イテレーション」＝「`optimizer`が`Population`を`evaluator`に渡し、`evaluator`が評価し、`optimizer`が`Population`の更新処理をする一連のプロセス」と定義しています。
 :::
-- `enable_parallelization: bool`... 並列処理の有効化／無効化。
-- `num_processes: int | null` ... 並列処理プロセス数。`null`の場合、PCのCPU数から自動的に設定される。
+- `enable_parallelization: bool`... 並列処理の有効化／無効化。有効化時、形状最適化における形状評価を並列化する。
+- `num_processes: int | null` ... 並列処理の有効化時、並列処理プロセス数。`null`の場合、PCのCPU数から自動的に設定される。
+- `enable_dask_distribution: bool` ... pythonパッケージdask distributedによる分散処理の有効化／無効化。有効化時、形状最適化における形状評価を別途立ち上げたworkerノード群に分散する。
+- `dask_scheduler_url: str | null` ... 分散処理の有効化時、workerノード群が接続されたschedulerノードへのURL。
+- `num_chunks: int | null` ... 分散処理の有効化時、分散処理数。
+:::info
+分散処理の詳細については[発展的なトピック > 計算ノード間分散処理](../advanced/distribution.md)をご覧ください。
+:::
 
 ### 出力設定
+- `resource_dir: str | null` ... 形状最適化における作業用フォルダ名。中間ファイル等の出力先であり、eMotorSolution APIやpyemsolの計算結果が格納される。（形状最適化以外では設定不要）
+:::info
+分散処理時、`resource_dir`には最適化実行ノードおよびworkerノード群からアクセス可能な共有フォルダを指定します。
+:::
 - `output_dir: str` ... 最適化経過の出力先フォルダ名。
 - `output_interval: int` ... GUIを含む出力全体のインターバル。1なら毎イテレーション、2なら2イテレーションに1回、...と出力します。
 - `output_control` ... 各出力ファイルの設定。
