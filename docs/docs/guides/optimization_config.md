@@ -90,7 +90,7 @@ enable_progress_gui: bool = True
 - `num_processes: int | null` ... 並列処理の有効化時、並列処理プロセス数。`null`の場合、PCのCPU数から自動的に設定される。
 - `enable_dask_distribution: bool` ... pythonパッケージdask distributedによる分散処理の有効化／無効化。有効化時、形状最適化における形状評価を別途立ち上げたworkerノード群に分散する。
 - `dask_scheduler_url: str | null` ... 分散処理の有効化時、workerノード群が接続されたschedulerノードへのURL。
-- `num_chunks: int | null` ... 分散処理の有効化時、分散処理数。
+- `num_chunks: int | null` ... 分散処理の有効化時、分散処理数。形状評価タスクは`num_chunks`に分割され、アクティブなworker群に分配される。さらに`enable_parallelization`が`True`ならば、worker内では`num_processes`の数だけプロセス並列して形状評価タスクを処理する。
 :::info
 分散処理の詳細については[発展的なトピック > 計算ノード間分散処理](../advanced/distribution.md)をご覧ください。
 :::
