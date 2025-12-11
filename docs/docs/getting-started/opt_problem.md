@@ -33,6 +33,7 @@ $f_i$, $g_i$, $h_i$は`opimization_problem.yaml`ファイル内の以下のリ�
 - `function_name: str` ... 評価用関数名（下記参照）。
 - `case_name: str | null` ... `function_name`を評価する解析ケース名（下記参照）。
 - `kwargs: dict` ... 評価用関数に渡すpythonキーワード引数。省略可能。
+- `normalization_const: float` ... 正規化定数。下式参照。デフォルト値は`1.0`。
 - `coefficient: float` ... 重み係数。下式参照。デフォルト値は`1.0`。
 - `baseline: float` ... バイアス項。下式参照。デフォルト値は`0.0`。
 :::info
@@ -46,7 +47,7 @@ EMSOptimizerにおいては、複数解析ケースに対して目的関数を�
 
 以上の設定項目から、各個体に対して$f_i$, $g_i$, $h_i$は以下の式によって計算されます。
 ```math
-\text{coefficient} \times (A - \text{baseline}) \\
+\text{coefficient} \times (A - \text{baseline}) / \text{normalization\_const} \\
 ```
 $A$: `case_name`の解析結果に基づき、評価用関数に`kwargs`を与えて計算した結果値
 
@@ -75,11 +76,13 @@ objectives:
   - function_name: average_torque
     kwargs:
       torque_scale: 4.0
-    coefficient: -0.4762   # -1.0 / 2.1
+    normalization_const: 2.1
+    coefficient: -1.0
   - function_name: torque_ripple_percentage
     kwargs:
       torque_scale: 4.0
-    coefficient: 0.00185   # 0.1 / 54.0
+    normalization_const: 54.0
+    coefficient: 0.1
 
 ineq_constraints: []
 
@@ -100,7 +103,7 @@ other_metrics:
 
 `kwargs`にはトルクに乗じる倍率が登録されています。`Dmodel`プロジェクトではモータの4分の1モデルを解析対象としているため、トルクの値をフルモデル相当に変換するために倍率を4としています。
 
-また、それぞれの`coefficient`はその横にコメントで書かれた値を計算した結果です。これは、以下の式の定数部分$\frac{w}{T^\text{ref}}$に相当します。ここで$T^\text{ref}$は正規化定数であり、目的関数を無次元化するとともに目的関数間のスケールを合わせるために設定される値です。
+また、それぞれの`normalization_const`, `coefficient`はそれぞれ下式$T^\text{ref}, w$を表しています。ここで$T^\text{ref}$は正規化定数であり、目的関数を無次元化するとともに目的関数間のスケールを合わせるために設定される値です。
 
 ```math
 w \frac{f_i}{T^\text{ref}}

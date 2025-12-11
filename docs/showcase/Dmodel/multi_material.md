@@ -49,16 +49,18 @@ level_set_function:
 目的関数については`Dmodel`プロジェクトと変わらず、平均トルク最大化・トルクリプル最小化の設定となっています。  
 変更点として、`ineq_constraint`に`material_area`（指定材料の面積）が追加されています。指定材料（`physical_tag`）には`50000`（永久磁石）を設定します。  
 本最適化においては、永久磁石面積をオリジナルのDmodelの値（$4.9975\times10^{-5}\text{m}^2$）以下に制約することで、使用する永久磁石量が同等以下という条件下で最適な材料分布を得ることを目指します。
-```python
+```yaml
 objectives:
   - function_name: average_torque
     kwargs:
       torque_scale: 4.0
-    coefficient: -0.4762   # -1.0 / 2.1
+    normalization_const: 2.1
+    coefficient: -1.0
   - function_name: torque_ripple_percentage
     kwargs:
       torque_scale: 4.0
-    coefficient: 0.00185   # 0.1 / 54.0
+    normalization_const: 54.0
+    coefficient: 0.1
 
 ineq_constraints:
   - function_name: material_area

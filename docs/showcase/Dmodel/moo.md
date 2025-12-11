@@ -26,11 +26,13 @@ objectives:
   - function_name: average_torque
     kwargs:
       torque_scale: 4.0
-    coefficient: -0.476  # -1 / 2.1
+    normalization_const: 2.1
+    coefficient: -1.0
   - function_name: torque_ripple_percentage
     kwargs:
       torque_scale: 4.0
-    coefficient: 0.0185  # 1 / 54.0
+    normalization_const: 54.0
+    coefficient: 1.0
 ```
 
 すなわち、ここで定義された多目的最適化問題は以下の通りです。

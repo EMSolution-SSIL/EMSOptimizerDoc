@@ -27,12 +27,14 @@ objectives:
     case_name: transient
     kwargs:
       torque_scale: 4.0
-    coefficient: -0.4762   # -1.0 / 2.1
+    normalization_const: 2.1
+    coefficient: -1.0
   - function_name: average_torque
     case_name: transient_high_current
     kwargs:
       torque_scale: 4.0
-    coefficient: -0.1587   # -1.0 / 6.3
+    normalization_const: 6.3
+    coefficient: -1.0
 ```
 これを単目的問題として式で書くと（今回も`optmization.yaml`では単目的最適化アルゴリズム`cmaes`を設定）、以下の通りです。
 ```math
