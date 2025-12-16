@@ -97,9 +97,6 @@ enable_progress_gui: bool = True
 
 ### 出力設定
 - `resource_dir: str | null` ... 形状最適化における作業用フォルダ名。中間ファイル等の出力先であり、eMotorSolution APIやpyemsolの計算結果が格納される。（形状最適化以外では設定不要）
-:::info
-分散処理時、`resource_dir`には最適化実行ノードおよびworkerノード群からアクセス可能な共有フォルダを指定します。
-:::
 - `output_dir: str` ... 最適化経過の出力先フォルダ名。
 - `output_interval: int` ... GUIを含む出力全体のインターバル。1なら毎イテレーション、2なら2イテレーションに1回、...と出力します。
 - `output_control` ... 各出力ファイルの設定。
