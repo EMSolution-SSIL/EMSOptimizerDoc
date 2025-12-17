@@ -20,6 +20,13 @@ python emsopt.py cp_proj {コピー元プロジェクト名} {コピー先プロ
 ### Description
 このコマンドはプロジェクトをコピーします。コピー元のプロジェクトは`project`フォルダ内から選択します。コピー先のプロジェクトは`project`フォルダ内に自動的に作成されます。
 
+### Usage
+```sh
+python emsopt.py cln_proj {プロジェクト名}
+```
+### Description
+このコマンドは`project`フォルダ内の指定したプロジェクトに格納された中間フォルダ等を削除します。具体的には、デフォルトの中間フォルダ（`resources`, `opt_progress`）およびサマリーフォルダ（`summary`）を削除します。
+
 ## rm_proj
 ### Usage
 ```sh

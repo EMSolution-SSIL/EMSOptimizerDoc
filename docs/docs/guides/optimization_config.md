@@ -36,7 +36,7 @@ num_chunks: int | null = null
 
 # Output
 resource_dir: str | null = null
-output_dir: str
+output_dir: str | null = null
 output_interval: int = 1
 output_control:
   best_individual:
@@ -96,8 +96,8 @@ enable_progress_gui: bool = True
 :::
 
 ### 出力設定
-- `resource_dir: str | null` ... 形状最適化における作業用フォルダ名。中間ファイル等の出力先であり、eMotorSolution APIやpyemsolの計算結果が格納される。（形状最適化以外では設定不要）
-- `output_dir: str` ... 最適化経過の出力先フォルダ名。
+- `resource_dir: str | null` ... 形状最適化における作業用フォルダ名。中間ファイル等の出力先であり、eMotorSolution APIやpyemsolの計算結果が格納される。`null`（未指定）の場合、プロジェクトフォルダ内に`resources`ディレクトリが自動的に作られ、作業用フォルダとして使用されます。
+- `output_dir: str | null` ... 最適化経過の出力先フォルダ名。`null`（未指定）の場合、プロジェクトフォルダ内に`opt_progress`ディレクトリが自動的に作られ、出力先フォルダとして使用されます。
 - `output_interval: int` ... GUIを含む出力全体のインターバル。1なら毎イテレーション、2なら2イテレーションに1回、...と出力します。
 - `output_control` ... 各出力ファイルの設定。
   - `best_individual` ... エリート解（多目的最適化においては、パレート解）の情報。
