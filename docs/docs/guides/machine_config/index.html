@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.1">
 <title data-rh="true">機器設定（machine.yaml） | EMSOptimizer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/guides/machine_config"><meta data-rh="true" property="og:locale" content="ja"><meta data-rh="true" name="docusaurus_locale" content="ja"><meta data-rh="true" name="docsearch:language" content="ja"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="機器設定（machine.yaml） | EMSOptimizer"><meta data-rh="true" name="description" content="ここでは、machine.yamlの内容を説明します。"><meta data-rh="true" property="og:description" content="ここでは、machine.yamlの内容を説明します。"><link data-rh="true" rel="icon" href="/EMSOptimizerDoc/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/guides/machine_config"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/guides/machine_config" hreflang="ja"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/guides/machine_config" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ユーザガイド","item":"https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/category/ユーザガイド"},{"@type":"ListItem","position":2,"name":"機器設定（machine.yaml）","item":"https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/guides/machine_config"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/EMSOptimizerDoc/assets/css/styles.1631125e.css">
-<script src="/EMSOptimizerDoc/assets/js/runtime~main.729e39ca.js" defer="defer"></script>
+<script src="/EMSOptimizerDoc/assets/js/runtime~main.95844202.js" defer="defer"></script>
 <script src="/EMSOptimizerDoc/assets/js/main.6cea0ade.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -24,10 +24,10 @@
 <ul>
 <li><code>design_target: str (&quot;pre_geom&quot; | &quot;rotor&quot;)</code> ... 形状最適化のターゲット。</li>
 </ul>
-<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>備考</div><div class="admonitionContent_BuS1"><p>電磁界シミュレータEMSolution(pyemsol)では入力メッシュファイルが以下の2つに分かれるため、このコンフィグによってどちらを形状最適化するか指定します。<br>
-<code>pre_geom</code>: 運動を伴わないモデルメッシュ
-<code>rotor</code>: スライド運動部モデルメッシュ（モデルがスライド運動を伴う場合のみ入力）<br>
-<!-- -->例えば、同期モータ等ではステータが<code>pre_geom</code>、ロータが<code>rotor</code>に当たります。</p></div></div>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>備考</div><div class="admonitionContent_BuS1"><p>電磁界シミュレータEMSolution(pyemsol)では入力メッシュファイルが以下の2つに分かれるため、このコンフィグによってどちらを形状最適化するか指定します。</p><ul>
+<li><code>pre_geom</code>: 運動を伴わないモデルメッシュ</li>
+<li><code>rotor</code>: スライド運動部モデルメッシュ（モデルがスライド運動を伴う場合のみ入力）</li>
+</ul><p>例えば、同期モータ等ではステータが<code>pre_geom</code>、ロータが<code>rotor</code>に当たります。</p></div></div>
 <ul>
 <li><code>coordinate: str (&quot;Cartesian&quot; | &quot;Polar&quot;)</code> ... 計算に用いる座標系。</li>
 </ul>
@@ -86,7 +86,7 @@ y \leq -0.33 \rightarrow \text{id for level 3} \\
 </ul>
 <div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>制限事項</div><div class="admonitionContent_BuS1"><p>Implicit Domain Meshingの有効化時は以下の点を確認してください。</p><ul>
 <li>プロジェクトに格納するメッシュファイルは三角形メッシュのみで構成されていること。四角形メッシュ等のImplicit Domain Meshingは実行不可です。</li>
-<li><code>target_ids_and_onoff</code>に<code>id for level 3</code>以上の材料IDが設定されていないこと。</li>
+<li><code>target_ids_and_onoff</code>に<code>id for level 1</code>, <code>id for level 2</code>のみ設定されていること。Implicit Domain Meshing時は3材料以上のレベルセットは不可です。</li>
 </ul></div></div>
 <ul>
 <li><code>no_split_ids: list[int]</code> ... Implicit Domain Meshing適用時、領域変形の対象外とする材料IDのリスト（ただし、領域内のリメッシュは許容）。</li>
@@ -98,7 +98,7 @@ y \leq -0.33 \rightarrow \text{id for level 3} \\
 <li><code>design_region_size: float</code> ... 設計領域の（大まかな）大きさ [m]。以下の<code>hausd_ratio</code>および<code>hmin_ratio</code>と併せて、リメッシュ時の材料境界の精度に影響します。</li>
 <li><code>hausd_ratio: float</code> ... リメッシュ時の材料境界の許容誤差率。具体的には、<code>hausd_raito</code>×<code>design_region_size</code>の値がリメッシュ時に許容誤差として参照されます。</li>
 <li><code>hmin_ratio: float</code> ... リメッシュ時の要素エッジ長の最小値率。具体的には、<code>hmin_ratio</code>×<code>design_region_size</code>の値がリメッシュ時に最小エッジ長として参照されます。</li>
-<li><code>bad_mesh_threshold: float</code> ... リメッシュ時にメッシュの質を表す指標（0~1, 1が最良）がこの値を下回った場合、その形状は評価をスキップする。評価がスキップされた形状には大きなペナルティが与えられるため、最適化アルゴリズムにより淘汰されやすくなります。</li>
+<li><code>bad_mesh_threshold: float</code> ... リメッシュ時にメッシュの質を表す指標（0~1, 1が最良）がこの値を下回った場合、その形状は評価をスキップする。評価がスキップされた形状には大きなペナルティが与えられるため、最適化アルゴリズムにより淘汰されます。</li>
 </ul>
 <div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>推奨設定値</div><div class="admonitionContent_BuS1"><ul>
 <li><code>hausd_ratio</code> ... 0.001程度。値が小さいほどレベルセット関数に対する材料境界の忠実度が高くなる代わりにメッシュ要素数が増加し、解析に要する時間が増加します（ただし、メッシュ要素数は<code>hmin_ratio</code>によって制限されます）。</li>
