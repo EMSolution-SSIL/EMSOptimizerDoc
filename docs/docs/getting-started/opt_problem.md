@@ -30,7 +30,7 @@ $f_i$, $g_i$, $h_i$は`opimization_problem.yaml`ファイル内の以下のリ�
 - 例外として、`other_metrics`リストは最適化計算には使われず、GUI表示やファイル出力に利用されます。
 
 リスト内の各項目はいずれも以下の設定を持ちます。
-- `function_name: str` ... 評価用関数名（下記参照）。
+- `function_name: str` ... 評価用関数名（下記参照）。`average_torque`, `torque_ripple`など。
 - `case_name: str | null` ... `function_name`を評価する解析ケース名（下記参照）。
 - `kwargs: dict` ... 評価用関数に渡すpythonキーワード引数。省略可能。
 - `normalization_const: float` ... 正規化定数。下式参照。デフォルト値は`1.0`。
@@ -42,7 +42,7 @@ $f_i$, $g_i$, $h_i$は`opimization_problem.yaml`ファイル内の以下のリ�
 :::tip `case_names`について
 EMSOptimizerにおいては、複数解析ケースに対して目的関数を設定することが可能です。これはモータ等において複数の運転点における性能を同時に最適化したい場合などに活用できます。  
 解析ケース名の一覧は`optimization_problem.yaml` > `case_names`にリストとして設定します。また、同名の解析ケースフォルダ群をプロジェクトフォルダ内に格納します。  
-実際に複数解析ケースを活用した最適化については[Dmodel_advanced](../../showcase/Dmodel/advanced.md)の例をご覧ください。
+実際に複数解析ケースを活用した最適化については[Showcase](../../showcase/Dmodel/advanced.md)の例をご覧ください。
 :::
 
 以上の設定項目から、各個体に対して$f_i$, $g_i$, $h_i$は以下の式によって計算されます。
@@ -97,7 +97,7 @@ other_metrics:
       torque_scale: 4.0
 ```
 
-まず、解析ケース名は`transient`（電気角／機械角を動かしながらの多ケース解析）のみです。また、ここでは制約条件を課していないため、`ineq_constraints`および`eq_constraints`は空配列となっています（なお、設定の記載を省略した場合も空配列と同じ扱いになります）。
+まず、解析ケース名は`transient`（電気角、機械角を動かしながらの多ケース解析）のみです。また、ここでは制約条件を課していないため、`ineq_constraints`および`eq_constraints`は空配列となっています（なお、設定の記載を省略した場合も空配列と同じ扱いになります）。
 
 次に、`objectives`には2つの$f_i$が設定されています。1つ目はモータの平均トルク、2つ目はトルクリプル率（トルク波形のpeak-to-peak振幅を平均トルクによって除した値）を計算する関数です。
 
@@ -119,4 +119,4 @@ w \frac{f_i}{T^\text{ref}}
 $T_\text{avg}$：平均トルク [Nm]  
 $T_\text{rip}$：トルクリプル率 [%]
 
-最後に、`other_metrics`には平均トルクとトルクリプル率（`coefficient`無の生データ）が登録されています。これにより、GUIからこれらの値を確認できるようになっています。
+最後に、`other_metrics`には平均トルクとトルクリプル率（`normalization_const`, `coefficient`無の生データ）が登録されています。これにより、GUIからこれらの値を確認できるようになっています。

@@ -8,6 +8,7 @@ eMotorSolution HoleMagnet Type 55 永久磁石定義。`IPM8P48S_pto`プロジ�
 ## 概要
 10次元の寸法パラメータ$\boldsymbol{d}=\{W0, W1, W2, W3, W4, H0, H1, H2, H3, H4\}$から永久磁石およびフラックスバリア形状を定義します。
 :::info
+本実装例を適用するためには、使用するeMotorSolutionプロジェクトにHoleMagnet Type 55が設定されている必要があります。  
 寸法パラメータ情報についてはeMotorSolutionのドキュメントをご覧ください。
 :::
 

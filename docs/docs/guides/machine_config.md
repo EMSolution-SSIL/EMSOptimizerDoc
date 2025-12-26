@@ -44,8 +44,9 @@ ems_project_filepath: str | null = null
 - `design_target: str ("pre_geom" | "rotor")` ... 形状最適化のターゲット。
 :::info
 電磁界シミュレータEMSolution(pyemsol)では入力メッシュファイルが以下の2つに分かれるため、このコンフィグによってどちらを形状最適化するか指定します。   
-`pre_geom`: 運動を伴わないモデルメッシュ 
-`rotor`: スライド運動部モデルメッシュ（モデルがスライド運動を伴う場合のみ入力）  
+- `pre_geom`: 運動を伴わないモデルメッシュ
+- `rotor`: スライド運動部モデルメッシュ（モデルがスライド運動を伴う場合のみ入力）  
+
 例えば、同期モータ等ではステータが`pre_geom`、ロータが`rotor`に当たります。
 :::
 - `coordinate: str ("Cartesian" | "Polar")` ... 計算に用いる座標系。
@@ -154,7 +155,7 @@ Implicit Domain Meshingの手法については[Implicit Domain Meshing](../adva
 :::warning 制限事項
 Implicit Domain Meshingの有効化時は以下の点を確認してください。
 - プロジェクトに格納するメッシュファイルは三角形メッシュのみで構成されていること。四角形メッシュ等のImplicit Domain Meshingは実行不可です。
-- `target_ids_and_onoff`に`id for level 3`以上の材料IDが設定されていないこと。
+- `target_ids_and_onoff`に`id for level 1`, `id for level 2`のみ設定されていること。Implicit Domain Meshing時は3材料以上のレベルセットは不可です。
 :::
 - `no_split_ids: list[int]` ... Implicit Domain Meshing適用時、領域変形の対象外とする材料IDのリスト（ただし、領域内のリメッシュは許容）。
 - `no_remesh_ids: list[int]` ... Implicit Domain Meshing適用時、リメッシュの対象外とする材料IDのリスト。
@@ -165,7 +166,7 @@ Implicit Domain Meshingの有効化時は以下の点を確認してください
 - `design_region_size: float` ... 設計領域の（大まかな）大きさ \[m\]。以下の`hausd_ratio`および`hmin_ratio`と併せて、リメッシュ時の材料境界の精度に影響します。
 - `hausd_ratio: float` ... リメッシュ時の材料境界の許容誤差率。具体的には、`hausd_raito`×`design_region_size`の値がリメッシュ時に許容誤差として参照されます。
 - `hmin_ratio: float` ... リメッシュ時の要素エッジ長の最小値率。具体的には、`hmin_ratio`×`design_region_size`の値がリメッシュ時に最小エッジ長として参照されます。
-- `bad_mesh_threshold: float` ... リメッシュ時にメッシュの質を表す指標（0~1, 1が最良）がこの値を下回った場合、その形状は評価をスキップする。評価がスキップされた形状には大きなペナルティが与えられるため、最適化アルゴリズムにより淘汰されやすくなります。
+- `bad_mesh_threshold: float` ... リメッシュ時にメッシュの質を表す指標（0~1, 1が最良）がこの値を下回った場合、その形状は評価をスキップする。評価がスキップされた形状には大きなペナルティが与えられるため、最適化アルゴリズムにより淘汰されます。
 :::tip 推奨設定値
 - `hausd_ratio` ... 0.001程度。値が小さいほどレベルセット関数に対する材料境界の忠実度が高くなる代わりにメッシュ要素数が増加し、解析に要する時間が増加します（ただし、メッシュ要素数は`hmin_ratio`によって制限されます）。
 - `hmin_ratio` ... 0.05~0.01程度。値が小さいほどメッシュ全体が細かくなります。

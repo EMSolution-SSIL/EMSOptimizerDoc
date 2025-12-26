@@ -56,15 +56,14 @@ enable_progress_gui: bool = True
 
 ## Details
 :::info
-コアオブジェクトの実装例についてはユーザガイド内の各セクションを参照してください。  
-また、`name`と`kwargs`の仕組みについては[発展的なトピック > コアオブジェクトの自作ページ](../advanced/user_define.md)を参照してください。
+コアオブジェクトの実装例および設定できるキーワード引数については、ユーザガイド内の各セクションを参照してください。  
 :::
 
 ### コアオブジェクト
 - `evaluator` ... 最適化で使用するEvaluator実装。
     - `name: str` ... 実装名
     - `kwargs: dict[str, Any]` ... キーワード引数
-- `optimizer` ... 最適化で使用するEvaluator実装。
+- `optimizer` ... 最適化で使用するOptimizer実装。
     - `name: str` ... 実装名
     - `kwargs: dict[str, Any]` ... キーワード引数
 - `analysis_conditioner` ... 最適化で使用するAnalysisConditioner実装。省略可能。
@@ -78,25 +77,26 @@ enable_progress_gui: bool = True
     - `kwargs: dict[str, Any]` ... キーワード引数
 :::info
 後半3つのコアオブジェクト設定は省略可能です。使用したいもののみ設定してください。  
-特に、`evaluator`にベンチマーク関数を使用した場合は3つすべて使用しないため省略可能です。
+特に、`evaluator`にベンチマーク関数を使用した場合は3つすべて無関係のため省略可能です（設定しても無視されます）。
 :::
 
 ### 最適化設定
 - `num_iteration: int` ... 最適化イテレーション数。
 :::info
-ここでは、「イテレーション」＝「`optimizer`が`Population`を`evaluator`に渡し、`evaluator`が評価し、`optimizer`が`Population`の更新処理をする一連のプロセス」と定義しています。
+ここでは、イテレーションは以下の通り定義します。  
+「`optimizer`が評価対象を`evaluator`に渡し、`evaluator`が評価し、`optimizer`が更新処理をする一連のプロセス」
 :::
 - `enable_parallelization: bool`... 並列処理の有効化／無効化。有効化時、形状最適化における形状評価を並列化する。
 - `num_processes: int | null` ... 並列処理の有効化時、並列処理プロセス数。`null`の場合、PCのCPU数から自動的に設定される。
-- `enable_dask_distribution: bool` ... pythonパッケージdask distributedによる分散処理の有効化／無効化。有効化時、形状最適化における形状評価を別途立ち上げたworkerノード群に分散する。
-- `dask_scheduler_url: str | null` ... 分散処理の有効化時、workerノード群が接続されたschedulerノードへのURL。
+- `enable_dask_distribution: bool` ... 分散処理の有効化／無効化。有効化時、形状最適化における形状評価を別途立ち上げたworkerノード群に分散する。
+- `dask_scheduler_url: str | null` ... 分散処理の有効化時、workerノード群が接続されたschedulerノードへのアドレス。
 - `num_chunks: int | null` ... 分散処理の有効化時、分散処理数。形状評価タスクは`num_chunks`に分割され、アクティブなworker群に分配される。さらに`enable_parallelization`が`True`ならば、worker内では`num_processes`の数だけプロセス並列して形状評価タスクを処理する。
 :::info
 分散処理の詳細については[発展的なトピック > 計算ノード間分散処理](../advanced/distribution.md)をご覧ください。
 :::
 
 ### 出力設定
-- `resource_dir: str | null` ... 形状最適化における作業用フォルダ名。中間ファイル等の出力先であり、eMotorSolution APIやpyemsolの計算結果が格納される。`null`（未指定）の場合、プロジェクトフォルダ内に`resources`ディレクトリが自動的に作られ、作業用フォルダとして使用されます。
+- `resource_dir: str | null` ... 形状最適化における作業用フォルダ名。中間ファイル等の出力先であり、eMotorSolution APIやpyemsolの計算結果が格納される。`null`（未指定）の場合、プロジェクトフォルダ内に`resources`ディレクトリが自動的に作られ、作業用フォルダとして使用されます（形状最適化時のみ）。
 - `output_dir: str | null` ... 最適化経過の出力先フォルダ名。`null`（未指定）の場合、プロジェクトフォルダ内に`opt_progress`ディレクトリが自動的に作られ、出力先フォルダとして使用されます。
 - `output_interval: int` ... GUIを含む出力全体のインターバル。1なら毎イテレーション、2なら2イテレーションに1回、...と出力します。
 - `output_control` ... 各出力ファイルの設定。

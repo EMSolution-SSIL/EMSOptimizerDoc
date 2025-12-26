@@ -8,7 +8,7 @@ EMSOptimizerは形状最適化において、形状評価の並列処理に加�
 分散処理にはDask Distributedパッケージ\[18\]が提供するclient / scheduler / worker間連携を利用しています。分散処理機能を有効化するには、`optimization.yaml` > `enable_dask_distribution`を`True`に設定します。
 :::info
 分散処理機能を利用するには以下の2点が必要です。
-- 各ノードにEMSOptimizerの実行環境（EMSOptFree, EMSOptEngine, およびCodeMeterプロテクト版のモジュール群）が導入されていること
+- 各ノードにEMSOptimizerの実行環境（CodeMeterプロテクト版）が導入されていること
 - CodeMeter Runtimeによるライセンス設定が各ノードに行われていること
 :::
 
@@ -46,7 +46,7 @@ dask scheduler
 ```
 - scheduler起動時、以下のログが表示されるので{}内の情報を記録しておきます（2.以降の手順にて使用します）。
 ```sh
-Scheduler at: {tcp://{schedulerノードのIPアドレス}:{ポート番号}}
+Scheduler at: tcp://{schedulerノードのIPアドレス}:{ポート番号}
 ```
 2. workerノードにて以下のコマンドを実行し、workerを起動します。
 ```sh
@@ -54,7 +54,7 @@ dask worker tcp://{schedulerノードのIPアドレス}:{ポート番号} --nwor
 ```
 3. clientノード上の実行したいプロジェクトにおいて、`optimization.yaml`に以下の設定を行います。  
 - `enable_dask_distribution: True`
-- `dask_scheduler_url: {tcp://{schedulerノードのIPアドレス}:{ポート番号}}`
+- `dask_scheduler_url: tcp://{schedulerノードのIPアドレス}:{ポート番号}`
 - `num_chunks: {タスク分割数}`または`null`
     - 形状評価タスクは`num_chunks`に分割され、アクティブなworkerノード群に分配されます。
     - `null`のとき、`タスク分割数＝アクティブなworkerノード数`に自動設定されます。
@@ -63,7 +63,7 @@ dask worker tcp://{schedulerノードのIPアドレス}:{ポート番号} --nwor
 - `num_processes: {並列処理数}`または`null`
     - workerノードでは、`num_processes`の数だけプロセス並列して形状評価タスクが処理されます。
     - したがって、総並列処理数は`num_chunks`×`num_processes`となります。
-- `resource_dir: {共有フォルダ}`
+- `resource_dir: {共有フォルダへのパス}`
     - 最適化の中間ファイル等は`resource_dir`に集約されるため、`resource_dir`にはclient, schedulerおよびworkerノード群の全てからアクセス可能な共有フォルダを指定します。
 4. clientノードから、`run`コマンドによって最適化を実行します。
     - 形状最適化中、形状評価タスクが自動的にworkerノード群に分配されます。

@@ -86,7 +86,8 @@ class Population(MutableMapping[int, Individual]):
     ...
 ```
 最適化アルゴリズムで扱う個体群（Population）を管理するクラスです。
-`MutableMapping[int, Individual]` を継承しており、基本的に**辞書 (`dict`) とほぼ同じインターフェース**で個体を操作できます。
+`MutableMapping[int, Individual]` を継承しており、基本的に**辞書 (`dict`) とほぼ同じインターフェース**で個体を操作できます。  
+`optimizer`, `evaluator`間ではPopulationのインスタンスが行き来することによって解候補群とそれらに対する評価値がやりとりされます。
 
 ### コンストラクタ（__init__）
 - 引数：`init_data: dict[int, Individual] | None`

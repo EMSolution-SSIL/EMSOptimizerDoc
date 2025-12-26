@@ -5,7 +5,7 @@ sidebar_position: 9
 ここでは、形状最適化において`optimization_problem.yaml`に設定できる評価関数の実装例を紹介します。  
 
 ## 共通事項
-すべての関数はpyemsol解析結果の作業ディレクトリ (`working_dir`) を引数として受け取ります。ただし、**`working_dir`は形状最適化実行時にEMSOptimizer内部で自動的に渡されるため、本来引数を指定すべき`optimization_problem.yaml`内`kwargs`への記載が不要となります**（記載しても無視されます）。以下の説明では`working_dir`は省略しています。  
+すべての関数はpyemsol解析結果の作業ディレクトリ (`working_dir`) を引数として受け取ります。ただし、**`working_dir`は形状最適化実行時にEMSOptimizer内部で自動的に渡されるため、引数リスト（`optimization_problem.yaml`内`kwargs`）への記載が不要となります**（記載しても無視されます）。以下の説明では`working_dir`は省略しています。  
 各関数内では、`working_dir`の中に保存された`output.json`やメッシュファイルを読み込んで評価値を計算します。出力されるファイルの詳細についてはEMSolutionのドキュメントを参照してください。
 
 ## `average_torque`

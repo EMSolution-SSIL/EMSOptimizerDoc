@@ -30,7 +30,7 @@ ems_project_filepath: "Path/To/EMSOptimizer/projects/IPM8P48S_pto/IPM8P48S.json"
 このような場合、Implicit Domain Meshingではメッシュが細かくなりすぎる可能性があるため、`IPM8P48S_pto`プロジェクトではデフォルトでオフにしています。
 
 ## optimization.yaml（`IPM8P48S_pto`プロジェクト）
-まず、形状決定にかかわるオブジェクトから説明します。  
+まず、形状決定にかかわるコアオブジェクトから説明します。  
 レベルセット関数に`ngnet_mixture`を設定し、半径78.2mm以上（からロータ半径である80.2mm以下）の範囲に限ってNGnet on/off法によるトポロジー最適化を実施します。  
 同時に、`ems_shape_builder`を`HoleMagnet55`に設定しています。これは、IPM8P48Sオリジナルモデルにも使用されているeMotorSolution Hole Magnet Type55（ロータ永久磁石＋フラックスバリアモデル）の寸法を10の設計変数から設定するオブジェクトです。  
 これを`level_set_function`と同時に設定することで、
