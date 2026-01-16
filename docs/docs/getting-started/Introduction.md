@@ -6,7 +6,7 @@ sidebar_position: 1
 ここでは、EMSOptimizerによる最適化の導入を行います。
 
 ## ベンチマーク関数の数理最適化を試す
-EMSOptimizerの最適化機能を試すには、配置した`EMSOptimizer`フォルダ直下にて以下のコマンドを実行します。
+EMSOptimizerの最適化機能を試すには、配置した`EMSOptimizer`フォルダ内にて以下のコマンドを実行します。
 ```sh
 python emsopt.py run soo_base
 ```
