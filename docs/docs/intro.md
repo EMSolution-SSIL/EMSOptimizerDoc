@@ -16,7 +16,7 @@ sidebar_position: 1
 - pyemsol
     - 電磁界シミュレータエンジンEMSolutionのpython版パッケージです。EMSOptAnalyzerを駆動させるために必要です。
 :::info
-EMSOptAnalyzerの駆動にはEMSOptimizer専用のpyemsolが必要です。これはEMSOptAnalyzer提供時に一緒に提供されます。
+EMSOptAnalyzerの駆動には専用のpyemsolが必要です。これはEMSOptAnalyzer提供時に一緒に提供されます。
 :::
 - （任意）eMotorSolution API
     - eMotorSolutionのpython APIです。eMotorSolutionとEMSOptimizerを連携させたい場合にインストールします。連携機能については[発展的なトピック > eMotorSolutionとの連携](./advanced/link_ems.md)をご覧ください。
