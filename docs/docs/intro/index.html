@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.1">
 <title data-rh="true">インストールガイド | EMSOptimizer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/intro"><meta data-rh="true" property="og:locale" content="ja"><meta data-rh="true" name="docusaurus_locale" content="ja"><meta data-rh="true" name="docsearch:language" content="ja"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="インストールガイド | EMSOptimizer"><meta data-rh="true" name="description" content="ソフトウェア構成"><meta data-rh="true" property="og:description" content="ソフトウェア構成"><link data-rh="true" rel="icon" href="/EMSOptimizerDoc/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/intro"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/intro" hreflang="ja"><link data-rh="true" rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/intro" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"インストールガイド","item":"https://EMSolution-SSIL.github.io/EMSOptimizerDoc/docs/docs/intro"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/EMSOptimizerDoc/assets/css/styles.1631125e.css">
-<script src="/EMSOptimizerDoc/assets/js/runtime~main.f696e47c.js" defer="defer"></script>
+<script src="/EMSOptimizerDoc/assets/js/runtime~main.18cae198.js" defer="defer"></script>
 <script src="/EMSOptimizerDoc/assets/js/main.0cb8c990.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -46,20 +46,13 @@
 <li>eMotorSolutionのpython APIです。eMotorSolutionとEMSOptimizerを連携させたい場合にインストールします。連携機能については<a href="/EMSOptimizerDoc/docs/docs/advanced/link_ems">発展的なトピック &gt; eMotorSolutionとの連携</a>をご覧ください。</li>
 </ul>
 </li>
-<li>ライセンス認証情報（ライセンスファイルまたはCodeMeterライセンスキー）**</li>
+<li>CodeMeterライセンスキー**</li>
 </ul>
 <p>*形状最適化用の関連パッケージ群が無い状態でも、形状最適化を除いた一部機能（ベンチマーク関数による最適化アルゴリズムのテストなど）は利用可能です。</p>
-<p>**EMSOptimizerパッケージ群の一部および関連パッケージ群はライセンスプロテクトされており、利用にはライセンス認証が必要です。以下の2種類のプロテクト方式のいずれかを選択します。</p>
-<ul>
-<li>ライセンスファイルプロテクト：独自のライセンスファイルを使用したプロテクト方式です。</li>
-<li>CodeMeterプロテクト：ライセンスプロテクションソフトウェアCodeMeterを使用したプロテクト方式です。</li>
-</ul>
-<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>備考</div><div class="admonitionContent_BuS1"><p><strong>以下の機能はCodeMeterプロテクト時のみ利用可能です</strong>。</p><ul>
-<li><a href="/EMSOptimizerDoc/docs/docs/advanced/link_ems">eMotorSolution連携機能</a></li>
-<li><a href="/EMSOptimizerDoc/docs/docs/advanced/distribution">計算ノード間分散処理機能</a></li>
-</ul></div></div>
+<p>**EMSOptimizerパッケージ群の一部および関連パッケージ群はCodeMeterによってライセンスプロテクトされており、利用にはライセンス認証が必要です。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="インストール手順">インストール手順<a href="#インストール手順" class="hash-link" aria-label="インストール手順 への直接リンク" title="インストール手順 への直接リンク" translate="no">​</a></h2>
 <p>*Python 3.11.x (xは任意のマイナーバージョン) 環境およびパッケージ管理ツールpipが必要です。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="パッケージ群のインストール">パッケージ群のインストール<a href="#パッケージ群のインストール" class="hash-link" aria-label="パッケージ群のインストール への直接リンク" title="パッケージ群のインストール への直接リンク" translate="no">​</a></h3>
 <ol>
 <li>EMSOptimierパッケージ群をインストールします。</li>
 </ol>
@@ -71,17 +64,7 @@
 <ol start="2">
 <li>SSILから提供される関連パッケージ群をそれぞれの手順に従ってインストールします。</li>
 </ol>
-<ul>
-<li>（ライセンスファイルプロテクト時）ライセンスファイルは以下のデフォルトのフォルダに配置します。<!-- -->
-<ul>
-<li>Windows: <code>C:\ProgramData\SSIL\EMSolution\</code></li>
-<li>Linux: <code>/usr/local/emsol/</code></li>
-</ul>
-</li>
-<li>（CodeMeterプロテクト時）以下の追加手順を実施します。ライセンスキーは追加手順内にて使用します。</li>
-</ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="codemeterプロテクト時の追加手順">CodeMeterプロテクト時の追加手順<a href="#codemeterプロテクト時の追加手順" class="hash-link" aria-label="CodeMeterプロテクト時の追加手順 への直接リンク" title="CodeMeterプロテクト時の追加手順 への直接リンク" translate="no">​</a></h3>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="codemeter-user-softwareのインストール">CodeMeter User Softwareのインストール<a href="#codemeter-user-softwareのインストール" class="hash-link" aria-label="CodeMeter User Softwareのインストール への直接リンク" title="CodeMeter User Softwareのインストール への直接リンク" translate="no">​</a></h4>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="codemeter-user-softwareのインストール">CodeMeter User Softwareのインストール<a href="#codemeter-user-softwareのインストール" class="hash-link" aria-label="CodeMeter User Softwareのインストール への直接リンク" title="CodeMeter User Softwareのインストール への直接リンク" translate="no">​</a></h3>
 <ol>
 <li>CodeMeter User Softwareダウンロードページにアクセスします：<a href="https://www.wibu.com/support/user/user-software.html" target="_blank" rel="noopener noreferrer">https://www.wibu.com/support/user/user-software.html</a></li>
 <li>ご使用のOS（Windows、macOS、Linux）に対応したCodeMeter User Runtimeをダウンロードします。</li>
@@ -90,11 +73,11 @@
 <li><strong>Linux OSの場合のみ</strong>、Webサイト上の指示に従って、AxProtector User Runtimeをインストールします。</li>
 <li>インストール完了後、コンピューターを再起動します。</li>
 </ol>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="ライセンスのアクティベーション">ライセンスのアクティベーション<a href="#ライセンスのアクティベーション" class="hash-link" aria-label="ライセンスのアクティベーション への直接リンク" title="ライセンスのアクティベーション への直接リンク" translate="no">​</a></h4>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ライセンスのアクティベーション">ライセンスのアクティベーション<a href="#ライセンスのアクティベーション" class="hash-link" aria-label="ライセンスのアクティベーション への直接リンク" title="ライセンスのアクティベーション への直接リンク" translate="no">​</a></h3>
 <ol>
 <li>SSILから提供されるアクティベーションページのURLをブラウザで開きます。</li>
 <li>アクティベーションページの指示に従い、ライセンスをアクティベートします。</li>
 <li>アクティベーション後，CodeMeter Control Centerを開き，ライセンスが正しく登録されていることを確認します。</li>
-</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="ドキュメントページ"><a class="pagination-nav__link pagination-nav__link--next" href="/EMSOptimizerDoc/docs/category/基本の使い方"><div class="pagination-nav__sublabel">次へ</div><div class="pagination-nav__label">基本の使い方</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#ソフトウェア構成" class="table-of-contents__link toc-highlight">ソフトウェア構成</a></li><li><a href="#インストール手順" class="table-of-contents__link toc-highlight">インストール手順</a><ul><li><a href="#codemeterプロテクト時の追加手順" class="table-of-contents__link toc-highlight">CodeMeterプロテクト時の追加手順</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Science Solutions International Laboratory, Inc.</div></div></div></footer></div>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="ドキュメントページ"><a class="pagination-nav__link pagination-nav__link--next" href="/EMSOptimizerDoc/docs/category/基本の使い方"><div class="pagination-nav__sublabel">次へ</div><div class="pagination-nav__label">基本の使い方</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#ソフトウェア構成" class="table-of-contents__link toc-highlight">ソフトウェア構成</a></li><li><a href="#インストール手順" class="table-of-contents__link toc-highlight">インストール手順</a><ul><li><a href="#パッケージ群のインストール" class="table-of-contents__link toc-highlight">パッケージ群のインストール</a></li><li><a href="#codemeter-user-softwareのインストール" class="table-of-contents__link toc-highlight">CodeMeter User Softwareのインストール</a></li><li><a href="#ライセンスのアクティベーション" class="table-of-contents__link toc-highlight">ライセンスのアクティベーション</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Science Solutions International Laboratory, Inc.</div></div></div></footer></div>
 </body>
 </html>
