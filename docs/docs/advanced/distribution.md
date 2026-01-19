@@ -8,7 +8,7 @@ EMSOptimizerは形状最適化において、形状評価の並列処理に加�
 分散処理にはDask Distributedパッケージ\[18\]が提供するclient / scheduler / worker間連携を利用しています。分散処理機能を有効化するには、`optimization.yaml` > `enable_dask_distribution`を`True`に設定します。
 :::info
 分散処理機能を利用するには以下の2点が必要です。
-- 各ノードにEMSOptimizerの実行環境（CodeMeterプロテクト版）が導入されていること
+- 各ノードにEMSOptimizerの実行環境が導入されていること
 - CodeMeter Runtimeによるライセンス設定が各ノードに行われていること
 :::
 
