@@ -140,6 +140,43 @@ num_processes: Null  # if Null, automatically set from cpu counts
 （出力周りの設定は省略します）
 
 ## optimization_problem.yaml（`IPM8P48S_moo`プロジェクト）
+```yaml
+case_names:
+  - transient
+
+objectives:
+  - function_name: average_torque
+    kwargs:
+      torque_scale: 8.0
+    normalization_const: 14.62
+    coefficient: -1.0
+  - function_name: torque_ripple_percentage
+    kwargs:
+      torque_scale: 8.0
+    normalization_const: 35.34
+    coefficient: 1.0
+
+ineq_constraints:
+  - function_name: average_torque
+    kwargs:
+      torque_scale: 8.0
+    coefficient: -1
+    baseline: 14.62
+
+eq_constraints:
+  - function_name: num_connected_components
+    kwargs:
+      physical_tag: 20
+    baseline: 1
+
+other_metrics:
+  - function_name: average_torque
+    kwargs:
+      torque_scale: 8.0
+  - function_name: torque_ripple_percentage
+    kwargs:
+      torque_scale: 8.0
+```
 最適化問題（多目的）は以下の通りです。ここでは、平均トルクとトルクリプル率の両方を考慮しつつ、平均トルクについてはオリジナルモデルの値14.62Nmを超えるよう制約をかけています。また、ロータコアの結合制約も考慮しています。
 ```math
 \begin{align*}

@@ -75,6 +75,36 @@ $\boldsymbol{w}$: `ls_function`に与えられるレベルセット関数パラ�
 :::
 
 ## optimization_problem.yaml（`IPM8P48S_pto`プロジェクト）
+```yaml
+case_names:
+  - transient
+
+objectives:
+  - function_name: torque_ripple_percentage
+    kwargs:
+      torque_scale: 8.0
+
+ineq_constraints:
+  - function_name: average_torque
+    kwargs:
+      torque_scale: 8.0
+    coefficient: -1
+    baseline: 14.62
+
+eq_constraints:
+  - function_name: num_connected_components
+    kwargs:
+      physical_tag: 20
+    baseline: 1
+
+other_metrics:
+  - function_name: average_torque
+    kwargs:
+      torque_scale: 8.0
+  - function_name: torque_ripple_percentage
+    kwargs:
+      torque_scale: 8.0
+```
 最適化問題は以下の通りです。ここでは、平均トルクがオリジナルモデルの値14.62Nmを下回らないようにトルクリプルを最小化します。また、ロータコアの結合制約も考慮しています。
 ```math
 \begin{align*}
