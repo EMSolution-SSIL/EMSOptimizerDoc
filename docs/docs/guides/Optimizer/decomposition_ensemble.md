@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # decomposition_ensemble
@@ -22,7 +22,7 @@ MOEA/Dとは、多目的最適化を適切なアプローチによって複数�
 一方、計算時間は`num_decomposition`に比例して増加します。
 :::
 - `decomposition_type: str` ... 分解アプローチ。 `weighted_sum`, `tchebycheff`, `pbi`のいずれかに設定します。デフォルト値は"tchebycheff"。
-- `seed: int` ... 乱数シード値。デフォルト値は`null`（乱数シード非固定）。
+- `seed: int | null` ... 乱数シード値。デフォルト値は`null`（乱数シード非固定）。
 - `mean: np.ndarray` ... CMA-ESの$\boldsymbol{m}$初期値。デフォルト値は$\boldsymbol{m} = \boldsymbol{0}$。
 - `sigma: float` ... CMA-ESの$\boldsymbol{C}$の標準偏差初期値。デフォルト値は`1`。
 - `bounds: tuple[float, float] | list[tuple[float, float]]` ... CMA-ESの各変数の上下限値。

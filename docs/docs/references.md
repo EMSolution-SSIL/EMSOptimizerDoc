@@ -40,3 +40,15 @@ sidebar_position: 5
 \[17\] H. Sato, S. Hiruma and H. Igarashi, "Multi-material Topology Optimization of Permanent Magnet Motor with Arbitrary Adjacency Relationship of Materials," 2020 IEEE 19th Biennial Conference on Electromagnetic Field Computation (CEFC), Pisa, Italy, 2020, pp. 1-4.
 
 \[18\] Dask core developers, https://www.dask.org/.
+
+\[19\] T. Friedrich and M. Wagner, “Seeding the initial population of multi-objective evolutionary algorithms: A computational study,” Applied Soft Comput., 33, pp. 223–230, 2015.
+
+\[20\] 佐藤駿輔，多目的トポロジー最適化のSeedingによる効率化に関する検討，電学静止器・回転機合同研資，SA-26-029, RM-26-029, 2026.
+
+\[21\] K. Deb and J. Sundar, "Reference point based multi-objective optimization using evolutionary algorithms," Proceedings of the 8th annual conference on Genetic and evolutionary computation, 2006.
+
+\[22\] N. Taran, D. M. Ionel, and D. G. Dorrell, “Two-Level Surrogate-Assisted Differential Evolution Multi-Objective Optimization of Electric Machines Using 3-D FEA,” IEEE Tran. Magn., 54(11), pp. 1–5, Art no. 8107605, 2018.
+
+\[23\] S. Doi, H. Sasaki, and H. Igarashi, "Multi-Objective Topology Optimization of Rotating Machines Using Deep Learning", IEEE Trans. Magn., 55(6), Art no. 7202605, 2019.
+
+\[24\] H. Sato and H. Igarashi, “Fast Multi-Objective Optimization of Electromagnetic Devices Using Adaptive Neural Network Surrogate Model,” IEEE Trans. Magn., 58(5), pp. 1–9, Art no. 8202209, 2022.
