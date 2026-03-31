@@ -33,3 +33,5 @@ $r(\boldsymbol{x})$: 制約違反量
 :::
 - `seed: int | null` ... 乱数シード値。デフォルト値は`null`（乱数シード非固定）。
 - `population_size int` ... 1イテレーションあたりサンプリング個体数。デフォルト値はCMA-ES推奨の $4+\lfloor3\ln{n}\rfloor$。
+- `scalarizer_type: str | None` ... スカラー化タイプ。`evaluator`が多目的の場合（`metrics.objectives`に複数の値が入る場合）に，それらを単目的に変換します。`weighted_sum`, `tchebycheff`, `pbi`のいずれかに設定します。`None`の場合，`metrics.fitness`をそのまま単目的に使用します。デフォルト値は`None`。
+- `scalarizer_weights: list[float] | None` ... スカラー化重み係数。
