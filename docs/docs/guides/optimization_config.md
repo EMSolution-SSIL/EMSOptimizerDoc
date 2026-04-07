@@ -52,6 +52,10 @@ output_control:
     enabled: bool = True
     output_interval: int = 1
 enable_progress_gui: bool = True
+
+# restart
+restart:
+  target_study: str | null = null
 ```
 
 ## Details
@@ -113,3 +117,11 @@ enable_progress_gui: bool = True
     - `enabled: bool` ... 出力の有効化／無効化
     - `output_interval: int` ... 個別の出力インターバル
 - `enable_progress_gui: bool` ... GUIの有効化／無効化。
+- `restart` ... GUIから利用できる最適化リスタート機能。
+  - `target_study: str | null` ... 最適化リスタート先のスタディ名。
+:::tip リスタートの仕様
+リスタートは最適化完了後または`check`コマンドによってGUI呼び出し時，GUI上から実行できます。  
+リスタートを行うと，GUI上で選択した個体を`optimizer`の`mean`として，最適化が再実行されます。
+- `target_study`が`null`の場合 ... 現在のスタディを自動的に複製し，同一のコンフィグにて再実行
+- `target_study`にスタディ名を指定した場合 ... 指定したスタディを実行する。
+:::

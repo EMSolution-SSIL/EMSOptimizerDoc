@@ -41,7 +41,7 @@ class OptimizationProblemMetrics:
 - 個体のスカラー評価値（適合度）を返します。
 - `_fitness` が `None` の場合は、`objectives` の総和をデフォルトの適合度として返します。
     - 単目的最適化における単純加重和として利用可能
-- 外部で任意のスカラー化を行った場合、`metrics.fitness = スカラー値` のように代入すると、その値が`fitness`として返されるようになります。
+- 外部で任意のスカラー化を行った場合、`metrics.fitness = スカラー値` のように代入すると`_fitness`に値がセットされ、その値が`fitness`として返されるようになります。
 
 #### `constraint_violation: float`
 - 全制約（不等式＋等式）の違反量の合計を返します。
@@ -63,9 +63,12 @@ class Individual:
     solution: list[float]
     outcome_filepath: str | None = None
     metrics: OptimizationProblemMetrics = field(default_factory=OptimizationProblemMetrics)
+    label_values: dict[str, float] = field(default_factory=dict)
+    record_info: EvaluationRecord = field(default_factory=EvaluationRecord)
 ```
 個体（1つの解候補）を表すデータクラスです。
-解ベクトルに加えて、その評価結果・制約違反量・可視化用メトリクスなどを`metrics`として保持します。
+解ベクトルに加えて、その評価結果・制約違反量・可視化用メトリクスなどを`metrics`として保持します。  
+また，構造最適化時の評価関数を`label_values`に，評価ステータスを`record_info`として保持します。
 
 ### 属性
 #### `solution: list[float]`
@@ -79,6 +82,24 @@ class Individual:
 - 評価値・制約値・その他メトリクスを格納する `OptimizationProblemMetrics`インスタンス
 - 評価器（Evaluator）がこのフィールドに値をセットする想定
 - 形状最適化時は`optimization_problem.yaml`に設定した関数値がこのフィールドに格納される
+
+#### `label_values: dict[str, float]`
+- `metrics`に含まれる評価関数と，その評価結果を格納する辞書型変数
+    - key (str): 評価関数名（`function_name`）とケース名（`case_name`）によって構成された名称（例：`label__average_torque__case_transient`）
+    - value (float): `optimization_proble.yaml`に設定した関数値の生値（[基本の使い方 > 最適化問題の設定](../getting-started/opt_problem.md)ページの$A$値）
+:::warning
+`label_values`は関数名とケース名の2つによって関数を識別します。したがって，同じ関数名・同じケース名に異なる`kwargs`を与えた関数値同士は区別されません（どちらか一方のみが`label_values`に保存されます）。  
+異なる`kwargs`を与えた関数値も個別に保存したい場合，たとえば処理内容は同じで`kwargs`を固定した関数を別の関数として作成し，`optimization_problem.yaml`にて指定する必要があります。
+:::
+
+#### `record_info: EvaluationRecord`
+- 以下に示す評価結果レコードインスタンス。評価成功／失敗を`status`に，失敗時の理由（メッシュ生成エラー，解析エラーなど）を`failure_reason`に保存します。
+```python
+@dataclass
+class EvaluationRecord:
+    status: Literal["success", "failure"] = "success"
+    failure_reason: str | None = None
+```
 
 ## `Population`
 ```python
