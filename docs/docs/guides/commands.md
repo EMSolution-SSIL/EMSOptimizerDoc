@@ -104,13 +104,14 @@ python emsopt.py check {プロジェクト名} [--study-name {スタディ名}]
 
 ## sample
 ```sh
-python emsopt.py sample {プロジェクト名} {サンプル数} [--study-name {スタディ名}]
+python emsopt.py sample {プロジェクト名} {サンプル数} [--study-name {スタディ名}] [--chunk-size {チャンクサイズ}]
 ```
 ### Description
 このコマンドは指定したプロジェクトに設定された設計変数の範囲内でラテン超立方体サンプリングを実行します。サンプリング結果は通常の最適化と同様に`summary`フォルダに格納されます。
 ### --study-name {スタディ名}
 参照するスタディ名。
-
+### --chunk-size {チャンクサイズ}
+チャンクサイズ。サンプル数を指定のチャンクサイズ（一度にまとめて評価されるサンプル数）に分割して評価します。未指定の場合，適切なチャンクサイズが自動的に設定されます。
 
 ## export_surrogate_data
 ### Usage
