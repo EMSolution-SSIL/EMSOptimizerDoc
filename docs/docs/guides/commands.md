@@ -102,6 +102,16 @@ python emsopt.py check {プロジェクト名} [--study-name {スタディ名}]
 ### --study-name {スタディ名}
 参照するスタディ名。
 
+## sample
+```sh
+python emsopt.py sample {プロジェクト名} {サンプル数} [--study-name {スタディ名}]
+```
+### Description
+このコマンドは指定したプロジェクトに設定された設計変数の範囲内でラテン超立方体サンプリングを実行します。サンプリング結果は通常の最適化と同様に`summary`フォルダに格納されます。
+### --study-name {スタディ名}
+参照するスタディ名。
+
+
 ## export_surrogate_data
 ### Usage
 ```sh

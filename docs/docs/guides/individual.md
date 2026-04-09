@@ -148,6 +148,9 @@ class Population(MutableMapping[int, Individual]):
     - エリート個体だけを取り出して別途保存・可視化したい場合
     - 特定のインデックス群に対してのみ再評価を行いたい場合
 
+#### `from_design_matrix(cls, design_matrix: list[list[float]]) -> Population`
+- クラスメソッド。`design_matrix`から個体群を生成します。
+
 #### `to_design_matrix() -> list[list[float]]`
 - 全個体の `solution` をまとめて 2 次元リストとして返します。
 - 形式は「個体数 × 次元数」の設計行列（デザインマトリクス）に相当します。
