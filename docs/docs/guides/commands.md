@@ -128,6 +128,41 @@ python emsopt.py export_surrogate_data {プロジェクト名} [--study-names {�
 このコマンドで対象とするCSVは`optimization.yaml` > `output_control` > `candidate` > `enabled`が`True`の時に出力されます。
 :::
 
+## batch_run
+### Usage
+```sh
+python emsopt.py batch_run {プロジェクト名} {バッチサイズ（＝実行するランの数）} [--study-name {スタディ名}] [--stop-on-error]
+```
+### Description
+このコマンドは指定したプロジェクトの最適化計算をバッチ実行します。バッチ内の各実行結果はランとして`summary`フォルダ内に保存されます。
+:::info
+`batch_run`実行時，GUI表示は強制的にオフになります。
+:::
+### --study-name {スタディ名}
+参照するスタディ名。
+### --stop-on-error
+このオプションを指定した場合，エラー発生時にバッチ実行全体を中断する。未指定の場合，失敗ランは中断し，残りのランを続けて実行する。
+
+## analyze_runs
+### Usage
+```sh
+python emsopt.py analyze_runs {プロジェクト名} [--study-name {スタディ名}] [--reference-point {HV参照点}] [--run-ids {ランID}] [--gui]
+```
+### Description
+このコマンドは指定したプロジェクトに存在するラン全体を読み込み，統計情報（単目的なら最良目的関数値，多目的ならハイパーボリューム（HV）の平均・標準偏差）を計算します。計算結果は`summary/analysis`フォルダに出力されます。
+### --study-name {スタディ名}
+参照するスタディ名。
+### --reference-point {HV参照点}
+多目的最適化結果の分析時，HV計算に用いる参照点。  
+例：2目的，参照点(1.0, 1.0)の場合，`--reference-point 1.0 1.0`と指定する。
+:::warning
+参照点はパレートフロントに含まれるどの点よりも悪い（目的関数値が大きい）側に存在する必要がある。
+:::
+### --run-ids {ランID}
+参照するランID。複数指定する（例：`--run-ids run_0001 run_0002 run_0003`）。未指定の場合，スタディ内に存在する全てのランが参照される。
+### --gui
+このオプションを指定した場合，複数ランの結果確認用GUIが表示される。
+
 ## show_avl
 ### Usage
 ```sh
