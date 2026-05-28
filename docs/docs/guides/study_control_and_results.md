@@ -10,7 +10,7 @@ EMSOptimizerでは、最適化の実行・結果は次の3階層で管理され�
 - `study`
   - 最適化条件ごとの単位
   - `<project>/optimization_studies/`フォルダに作成される
-  - `optimization.yaml`、必要に応じて `machine.yaml`、`optimization_problem.yaml` を持つ
+  - `optimization.yaml`、`machine.yaml`、`optimization_problem.yaml` を持つ
 - `run`
   - スタディの実行単位
   - `<project>/summary/optimization_studies/<study_name>/`フォルダに作成される
@@ -27,6 +27,7 @@ python emsopt.py mk_study <project_name> <study_name> --from-study <source_study
 - `optimization.yaml`
 - `machine.yaml`
 - `optimization_problem.yaml`
+
 既存スタディを上書きしないよう、同名スタディがある場合はエラーになります。
 
 ### `default`スタディの自動作成
@@ -36,7 +37,7 @@ python emsopt.py mk_study <project_name> <study_name> --from-study <source_study
 
 ## ランの作成・管理
 ### ランの作成
-ランは主に次のコマンドを実行したときに自動的に作られます。
+ランは主に次のコマンドを実行したとき，`summary`フォルダ内に自動的に作られます。
 ```bash
 python emsopt.py run <project_name> --study-name <study>
 python emsopt.py batch_run <project_name> <num_runs> --study-name <study>
@@ -56,7 +57,7 @@ python emsopt.py sample <project_name> <num_sample> --study-name <study>
 - `run_0003`
 
 ### 実行状態の管理
-各 run には `run_info.yaml` が作られ、次の情報を有します：
+各ランに作成される`run_info.yaml`は，次の情報を有します：
 - `run_id`
 - `study_name`
 - `status`（最適化の成功・失敗記録）
@@ -77,9 +78,10 @@ latest.yaml
 resultant/
 records/   ← `optimization.yaml` > `output_control` > `candidate` > `enabled` が `True` のとき
 ```
+また，これとは別に，最新ランの実行結果のコピーが`summary`フォルダ直下に配置されます。最新の結果を確認したいときは`summary`フォルダ直下を参照できます。
 
 ### `runs/<run_id>/`
-各ランの正本です。  
+各ランの実行結果フォルダです。  
 ```text
 summary/optimization_studies/<study>/runs/<run_id>/
 ```
@@ -98,10 +100,6 @@ summary/optimization_studies/<study>/runs/<run_id>/
 スタディの最新ランを指すメタ情報です。  
 中には `latest_run_id` が入ります。
 `check`コマンドはこの情報を使って、「そのスタディの最新ラン結果」を開きます。
-
-### スタディ直下の `resultant/`, `records/`
-これは最新ランのコピーです。
-「いまの最新結果だけをすぐ見たい」ときは、スタディ直下を見ればよい設計です。
 
 ### プロジェクト横断結果
 プロジェクト全体では、スタディ横断の集約テーブル（全個体データ）も作られます。  
@@ -148,14 +146,6 @@ summary/optimization_studies/<study>/analysis/
 - `single_objective_run_comparison.csv`
 - `single_objective_runs.png`
 - `single_objective_stats.yaml`
-
-`single_objective_stats.yaml` には次が入ります。
-- `num_target_runs`
-- `num_included_runs`
-- `num_excluded_runs`
-- `excluded_runs`
-- `best_objective_mean`
-- `best_objective_std`
 
 ### 多目的
 複数ランのパレートフロントハイパーボリューム値の比較および統計が出力されます。

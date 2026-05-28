@@ -51,4 +51,6 @@ sidebar_position: 5
 
 \[23\] S. Doi, H. Sasaki, and H. Igarashi, "Multi-Objective Topology Optimization of Rotating Machines Using Deep Learning", IEEE Trans. Magn., 55(6), Art no. 7202605, 2019.
 
-\[24\] H. Sato and H. Igarashi, “Fast Multi-Objective Optimization of Electromagnetic Devices Using Adaptive Neural Network Surrogate Model,” IEEE Trans. Magn., 58(5), pp. 1–9, Art no. 8202209, 2022.
+\[24\] H. Sato and H. Igarashi, "Fast Multi-Objective Optimization of Electromagnetic Devices Using Adaptive Neural Network Surrogate Model," IEEE Trans. Magn., 58(5), pp. 1–9, Art no. 8202209, 2022.
+
+\[25\] M. D. McKay, R. J. Beckman, and W. J. Conover, "A Comparison of Three Methods for Selecting Values of Input Variables in the Analysis of Output From a Computer Code," Technometrics, Vol. 42, No. 1, pp. 55–61, 2000.
