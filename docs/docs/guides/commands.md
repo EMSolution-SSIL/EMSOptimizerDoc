@@ -82,7 +82,7 @@ python emsopt.py load_tpl {プロジェクト名} {テンプレート名} [--stu
 ## run
 ### Usage
 ```sh
-python emsopt.py run {プロジェクト名} [--study-name {スタディ名}]
+python emsopt.py run {プロジェクト名} [--study-name {スタディ名}] [--dry]
 ```
 ### Description
 このコマンドは指定したプロジェクトの最適化計算を実行します。最適化が完了するとプロジェクトフォルダ内に最適化サマリー`summary`フォルダが自動生成され、これは`check`コマンドによって読み込まれます。
@@ -91,6 +91,8 @@ python emsopt.py run {プロジェクト名} [--study-name {スタディ名}]
 :::
 ### --study-name {スタディ名}
 参照するスタディ名。
+### --dry
+このオプションを指定したとき，最適化本体は実行されない。最適化を実行する前に「最適化が開始できる状態にあるか」を確認することができます。
 
 ## check
 ### Usage
