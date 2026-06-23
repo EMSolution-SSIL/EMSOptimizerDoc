@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# NGnetMultiMaterial
+# ngnet_multi_material
 3材料最適化用のNGnet実装です。多材料表現型のNGnet on/off法\[3\]において形状表現に用いられます。  
 原理的には3材料からなる任意の分布を表現可能です\[12\], \[17\]。
 

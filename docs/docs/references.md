@@ -54,3 +54,16 @@ sidebar_position: 5
 \[24\] H. Sato and H. Igarashi, "Fast Multi-Objective Optimization of Electromagnetic Devices Using Adaptive Neural Network Surrogate Model," IEEE Trans. Magn., 58(5), pp. 1–9, Art no. 8202209, 2022.
 
 \[25\] M. D. McKay, R. J. Beckman, and W. J. Conover, "A Comparison of Three Methods for Selecting Values of Input Variables in the Analysis of Output From a Computer Code," Technometrics, Vol. 42, No. 1, pp. 55–61, 2000.
+
+\[26\] Y. Okamoto, R. Hoshino, S. Wakao and T. Tsuburaya, "Improvement of Torque Characteristics For a Synchronous Reluctance Motor Using MMA-based Topology Optimization Method," in IEEE Transactions on Magnetics, vol. 54, no. 3, pp. 1-4, March 2018, Art no. 7203104
+
+\[27\] Y. Yamashita and Y. Okamoto, "Design Optimization of Synchronous Reluctance Motor for Reducing Iron Loss and Improving Torque Characteristics Using Topology Optimization Based on the Level-Set Method," in IEEE Transactions on Magnetics, vol. 56, no. 3, pp. 1-4, March 2020, Art no. 7510704
+
+\[28\] T. Yamada, K. Izui, S. Nishiwaki, and A. Takezawa, "A topology optimization method based on the level set method incorporating a fictitious interface energy," Computer Methods in Applied Mechanics and Engineering, vol. 199, issue 45-48, pp. 2876-2891, 2010
+
+\[29\] H. Li, T. Yamada, P. Jolivet, K. Furuta, T. Kondoh, K. Izui, and S. Nishiwaki, "Full-scale 3D structural topology optimization using adaptive mesh refinement based on the level-set method," Finite Elements in Analysis and Design, vol. 194, 103561, 2021
+
+\[30\] 大西恒世，比留間真悟，美舩健，松尾哲司，「グレースケールフリーなフェーズフィールド法に基づくレベルセット法を用いたIPMモータのトポロジー最適化の検討」，電気学会研究会資料（静止器／回転機合同研究会），SA-25-116，RM-25-128，2025
+
+\[31\] H. Masuda, Y. Kanda, Y. Okamoto, K. Hirono, R. Hoshino, S. Wakao, and T. Tsuburaya, "Topology optimization of induction heating model using sequential linear programming based on move limit with adaptive relaxation," Open Physics, vol. 15, no. 1, pp. 845-850, 2017
+                  

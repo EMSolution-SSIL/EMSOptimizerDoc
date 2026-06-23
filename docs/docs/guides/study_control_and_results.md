@@ -3,18 +3,18 @@ sidebar_position: 5
 ---
 
 # スタディコントロールと結果確認
-## 全体像
-EMSOptimizerでは、最適化の実行・結果は次の3階層で管理されます。
+## 概要
+EMSOptimizerでは，最適化の実行・結果は次の3階層で管理されます。
 - `project`
-  - 最適化対象そのものを切り分ける単位。メッシュファイル、解析条件フォルダはここに入れる。
+  - 最適化対象そのものを切り分ける単位。メッシュファイル，解析条件フォルダはここに入れる。
 - `study`
   - 最適化条件ごとの単位
   - `<project>/optimization_studies/`フォルダに作成される
-  - `optimization.yaml`、`machine.yaml`、`optimization_problem.yaml` を持つ
+  - `optimization.yaml`，`machine.yaml`，`optimization_problem.yaml` を持つ
 - `run`
   - スタディの実行単位
   - `<project>/summary/optimization_studies/<study_name>/`フォルダに作成される
-  - 同じスタディを複数回実行すると、ランが増えていく
+  - 同じスタディを複数回実行すると，ランが増えていく
 
 ## スタディの作成・管理
 ### スタディの作成
@@ -28,12 +28,11 @@ python emsopt.py mk_study <project_name> <study_name> --from-study <source_study
 - `machine.yaml`
 - `optimization_problem.yaml`
 
-既存スタディを上書きしないよう、同名スタディがある場合はエラーになります。
+既存スタディを上書きしないよう，同名スタディがある場合はエラーになります。
 
 ### `default`スタディの自動作成
-`run`、`sample`、`check`、`analyze_runs` などで `--study-name` を省略した場合は、`default`スタディが対象になります。  
-このとき `default` がなければ、プロジェクトルートのコンフィグファイル群をコピーして自動作成されます。
-つまり、最初はスタディを明示的に作らなくても、`default`を起点に使い始められます。
+`run`，`sample`，`check`，`analyze_runs` などで `--study-name` を省略した場合は，`default`スタディが対象になります。  
+このとき，`default`スタディはプロジェクトルートのコンフィグファイル群をコピーして自動作成されます。
 
 ## ランの作成・管理
 ### ランの作成
@@ -48,7 +47,7 @@ python emsopt.py sample <project_name> <num_sample> --study-name <study>
 - `batch_run`
   - 同一スタディを複数回独立実行し，それぞれをランとして保存
 - `sample`
-  - LHSサンプルを評価して、1つのランとして保存
+  - LHSサンプルを評価して，1つのランとして保存
 
 ### ランIDの付け方
 ランはスタディごとに連番で採番されます。
@@ -99,17 +98,17 @@ summary/optimization_studies/<study>/runs/<run_id>/
 ### `latest.yaml`
 スタディの最新ランを指すメタ情報です。  
 中には `latest_run_id` が入ります。
-`check`コマンドはこの情報を使って、「そのスタディの最新ラン結果」を開きます。
+`check`コマンドはこの情報を使って，「そのスタディの最新ラン結果」を開きます。
 
 ### プロジェクト横断結果
-プロジェクト全体では、スタディ横断の集約テーブル（全個体データ）も作られます。  
+プロジェクト全体では，スタディ横断の集約テーブル（全個体データ）も作られます。  
 `optimization.yaml` > `output_control` > `candidate` > `enabled` が `True`のときに出力されます。
 ```text
 <project>/summary/cross_study/cross_study_individuals.csv
 ```
 
 ### surrogate 用データ出力
-`export_surrogate_data`コマンドを使うと、cross-study テーブルから条件付きで学習データを切り出せます。
+`export_surrogate_data`コマンドを使うと，cross-study テーブルから条件付きで学習データを切り出せます。
 ```bash
 python emsopt.py export_surrogate_data <project_name> --study-names <study1> <study2>
 ```
@@ -132,7 +131,7 @@ summary/optimization_studies/<study>/analysis/
 - `run_status.csv`
   - run ごとの状態一覧
 - `run_health.yaml`
-  - 成功率、失敗率、失敗理由集計
+  - 成功率，失敗率，失敗理由集計
 
 例:
 - `num_runs`

@@ -29,7 +29,16 @@ no_remesh_ids: list[int] = []
 design_region_size: float = 0.0010
 hausd_ratio: float = 0.0001
 hmin_ratio: float  0.01
+hgrad: float = 1.2
 bad_mesh_threshold: float = 0.10
+
+# neighbor judgement
+neighbor_radius_ratio: Annotated[float, Field(ge=0.0)] = 1.0
+min_neighbors: Annotated[int, Field(ge=0)] = 4
+
+# levelset reinitialization
+calc_levelset_init: bool = False
+levelset_reinit_interval: int | null = null
 
 # eMotorSolution Link Settings
 ems_project_filepath: str | null = null
@@ -166,12 +175,24 @@ Implicit Domain Meshingの有効化時は以下の点を確認してください
 - `design_region_size: float` ... 設計領域の（大まかな）大きさ \[m\]。以下の`hausd_ratio`および`hmin_ratio`と併せて、リメッシュ時の材料境界の精度に影響します。
 - `hausd_ratio: float` ... リメッシュ時の材料境界の許容誤差率。具体的には、`hausd_raito`×`design_region_size`の値がリメッシュ時に許容誤差として参照されます。
 - `hmin_ratio: float` ... リメッシュ時の要素エッジ長の最小値率。具体的には、`hmin_ratio`×`design_region_size`の値がリメッシュ時に最小エッジ長として参照されます。
+- `hgrad: float` ... リメッシュ時の要素エッジ長勾配。1より大きい値を指定する。この値が大きいほど境界からのメッシュサイズの変化が大きくなり，小さいほど一様なメッシュに近づく。
 - `bad_mesh_threshold: float` ... リメッシュ時にメッシュの質を表す指標（0~1, 1が最良）がこの値を下回った場合、その形状は評価をスキップする。評価がスキップされた形状には大きなペナルティが与えられるため、最適化アルゴリズムにより淘汰されます。
 :::tip 推奨設定値
 - `hausd_ratio` ... 0.001程度。値が小さいほどレベルセット関数に対する材料境界の忠実度が高くなる代わりにメッシュ要素数が増加し、解析に要する時間が増加します（ただし、メッシュ要素数は`hmin_ratio`によって制限されます）。
 - `hmin_ratio` ... 0.05~0.01程度。値が小さいほどメッシュ全体が細かくなります。
+- `hgrad` ... 1.1~1.3程度。値が小さいほど一様なメッシュに近づきます。
 - `bad_mesh_threshold:` ... 0.05~0.10程度。値が小さいほど質の悪いメッシュも許容されるようになり、形状の解析率が上がる代わりに結果の信頼度が低下します。
 :::
+
+### 近傍判定
+近傍判定は，`ls_function`を設定した場合に行われ，解析フォルダ内に`design_neighbors.csv`という名前で出力されます。
+- `neighbor_radius_ratio: float` ... ある要素の近傍と判定される規格化半径。具体的には，（その要素の最近傍要素中心との距離）× neighbor_radius_ratioの距離内にある要素が近傍と判定される。
+- `min_neighbors: int` ... 最小近傍要素数。近傍判定の結果要素数がこの値に満たない場合，非近傍要素のうち最も近い要素が順に近傍要素に加えられる。
+
+### レベルセット再初期化
+レベルセット再初期化は，`ls_function`に`pyemsol_density`を設定した場合に有効なオプションです。
+- `calc_levelset_init: bool` ... 最適化実行前にメッシュを読み取り，各要素における境界からの符号付距離関数値を計算する。計算結果は解析フォルダ内に`design_ls_parameters.csv`という名前で出力される。
+- `levelset_reinit_interval: int | null` ... レベルセット再初期化頻度。`null`のとき，最適化中に再初期化は行われない。
 
 ### eMotorSolution Link Settings
 `ems_project_filepath: str` ... EMSOptimizerと連携したいeMotorSolutionプロジェクトファイル（.json）へのファイルパス。

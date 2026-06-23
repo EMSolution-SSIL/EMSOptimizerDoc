@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# SimpleLevelSetRadius
+# ls_r
 半径ごとにレベルを設定するシンプルなLevelSetFunction実装です。
 
 ## 概要

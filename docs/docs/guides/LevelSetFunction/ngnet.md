@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# NGnet
+# ngnet
 NGnet実装です。NGnet on/off法\[3\]において形状表現に用いられます。
 
 ## 概要

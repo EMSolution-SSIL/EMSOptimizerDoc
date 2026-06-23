@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# NGnetMixture
+# ngnet_mixture
 [SimpleLevelSetRadius](ls_r.md)と[NGnet](ngnet.md)を組み合わせ、ある半径以内の領域についてNGnet関数を適用する実装例。
 
 ## 概要
