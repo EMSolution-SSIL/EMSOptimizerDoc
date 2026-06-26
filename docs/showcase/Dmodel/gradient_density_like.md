@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Dmodel勾配ベース最適化例（密度法ライク）
 ここでは，`Dmodel_SynRM_gradient`プロジェクトの内容について紹介します。  
-`Dmodel_SynRM_gradient`では同期リラクタンスモータ（SynRM）を想定し，勾配ベースのトポロジー最適化手法によって最適化を行います。
+`Dmodel_SynRM_gradient`では同期リラクタンスモータ（SynRM）を想定し，勾配ベースのトポロジー最適化手法（密度法ライク）によって最適化を行います。
 
 ## ベースメッシュについて
 `Dmodel_SynRM_gradient`では`Dmodel_multi_material`プロジェクトと同様に，ベースメッシュとしてロータ部が永久磁石を含まず材料番号`20`（磁性体コア）のみからなるメッシュを使用し，ロータ部全域について空気／磁性体コア分布を最適化します。
