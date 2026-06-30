@@ -16,7 +16,7 @@ sidebar_position: 2
 ## コアオブジェクト実装例
 EMSOptimizerではすぐに使用できるコアオブジェクトの実装例を提供しています。  
 ユーザは既存の実装例を利用するほか、ユーザ自身が修正あるいは新規に作成して自由に組み合わせることが可能です。どの実装を使うかは`optimization.yaml`内で設定します。
-:::info 関連ページ
+:::info[関連ページ]
 - `optimization.yaml`の設定方法→[ユーザガイド > 最適化の設定](../guides/optimization_config.md)
 - 各オブジェクト実装例の詳細や設定→ユーザガイド内の各セクション
 - コアオブジェクトの自作方法→[発展的なトピック > コアオブジェクトの自作](../advanced/user_define.md)
@@ -44,7 +44,7 @@ EMSOptimizerではすぐに使用できるコアオブジェクトの実装例�
 :::
 なお、`sphere`, `rastrigin`, `zdt1`は最適化ベンチマーク関数であり、形状最適化を実行する前に`optimizer`の性能をチェックするために活用することができます。
 
-:::tip EMSOptimizerにおける形状最適化
+:::tip[EMSOptimizerにおける形状最適化]
 EMSOptimizerにおいては明確な「形状最適化モード」のようなものは存在しません。  
 単に`evaluator`に`pyemsol_shape_evaluator`を設定することで、その内部で形状に対する諸々の計算が行われます。  
 したがって、ベンチマーク関数の最適化と全く同じように形状最適化を実行することが可能です（ただし、形状最適化時には`machine.yaml`と`optimization_problem.yaml`の設定が必要です）。
@@ -80,7 +80,7 @@ eMotorSolution連携については[発展的なトピック > eMotorSolutionと
 以下の実装例（`examples`フォルダ内）が利用可能です。
 - [`HoleMagnet55`](../guides/EMSShapeBuilder/holemagnet55.md): eMotorSolution HoleMagnet Type 55 永久磁石定義。`IPM8P48S_pto`プロジェクト内で使用されています。
 
-:::tip 解析条件・寸法・トポロジーの同時最適化
+:::tip[解析条件・寸法・トポロジーの同時最適化]
 EMSOptimizerでは`analysis_conditioner`、`ls_function`、`ems_shape_builder`はすべて独立に・同時に設定可能です。特に、`ems_shape_builder`を`ls_function`と同時に設定することで、寸法・トポロジーの同時最適化\[10\]が実行可能です。  
 より詳細には、解候補ベクトルは以下のように解釈されます。
 ```math
@@ -93,7 +93,7 @@ $\boldsymbol{w}$: `ls_function`に与えられるレベルセット関数パラ�
 $\boldsymbol{p}$, $\boldsymbol{d}$, $\boldsymbol{w}$ のうち、未設定のオブジェクトに対応するベクトルはゼロベクトルと見なされます。
 :::
 
-:::tip 最適化コントロール
+:::tip[最適化コントロール]
 `evaluator`と`optimizer`とを協働させる役割は`manager/optimization_manager.py`が担っています。  
 `manager`フォルダ内にはほかにもGUI出力やファイル出力を行うクラスが定義されていますが、ここでは割愛します。
 :::

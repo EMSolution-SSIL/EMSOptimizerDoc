@@ -64,7 +64,7 @@ python emsopt.py run {プロジェクト名}
 6. （任意）`mk_study`コマンドによってスタディを作成する。
 7. CLIから`run`コマンドにより最適化を実行する。
 8. 最適化完了後、必要があれば`check`コマンドにより最適化結果を確認する。
-:::info スタディとラン
+:::info[スタディとラン]
 EMSOptimizerではプロジェクト内に複数のスタディ（最適化設定の管理単位）を作成することができます。  
 スタディの最適化試行ごとにランと呼ばれる単位で結果が保存されます。また，同一スタディを複数回まとめて実行する`batch_run`コマンドも使用できます。  
 詳細は[ユーザガイド > スタディコントロールと結果確認](../guides/study_control_and_results.md)をご覧ください。
@@ -90,7 +90,7 @@ level_set_function:
     design_region: [[0.008, 0.0275], [0, 45.0]]
     coordinate: Polar
 ```
-:::tip NGnetの設定
+:::tip[NGnetの設定]
 具体的には、`sigma`の値はロータ形状の元となるNGnet\[3\]を構成する各ガウス基底関数の標準偏差に対応します。  
 デフォルトの設定では、基底関数は`design_region`を埋めるよう自動的に配置されます。 
 NGnetの詳細については[ユーザガイド > LevelSetFunction > NGnet](../guides/LevelSetFunction/ngnet.md)を参照してください。

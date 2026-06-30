@@ -17,7 +17,7 @@ MOEA/Dとは、多目的最適化を適切なアプローチによって複数�
 
 ## 設定可能なキーワード引数一覧
 - `num_decomposition: int` ... 多目的最適化の分解数。デフォルト値は`10`。
-:::tip `num_decomposition`による計算時間・パレート解密度のトレードオフ
+:::tip[`num_decomposition`による計算時間・パレート解密度のトレードオフ]
 `num_decomposition`を大きく設定するほど多目的最適化が「細かく」分解されるため、より密なパレート解が得られるようになります。  
 一方、計算時間は`num_decomposition`に比例して増加します。
 :::
@@ -26,7 +26,7 @@ MOEA/Dとは、多目的最適化を適切なアプローチによって複数�
 - `mean: np.ndarray` ... CMA-ESの$\boldsymbol{m}$初期値。デフォルト値は$\boldsymbol{m} = \boldsymbol{0}$。
 - `sigma: float` ... CMA-ESの$\boldsymbol{C}$の標準偏差初期値。デフォルト値は`1`。
 - `bounds: tuple[float, float] | list[tuple[float, float]]` ... CMA-ESの各変数の上下限値。
-:::tip `bounds`の挙動
+:::tip[`bounds`の挙動]
 - デフォルト値（設定無の場合） ... 上下限無し。
 - `bounds: tuple[float, float]`の場合 ... 与えた数値の組がすべての変数の上下限値に設定される。
 - `bounds: list[tuple[float, float]]`の場合 ... 与えた数値の組のリストが各変数の上下限値に設定される。上下限値の設定は途中までで打ち切ることが可能（この場合、打ち切り以降の上下限値は-1~1に自動設定される）。

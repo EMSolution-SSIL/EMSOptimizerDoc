@@ -17,7 +17,7 @@ sidebar_position: 5
 本実装例は`machine.yaml` > `target_ids_and_onoff`に`id for level 1`~`id for level 3`が設定されていることを前提としています。  
 詳細は[ユーザガイド > 機器設定（machine.yaml）](../machine_config.md)を参照してください。
 :::
-:::tip 多材料表現の活用例
+:::tip[多材料表現の活用例]
 このような多材料表現は設計対象が複数の材料種から構成される場合に活用できます。  
 例えば、永久磁石同期モータのロータトポロジー最適化への応用例は[Showcase](../../../showcase/Dmodel/multi_material.md)にて紹介されています。
 :::
@@ -36,7 +36,7 @@ $y(\boldsymbol{w}, \boldsymbol{x}) = \sum_{i=1}^{N} w_i G_i(\boldsymbol{x}) \\$
 :::info
 Level 3に割り当てられる角度は$\theta_{3}^{\text{mat}} = 360 - \theta_{1}^{\text{mat}} - \theta_{2}^{\text{mat}}$\[deg\]となります。
 :::
-:::tip `angle_1`, `angle_2`の設定
+:::tip[`angle_1`, `angle_2`の設定]
 `ngnet_multi_material`には「材料マップ上角度の割り当てが大きいほど設計領域上にその材料が出現しやすくなる」という特徴があります\[12\]。  
 したがって、平均的に多くの割合を占める材料に対応する角度は大き目に設定することで、最適化の収束性が良くなる可能性があります。  
 ただし、最適化の経過によっては材料マップ上角度に係わらず、目的関数を低減するような材料分布に収束することが経験的に知られています。

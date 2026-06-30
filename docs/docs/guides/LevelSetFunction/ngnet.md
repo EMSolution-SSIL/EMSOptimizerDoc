@@ -26,7 +26,7 @@ NGnet on/off法では、重みベクトル$\boldsymbol{w}$を最適化するこ�
 - `coordinate: str` ... NGnetの構築に用いる座標系。 "Cartesian"または"Polar"。
 - `sigma: float` ... NGnetを構成するガウス基底関数の標準偏差。デフォルト値は`1`。
 - `design_region: list[list[float, float], list[float, float]]` ... NGnetを構築する範囲（＝設計領域）。`coordinate`が`Cartesian`の場合は矩形領域$[[x_1, x_2], [y_1, y_2]]$、`Polar`の場合は扇状領域$[[r_1, r_2], [\theta_1, \theta_2]]$を設定します。
-:::tip ガウス基底関数の配置
+:::tip[ガウス基底関数の配置]
 デフォルトの設定では、NGnetを構成するガウス基底関数は下図のように`design_region`を埋めるように自動的に配置されます。  
 下図において各円がガウス基底関数の配置を表しており、その半径は標準偏差を表しています。この図は形状最適化実行時に`gaussian.png`という名前でEMSOptimizerフォルダ直下に出力されます。  
 ![ガウス基底関数の配置](/img/gaussian_arrangement.png)

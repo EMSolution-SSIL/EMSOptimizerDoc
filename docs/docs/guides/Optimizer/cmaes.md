@@ -26,7 +26,7 @@ $r(\boldsymbol{x})$: 制約違反量
 - `mean: np.ndarray` ... $\boldsymbol{m}$初期値。デフォルト値は$\boldsymbol{m} = \boldsymbol{0}$。
 - `sigma: float` ...ステップサイズ初期値。デフォルト値は`1`。
 - `bounds: tuple[float, float] | list[tuple[float, float]]` ... 各変数の上下限値。
-:::tip `bounds`の挙動
+:::tip[`bounds`の挙動]
 - デフォルト値（設定無の場合） ... 上下限無し。
 - `bounds: tuple[float, float]`の場合 ... 与えた数値の組がすべての変数の上下限値に設定される。
 - `bounds: list[tuple[float, float]]`の場合 ... 与えた数値の組のリストが各変数の上下限値に設定される。上下限値の設定は途中までで打ち切ることが可能（この場合、打ち切り以降の上下限値は-1~1に自動設定される）。

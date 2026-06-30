@@ -39,7 +39,7 @@ $f_i$, $g_i$, $h_i$は`opimization_problem.yaml`ファイル内の以下のリ�
 :::info
 `function_name`に指定可能な評価用関数群、およびそれらの引数`kwargs`の一覧は[ユーザガイド > 評価用関数実装例](../guides/opt_problem_ex.md)をご覧ください。
 :::
-:::tip `case_names`について
+:::tip[`case_names`について]
 EMSOptimizerにおいては、複数解析ケースに対して目的関数を設定することが可能です。これはモータ等において複数の運転点における性能を同時に最適化したい場合などに活用できます。  
 解析ケース名の一覧は`optimization_problem.yaml` > `case_names`にリストとして設定します。また、同名の解析ケースフォルダ群をプロジェクトフォルダ内に格納します。  
 実際に複数解析ケースを活用した最適化については[Showcase](../../showcase/Dmodel/advanced.md)の例をご覧ください。

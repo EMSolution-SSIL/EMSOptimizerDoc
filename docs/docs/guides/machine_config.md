@@ -87,7 +87,7 @@ ems_project_filepath: str | null = null
       - ...
     ...
   ```
-:::tip トポロジー最適化の挙動
+:::tip[トポロジー最適化の挙動]
 トポロジー最適化の挙動は`target_ids_and_onoff`の設定によって変化します。すなわち、**-1~1の範囲を等分割した値が材料IDの切り替わる境界値となります。**  
 レベルセット関数の値を$y$とします。例えば、`id for level 1`および`id for level 2`が設定されているとき、各位置の材料IDは
 ```math
@@ -136,7 +136,7 @@ y \leq -0.33 \rightarrow \text{id for level 3} \\
       - {prefix name}  # 材料名の接頭辞
     ...
   ```
-:::tip `increment_info`の挙動
+:::tip[`increment_info`の挙動]
 例えば、`num_rotate: 6`のとき、以下のように`increment_info`を設定したとします。   
 ```yaml
 increment_info:
@@ -162,7 +162,7 @@ increment_info:
 Implicit Domain Meshingの手法については[Implicit Domain Meshing](../advanced/implicit_domain_meshing.md)ページを参照してください。
 :::
 - `use_implicit_domain_meshing: bool` ... Implicit Domain Meshingの有効化／無効化。
-:::warning 制限事項
+:::warning[制限事項]
 Implicit Domain Meshingの有効化時は以下の点を確認してください。
 - プロジェクトに格納するメッシュファイルは三角形メッシュのみで構成されていること。四角形メッシュ等のImplicit Domain Meshingは実行不可です。
 - `target_ids_and_onoff`に`id for level 1`, `id for level 2`のみ設定されていること。Implicit Domain Meshing時は3材料以上のレベルセットは不可です。
@@ -178,7 +178,7 @@ Implicit Domain Meshingの有効化時は以下の点を確認してください
 - `hmin_ratio: float` ... リメッシュ時の要素エッジ長の最小値率。具体的には、`hmin_ratio`×`design_region_size`の値がリメッシュ時に最小エッジ長として参照されます。
 - `hgrad: float` ... リメッシュ時の要素エッジ長勾配。1より大きい値を指定する。この値が大きいほど境界からのメッシュサイズの変化が大きくなり，小さいほど一様なメッシュに近づく。
 - `bad_mesh_threshold: float` ... リメッシュ時にメッシュの質を表す指標（0~1, 1が最良）がこの値を下回った場合、その形状は評価をスキップする。評価がスキップされた形状には大きなペナルティが与えられるため、最適化アルゴリズムにより淘汰されます。
-:::tip 推奨設定値
+:::tip[推奨設定値]
 - `hausd_ratio` ... 0.001程度。値が小さいほどレベルセット関数に対する材料境界の忠実度が高くなる代わりにメッシュ要素数が増加し、解析に要する時間が増加します（ただし、メッシュ要素数は`hmin_ratio`によって制限されます）。
 - `hmin_ratio` ... 0.05~0.01程度。値が小さいほどメッシュ全体が細かくなります。
 - `hgrad` ... 1.05~1.3程度。値が小さいほど一様なメッシュに近づきます。

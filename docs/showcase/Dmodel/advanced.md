@@ -48,6 +48,7 @@ $T_\text{avg}^\text{9.0Arms30deg}$：平均トルク@9.0Arms,30deg [Nm]
 次に、不等式制約（`ineq_constraints`）です。ここでは、それぞれの解析条件下におけるトルクリプルの値に制約をかけています。  
 それぞれ30%以下となるよう制約します。
 ```yaml
+ineq_constraints:
   - function_name: torque_ripple_percentage
     case_name: transient
     kwargs:

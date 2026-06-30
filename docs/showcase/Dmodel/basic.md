@@ -163,7 +163,7 @@ Implicit Domain Meshing有（`use_implicit_domain_meshing: True`）として最�
 永久磁石両端に大きなフラックスバリアが生じており、永久磁石磁束が活用される形状になっていることがわかります。
 ![Dmodel最適形状例](/img/Dmodel_best_ex.png)
 
-:::tip ロータコアの結合制約
+:::tip[ロータコアの結合制約]
 なお、今回の最適化ではロータコアに制約を課していないため、最良形状は分離したロータコアを有しています。  
 これを分離しないよう制約するには、以下の設定を`optimization_problem.yaml`に追加します。
 ```yaml
