@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Dmodel勾配ベース最適化例（レベルセット法ライク）
@@ -13,7 +13,7 @@ sidebar_position: 6
 
 ## machine.yaml（`Dmodel_SynRM_gradient_ls`プロジェクト）
 `machine.yaml`では，初期形状の各位置におけるレベルセット関数値（符号付距離関数）を計算するため，`calc_levelset_init`を`True`に設定します。これは設計変数の初期値として用いられます。  
-また，レベルセット法においては，各設計変数を適切に再初期化する必要があることが知られています。本プロジェクトでは5世代ごとに再初期化を行います。
+また，レベルセット法においては，各設計変数を適切に再初期化する必要があることが知られています。本プロジェクトでは5世代ごとに再初期化を行います。これらのコンフィグの詳細については[機器設定ページ](../../docs/guides/machine_config.md)をご覧ください。
 ```yaml
 calc_levelset_init: True
 levelset_reinit_interval: 5

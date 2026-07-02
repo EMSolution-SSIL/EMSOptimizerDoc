@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Dmodel勾配ベース最適化例（密度法ライク）
@@ -7,7 +7,7 @@ sidebar_position: 5
 `Dmodel_SynRM_gradient`では同期リラクタンスモータ（SynRM）を想定し，勾配ベースのトポロジー最適化手法（密度法ライク）によって最適化を行います。
 
 ## ベースメッシュについて
-`Dmodel_SynRM_gradient`では`Dmodel_multi_material`プロジェクトと同様に，ベースメッシュとしてロータ部が永久磁石を含まず材料番号`20`（磁性体コア）のみからなるメッシュを使用し，ロータ部全域について空気／磁性体コア分布を最適化します。
+`Dmodel_SynRM_gradient`では[多材料最適化例](./multi_material.md)と同様に，ベースメッシュとしてロータ部が永久磁石を含まず材料番号`20`（磁性体コア）のみからなるメッシュを使用し，ロータ部全域について空気／磁性体コア分布を最適化します。
 
 ## optimization.yaml（`Dmodel_SynRM_gradient`プロジェクト）
 `optimization.yaml`では，レベルセット関数`level_set_function`に`pyemsol_density`を指定します。これにより，目的関数`W1`（トルク）に関する勾配計算がEMSOptimizer内部で行われます。  
