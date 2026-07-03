@@ -10,6 +10,7 @@ sidebar_position: 3
 デフォルト値の無いものは設定必須項目。
 ```yaml
 # Basic Settings
+analysis_dimension: str ("2D" | "3D") = "2D"
 design_target: str ("pre_geom" | "rotor") = "rotor"
 coordinate: str ("Cartesian" | "Polar") = "Cartesian"
 has_sym_region: bool = False
@@ -51,6 +52,12 @@ ems_project_filepath: str | null = null
 実際の設定例は[Showcase](../../showcase/intro.md)をご覧ください。
 :::
 ### 基本設定
+- `analysis_dimension: str ("2D" | "3D")` ... 取り扱う電気機器ベースモデルメッシュの次元。
+:::warning
+現在（v0.7.0）時点では，3Dの計算に以下の制約があります。  
+- `level_set_function`を使用する場合，`use_implicit_domain_meshing`は`True`でなければならない  
+- `level_set_function`に`pyemsol_density`は設定できない
+:::
 - `design_target: str ("pre_geom" | "rotor")` ... 形状最適化のターゲット。
 :::info
 電磁界シミュレータEMSolution(pyemsol)では入力メッシュファイルが以下の2つに分かれるため、このコンフィグによってどちらを形状最適化するか指定します。   
