@@ -33,8 +33,8 @@ hgrad: float = 1.2
 bad_mesh_threshold: float = 0.10
 
 # neighbor judgement
-neighbor_radius_ratio: Annotated[float, Field(ge=0.0)] = 1.0
-min_neighbors: Annotated[int, Field(ge=0)] = 4
+neighbor_radius_ratio: float = 1.0
+min_neighbors: float = 4
 
 # levelset reinitialization
 calc_levelset_init: bool = False
