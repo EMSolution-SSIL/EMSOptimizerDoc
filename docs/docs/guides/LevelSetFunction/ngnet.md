@@ -32,7 +32,9 @@ NGnet on/off法では、重みベクトル$\boldsymbol{w}$を最適化するこ�
 ![ガウス基底関数の配置](/img/gaussian_arrangement.png)
 :::
 - `distance_factor: float` ... ガウス基底関数同士をどの程度の間隔で配置するかを決める値。1より小さいほど、ガウス基底関数同士が重なるように配置される。デフォルト値は`0.8`。
+- `dimension: str` ... ガウス基底関数の配置次元。"2D"または"3D"。デフォルトは"2D"。
 - `eliminate_bases_on_edge: bool` ... 領域端のガウス基底関数を排除するかどうか。デフォルト値は`False`。
 - `normalize_output: bool` ... NGnet出力を正規化するかどうか。`False`にすると、  
 $y(\boldsymbol{w}, \boldsymbol{x}) = \sum_{i=1}^{N} w_i G_i(\boldsymbol{x}) \\$
 となります。デフォルト値は`True`。
+- `check_basis_GUI: bool` ... Trueの場合，ガウス基底関数の配置を確認するためのGUIを起動時に立ち上げる。

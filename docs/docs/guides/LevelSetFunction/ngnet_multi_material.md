@@ -27,10 +27,12 @@ sidebar_position: 5
 - `sigma: float` ... NGnetを構成するガウス基底関数の標準偏差。デフォルト値は`1`。
 - `design_region: list[list[float, float], list[float, float]]` ... NGnetを構築する範囲（＝設計領域）。`coordinate`が`Cartesian`の場合は矩形領域$[[x_1, x_2], [y_1, y_2]]$、`Polar`の場合は扇状領域$[[r_1, r_2], [\theta_1, \theta_2]]$を設定します。
 - `distance_factor: float` ... ガウス基底関数同士をどの程度の間隔で配置するかを決める値。1より小さいほど、ガウス基底関数同士が重なるように配置される。デフォルト値は`0.8`。
+- `dimension: str` ... ガウス基底関数の配置次元。"2D"または"3D"。デフォルトは"2D"。
 - `eliminate_bases_on_edge: bool` ... 領域端のガウス基底関数を排除するかどうか。デフォルト値は`False`。
 - `normalize_output: bool` ... NGnet出力を正規化するかどうか。`False`にすると、  
 $y(\boldsymbol{w}, \boldsymbol{x}) = \sum_{i=1}^{N} w_i G_i(\boldsymbol{x}) \\$
 となります。デフォルト値は`True`。
+- `check_basis_GUI: bool` ... Trueの場合，ガウス基底関数の配置を確認するためのGUIを起動時に立ち上げる。
 - `angle_1: float` ... Level 1 に割り当てられる材料マップ上角度$\theta_{1}^{\text{mat}}$\[deg\]。デフォルト値は`120.0`。
 - `angle_2: float` ... Level 2 に割り当てられる材料マップ上角度$\theta_{2}^{\text{mat}}$\[deg\]。デフォルト値は`120.0`。
 :::info
