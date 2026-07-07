@@ -70,3 +70,5 @@ sidebar_position: 5
 \[32\] 小林重信, "実数値 GA のフロンティア," 人工知能学会論文, vol.24, no.1 pp. 147-162, 2009
 
 \[33\] K. Deb and M. Goyal, "A combined genetic adaptive search (GeneAS) for engineering design," Computer Science and informatics, vol. 26, pp. 30-45, 1996.
+
+\[34\] Y. Hidaka, T. Sato and H. Igarashi, "Topology Optimization Method Based on On–Off Method and Level Set Approach," in IEEE Transactions on Magnetics, vol. 50, no. 2, pp. 617-620, Feb. 2014, Art no. 7015204.
