@@ -66,4 +66,7 @@ sidebar_position: 5
 \[30\] 大西恒世，比留間真悟，美舩健，松尾哲司，「グレースケールフリーなフェーズフィールド法に基づくレベルセット法を用いたIPMモータのトポロジー最適化の検討」，電気学会研究会資料（静止器／回転機合同研究会），SA-25-116，RM-25-128，2025
 
 \[31\] H. Masuda, Y. Kanda, Y. Okamoto, K. Hirono, R. Hoshino, S. Wakao, and T. Tsuburaya, "Topology optimization of induction heating model using sequential linear programming based on move limit with adaptive relaxation," Open Physics, vol. 15, no. 1, pp. 845-850, 2017
-                  
+
+\[32\] 小林重信, "実数値 GA のフロンティア," 人工知能学会論文, vol.24, no.1 pp. 147-162, 2009
+
+\[33\] K. Deb and M. Goyal, "A combined genetic adaptive search (GeneAS) for engineering design," Computer Science and informatics, vol. 26, pp. 30-45, 1996.
