@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# 最適化問題の設定（optimization_problem.yaml）
+# 最適化問題の定義
 ここでは、形状最適化における最適化問題の定義について紹介します。
 
 ## 最適化問題の設定
