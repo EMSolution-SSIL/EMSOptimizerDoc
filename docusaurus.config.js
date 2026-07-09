@@ -52,7 +52,16 @@ const config = {
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
-        blog: false,
+        blog: {
+          showReadingTime: true,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -102,6 +111,7 @@ const config = {
             position: 'left',
             label: 'Showcase',
           },
+          {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://www.ssil.co.jp/',
             label: 'SSIL',

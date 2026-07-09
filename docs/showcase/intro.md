@@ -5,7 +5,7 @@ sidebar_position: 1
 # イントロダクション
 ここでは、EMSOptimizerを活用した最適化の実施例を紹介します。
 :::info
-形状最適化例（Dmodel, IPM8P48S）の実行には関連パッケージ群が必要です。  
+形状最適化例（Dmodel, IPM8P48S, 3D_problems）の実行には関連パッケージ群が必要です。  
 詳細は[インストールガイド](../docs/intro.md)ページをご参照ください。
 :::
 :::warning

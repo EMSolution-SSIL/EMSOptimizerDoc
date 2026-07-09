@@ -1,0 +1,12 @@
+docs:
+  label: Docs
+  permalink: /docs
+  description: Usual docs
+change_log:
+  label: Change log
+  permalink: /change_log
+  description: Change log for verion up and docs` update
+examples:
+  label: Examples
+  permalink: /examples
+  description: Examples which are not proper for showcase, but useful
