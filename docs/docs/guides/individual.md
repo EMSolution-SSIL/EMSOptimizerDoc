@@ -61,6 +61,7 @@ class OptimizationProblemMetrics:
 @dataclass
 class Individual:
     solution: list[float]
+    working_dir: str | None = None
     outcome_filepath: str | None = None
     metrics: OptimizationProblemMetrics = field(default_factory=OptimizationProblemMetrics)
     label_values: dict[str, float] = field(default_factory=dict)
@@ -73,6 +74,9 @@ class Individual:
 ### 属性
 #### `solution: list[float]`
 - 設計変数ベクトル（解ベクトル）$\boldsymbol{x}=\{x_1, x_2, ...\}$
+
+#### `working_dir: str`
+- その個体に割り当てられたpyemsol用の作業ディレクトリ。
 
 #### `outcome_filepath: str | None`
 - この個体に対応する形状ファイルパス
