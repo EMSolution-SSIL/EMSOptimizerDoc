@@ -159,10 +159,10 @@ objectives:
       physical_tag: 3
     normalization_const: 1.0e-14
     coefficient: 0.5
-  - function_name: material_area
+  - function_name: material_volume
     kwargs:
       physical_tag: 2
-    normalization_const: 0.5
+    normalization_const: 0.002744
     coefficient: 0.5
 
 ineq_constraints: []
@@ -173,15 +173,16 @@ other_metrics:
   - function_name: magnetic_energy
     kwargs:
       physical_tag: 3
-  - function_name: material_area
+  - function_name: material_volume
     kwargs:
       physical_tag: 2
 ```
-最適化問題は`magnetic_energy`（保護対象領域`3`の磁気エネルギー）の最小化，および`material_area`（磁性体材料の使用量）の最小化です。
+最適化問題は`magnetic_energy`（保護対象領域`3`の磁気エネルギー）の最小化，および`material_volume`（磁性体材料の使用量）の最小化です。
 
 ## 最適化の実施例
-最適化の経過を以下に示します。おおむね2層の磁性体構造が得られました。
+最適化の経過を以下に示します。おおむね2層の磁性体構造が得られました。  
+磁性体は軸対称ではなく三次元的な構造を有しており，磁性体材料の使用量を最小化する方向に最適化が進んでいることが分かります。
 ![磁気シールド最適化経過](/img/magshield3d_best_individuals.gif)
 
-最適構造における磁束密度分布を以下に示します（pyemsiによって可視化）。磁束のほとんどは外側の層を通過しており，わずかに内側に侵入した分も内側の層に逃がされている様子が確認できます。
+最適構造における磁束密度分布を以下に示します（pyemsiによって可視化）。磁束のほとんどは外側の層を通過しており，対象領域が保護されている様子が分かります。  
 ![磁気シールド磁束密度分布](/img/magshield3d_countor.png)

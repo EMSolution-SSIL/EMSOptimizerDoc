@@ -24,7 +24,7 @@ levelset_reinit_weight: 0.2
 Implicit Domain Meshingを有効化するには[`Dmodel`プロジェクトの例](./basic.md)と同様に`use_implicit_domain_meshing`を`True`に変更します。
 
 ## optimization.yaml（`Dmodel_SynRM_gradient_ls`プロジェクト）
-`optimization.yaml`では，レベルセット関数`level_set_function`に`pyemsol_density`を指定します。これにより，目的関数`W1`（トルク）に関する勾配計算がEMSOptimizer内部で行われます。  
+`optimization.yaml`では，レベルセット関数`level_set_function`に`pyemsol_density`を指定します。これにより，目的関数`W1`（トルク）に関する勾配計算がEMSOptimizer内部で行われます。また，設計領域を回転子領域よりやや小さめに設定し，外周にリブが残るようにします。  
 計算した勾配は`optimizer`の`gradient_update`の中で設計変数（ここでは，設計領域内の各要素におけるレベルセット関数値）の更新に利用されます。  
 また，今回は初期形状における符号付距離関数値を設計変数の初期値に採用するため，`init_value_filepath`に初期値csvファイルへのパスを格納します。符号付距離関数値はmmオーダーのため，`move_limit`は`0.0001`とします。また，境界近傍の変化のみ許容するため，`pyemsol_density` > `proj_half_width`は`0.0005`としています。これにより，最適化の各時点における材料境界（＝零等位面）から+-0.5mmの範囲内のみが変化します。  
 :::info
@@ -48,6 +48,7 @@ level_set_function:
     proj_half_width: 0.0005
     objective_type: W1
     torque_scale: 4.0
+    design_region: [[0.0085, 0.0273], [2.0, 45.0]]
 ```
 
 以下は，初期形状の符号付距離関数値に`heaviside5`を適用して得られた材料密度値を可視化した図です（赤：磁性体コア，青：空気）。密度値が中間になっている材料境界近辺で変化が発生し得ます。  
@@ -81,7 +82,7 @@ other_metrics:
 下図は50イテレーションの形状の進化過程です（各イテレーションの最良形状をアニメーション化）。グレー部分は物性値が中間的な値を取る部分（グレースケール），黒は磁性体コアであり，回転子表面が徐々に変化する様子が分かります。
 ![Dmodel勾配LS最適化履歴](/img/ls_best_individuals.gif)
 
-50イテレーション最適化完了後のGUIを以下に示します。23イテレーション目に最良値を記録しました。
-初期形状と比較すると，平均トルクが0.5583Nm → 0.6808Nmと向上していることが分かります。  
+50イテレーション最適化完了後のGUIを以下に示します。22イテレーション目に最良値を記録しました。  
+初期形状（図中右側）と比較すると，平均トルクが0.5583Nm → 0.6808Nmと向上していることが分かります。  
 
 ![Dmodel勾配LS最適化履歴](/img/ls_GUI.png)

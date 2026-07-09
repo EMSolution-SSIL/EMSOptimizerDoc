@@ -20,3 +20,4 @@ pyemsolでは，目的関数の勾配を計算する際に物性値の密度表�
 - `objective_type: str` ... 勾配を計算する目的関数の種類。`W1`: トルク，`W2`：トルク目標値からの二乗差\[26\]。デフォルトは`W1`。
 - `torque_scale: float` ... トルクのスケール値。1/4モデルなら`4.0`を設定することでトルクの値をフルモデル換算する。デフォルトは`1.0`。
 - `torque_target: float | null` ...`objective_type`が`W2`のとき，トルク目標値。
+- `design_region: list[list[float, float], list[float, float]] | null` ... 設計領域。machine.yamlにてtarget指定されており，かつ設計領域外の要素は値をon（1）に固定する。`coordinate`が`Cartesian`の場合は矩形領域$[[x_1, x_2], [y_1, y_2]]$、`Polar`の場合は扇状領域$[[r_1, r_2], [\theta_1, \theta_2]]$を設定します。
