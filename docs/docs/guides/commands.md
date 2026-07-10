@@ -79,6 +79,16 @@ python emsopt.py load_tpl {プロジェクト名} {テンプレート名} [--stu
 ### --study-name \{スタディ名\}
 参照するスタディ名。
 
+## validate_project
+### Usage
+```sh
+python emsopt.py validate_project {プロジェクト名} [--study-name {スタディ名}]
+```
+### Description
+このコマンドは指定したプロジェクトの最適化設定を検証します。
+### --study-name \{スタディ名\}
+参照するスタディ名。
+
 ## run
 ### Usage
 ```sh
@@ -91,8 +101,6 @@ python emsopt.py run {プロジェクト名} [--study-name {スタディ名}] [-
 :::
 ### --study-name \{スタディ名\}
 参照するスタディ名。
-### --dry
-このオプションを指定したとき，最適化本体は実行されない。最適化を実行する前に「最適化が開始できる状態にあるか」を確認することができます。
 
 ## check
 ### Usage
