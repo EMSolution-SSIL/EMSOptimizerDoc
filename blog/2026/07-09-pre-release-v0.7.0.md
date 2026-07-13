@@ -22,7 +22,7 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
     - 密度表現level_set_functionはpyemsol用に定義された特殊なオブジェクトであり，pyemsol内部にて勾配計算を実行させるトリガーとなります。
 - optimizer実装例の追加（[moead](/EMSOptimizerDoc/docs/docs/guides/Optimizer/moead), [ga](/EMSOptimizerDoc/docs/docs/guides/Optimizer/ga), [sa-nsga2](/EMSOptimizerDoc/docs/docs/guides/Optimizer/sa_nsga2)）
 - ems_shape_builder実装例の追加（[Dmodel_mixed_builder](/EMSOptimizerDoc/docs/docs/guides/EMSShapeBuilder/Dmodel_mixed)）
-- [コマンド](/EMSOptimizerDoc/docs/docs/guides/commands.md)の更新
+- [コマンド](/EMSOptimizerDoc/docs/docs/guides/commands)の更新
 - [最適化設定](/EMSOptimizerDoc/docs/docs/guides/optimization_config)の更新
     - リスタート機能
 - [機器設定](/EMSOptimizerDoc/docs/docs/guides/machine_config)の更新
