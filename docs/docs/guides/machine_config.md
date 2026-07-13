@@ -121,7 +121,7 @@ y \leq -0.33 \rightarrow \text{id for level 3} \\
     ...
   ```
 
-- `mirror_id_map: dict[int, int]` ... `has_sym_region`が`True`のとき、鏡映コピー元→鏡映コピー先材料IDマップ。例えば、材料ID`50000`の材料が鏡映コピー先では`50001`になる場合、`50000: 50001`と設定する。
+- `mirror_id_map: dict[int, int]` ... `has_sym_region`が`True`のとき、鏡映コピー元→鏡映コピー先材料IDマップ。例えば、材料ID`50000`の材料が鏡面対称軸を跨いだ鏡映コピー先では`50001`になる場合、`50000: 50001`と設定する。
   #### Format
   ```yaml
   mirror_id_map:
@@ -129,7 +129,8 @@ y \leq -0.33 \rightarrow \text{id for level 3} \\
     ...
   ```
 :::info
-鏡映コピー時に材料IDが変化しない場合もこのコンフィグに記載してください（例：`20: 20`）。
+鏡映コピー時に材料IDが変化しない場合もこのコンフィグに記載してください（例：`20: 20`）。  
+また、回転コピー時の材料IDの変化は下記の`increment_info`によって設定するため、`mirror_id_map`には**各回転対称領域内における鏡映コピー時の材料IDの変化**を設定します。
 :::
 
 - `increment_info: dict[int, tuple[int, int, int, str]]` ... `num_rotate > 0`のとき、回転コピー先材料情報。
