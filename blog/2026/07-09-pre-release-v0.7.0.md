@@ -45,3 +45,4 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
     - [NGnet on/off法による最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/synrm)
     - [密度法による最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/gradient_density)
     - [レベルセット法による最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/gradient_levelset)
+- [IPM8P48Sサロゲート利用例](/EMSOptimizerDoc/docs/showcase/IPM8P48S/surrogate)
