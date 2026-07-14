@@ -15,26 +15,32 @@ python emsopt.py {コマンド名} -h
 ## cp_proj
 ### Usage
 ```sh
-python emsopt.py cp_proj {コピー元プロジェクト名} {コピー先プロジェクト名}
+python emsopt.py cp_proj {コピー元プロジェクト名} {コピー先プロジェクト名} [--project-root {プロジェクトルート}]
 ```
 ### Description
 このコマンドはプロジェクトをコピーします。コピー元のプロジェクトは`project`フォルダ内から選択します。コピー先のプロジェクトは`project`フォルダ内に自動的に作成されます。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 
 ## mk_study
 ### Usage
 ```sh
-python emsopt.py mk_study {プロジェクト名} {スタディ名}
+python emsopt.py mk_study {プロジェクト名} {スタディ名} [--project-root {プロジェクトルート}]
 ```
 ### Description
 このコマンドはプロジェクトをコピーします。コピー元のプロジェクトは`project`フォルダ内から選択します。コピー先のプロジェクトは`project`フォルダ内に自動的に作成されます。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 
 ## cln_proj
 ### Usage
 ```sh
-python emsopt.py cln_proj {プロジェクト名} [--remove-summary] [--remove-studies] [--yes]
+python emsopt.py cln_proj {プロジェクト名} [--project-root {プロジェクトルート}] [--remove-summary] [--remove-studies] [--yes]
 ```
 ### Description
 このコマンドは指定したプロジェクトに格納された中間フォルダ（`resources`, `opt_progress`）を削除します。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --remove-summary
 中間フォルダの削除に加え，最適化結果サマリーフォルダ（`summary`）を削除します。
 ### --remove-studies
@@ -49,10 +55,12 @@ python emsopt.py cln_proj {プロジェクト名} [--remove-summary] [--remove-s
 ## rm_proj
 ### Usage
 ```sh
-python emsopt.py rm_proj {プロジェクト名} [--yes]
+python emsopt.py rm_proj {プロジェクト名} [--project-root {プロジェクトルート}] [--yes]
 ```
 ### Description
 このコマンドは`project`フォルダ内の指定したプロジェクトを削除します。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --yes
 確認メッセージをスキップし，即座に削除処理を行います。
 :::warning
@@ -62,74 +70,88 @@ python emsopt.py rm_proj {プロジェクト名} [--yes]
 ## save_tpl
 ### Usage
 ```sh
-python emsopt.py save_tpl {プロジェクト名} {テンプレート名} [--study-name {スタディ名}]
+python emsopt.py save_tpl {プロジェクト名} {テンプレート名} [--project-root {プロジェクトルート}] [--study-name {スタディ名}]
 ```
 ### Description
 このコマンドは指定したプロジェクトの`optimization_problem.yaml`の内容をテンプレートとして保存します。保存した設定は`project/template.yaml`ファイル内に格納され、`load_tpl`コマンドによって読み込み可能な状態になります。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --study-name \{スタディ名\}
-参照するスタディ名。
+参照するスタディ名。未指定の場合、プロジェクト直下のコンフィグファイルを元に`defaults`スタディが作成・参照される。
 
 ## load_tpl
 ### Usage
 ```sh
-python emsopt.py load_tpl {プロジェクト名} {テンプレート名} [--study-name {スタディ名}]
+python emsopt.py load_tpl {プロジェクト名} {テンプレート名} [--project-root {プロジェクトルート}] [--study-name {スタディ名}]
 ```
 ### Description
 このコマンドは指定したプロジェクトの`optimization_problem.yaml`にテンプレートの内容をコピーします。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --study-name \{スタディ名\}
-参照するスタディ名。
+参照するスタディ名。未指定の場合、プロジェクト直下のコンフィグファイルを元に`defaults`スタディが作成・参照される。
 
 ## validate_project
 ### Usage
 ```sh
-python emsopt.py validate_project {プロジェクト名} [--study-name {スタディ名}]
+python emsopt.py validate_project {プロジェクト名} [--project-root {プロジェクトルート}] [--study-name {スタディ名}]
 ```
 ### Description
 このコマンドは指定したプロジェクトの最適化設定を検証します。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --study-name \{スタディ名\}
-参照するスタディ名。
+参照するスタディ名。未指定の場合、プロジェクト直下のコンフィグファイルを元に`defaults`スタディが作成・参照される。
 
 ## run
 ### Usage
 ```sh
-python emsopt.py run {プロジェクト名} [--study-name {スタディ名}] [--dry]
+python emsopt.py run {プロジェクト名} [--project-root {プロジェクトルート}] [--study-name {スタディ名}] [--dry]
 ```
 ### Description
 このコマンドは指定したプロジェクトの最適化計算を実行します。最適化が完了するとプロジェクトフォルダ内に最適化サマリー`summary`フォルダが自動生成され、これは`check`コマンドによって読み込まれます。
 :::warning
 プロジェクトフォルダ内に中間ファイルおよびサマリーフォルダが既に存在する場合、その内容は上書きされます。
 :::
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --study-name \{スタディ名\}
-参照するスタディ名。
+参照するスタディ名。未指定の場合、プロジェクト直下のコンフィグファイルを元に`defaults`スタディが作成・参照される。
 
 ## check
 ### Usage
 ```sh
-python emsopt.py check {プロジェクト名} [--study-name {スタディ名}]
+python emsopt.py check {プロジェクト名} [--project-root {プロジェクトルート}] [--study-name {スタディ名}]
 ```
 ### Description
 このコマンドは指定したプロジェクトの最適化経過をGUI上に表示します。具体的には、`run`コマンドによる最適化が完了した後に生成される`summary`フォルダを読み込み、その内容をGUI上に表示します。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --study-name \{スタディ名\}
-参照するスタディ名。
+参照するスタディ名。未指定の場合、プロジェクト直下のコンフィグファイルを元に`defaults`スタディが作成・参照される。
 
 ## sample
 ```sh
-python emsopt.py sample {プロジェクト名} {サンプル数} [--study-name {スタディ名}] [--chunk-size {チャンクサイズ}]
+python emsopt.py sample {プロジェクト名} {サンプル数} [--project-root {プロジェクトルート}] [--study-name {スタディ名}] [--chunk-size {チャンクサイズ}]
 ```
 ### Description
 このコマンドは指定したプロジェクトに設定された設計変数の範囲内でラテン超立方体サンプリング\[25\]を実行します。サンプリング結果は通常の最適化と同様に`summary`フォルダに格納されます。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --study-name \{スタディ名\}
-参照するスタディ名。
+参照するスタディ名。未指定の場合、プロジェクト直下のコンフィグファイルを元に`defaults`スタディが作成・参照される。
 ### --chunk-size \{チャンクサイズ\}
 チャンクサイズ。サンプル数を指定のチャンクサイズ（一度にまとめて評価されるサンプル数）に分割して評価します。未指定の場合，適切なチャンクサイズが自動的に設定されます。
 
 ## export_surrogate_data
 ### Usage
 ```sh
-python emsopt.py export_surrogate_data {プロジェクト名} [--study-names {スタディ名1} {スタディ名2} ...] [--statuses {ステータス名1} {ステータス名2} ...]
+python emsopt.py export_surrogate_data {プロジェクト名} [--project-root {プロジェクトルート}] [--study-names {スタディ名1} {スタディ名2} ...] [--statuses {ステータス名1} {ステータス名2} ...]
 ```
 ### Description
 このコマンドはプロジェクト内で実行された全スタディの最適化結果CSVから，指定したスタディ・ステータスのデータを抽出してエクスポートします。主にサロゲートモデル構築に使用する想定。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --study-names \{スタディ名1\} \{スタディ名2\} ...
 抽出対象スタディ名。未指定の場合，全スタディからデータを抽出。
 ### --statuses \{ステータス名1\} \{ステータス名2\} ...
@@ -141,27 +163,31 @@ python emsopt.py export_surrogate_data {プロジェクト名} [--study-names {�
 ## batch_run
 ### Usage
 ```sh
-python emsopt.py batch_run {プロジェクト名} {バッチサイズ（＝実行するランの数）} [--study-name {スタディ名}] [--stop-on-error]
+python emsopt.py batch_run {プロジェクト名} {バッチサイズ（＝実行するランの数）} [--project-root {プロジェクトルート}] [--study-name {スタディ名}] [--stop-on-error]
 ```
 ### Description
 このコマンドは指定したプロジェクトの最適化計算をバッチ実行します。バッチ内の各実行結果はランとして`summary`フォルダ内に保存されます。
 :::info
 `batch_run`実行時，GUI表示は強制的にオフになります。
 :::
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --study-name \{スタディ名\}
-参照するスタディ名。
+参照するスタディ名。未指定の場合、プロジェクト直下のコンフィグファイルを元に`defaults`スタディが作成・参照される。
 ### --stop-on-error
 このオプションを指定した場合，エラー発生時にバッチ実行全体を中断する。未指定の場合，失敗ランは中断し，残りのランを続けて実行する。
 
 ## analyze_runs
 ### Usage
 ```sh
-python emsopt.py analyze_runs {プロジェクト名} [--study-name {スタディ名}] [--reference-point {HV参照点}] [--run-ids {ランID}] [--gui]
+python emsopt.py analyze_runs {プロジェクト名} [--project-root {プロジェクトルート}] [--study-name {スタディ名}] [--reference-point {HV参照点}] [--run-ids {ランID}] [--gui]
 ```
 ### Description
 このコマンドは指定したプロジェクトに存在するラン全体を読み込み，統計情報（単目的なら最良目的関数値，多目的ならハイパーボリューム（HV）の平均・標準偏差）を計算します。計算結果は`summary/analysis`フォルダに出力されます。
+### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、EMSOptimizerインストール先の`projects`フォルダが参照される。
 ### --study-name \{スタディ名\}
-参照するスタディ名。
+参照するスタディ名。未指定の場合、プロジェクト直下のコンフィグファイルを元に`defaults`スタディが作成・参照される。
 ### --reference-point \{HV参照点\}
 多目的最適化結果の分析時，HV計算に用いる参照点。  
 例：2目的，参照点(1.0, 1.0)の場合，`--reference-point 1.0 1.0`と指定する。

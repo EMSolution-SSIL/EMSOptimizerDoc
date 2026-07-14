@@ -56,6 +56,19 @@ enable_progress_gui: bool = True
 # restart
 restart:
   target_study: str | null = null
+
+# response surface
+response_surface:
+  enabled: bool = False
+  surrogate_model: str = "random_forest"
+  grid_size: int = 50
+  min_samples: int = 5
+  n_estimators: int = 200
+  max_depth: int | None = None
+  random_state: int | None = 0
+  max_contours: int = 200
+  design_columns: list[str] | None = None
+  target_columns: list[str] | None = None
 ```
 
 ## Details
@@ -125,3 +138,15 @@ restart:
 - `target_study`が`null`の場合 ... 現在のスタディを自動的に複製し，同一のコンフィグにて再実行
 - `target_study`にスタディ名を指定した場合 ... 指定したスタディを実行する。
 :::
+
+### 応答曲面関係
+- `responce_surface` ... `check`コマンド実行時の応答曲面設定。
+  - `enabled: bool` ... 有効／無効。
+  - `surrogate_model: str` ... 応答曲面モデル名。現在は"random_forest"のみサポート。
+  - `grid_size: int = 50` ... 応答曲面の分解能。値が大きいほど細かい表示となる。
+  - `min_samples: int = 5` ... 応答曲面を構築するための最小サンプル数。
+  - `n_estimators: int = 200` ... ランダムフォレストの設定値（決定木の本数）。
+  - `max_depth: int | None = None` ... ランダムフォレストの設定値（決定木の最大深さ）。
+  - `random_state: int | None = 0` ... 応答曲面モデルの乱数シード。
+  - `design_columns: list[str] | None = None` ... 可視化ターゲットとする設計変数名。`None`の場合、全設計変数に対する応答曲面を可視化できる状態にする。
+  - `target_columns: list[str] | None = None` ... 可視化ターゲットとする目的変数名。`None`の場合、全目的変数に対する応答曲面を可視化できる状態にする。
