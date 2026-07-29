@@ -112,6 +112,32 @@ python emsopt.py validate {プロジェクト名} [--project-root {プロジェ�
 #### --study-name \{スタディ名\}
 参照するスタディ名。未指定の場合、プロジェクト直下のコンフィグファイルを元に`defaults`スタディが作成・参照される。
 
+### inspect_mesh
+#### Usage
+```sh
+python emsopt.py inspect_mesh {メッシュファイルパス} [--machine-config {machine.yamlパス}]
+```
+#### Description
+このコマンドは指定したGmshメッシュファイルを解析し、$PhysicalNames の材料ID・名前、physical tagごとの要素種別、節点数、半径範囲、角度範囲を出力します。
+`--machine-config`を指定した場合は、machine.yaml の target_ids_and_onoff / mirror_id_map / increment_info とメッシュ物理IDの整合性も確認します。
+#### --machine-config \{machine.yamlパス\}
+任意。メッシュ物理IDとの整合性確認に使う machine.yaml のパス。未指定の場合、メッシュ単体の情報のみを出力する。
+
+### validate_mesh
+#### Usage
+```sh
+python emsopt.py validate_mesh {プロジェクト名} [--project-root {プロジェクトルート}] [--study-name {スタディ名}] [--mesh {メッシュファイルパス}]
+```
+#### Description
+このコマンドは指定したプロジェクトまたはスタディについて、メッシュとmachine.yamlとの整合性をチェックします。
+machine.yaml を読み込み、設計対象メッシュを解析したうえで、target_ids_and_onoff / mirror_id_map / increment_info がメッシュ物理IDと整合しているか確認します。あわせて、設計対象領域の要素種類も出力します。
+#### --project-root \{プロジェクトルート\}
+プロジェクトフォルダのルートパス。未指定の場合、実行元ディレクトリの projects フォルダが参照される。
+#### --study-name \{スタディ名\}
+参照するスタディ名。未指定の場合、プロジェクト直下の machine.yaml を参照する。
+#### --mesh \{メッシュファイルパス\}
+検査対象メッシュを明示的に指定する。未指定の場合、machine.yaml の analysis_dimension と design_target から設計対象メッシュ名を解決し、プロジェクトまたはスタディ配下から探索する。
+
 ## 実行処理
 ### run
 #### Usage
