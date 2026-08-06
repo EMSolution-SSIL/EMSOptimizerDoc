@@ -265,7 +265,7 @@ python emsopt.py job_stop {プロジェクト名} --job-id {ジョブID} [--proj
 ### check
 #### Usage
 ```sh
-python emsopt.py check {プロジェクト名} [--project-root {プロジェクトルート}] [--study-name {スタディ名}]
+python emsopt.py check {プロジェクト名} [--project-root {プロジェクトルート}] [--study-name {スタディ名}] [--run-id {ランID}]
 ```
 #### Description
 このコマンドは指定したプロジェクトの最適化経過をGUI上に表示します。具体的には、`run`コマンドによる最適化が完了した後に生成される`summary`フォルダを読み込み、その内容をGUI上に表示します。
@@ -273,6 +273,8 @@ python emsopt.py check {プロジェクト名} [--project-root {プロジェク�
 プロジェクトフォルダのルートパス。未指定の場合、実行元ディレクトリの`projects`フォルダが参照される。
 #### --study-name \{スタディ名\}
 参照するスタディ名。未指定の場合、プロジェクト直下のコンフィグファイルを元に`defaults`スタディが作成・参照される。
+#### --run-id \{ランID\}
+参照するランID。未指定の場合、最新ランが参照される。
 
 ### export_data
 #### Usage
