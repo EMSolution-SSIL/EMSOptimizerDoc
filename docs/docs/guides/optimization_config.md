@@ -43,14 +43,17 @@ output_control:
     filename_base: str
     enabled: bool = True
     output_interval: int = 1
+    save_case_dir: bool = False
   candidate:
     filename_base: str
     enabled: bool = True
     output_interval: int = 1
+    save_case_dir: bool = False
   candidate_plot:
     filename_base: str
     enabled: bool = True
     output_interval: int = 1
+    save_case_dir: bool = False
 enable_progress_gui: bool = True
 
 # restart
@@ -121,14 +124,17 @@ response_surface:
     - `filename_base: str` ... ファイル名
     - `enabled: bool` ... 出力の有効化／無効化
     - `output_interval: int` ... 個別の出力インターバル
+    - `save_case_dir: bool` ... 解析ケースディレクトリごと保存するかどうか。
   - `candidate` ... 解析した全個体の情報。
     - `filename_base: str` ... ファイル名
     - `enabled: bool` ... 出力の有効化／無効化
     - `output_interval: int` ... 個別の出力インターバル
+    - `save_case_dir: bool` ... 解析ケースディレクトリごと保存するかどうか。
   - `candidate_plot` ... 各世代で生成された解候補ベクトルの分布プロット。
     - `filename_base: str` ... ファイル名
     - `enabled: bool` ... 出力の有効化／無効化
     - `output_interval: int` ... 個別の出力インターバル
+    - `save_case_dir: bool` ... （参照されない変数）
 - `enable_progress_gui: bool` ... GUIの有効化／無効化。
 - `restart` ... GUIから利用できる最適化リスタート機能。
   - `target_study: str | null` ... 最適化リスタート先のスタディ名。
