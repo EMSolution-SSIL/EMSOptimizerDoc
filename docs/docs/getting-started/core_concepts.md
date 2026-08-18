@@ -9,7 +9,7 @@ sidebar_position: 2
 以下の図は、EMSOptimizerの各機能（以下、コアオブジェクト）がどのように協働するかを示したものです。①→②→...→⑧が一連の処理（イテレーション）の流れとなっており、これを繰り返すことで最適化が進行します。  
 :::info
 ②～⑦は形状最適化（＝`evaluator`が後述の`pyemsol_shape_evaluator`）の場合のみ実行されます。  
-これらの処理は`emsopt_analyzer`パッケージに含まれます。
+②～⑦の処理は`emsopt_analyzer`パッケージに含まれます。
 :::
 ![Concepts Overview](/img/concepts_overview.drawio.png)
 

@@ -18,8 +18,10 @@ sidebar_position: 1
 :::info
 EMSOptAnalyzerの駆動には専用のpyemsolが必要です。これはEMSOptAnalyzer提供時に一緒に提供されます。
 :::
+- （任意）eMachineSim
+    - 電気機器周辺解析用ツールeMachineSimです。最適化において周辺解析（応力解析など）を行う場合、pyemsolと併せて必要です。
 - （任意）eMotorSolution API
-    - eMotorSolutionのpython APIです。eMotorSolutionとEMSOptimizerを連携させたい場合にインストールします。連携機能については[発展的なトピック > eMotorSolutionとの連携](./advanced/link_ems.md)をご覧ください。
+    - eMotorSolution（SSIL製のモータシミュレーションツール）のpython APIです。eMotorSolutionとEMSOptimizerを連携させたい場合にインストールします。連携機能については[発展的なトピック > eMotorSolutionとの連携](./advanced/link_ems.md)をご覧ください。
 - CodeMeterライセンスキー**
 
 *形状最適化用の関連パッケージ群が無い状態でも、形状最適化を除いた一部機能（ベンチマーク関数による最適化アルゴリズムのテストなど）は利用可能です。

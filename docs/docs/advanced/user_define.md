@@ -11,8 +11,7 @@ sidebar_position: 1
 2. 作成したファイル内に、対応するコアオブジェクトのインターフェースを継承したpythonクラスを実装する（下記は`evaluator`の例）。
 ```py
 class UserDefinedEvaluator(EvaluatorInterface):
-    def __init__(self, kwarg1: int):
-        ...
+    def __init__(self, kwarg1: int): ...
 ```
 :::info
 各コアオブジェクトのインターフェースについてはユーザガイドセクション内の各コアオブジェクトのページをご覧ください。
@@ -20,6 +19,8 @@ class UserDefinedEvaluator(EvaluatorInterface):
 3. 作成したファイル内に、対応するコアオブジェクト生成用デコレータ付きのインスタンス化関数（ファクトリ関数）を定義する。
 ```py
 from emsopt_engine.registry import evaluator
+
+
 @evaluator("user_defined_evaluator")
 def build_user_defined_evaluator(kwarg1: int) -> EvaluatorInterface:
     return UserDefinedEvaluator(kwarg1)
@@ -59,7 +60,9 @@ class EvaluatorInterface(ABC):
         """
 
     @abstractmethod
-    def evaluate_parallel(self, population: Population, num_processes: int | None = None) -> Population:
+    def evaluate_parallel(
+        self, population: Population, num_processes: int | None = None
+    ) -> Population:
         """Evaluate individuals (parallelized)
         Args:
             population: Population instance
@@ -103,6 +106,8 @@ EMSOptimizerは実行時、
 冒頭の例では、
 ```py
 from emsopt_engine.registry import evaluator
+
+
 @evaluator("user_defined_evaluator")
 def build_user_defined_evaluator() -> EvaluatorInterface:
     return UserDefinedEvaluator()
@@ -147,8 +152,7 @@ class CMAES(SOOptimizerBase, OptimizerInterface):
         bounds: tuple[float, float] | list[tuple[float, float]] | None = None,
         seed: int | None = None,
         population_size: int | None = None,
-    ) -> None:
-        ...
+    ) -> None: ...
 ```
 - `cmaes`実装は単目的最適化アルゴリズムであるため、`SOOptimizerBase`を継承しています。`SOOptimizerBase`にはエリート解管理の仕組みなどが実装されており、その仕組みは`CMAES`クラス内でも利用可能です。
 ```py
@@ -206,5 +210,5 @@ def average_torque(working_dir: str, torque_scale: float = 1.0) -> float:
 
 コアオブジェクトのファクトリ関数の登録時と同様に、デコレータ関数`opt_problem_function`に自作関数の登録名を渡すことで`optimization_problem.yaml`からその関数を呼び出せるようになります（`core/opt_problem_functions.py`自身がEMSOptimizerに自動インポートされるため、追加のインポート記述は不要です）。
 
-なお、**評価用関数には`working_dir`を第一引数に必ず含みます**。これはpyemsolによる解析結果が格納されたフォルダ名であり、EMSOptimizer内部で自動的に設定されます。  
-上記の`average_torque`の例ではpyemsol解析結果サマリーファイル`output.json`を読み込み、そこからトルク波形を抽出することで平均トルクを計算しています。
+なお、**評価用関数には`working_dir`を第一引数に必ず含みます**。これはpyemsol/eMachineSimによる解析結果が格納されたフォルダ名であり、EMSOptimizer内部で自動的に設定されます。  
+上記の`average_torque`の例ではpyemsol/eMachineSim解析結果サマリーファイル`output.json`を読み込み、そこからトルク波形を抽出することで平均トルクを計算しています。

@@ -24,12 +24,14 @@ class AnalysisConditionerInterface(ABC):
         """
 
     @abstractmethod
-    def condition_analysis_case(self, parameters: np.ndarray, input_json: dict, case_name: str) -> dict:
+    def condition_analysis_case(
+        self, parameters: np.ndarray, input_json: dict, case_name: str
+    ) -> dict:
         """condition analysis case by modifing input_json
 
         Args:
             parameters (np.ndarray): K-dimensional vector (K: number of parameters)
-            input_json (dict): pyemsol input json data
+            input_json (dict): pyemsol/eMachineSim input json data
             case_name (str): Analysis case name
 
         Returns:

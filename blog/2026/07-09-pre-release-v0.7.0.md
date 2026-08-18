@@ -43,6 +43,7 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
     - 永久磁石材料，コイル巻数，永久磁石寸法パラメータ，磁性体コアトポロジーを含む混合変数の最適化事例です。
 - Dmodel 同期リラクタンスモータ最適化の追加
     - [NGnet on/off法による最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/synrm)
+        - 応力値を考慮した最適化事例（eMachineSim連携）
     - [密度法による最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/gradient_density)
     - [レベルセット法による最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/gradient_levelset)
 - [IPM8P48Sサロゲート利用例](/EMSOptimizerDoc/docs/showcase/IPM8P48S/surrogate)
