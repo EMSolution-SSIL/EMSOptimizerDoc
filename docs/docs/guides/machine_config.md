@@ -20,6 +20,7 @@ num_rotate: int = 0
 # Material Settings
 target_ids_and_onoff: dict[int, list[int]] = []
 physical_id_to_name: dict[int, str] = {}
+material_color_map: dict[int, str] = {}
 mirror_id_map: dict[int, int] = {}
 increment_info: dict[int, tuple[int, int, int, str]] = {}
 
@@ -120,6 +121,17 @@ y \leq -0.33 \rightarrow \text{id for level 3} \\
     {id}: {name}
     ...
   ```
+
+- `material_color_map: dict[int, str]` ... 材料ID→画像色マップ。`optimization.yaml`にて画像出力を有効にしたときに参照される。未指定のIDに対してはデフォルト色が適用される。
+  #### Format
+  ```yaml
+  material_color_map:
+    {id}: {color_name or code}
+    ...
+  ```
+:::info
+value値にはライブラリ（pyvista）にて利用可能な色名、およびカラーコード(#+6桁の16進数)が使用できます。
+:::
 
 - `mirror_id_map: dict[int, int]` ... `has_sym_region`が`True`のとき、鏡映コピー元→鏡映コピー先材料IDマップ。例えば、材料ID`50000`の材料が鏡面対称軸を跨いだ鏡映コピー先では`50001`になる場合、`50000: 50001`と設定する。
   #### Format
