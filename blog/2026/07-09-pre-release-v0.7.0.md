@@ -26,6 +26,7 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
 - [最適化設定](/EMSOptimizerDoc/docs/docs/guides/optimization_config)の更新
     - リスタート機能
 - [機器設定](/EMSOptimizerDoc/docs/docs/guides/machine_config)の更新
+    - 画像出力設定
     - 3次元最適化の解析
     - レベルセット関数計算の設定
 - [評価関数実装例](/EMSOptimizerDoc/docs/docs/guides/opt_problem_ex)の更新
