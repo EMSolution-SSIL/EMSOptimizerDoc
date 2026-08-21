@@ -14,6 +14,10 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
 主要な更新内容は以下の通り。近日正式リリース予定です。  
 
 ### 新規機能関連
+- eMachineSimとの連携
+    - 電気機器周辺解析用ツールeMachineSimとの連携をサポートしました。
+    - pyemsolと同様に解析ケースフォルダを配置し、`optimization_problem.yaml`にて指定することで解析可能になります。
+    - 実用例は[Dmodel同期リラクタンスモータ最適化例](/EMSOptimizerDoc/docs/showcase/Dmodel/synrm)をご覧ください。
 - [スタディコントロールと結果確認](/EMSOptimizerDoc/docs/docs/guides/study_control_and_results)
     - スタディ作成機能を追加しました。これにより，ある設計対象に対する最適化設定を複数保持できるようになりました。
     - また，各スタディの実行結果はランという単位で保存され，あとから参照できるようになりました。

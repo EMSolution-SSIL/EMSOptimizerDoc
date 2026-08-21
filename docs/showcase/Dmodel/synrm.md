@@ -65,22 +65,6 @@ eq_constraints:
 まず、`case_names`に`structural`が追加されています。`Dmodel_SynRM`のプロジェクトにはすでに`structural`フォルダおよび入力ファイルが用意されています。この入力ファイルはeMachineSim用のファイルであり、解析条件が記述されています。  
 `ineq_constraints`に`von_mises_stress`が指定されており、ここでは最大ミーゼス応力値が200MPa以下を制約条件としています。また、`eq_constraints`にはロータコアが一体となるよう、`num_connected_commponents`に`1`を制約しています。  
 
-また、eMachineSim解析時の境界条件を設定するため、`machine.yaml`に以下を追加します。これにより、`axis1`（`Polar`座標系では、角度軸）の境界にて適切な方向の変位を拘束します。
-```yaml
-# eMachineSim settings
-emsim_disp_bc:
-  axis0:
-    min: null
-    max: null
-  axis1:
-    min:
-      FIX_UY: true
-      FIX_UZ: true
-    max:
-      FIX_UX: true
-      FIX_UZ: true
-```
-
 200イテレーションの追加最適化完了後のGUIを以下に示します。  
 初期段階（右画像）では最大応力値（Metrics 2）が約254MPaであり制約を違反していますが、最適化後（左画像）は最大応力値が約199MPaに抑えられています。代わりに平均トルクが減少したものの、高速回転時の機械的な耐性を考慮しながら最適化ができました。
 
