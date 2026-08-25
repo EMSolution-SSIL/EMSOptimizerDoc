@@ -28,6 +28,7 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
 - ems_shape_builder実装例の追加（[Dmodel_mixed_builder](/EMSOptimizerDoc/docs/docs/guides/EMSShapeBuilder/Dmodel_mixed)）
 - [コマンド](/EMSOptimizerDoc/docs/docs/guides/commands)の更新
 - [最適化設定](/EMSOptimizerDoc/docs/docs/guides/optimization_config)の更新
+    - 出力設定の追加
     - リスタート機能
 - [機器設定](/EMSOptimizerDoc/docs/docs/guides/machine_config)の更新
     - 画像出力設定
@@ -35,6 +36,7 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
     - レベルセット関数計算の設定
 - [評価関数実装例](/EMSOptimizerDoc/docs/docs/guides/opt_problem_ex)の更新
 - [サロゲートモデル導入](/EMSOptimizerDoc/docs/docs/advanced/surrogate_model_usage)の追加
+- [AIを活用したコンフィグ設定](/EMSOptimizerDoc/docs/docs/advanced/ai_usage.md)の追加
 
 ### 主要な更新・追加
 - [イントロダクション](/EMSOptimizerDoc/docs/docs/getting-started/Introduction)の更新

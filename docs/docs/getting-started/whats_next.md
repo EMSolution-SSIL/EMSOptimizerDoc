@@ -24,5 +24,8 @@ sidebar_position: 4
 - eMotorSolutionと連携したモータの最適化について知りたい
 → [発展的なトピック > eMotorSolutionとの連携](../advanced/link_ems.md)
 
+- AIエージェントの活用方法を知りたい
+→ [発展的なトピック > AIを活用したコンフィグ設定](../advanced/ai_usage.md)
+
 - 形状最適化の実施例を見たい
 → [Showcase](../../showcase/intro.md)
