@@ -124,12 +124,12 @@ response_surface:
     - `filename_base: str` ... ファイル名
     - `enabled: bool` ... 出力の有効化／無効化
     - `output_interval: int` ... 個別の出力インターバル
-    - `save_case_dir: bool` ... 解析ケースディレクトリごと保存するかどうか。
+    - `save_case_dir: bool` ... 解析ケースディレクトリごと保存するかどうか。解析結果（磁束など）を再利用したい場合は`true`に設定する。ただし、ディスク容量を大きく消費する恐れがあるため注意。
   - `candidate` ... 解析した全個体の情報。
     - `filename_base: str` ... ファイル名
     - `enabled: bool` ... 出力の有効化／無効化
     - `output_interval: int` ... 個別の出力インターバル
-    - `save_case_dir: bool` ... 解析ケースディレクトリごと保存するかどうか。
+    - `save_case_dir: bool` ... 出力時、解析ケースディレクトリごと保存するかどうか。解析結果（磁束など）を再利用したい場合は`true`に設定する。ただし、ディスク容量を大きく消費する恐れがあるため注意。
   - `candidate_plot` ... 各世代で生成された解候補ベクトルの分布プロット。
     - `filename_base: str` ... ファイル名
     - `enabled: bool` ... 出力の有効化／無効化
@@ -156,3 +156,6 @@ response_surface:
   - `random_state: int | None = 0` ... 応答曲面モデルの乱数シード。
   - `design_columns: list[str] | None = None` ... 可視化ターゲットとする設計変数名。`None`の場合、全設計変数に対する応答曲面を可視化できる状態にする。
   - `target_columns: list[str] | None = None` ... 可視化ターゲットとする目的変数名。`None`の場合、全目的変数に対する応答曲面を可視化できる状態にする。
+:::info
+応答曲面の利用例は[IPM8P48Sサロゲート利用例](../../showcase/IPM8P48S/surrogate.md)をご覧ください。
+:::

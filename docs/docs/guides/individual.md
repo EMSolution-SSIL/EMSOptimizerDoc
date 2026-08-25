@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 # individual関連オブジェクト API
@@ -63,7 +63,9 @@ class Individual:
     solution: list[float]
     working_dir: str | None = None
     outcome_filepath: str | None = None
-    metrics: OptimizationProblemMetrics = field(default_factory=OptimizationProblemMetrics)
+    metrics: OptimizationProblemMetrics = field(
+        default_factory=OptimizationProblemMetrics
+    )
     label_values: dict[str, float] = field(default_factory=dict)
     record_info: EvaluationRecord = field(default_factory=EvaluationRecord)
 ```
@@ -107,8 +109,7 @@ class EvaluationRecord:
 
 ## `Population`
 ```python
-class Population(MutableMapping[int, Individual]):
-    ...
+class Population(MutableMapping[int, Individual]): ...
 ```
 最適化アルゴリズムで扱う個体群（Population）を管理するクラスです。
 `MutableMapping[int, Individual]` を継承しており、基本的に**辞書 (`dict`) とほぼ同じインターフェース**で個体を操作できます。  
@@ -166,17 +167,17 @@ class Population(MutableMapping[int, Individual]):
 ind = Individual(solution=[0.1, 0.5, 0.9])
 
 # 評価値・制約をセット
-ind.metrics.objectives = [1.23, 0.45]         # 2目的
-ind.metrics.ineq_constraints = [0.0, 0.2]     # 2つ目だけ違反
-ind.metrics.eq_constraints = [0.01]           # 0に近ければ近いほど良い
+ind.metrics.objectives = [1.23, 0.45]  # 2目的
+ind.metrics.ineq_constraints = [0.0, 0.2]  # 2つ目だけ違反
+ind.metrics.eq_constraints = [0.01]  # 0に近ければ近いほど良い
 
-print(ind.metrics.fitness)                    # _fitness 未設定なので objectives の和 = 1.68
-print(ind.metrics.constraint_violation)       # ineq + eq
+print(ind.metrics.fitness)  # _fitness 未設定なので objectives の和 = 1.68
+print(ind.metrics.constraint_violation)  # ineq + eq
 
 # 個体群の作成
 pop = Population()
-idx = pop.add_individual(ind)             # 自動で index=0 が割り当てられる
+idx = pop.add_individual(ind)  # 自動で index=0 が割り当てられる
 
 # 設計行列の取得
-X = pop.to_design_matrix()                # [[0.1, 0.5, 0.9]]
+X = pop.to_design_matrix()  # [[0.1, 0.5, 0.9]]
 ```

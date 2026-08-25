@@ -11,6 +11,9 @@ python emsopt.py -h
 ```sh
 python emsopt.py {コマンド名} -h
 ```
+:::info
+以下の説明に出てくるスタディ・ラン・ジョブの詳細については[ユーザガイド > スタディコントロールと結果確認](./study_control_and_results.md)をご覧ください。
+:::
 
 ## プリ処理
 ### show_avl

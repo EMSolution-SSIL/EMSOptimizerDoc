@@ -14,7 +14,7 @@ sidebar_position: 2
 ![Concepts Overview](/img/concepts_overview.drawio.png)
 
 ## コアオブジェクト実装例
-EMSOptimizerではすぐに使用できるコアオブジェクトの実装例を提供しています。  
+EMSOptimizerではすぐに使用できるコアオブジェクトの実装例を提供しています。実装例はEMSOptimizerフォルダ内の`core` > `{コアオブジェクト名称}` > `examples`フォルダに存在します。  
 ユーザは既存の実装例を利用するほか、ユーザ自身が修正あるいは新規に作成して自由に組み合わせることが可能です。どの実装を使うかは`optimization.yaml`内で設定します。
 :::info[関連ページ]
 - `optimization.yaml`の設定方法→[ユーザガイド > 最適化の設定](../guides/optimization_config.md)
@@ -25,7 +25,7 @@ EMSOptimizerではすぐに使用できるコアオブジェクトの実装例�
 ### Optimizer
 最適化アルゴリズム（解候補の生成・更新）を担うオブジェクトです。`evaluator`によって評価された解候補を受け取り、新たな解候補を生成して`evaluator`に渡す役割を担います。
 
-以下の実装例（`examples`フォルダ内）が利用可能です。
+以下にEMSOptimizer既定の実装例の一部を示します。
 - [`cmaes`](../guides/Optimizer/cmaes.md): 単目的最適化アルゴリズムCMA-ES\[4\], \[5\]。
 - [`nsga2`](../guides/Optimizer/nsga2.md): 多目的最適化アルゴリズムNSGA-II\[6\]。
 - [`decomposition_ensemble`](../guides/Optimizer/decomposition_ensemble.md): 多目的最適化アルゴリズムMOEA/D\[7\]ベースの実装例。多目的最適化を複数の単目的最適化に分解して解く。各単目的最適化問題はCMA-ESによって解く\[8\]。
@@ -33,7 +33,7 @@ EMSOptimizerではすぐに使用できるコアオブジェクトの実装例�
 ### Evaluator
 解候補の評価を担うオブジェクトです。`optimizer`によって生成された解候補を評価（目的関数値および制約関数値を計算）して`optimizer`に返す役割を担います。  
 
-以下の実装例（`examples`フォルダ内）が利用可能です。
+以下にEMSOptimizer既定の実装例の一部を示します。
 - [`sphere`](../guides/Evaluator/sphere.md): 単目的最適化ベンチマークSphere関数\[11\]。
 - [`rastrigin`](../guides/Evaluator/rastrigin.md): 単目的最適化ベンチマークRastrigin関数\[11\]。
 - [`zdt1`](../guides/Evaluator/zdt1.md): 多目的最適化ベンチマークZDT1関数\[9\]。
@@ -58,7 +58,7 @@ EMSOptimizerでは「設計領域内の各位置（正確には、設計領域�
 一般的には「レベルセット法（トポロジー最適化手法の一種）に用いられる、材料境界を表現する関数」を特に指すことが多いです。
 :::
 
-以下の実装例（`examples`フォルダ内）が利用可能です。
+以下にEMSOptimizer既定の実装例の一部を示します。
 - [`ls_r`](../guides/LevelSetFunction/ls_r.md): 半径ごとにレベルをセットするシンプルな実装例。
 - [`ngnet`](../guides/LevelSetFunction/ngnet.md): NGnet関数\[3\]。
 - [`ngnet_mixture`](../guides/LevelSetFunction/ngnet_mixture.md): `ls_r`と`ngnet`を組み合わせ、ある半径以内（または以外）の領域についてNGnet関数を適用する実装例。
@@ -68,7 +68,7 @@ EMSOptimizerでは「設計領域内の各位置（正確には、設計領域�
 形状最適化における解析条件（電流位相角、磁化方向など）の動的な設定を担います。`evaluator`に`pyemsol_shape_evaluator`を設定したときに参照され、解候補ベクトル内の対応する変数を元に解析条件に関するパラメータを変更します。  
 すなわち、このオブジェクトを設定することで解析条件を最適化対象に含めることが可能です。
 
-以下の実装例（`examples`フォルダ内）が利用可能です。
+以下にEMSOptimizer既定の実装例の一部を示します。
 - [`phase_conditioner`](../guides/AnalysisConditioner/phase_conditioner.md): 電流位相角を変更します。
 
 ### eMotorSolution Shape Builder
@@ -77,7 +77,7 @@ EMSOptimizerでは「設計領域内の各位置（正確には、設計領域�
 eMotorSolution連携については[発展的なトピック > eMotorSolutionとの連携](../advanced/link_ems.md)をご覧ください。
 :::
 
-以下の実装例（`examples`フォルダ内）が利用可能です。
+以下にEMSOptimizer既定の実装例の一部を示します。
 - [`HoleMagnet55`](../guides/EMSShapeBuilder/holemagnet55.md): eMotorSolution HoleMagnet Type 55 永久磁石定義。`IPM8P48S_pto`プロジェクト内で使用されています。
 
 :::tip[解析条件・寸法・トポロジーの同時最適化]
@@ -94,6 +94,6 @@ $\boldsymbol{p}$, $\boldsymbol{d}$, $\boldsymbol{w}$ のうち、未設定のオ
 :::
 
 :::tip[最適化コントロール]
-`evaluator`と`optimizer`とを協働させる役割は`manager/optimization_manager.py`が担っています。  
-`manager`フォルダ内にはほかにもGUI出力やファイル出力を行うクラスが定義されていますが、ここでは割愛します。
+`evaluator`と`optimizer`とを協働させる役割は`manager/optimization_manager.py`が担っています。
+`manager`フォルダ内にはほかにもCLI定義、GUI出力、ファイル出力を行うクラスが定義されています。
 :::

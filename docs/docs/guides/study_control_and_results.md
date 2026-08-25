@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 1
 ---
 
 # スタディコントロールと結果確認
@@ -15,6 +15,7 @@ EMSOptimizerでは，最適化の実行・結果は次の3階層で管理され�
   - スタディの実行単位
   - `<project>/summary/optimization_studies/<study_name>/`フォルダに作成される
   - 同じスタディを複数回実行すると，ランが増えていく
+  - 特に、バックグラウンド投入されたランはジョブとしても管理される。ジョブの情報もラン同様に`<project>/summary/optimization_studies/<study_name>/`フォルダに作成される。
 
 ## スタディの作成・管理
 ### スタディの作成
@@ -64,6 +65,13 @@ python emsopt.py sample <project_name> <num_sample> --study-name <study>
 - `finished_at`
 - `failure_reason`
 - `updated_at`
+
+### ジョブ管理
+対象コマンドをバックグラウンドとして実行（`run --background`、`batch_run --background`、`sample --background`）すると、ラン情報と同時にその実行のジョブとしての情報が保存されます。  
+- job_idはUTC時刻と短いUUIDを用いた `job_YYYYMMDD_HHMMSS_xxxxxxxx` 形式で採番されます。
+- `job_info.yaml` はjobの正本メタデータで、対象project/study、command、PID、状態、run一覧を保持します。
+- `control.yaml` は制御要求ファイルで、`pause_requested` と `stop_requested` を保持します。
+- `stdout.log` と `stderr.log` にはバックグラウンドworkerの標準出力と標準エラーが保存されます。
 
 ## 結果出力
 結果は基本的に次に保存されます。

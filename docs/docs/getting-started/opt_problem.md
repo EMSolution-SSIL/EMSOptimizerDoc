@@ -27,7 +27,7 @@ $f_i$, $g_i$, $h_i$は`opimization_problem.yaml`ファイル内の以下のリ�
 - $f_i$: `objectives`
 - $g_i$: `ineq_constraints`
 - $h_i$: `eq_costraints`  
-- 例外として、`other_metrics`リストは最適化計算には使われず、GUI表示やファイル出力に利用されます。
+- 例外的に、`other_metrics`リストは参照用のリストです。最適化計算には使われず、GUI表示やファイル出力に利用されます。
 
 リスト内の各項目はいずれも以下の設定を持ちます。
 - `function_name: str` ... 評価用関数名（下記参照）。`average_torque`, `torque_ripple`など。
@@ -37,7 +37,7 @@ $f_i$, $g_i$, $h_i$は`opimization_problem.yaml`ファイル内の以下のリ�
 - `coefficient: float` ... 重み係数。下式参照。デフォルト値は`1.0`。
 - `baseline: float` ... バイアス項。下式参照。デフォルト値は`0.0`。
 :::info
-`function_name`に指定可能な評価用関数群、およびそれらの引数`kwargs`の一覧は[ユーザガイド > 評価用関数実装例](../guides/opt_problem_ex.md)をご覧ください。
+`function_name`に指定可能な評価用関数群、およびそれらの引数`kwargs`の一覧は[ユーザガイド > 評価用関数API](../guides/opt_problem_ex.md)をご覧ください。
 :::
 :::tip[`case_names`について]
 EMSOptimizerにおいては、複数解析ケースに対して目的関数を設定することが可能です。これはモータ等において複数の運転点における性能を同時に最適化したい場合などに活用できます。  

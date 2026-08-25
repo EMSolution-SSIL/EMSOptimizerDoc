@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('@site/static/img/shape_optimization.svg').default,
     description: (
       <>
-        EMSOptimizerはon/off法ベースのトポロジー最適化手法を内蔵しており、特に電気機器の概念設計のフェーズにおいて威力を発揮します。
+        EMSOptimizerはトポロジー最適化手法を内蔵しており、特に電気機器の概念設計のフェーズにおいて威力を発揮します。
         また、モータ設計およびシミュレーションツール「eMotorSolution」との連携によりモータのパラメータ最適化を、さらにはパラメータとトポロジーの同時最適化まで実現可能です。
         最適化手法は単目的・多目的両方をサポート。実用上重要な制約条件の取り扱いも柔軟です。
       </>

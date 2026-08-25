@@ -26,7 +26,7 @@ EMSOptAnalyzerの駆動には専用のpyemsolが必要です。これはEMSOptAn
 
 *形状最適化用の関連パッケージ群が無い状態でも、形状最適化を除いた一部機能（ベンチマーク関数による最適化アルゴリズムのテストなど）は利用可能です。
 
-**EMSOptimizerパッケージ群の一部および関連パッケージ群はCodeMeterによってライセンスプロテクトされており、利用にはライセンス認証が必要です。
+**EMSOptimizerパッケージ群および関連パッケージ群の一部はCodeMeterによってライセンスプロテクトされており、利用にはライセンス認証が必要です。
 
 ## インストール手順
 *Python 3.11.x (xは任意のマイナーバージョン) 環境およびパッケージ管理ツールpipが必要です。
@@ -39,6 +39,11 @@ EMSOptAnalyzerの駆動には専用のpyemsolが必要です。これはEMSOptAn
 pip install emsopt_engine-(version)-(environment)-(os).whl
 pip install emsopt_analyzer-(version)-(environment)-(os).whl
 ```
+:::info
+v0.7.0より、EMSOptFreeもwhlファイルとしてインストール可能になりました。  
+whlインストールすることで、python環境内のどこからでもCLIコマンドを実行できるようになります。  
+一方、最適化手法のカスタマイズなどを頻繁に行う場合は従来通り圧縮フォルダとしてインストールすることを推奨します。
+:::
 2. SSILから提供される関連パッケージ群をそれぞれの手順に従ってインストールします。  
 
 ### CodeMeter User Softwareのインストール

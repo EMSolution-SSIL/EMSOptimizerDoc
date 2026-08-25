@@ -61,7 +61,7 @@ ems_project_filepath: str | null = null
 ### 基本設定
 - `analysis_dimension: str ("2D" | "3D")` ... 取り扱う電気機器ベースモデルメッシュの次元。
 :::warning
-現在（v0.7.0）時点では，3Dの計算に以下の制約があります。  
+v0.7.0時点では，3Dの計算に以下の制約があります。  
 - `level_set_function`を使用する場合，`use_implicit_domain_meshing`は`True`でなければならない  
 - `level_set_function`に`pyemsol_density`は設定できない
 :::
