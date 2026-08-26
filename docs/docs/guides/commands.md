@@ -12,7 +12,7 @@ python emsopt.py -h
 python emsopt.py {コマンド名} -h
 ```
 :::info
-EMSOptFreeをwhlインストールした場合、`python emsopt.py`の部分は`emsopt`に読み替えてください。  
+EMSOptFreeをwhlインストールした場合、`python emsopt.py`の部分は`emsopt`に読み替えてください。基本的に、python環境内であればどこからでも実行できます。  
 :::
 :::info
 以下の説明に出てくるスタディ・ラン・ジョブの詳細については[ユーザガイド > スタディコントロールと結果確認](./study_control_and_results.md)をご覧ください。
