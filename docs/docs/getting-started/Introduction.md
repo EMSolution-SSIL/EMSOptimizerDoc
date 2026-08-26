@@ -14,6 +14,10 @@ python emsopt.py run soo_base
 :::info
 実際にこの最適化によって得られる結果の例については[Showcase](../../showcase/base_optimization/soo_base.md)をご覧ください。
 :::
+:::info
+EMSOptFreeをwhlインストールした場合、`python emsopt.py`の部分は`emsopt`に読み替えてください。  
+基本的に、`emsopt`コマンドはpython環境内ならどこからでも実行できます。  
+:::
 
 ## 形状最適化を試す
 形状最適化のサンプル試すには、配置した`EMSOptimizer`フォルダ直下にて以下のコマンドを実行します。
