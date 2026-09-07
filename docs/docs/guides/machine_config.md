@@ -185,7 +185,7 @@ increment_info:
     - `polar_symmetry` ... Polar座標系を正方画像化する。縦横を画像いっぱいに拡大して画像化する。$\theta$方向は0°～`sym_deg`°に自動設定する。
   - `image_target_region: tuple[tuple[float, float], tuple[float, float]] | null` ... 画像化する領域。`coordinate`が`Cartesian`の場合は矩形領域$[[x_1, x_2], [y_1, y_2]]$、`Polar`の場合は扇状領域$[[r_1, r_2], [\theta_1, \theta_2]]$を設定する。
 :::info
-`view_mode`が`polar_symmetry`かつ`image_target_region`設定時は、`image_target_region`の設定が優先される（\theta方向の自動設定は無視される）。
+`view_mode`が`polar_symmetry`かつ`image_target_region`設定時は、`image_target_region`の設定が優先される（$\theta$方向の自動設定は無視される）。
 :::
 - `material_color_map: dict[int, str]` ... 材料ID→画像色マップ。未指定のIDに対してはデフォルト色が適用される。
   #### Format
