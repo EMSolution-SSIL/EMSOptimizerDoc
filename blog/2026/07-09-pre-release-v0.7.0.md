@@ -36,7 +36,7 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
     - レベルセット関数計算の設定
 - [評価関数実装例](/EMSOptimizerDoc/docs/docs/guides/opt_problem_ex)の更新
 - [サロゲートモデル導入](/EMSOptimizerDoc/docs/docs/advanced/surrogate_model_usage)の追加
-- [AIを活用したコンフィグ設定](/EMSOptimizerDoc/docs/docs/advanced/ai_usage.md)の追加
+- [AIを活用したコンフィグ設定](/EMSOptimizerDoc/docs/docs/advanced/ai_usage)の追加
 
 ### 主要な更新・追加
 - [イントロダクション](/EMSOptimizerDoc/docs/docs/getting-started/Introduction)の更新
@@ -44,6 +44,10 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
     - GUIを更新しました。
 - [最適化問題の設定](/EMSOptimizerDoc/docs/docs/guides/optimization_problem_config)の追加
     - [最適化問題の定義](/EMSOptimizerDoc/docs/docs/getting-started/opt_problem)ページの内容を，コンフィグスキーマとして正式に記述しました。
+- [EMSOptimizer Python API](/EMSOptimizerDoc/docs/docs/guides/emsopt_api)の追加
+    - v0.7.0より、最適化実行モジュール（クラス）をAPIとしても提供しています。
+- [マルチマテリアル最適化実装例](/EMSOptimizerDoc/docs/docs/guides/LevelSetFunction/ngnet_multi_material)
+    - 4,5材料表現の追加
 
 ### Showcase関連
 - [Dmodel 混合変数最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/mixed_variables)の追加

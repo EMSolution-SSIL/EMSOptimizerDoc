@@ -37,4 +37,5 @@ NGnet on/off法では、重みベクトル$\boldsymbol{w}$を最適化するこ�
 - `normalize_output: bool` ... NGnet出力を正規化するかどうか。`False`にすると、  
 $y(\boldsymbol{w}, \boldsymbol{x}) = \sum_{i=1}^{N} w_i G_i(\boldsymbol{x}) \\$
 となります。デフォルト値は`True`。
+- `fixed_design_region: list[list[float, float], list[float, float]] | null` ... ここで設定した範囲外の出力を強制的に1に固定する。`design_region`と同様に指定する。
 - `check_basis_GUI: bool` ... Trueの場合，ガウス基底関数の配置を確認するためのGUIを起動時に立ち上げる。

@@ -24,6 +24,11 @@ $r(\boldsymbol{x})$: 制約違反量
 
 ## 設定可能なキーワード引数一覧
 - `mean: np.ndarray` ... $\boldsymbol{m}$初期値。デフォルト値は$\boldsymbol{m} = \boldsymbol{0}$。
+:::info
+`mean`の長さ`len(mean)`が次元数`dim`に不一致の場合、以下の処理が行われます。  
+- `len(mean) < dim`: 先頭から`mean`が格納され、余った箇所は0埋めされる。
+- `len(mean) > dim`: エラー
+:::
 - `sigma: float` ...ステップサイズ初期値。デフォルト値は`1`。
 - `bounds: tuple[float, float] | list[tuple[float, float]]` ... 各変数の上下限値。
 :::tip[`bounds`の挙動]

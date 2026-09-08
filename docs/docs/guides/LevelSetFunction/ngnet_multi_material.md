@@ -43,3 +43,18 @@ Level 3に割り当てられる角度は$\theta_{3}^{\text{mat}} = 360 - \theta_
 したがって、平均的に多くの割合を占める材料に対応する角度は大き目に設定することで、最適化の収束性が良くなる可能性があります。  
 ただし、最適化の経過によっては材料マップ上角度に係わらず、目的関数を低減するような材料分布に収束することが経験的に知られています。
 :::
+- `insert_circle: bool` ... 2つのNGnet出力が作る表現空間に円形領域を追加し、材料状態を1つ増す。デフォルト値は`false`。
+- `circle_radius: float` ... `insert_circle=True`の場合に使用する円形領域の半径。デフォルト値は`0.5`。
+- `insert_third_ngnet: bool` ... 3番目のNGnetを追加し、その符号による材料状態を追加する。デフォルト値は`false`。
+:::tip[multi-materialの材料表現]
+`insert_circle` と `insert_third_ngnet` の組み合わせによって、出力レベルと設計変数次元が変わります\[36\], \[37\]。
+| 設定 | 設計変数次元 | 表現 |
+|---|---:|---|
+| 両方 `False` | `2K` | 従来の3材料表現 |
+| `insert_circle=True` | `2K` | 円形領域を加えた4材料表現 |
+| `insert_third_ngnet=True` | `3K` | 第3NGnetによる4材料表現 |
+| 両方 `True` | `3K` | 円形領域と第3NGnetによる5材料表現 |
+
+*`K`...ガウス基底関数の配置数。
+:::
+- `fixed_design_region: list[list[float, float], list[float, float]] | null` ... ここで設定した範囲外の出力を強制的に1に固定する。`design_region`と同様に指定する。

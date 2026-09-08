@@ -74,3 +74,8 @@ sidebar_position: 5
 \[34\] Y. Hidaka, T. Sato and H. Igarashi, "Topology Optimization Method Based on On–Off Method and Level Set Approach," in IEEE Transactions on Magnetics, vol. 50, no. 2, pp. 617-620, Feb. 2014, Art no. 7015204.
 
 \[35\] scikit-learn developers, "Feature importances with a forest of trees," https://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html
+
+\[36\] S. Hayashi, M. Yatsurugi, Y. Kubota, S. Soma, and H. Igarashi, "Topology Optimization of a Surface Permanent Magnet Motor With High Torque Density," in IEEE Transactions on Magnetics, vol. 60, no. 3, pp. 1–5, 2024.
+
+\[37\] H. Sato, "Multi-Material Topology Optimization of Interior Permanent Magnet Synchronous Motors Guided by Single-Material Solution," 2026 IEE-Japan Industry Applications Society Conference
+R3-22 PM Motors (II), September 2026.
