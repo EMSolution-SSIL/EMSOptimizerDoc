@@ -6,7 +6,12 @@ sidebar_position: 3
 ## 概要
 Implicit Domain Meshing\[13\]を使用したリメッシュでは、レベルセット関数を適用する領域のメッシュを、レベルセット関数のゼロ等位面に沿うように変形・再生成します。トポロジー最適化においては多くの場合、レベルセット関数のゼロ等位面が材料境界となるため、これは大まかに言いかえると「**材料境界となる位置にちょうどメッシュの節点・エッジが配置されるようにリメッシュする**」手法です。
 
-EMSOptimizerにおいてはImplicit Domain Meshingの実行ツールとしてmmg（`mmg2d_O3.exe`）を使用します\[15\]。リメッシュ処理は`machine.yaml` > `use_implicit_domain_meshing`コンフィグが`True`の時に自動実行されます。詳細な設定については[ユーザガイド > 機器設定（machine.yaml）](../guides/machine_config.md)をご覧ください。
+EMSOptimizerにおいてはImplicit Domain Meshingの実行ツールとしてmmg（`mmg2d_O3`, `mmg3d_O3`）を使用します\[15\]。リメッシュ処理は`machine.yaml` > `use_implicit_domain_meshing`コンフィグが`True`の時に自動実行されます。詳細な設定については[ユーザガイド > 機器設定（machine.yaml）](../guides/machine_config.md)をご覧ください。
+
+:::info
+mmg実行ファイルはEMSOptimizerのフォルダ直下に格納されています。  
+CLI実行時など、フォルダ外から実行する場合は環境変数`MMG2D_EXE_PATH`(2次元)および`MMG3D_EXE_PATH`(3次元)にmmg実行ファイルへのパスを設定してください。
+:::
 
 :::warning
 Implicit Domain Meshing利用時、**プロジェクトに格納するメッシュファイルは三角形メッシュのみで構成されている必要があります**。  
