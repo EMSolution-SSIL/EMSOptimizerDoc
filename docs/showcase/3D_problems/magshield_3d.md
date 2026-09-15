@@ -68,7 +68,7 @@ Implicit Domain Meshingはデフォルトで有効としています。
 use_implicit_domain_meshing: True
 ```
 
-設計対象（`20: rotor`）以外は領域分割を行いません。
+設計対象（`2: Design`）以外は領域分割を行いません。
 ```yaml
 # material boundaries of no_split_ids will be preserved after remeshing
 no_split_ids:
@@ -95,7 +95,7 @@ no_remesh_ids:
 ```
 :::tip[3D最適化におけるリメッシュ]
 今回の設定では`2: Design`がリメッシュ対象となっており，この領域は`3: Target`および`4: Air`と接触しています。  
-このうち，`4: Air`は`1: Coil`の定義の関係上，リメッシュしないように設定しています。  
+このうち，`4: Air`は`1: Coil`との接触の関係上，リメッシュしないように設定しています。  
 このとき，`2: Design`のリメッシュ結果と`4: Air`の固定メッシュとの接合を取るため，間にリメッシュを許容する空気薄層（`5: layer`）を設けています。
 :::
 

@@ -125,3 +125,75 @@ $N$: 連結成分数
 最良形状（81イテレーション目）はオリジナルモデルに類似した永久磁石＋フラックスバリア構造を有している一方、ロータ表面がトポロジー最適化によって特徴的な構造となっていることが分かります。平均トルク: 15.597 Nm、トルクリプル率: 12.578 %。  
 [多目的トポロジー最適化](./basic_moo.md)の結果ではトルクリプル率の最小値が20%程度だったことを考えると、このロータ表面の構造によってトルクリプルを低減している可能性があると判断できます。  
 ![IPM8P48S PTO結果](/img/IPM8P48S_pto_check.png)
+
+## 応力制約の考慮
+v0.7.0より、周辺解析ツールeMachineSimとの連携が可能になりました。  
+`IPM8P48S_pto_structural`プロジェクトは`IPM8P48S_pto`に最大ミーゼス応力制約250MPa@15000rpmを加えた最適化事例です。  
+
+`IPM8P48S_pto_structural`は以下のプロジェクト構成となっています。  
+eMachineSim用の入力ファイルはpyemsol（電磁界解析）用と同様、プロジェクト配下の同名フォルダ内に格納します。回転数や拘束条件などは入力ファイルにて定義します。詳細はeMachineSimのドキュメントをご覧ください。  
+```txt
+IPM8P48S_pto_structural/
+├── structural/
+│    └── structural.json  # eMachineSim用入力ファイル
+├── transient/
+│    └── transient.json  # pyemsol用入力ファイル
+├── IPM8P48S.json  # eMotorSolutionプロジェクトファイル
+├── machine.yaml
+├── optimization_problem.yaml
+└── optimization.yaml
+```
+
+`optimization_problem.yaml`上ではpyemsol/eMachineSimの区別なく、`case_names`に解析ケース名を列挙したうえで、それぞれの評価関数のどの解析ケースで評価するかを記述します。  
+ここでは、`von_mises_stress`評価関数を`structural`解析ケースにて評価する設定です。  
+```yaml
+case_names:
+  - transient
+  - structural
+
+objectives:
+  - function_name: torque_ripple_percentage
+    kwargs:
+      torque_scale: 8.0
+
+ineq_constraints:
+  - function_name: average_torque
+    kwargs:
+      torque_scale: 8.0
+    coefficient: -1
+    baseline: 14.62
+  - function_name: von_mises_stress
+    case_name: structural
+    kwargs:
+      prohibit_seperated: True
+    normalization_const: 250e6
+    baseline: 250e6
+
+eq_constraints:
+  - function_name: num_connected_components
+    kwargs:
+      physical_tag: 20
+    baseline: 1
+
+other_metrics:
+  - function_name: average_torque
+    kwargs:
+      torque_scale: 8.0
+  - function_name: torque_ripple_percentage
+    kwargs:
+      torque_scale: 8.0
+  - function_name: von_mises_stress
+    case_name: structural
+    kwargs:
+      prohibit_seperated: True
+```
+
+100イテレーション最適化完了後のGUIを以下に示します。  
+最良形状の最大ミーゼス応力値は214MPaであり、250MPaを下回っていることが分かります。  
+
+![IPM8P48S PTO Structural結果](/img/IPM8P48S_pto_structural_check.png)
+
+最良形状をミーゼス応力値を可視化したものが下図です。永久磁石間のリブに応力値が集中していることが分かります。  
+本プロジェクトの方法によって最適化中に応力値が過大にならないことを簡易的に保証することができますが、解析精度がメッシュに依存する点には注意が必要です。  
+![IPM8P48S PTO Structural応力値](/img/IPM8P48S_pto_structural_stress.png)
+

@@ -17,7 +17,6 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
 - eMachineSimとの連携
     - 電気機器周辺解析用ツールeMachineSimとの連携をサポートしました。
     - pyemsolと同様に解析ケースフォルダを配置し、`optimization_problem.yaml`にて指定することで解析可能になります。
-    - 実用例は[Dmodel同期リラクタンスモータ最適化例](/EMSOptimizerDoc/docs/showcase/Dmodel/synrm)をご覧ください。
 - [スタディコントロールと結果確認](/EMSOptimizerDoc/docs/docs/guides/study_control_and_results)
     - スタディ作成機能を追加しました。これにより，ある設計対象に対する最適化設定を複数保持できるようになりました。
     - また，各スタディの実行結果はランという単位で保存され，あとから参照できるようになりました。
@@ -53,8 +52,7 @@ v0.7.0のリリース準備に伴い，ドキュメントを更新しました�
 - [Dmodel 混合変数最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/mixed_variables)の追加
     - 永久磁石材料，コイル巻数，永久磁石寸法パラメータ，磁性体コアトポロジーを含む混合変数の最適化事例です。
 - Dmodel 同期リラクタンスモータ最適化の追加
-    - [NGnet on/off法による最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/synrm)
-        - 応力値を考慮した最適化事例（eMachineSim連携）
     - [密度法による最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/gradient_density)
     - [レベルセット法による最適化](/EMSOptimizerDoc/docs/showcase/Dmodel/gradient_levelset)
+- [IPM8P48S応力制約下最適化例](/EMSOptimizerDoc/docs/showcase/IPM8P48S/pto)
 - [IPM8P48Sサロゲート利用例](/EMSOptimizerDoc/docs/showcase/IPM8P48S/surrogate)
