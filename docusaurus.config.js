@@ -112,6 +112,10 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
+            type: 'docsVersionDropdown',
+            position: 'right',
+          },
+          {
             href: 'https://www.ssil.co.jp/',
             label: 'SSIL',
             position: 'right',
