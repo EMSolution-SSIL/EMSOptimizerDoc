@@ -1,0 +1,355 @@
+メタ情報:
+  名称: EMSOptimizer 日英翻訳用語集
+  バージョン: 1
+  原文言語: ja
+  翻訳先言語: en
+  目的: EMSOptimizerのDocusaurusドキュメントをAIで英訳する際に、重要用語と表記を固定する。
+  参照ページ:
+  - https://emsolution-ssil.github.io/EMSOptimizerDoc/
+  - https://emsolution-ssil.github.io/EMSOptimizerDoc/docs/docs/getting-started/Introduction/
+  - https://emsolution-ssil.github.io/EMSOptimizerDoc/docs/docs/getting-started/core_concepts/
+  - https://emsolution-ssil.github.io/EMSOptimizerDoc/docs/docs/getting-started/opt_problem/
+  - https://emsolution-ssil.github.io/EMSOptimizerDoc/docs/docs/guides/optimization_config/
+  - https://emsolution-ssil.github.io/EMSOptimizerDoc/docs/docs/guides/machine_config/
+  - https://emsolution-ssil.github.io/EMSOptimizerDoc/docs/docs/guides/individual/
+  - https://emsolution-ssil.github.io/EMSOptimizerDoc/docs/showcase/Dmodel/basic/
+翻訳ルール:
+- この用語集に掲載された日本語がEMSOptimizer固有の意味で使われている場合、本用語集を最優先する。
+- 製品名、API名、クラス名、コマンド名、設定キー、ファイル名、パス、コードリテラルは翻訳しない。
+- Markdown/MDX構造、front matterの機械的なキー、リンク先、コードブロック、インラインコード、数式記号、YAML/JSONキーを維持する。
+- 通常の英文はsentence caseを基本とする。ただしEMSOptimizerの公式コアオブジェクト名は定義済みの大文字・小文字を維持する。
+- 直訳よりも、数理最適化・CAE・電気機器分野で一般的な英語用語を優先する。
+- EMSOptimizerのIndividualを指す「個体」は individual、「解候補」は candidate solution とする。
+- 「評価値」は文脈で訳し分ける。目的関数値なら objective value、メトリクスなら metric value、scalar fitnessプロパティなら fitness を使用する。
+- 「設計領域」は設定キー design_region と整合するよう design region とする。
+- 本文中の「コンフィグ」は configuration とする。ただし設定ファイル名や設定キーは変更しない。
+- CMA-ES、NSGA-II、MOEA/D、IPMSM、GUI、CLI、API、YAML、JSON等の標準的な略語は、原文が明示的に説明している場合を除いて展開しない。
+- Docusaurusの `current.json` / `version-*.json` では、原則として各エントリの `message` だけを英訳し、キーと `description` は変更しない。
+- JSON翻訳内の `{name}`、`{versionLabel}` 等のプレースホルダは名称・個数を完全に維持する。
+翻訳しない語:
+- EMSOptimizer
+- EMSolution
+- pyemsol
+- eMotorSolution
+- Dmodel
+- NGnet
+- CMA-ES
+- NSGA-II
+- MOEA/D
+- ZDT1
+- Rastrigin
+- Sphere
+- Implicit Domain Meshing
+- Python
+- YAML
+- JSON
+- GUI
+- CLI
+- API
+コアオブジェクト:
+- ja: Optimizer
+  en: Optimizer
+  注記: EMSOptimizerの公式コアオブジェクト名。大文字・小文字を含め表記を維持する。
+- ja: Evaluator
+  en: Evaluator
+  注記: EMSOptimizerの公式コアオブジェクト名。大文字・小文字を含め表記を維持する。
+- ja: Level Set Function
+  en: Level Set Function
+  注記: 見出し等で使用する公式のコアオブジェクト／カテゴリ名。
+- ja: レベルセット関数
+  en: level set function
+  注記: 通常の英文中では小文字で使用する。
+- ja: Analysis Conditioner
+  en: Analysis Conditioner
+  注記: 見出し等で使用する公式のコアオブジェクト／カテゴリ名。
+- ja: 解析条件設定オブジェクト
+  en: Analysis Conditioner
+  注記: EMSOptimizerのコアオブジェクトを指す場合に使用する。
+- ja: eMotorSolution Shape Builder
+  en: eMotorSolution Shape Builder
+  注記: 公式コアオブジェクト名。大文字・小文字を含め表記を維持する。
+- ja: コアオブジェクト
+  en: core object
+最適化:
+- ja: 数理最適化
+  en: mathematical optimization
+- ja: 最適化
+  en: optimization
+- ja: 最適化問題
+  en: optimization problem
+- ja: 最適化手法
+  en: optimization method
+- ja: 最適化アルゴリズム
+  en: optimization algorithm
+- ja: 単目的最適化
+  en: single-objective optimization
+- ja: 多目的最適化
+  en: multi-objective optimization
+- ja: 形状最適化
+  en: shape optimization
+- ja: トポロジー最適化
+  en: topology optimization
+- ja: 寸法最適化
+  en: dimensional optimization
+  注記: 現行ドキュメントで、パラメータ化された部品寸法を指す場合に使用する。
+- ja: パラメータ最適化
+  en: parameter optimization
+- ja: 同時最適化
+  en: simultaneous optimization
+- ja: 目的関数
+  en: objective function
+- ja: 目的関数値
+  en: objective value
+- ja: 制約条件
+  en: constraint
+- ja: 制約関数
+  en: constraint function
+- ja: 不等式制約
+  en: inequality constraint
+- ja: 等式制約
+  en: equality constraint
+- ja: 制約違反量
+  en: constraint violation
+- ja: 正規化定数
+  en: normalization constant
+- ja: 重み係数
+  en: weighting coefficient
+- ja: バイアス項
+  en: bias term
+- ja: 最適化イテレーション
+  en: optimization iteration
+- ja: イテレーション
+  en: iteration
+- ja: 世代
+  en: generation
+  注記: 原文が進化計算における「世代」を明示的に指す場合だけ使用する。
+- ja: パレートフロント
+  en: Pareto front
+- ja: パレート解
+  en: Pareto solution
+- ja: エリート解
+  en: elite solution
+- ja: 最良解
+  en: best solution
+- ja: 最良個体
+  en: best individual
+- ja: 評価対象
+  en: candidate to be evaluated
+  注記: 対象が明確に解候補である場合は candidate solution を優先する。
+- ja: ベンチマーク関数
+  en: benchmark function
+- ja: 乱数シード
+  en: random seed
+個体とデータ:
+- ja: 解候補
+  en: candidate solution
+- ja: 解候補ベクトル
+  en: candidate-solution vector
+- ja: 個体
+  en: individual
+  注記: EMSOptimizerの Individual 概念を指す。
+- ja: 個体群
+  en: population
+  注記: EMSOptimizerの Population 概念を指す。
+- ja: 解ベクトル
+  en: solution vector
+- ja: 設計変数
+  en: design variable
+- ja: 設計変数ベクトル
+  en: design-variable vector
+- ja: 設計行列
+  en: design matrix
+- ja: 評価値
+  en: objective value
+  注記: 既定の訳。文脈がメトリクスなら metric value、fitnessプロパティなら fitness を使用する。
+- ja: 適合度
+  en: fitness
+- ja: 総合適合度
+  en: aggregate fitness
+- ja: メトリクス
+  en: metric
+- ja: その他のメトリクス
+  en: other metrics
+- ja: 評価結果
+  en: evaluation result
+プロジェクトと実行:
+- ja: プロジェクト
+  en: project
+- ja: プロジェクトフォルダ
+  en: project folder
+- ja: 最適化ケース
+  en: optimization case
+- ja: 解析ケース
+  en: analysis case
+- ja: スタディ
+  en: study
+  注記: 最適化設定一式を管理するEMSOptimizer上の単位。
+- ja: 最適化スタディ
+  en: optimization study
+- ja: ラン
+  en: run
+  注記: 1つのスタディ内における1回の最適化試行／結果セット。
+- ja: 最適化試行
+  en: optimization run
+- ja: コンフィグ
+  en: configuration
+- ja: 設定項目
+  en: configuration option
+- ja: 必須項目
+  en: required option
+- ja: デフォルト値
+  en: default value
+- ja: キーワード引数
+  en: keyword argument
+- ja: 作業用フォルダ
+  en: working directory
+- ja: 出力先フォルダ
+  en: output directory
+- ja: 最適化経過
+  en: optimization progress
+- ja: 最適化結果
+  en: optimization results
+- ja: 並列処理
+  en: parallel processing
+- ja: 分散処理
+  en: distributed processing
+- ja: プロセス並列
+  en: process-based parallelism
+- ja: workerノード
+  en: worker node
+- ja: schedulerノード
+  en: scheduler node
+形状とメッシュ:
+- ja: 設計対象
+  en: design target
+- ja: 設計領域
+  en: design region
+- ja: 材料
+  en: material
+- ja: 材料ID
+  en: material ID
+- ja: 材料名
+  en: material name
+- ja: 材料境界
+  en: material boundary
+- ja: オン材料
+  en: ON-state material
+  注記: on/off表現の正側／ON側で選択される材料を指す場合に使用する。
+- ja: オフ材料
+  en: OFF-state material
+  注記: on/off表現の負側／OFF側で選択される材料を指す場合に使用する。
+- ja: on/off法
+  en: on/off method
+- ja: NGnet on/off法
+  en: NGnet on/off method
+- ja: 基底関数
+  en: basis function
+- ja: ガウス基底関数
+  en: Gaussian basis function
+- ja: メッシュ
+  en: mesh
+- ja: メッシュファイル
+  en: mesh file
+- ja: メッシュ要素
+  en: mesh element
+- ja: 要素
+  en: element
+- ja: 要素エッジ長
+  en: element edge length
+- ja: リメッシュ
+  en: remeshing
+- ja: 領域分割
+  en: region splitting
+- ja: メッシュ品質
+  en: mesh quality
+- ja: メッシュの質
+  en: mesh quality
+- ja: スライドメッシュ領域
+  en: sliding-mesh region
+- ja: 鏡面対称
+  en: mirror symmetry
+- ja: 鏡面対称領域
+  en: mirror-symmetric region
+- ja: 回転対称
+  en: rotational symmetry
+- ja: 回転対称領域
+  en: rotationally symmetric region
+- ja: 対称軸
+  en: symmetry axis
+- ja: 直交座標系
+  en: Cartesian coordinate system
+- ja: 極座標系
+  en: polar coordinate system
+- ja: 連結成分
+  en: connected component
+解析と電気機器:
+- ja: 電気機器
+  en: electrical equipment
+  注記: EMSolution英語版ドキュメントで用いられている広義の表現に合わせる。
+- ja: 電磁界解析
+  en: electromagnetic field analysis
+- ja: 電磁界シミュレータ
+  en: electromagnetic field simulator
+- ja: 解析条件
+  en: analysis condition
+- ja: 運転点
+  en: operating point
+- ja: モータ
+  en: motor
+- ja: 同期モータ
+  en: synchronous motor
+- ja: 永久磁石同期モータ
+  en: permanent magnet synchronous motor
+- ja: 埋め込み型永久磁石同期モータ
+  en: interior permanent magnet synchronous motor
+- ja: ロータ
+  en: rotor
+- ja: ステータ
+  en: stator
+- ja: ロータコア
+  en: rotor core
+- ja: 空気穴
+  en: air hole
+- ja: フラックスバリア
+  en: flux barrier
+- ja: 平均トルク
+  en: average torque
+- ja: トルクリプル
+  en: torque ripple
+- ja: トルクリプル率
+  en: torque ripple percentage
+- ja: 電流位相角
+  en: current phase angle
+- ja: 磁化方向
+  en: magnetization direction
+UI推奨表記:
+- ja: 基本の使い方
+  en: Getting Started
+- ja: ユーザガイド
+  en: User Guide
+- ja: 発展的なトピック
+  en: Advanced Topics
+- ja: インストールガイド
+  en: Installation Guide
+- ja: 参考文献
+  en: References
+- ja: 備考
+  en: Note
+- ja: 警告
+  en: Warning
+- ja: 制限事項
+  en: Limitations
+- ja: 推奨設定値
+  en: Recommended Settings
+変更しない表記パターン:
+- '`...` で囲まれたインラインコード'
+- フェンス形式のコードブロック
+- optimization.yaml
+- machine.yaml
+- optimization_problem.yaml
+- problem_template.yaml
+- pre_geom2D.msh
+- rotor_mesh2D.msh
+- optimizer、evaluator、level_set_function、analysis_conditioner、ems_shape_builder 等の設定キー
+- run、check、cp_proj、mk_study、batch_run、save_tpl、load_tpl 等のCLIコマンド・オプション
+- Individual、Population、OptimizationProblemMetrics 等のPython識別子

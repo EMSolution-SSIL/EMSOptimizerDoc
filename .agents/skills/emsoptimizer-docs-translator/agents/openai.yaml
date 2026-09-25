@@ -1,0 +1,3 @@
+interface:
+  display_name: "EMSOptimizer ドキュメント英訳"
+  short_description: "日本語のEMSOptimizer Docusaurusドキュメントを英訳・差分同期します"

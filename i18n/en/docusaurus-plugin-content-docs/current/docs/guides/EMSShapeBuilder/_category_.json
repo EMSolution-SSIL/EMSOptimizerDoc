@@ -1,0 +1,8 @@
+{
+  "label": "eMotorSolution Shape Builder",
+  "position": 12,
+  "link": {
+    "type": "generated-index",
+    "description": "This section introduces eMotorSolution Shape Builder implementation examples (EMSOptimizer core/ems_shape_builder)."
+  }
+}
