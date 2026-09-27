@@ -1,40 +1,44 @@
 import Heading from '@theme/Heading';
+import {translate} from '@docusaurus/Translate';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: '幅広い形状最適化手法のサポート',
+    title: translate({
+      id: 'homepage.features.shapeOptimization.title',
+      message: '幅広い形状最適化手法のサポート',
+    }),
     Svg: require('@site/static/img/shape_optimization.svg').default,
-    description: (
-      <>
-        EMSOptimizerはトポロジー最適化手法を内蔵しており、特に電気機器の概念設計のフェーズにおいて威力を発揮します。
-        また、モータ設計およびシミュレーションツール「eMotorSolution」との連携によりモータのパラメータ最適化を、さらにはパラメータとトポロジーの同時最適化まで実現可能です。
-        最適化手法は単目的・多目的両方をサポート。実用上重要な制約条件の取り扱いも柔軟です。
-      </>
-    ),
+    description: translate({
+      id: 'homepage.features.shapeOptimization.description',
+      message:
+        'EMSOptimizerはトポロジー最適化手法を内蔵しており、特に電気機器の概念設計のフェーズにおいて威力を発揮します。また、モータ設計およびシミュレーションツール「eMotorSolution」との連携によりモータのパラメータ最適化を、さらにはパラメータとトポロジーの同時最適化まで実現可能です。最適化手法は単目的・多目的両方をサポート。実用上重要な制約条件の取り扱いも柔軟です。',
+    }),
   },
   {
-    title: 'Python製ソフトウェアの柔軟性',
+    title: translate({
+      id: 'homepage.features.python.title',
+      message: 'Python製ソフトウェアの柔軟性',
+    }),
     Svg: require('@site/static/img/python-logo-only.svg').default,
-    description: (
-      <>
-        EMSOptimizerはPythonプログラミング言語製の一部公開ソフトウェアです。
-        基本の最適化設定はコンフィグファイルのみで完結する一方で、
-        独自の最適化アルゴリズムや形状関数を設定したいユーザはPython製プラグインを作成し、EMSOptimizerと直接連携させることが可能。
-        ユーザの研究開発をサポートします。
-      </>
-    ),
+    description: translate({
+      id: 'homepage.features.python.description',
+      message:
+        'EMSOptimizerはPythonプログラミング言語製の一部公開ソフトウェアです。基本の最適化設定はコンフィグファイルのみで完結する一方で、独自の最適化アルゴリズムや形状関数を設定したいユーザはPython製プラグインを作成し、EMSOptimizerと直接連携させることが可能。ユーザの研究開発をサポートします。',
+    }),
   },
   {
-    title: 'EMSolutionの力を活用',
+    title: translate({
+      id: 'homepage.features.emsolution.title',
+      message: 'EMSolutionの力を活用',
+    }),
     Svg: require('@site/static/img/emsol.svg').default,
-    description: (
-      <>
-        形状最適化には、複雑かつ高効率な形状解析が必要です。EMSOptimizerは、強力かつ高効率なシミュレーションエンジンであるEMSolutionによって駆動されています。
-        EMSolutionはPythonにバインドされており（pyemsol）、EMSOptimizerの最適化アルゴリズムと連携することで電気機器の効率的な最適化を実現します。
-      </>
-    ),
+    description: translate({
+      id: 'homepage.features.emsolution.description',
+      message:
+        '形状最適化には、複雑かつ高効率な形状解析が必要です。EMSOptimizerは、強力かつ高効率なシミュレーションエンジンであるEMSolutionによって駆動されています。EMSolutionはPythonにバインドされており（pyemsol）、EMSOptimizerの最適化アルゴリズムと連携することで電気機器の効率的な最適化を実現します。',
+    }),
   },
 ];
 

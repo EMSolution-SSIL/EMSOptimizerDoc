@@ -360,5 +360,32 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "homepage.getStarted": {
+    "message": "Get started"
+  },
+  "homepage.metaDescription": {
+    "message": "Official EMSOptimizer documentation"
+  },
+  "homepage.tagline": {
+    "message": "A mathematical optimization tool specialized for electrical equipment"
+  },
+  "homepage.features.shapeOptimization.title": {
+    "message": "Support for a wide range of shape optimization methods"
+  },
+  "homepage.features.shapeOptimization.description": {
+    "message": "EMSOptimizer includes topology optimization methods and is particularly effective in the conceptual design of electrical equipment. Through integration with the motor design and simulation tool eMotorSolution, it supports motor parameter optimization and even simultaneous parameter and topology optimization. It supports both single- and multi-objective optimization and offers flexible handling of constraints that are important in practical applications."
+  },
+  "homepage.features.python.title": {
+    "message": "Flexibility of Python-based software"
+  },
+  "homepage.features.python.description": {
+    "message": "EMSOptimizer is partially open-source software written in Python. Basic optimization can be configured entirely through configuration files, while users who need custom optimization algorithms or shape functions can create Python plugins and integrate them directly with EMSOptimizer. This flexibility supports users' research and development."
+  },
+  "homepage.features.emsolution.title": {
+    "message": "Harnessing the power of EMSolution"
+  },
+  "homepage.features.emsolution.description": {
+    "message": "Shape optimization requires sophisticated and efficient shape analysis. EMSOptimizer is powered by EMSolution, a powerful and efficient simulation engine. EMSolution provides Python bindings through pyemsol and works with EMSOptimizer's optimization algorithms to efficiently optimize electrical equipment."
   }
 }
