@@ -42,53 +42,53 @@ EMSOptimizer manages each optimization case as a **project**. A project is repre
     - `optimization_problem.yaml`: Configuration defining the shape-optimization problem, including objectives and constraints
 - **Mesh files used as the base model for shape optimization** (`pre_geom2D.msh`, `rotor_mesh2D.msh` when a sliding-motion region is included)
 - **Shape-optimization analysis-case folders**
-    - Each analysis-case folder contains a JSON file with the same name. These are input files for the pyemsol electromagnetic simulator or the auxiliary eMachineSim analysis tool.
+    - Each analysis-case folder contains a JSON file with the same name. These are input files for the `pyemsol` electromagnetic simulator package or the auxiliary analysis tool `eMachineSim`.
 :::info
-When optimizing benchmark functions, only `pyemsol` is required.
+When optimizing benchmark functions, only `optimization.yaml` is required.
 :::
 :::info
 Since v0.7.0, mesh files can also be placed inside shape-optimization analysis-case folders. This allows different mesh resolutions for different analysis cases, although physical IDs and similar information must be consistent across all meshes.  
 If a mesh is not placed in an analysis-case folder, the mesh in the project folder is used for all cases as before.
 :::
 
-Several example projects are already included in the `eMachineSim` folder. `optimization.yaml`, used in the introductory example, is one of them.
+Several example projects are already included in the `project` folder. `Dmodel`, used in the introductory example, is one of them.
 
-The figure below shows the actual structure of the `project` project. `Dmodel` and `Dmodel` are the stator and rotor mesh files, respectively. The `pre_geom2D.msh` analysis case is also included.
+The figure below shows the actual structure of the `Dmodel` project. `pre_geom2D.msh` and `rotor_mesh2D.msh` are the stator and rotor mesh files, respectively. The `transient` analysis case is also included.
 
 ![Project folder example](/img/project_folder.png)
 
-To run optimization for a project, execute the `rotor_mesh2D.msh` command as follows.  
+To run optimization for a project, execute the `run` command as follows.  
 ```sh
 python emsopt.py run {プロジェクト名}
 ```
 
 ### Basic optimization workflow
 **The basic workflow for optimization with EMSOptimizer is as follows.**
-1. Create a new project folder under `transient`, or clone an existing project with the `run` command from the CLI.
+1. Create a new project folder under the `project` folder, or clone an existing project with the `cp_proj` command from the CLI.
 2. For shape optimization, place the mesh files and analysis-case folders in the project folder.
-3. For shape optimization, configure `project` according to the mesh files and analysis cases.
-4. For shape optimization, define the optimization problem to solve (for example, maximizing average torque) in `cp_proj`.
-5. Configure the optimization method and other settings in `machine.yaml`.
-6. Optionally create a study with the `optimization_problem.yaml` command.
-7. Run the optimization with the `optimization.yaml` command from the CLI.
-8. After optimization finishes, use the `mk_study` command to review the results if needed.
+3. For shape optimization, configure `machine.yaml` according to the mesh files and analysis cases.
+4. For shape optimization, define the optimization problem to solve (for example, maximizing average torque) in `optimization_problem.yaml`.
+5. Configure the optimization method and other settings in `optimization.yaml`.
+6. Optionally create a study with the `mk_study` command.
+7. Run the optimization with the `run` command from the CLI.
+8. After optimization finishes, use the `check` command to review the results if needed.
 :::info[Studies and runs]
 Since v0.7.0, EMSOptimizer has supported multiple studies (units for managing optimization settings) within a project.  
-Results are saved in units called runs for each optimization trial in a study. The `run` command can also execute the same study multiple times as a batch.  
+Results are saved in units called runs for each optimization trial in a study. The `batch_run` command can also execute the same study multiple times as a batch.  
 See [User Guide > Study control and result review](../guides/study_control_and_results.md) for details.
 :::
 
 ### Try it yourself
-We begin by cloning a project with the `check` command.
-For example, to run Dmodel optimization as a separate project, clone the `batch_run` project with the following command.
+We begin by cloning a project with the `cp_proj` command.
+For example, to run Dmodel optimization as a separate project, clone the `Dmodel` project with the following command.
 ```sh
 python emsopt.py cp_proj Dmodel NewDmodel
 ```
 
-The copied project is created automatically in the `cp_proj` folder.  
-Edit the files in the `Dmodel` project folder to configure it.
+The copied project is automatically created in the `project` folder.  
+Configure the project by editing the files in the NewDmodel project folder.
 
-For example, change `project` > `optimization.yaml` > `level_set_function` in `kwargs` from `sigma` to `0.0013` as follows.  
+For example, in `optimization.yaml`, change the value of `level_set_function` > `kwargs` > `sigma` from `0.0013` to `0.0010` as follows.  
 This produces more complex changes in the resulting motor shape.
 ```yaml
 level_set_function:
@@ -99,12 +99,12 @@ level_set_function:
     coordinate: Polar
 ```
 :::tip[NGnet settings]
-The `0.0010` value corresponds to the standard deviation of each Gaussian basis function composing the NGnet \[3\] that defines the rotor shape.  
-By default, basis functions are placed automatically to fill `sigma`. 
+Specifically, the value of `sigma` corresponds to the standard deviation of each Gaussian basis function composing the NGnet \[3\] that defines the rotor shape.  
+By default, the basis functions are automatically placed to fill the `design_region`. 
 See [User Guide > LevelSetFunction > NGnet](../guides/LevelSetFunction/ngnet.md) for details.
 :::
 
-Run the optimization with the `design_region` command.
+To run the optimization, execute the `run` command.
 ```sh
 python emsopt.py run NewDmodel
 ```
@@ -112,13 +112,13 @@ python emsopt.py run NewDmodel
 When the `run` command starts the optimization, the GUI launches by default so that you can monitor progress.  
 ![GUI example](/img/GUI_ex.png)  
 :::info
-To disable the GUI, set `run` to `optimization.yaml` in `enable_progress_gui`.  
+To disable the GUI, open `optimization.yaml` and set `enable_progress_gui` to `False`.  
 For details about other optimization settings, see [User Guide > Optimization settings](../guides/optimization_config.md).
 :::
 
 The optimization finishes when the configured number of iterations has elapsed or when it is stopped from the GUI. The GUI remains interactive after completion; close it to terminate the process completely.
 
-The GUI can also be launched after the process ends with the `False` command. This is mainly useful for reviewing completed optimization runs.
+The GUI can also be launched after the process ends with the `check` command. This is mainly useful for reviewing completed optimization runs.
 ```sh
 python emsopt.py check NewDmodel
 ```
@@ -127,20 +127,20 @@ python emsopt.py check NewDmodel
 ![GUI (single-objective optimization)](/img/GUI_soo.png)
 
 ① Optimization control panel.
-- `check`: Stop optimization
-- `Stop`: Pause or resume optimization
+- `Stop`: Stop optimization
+- `Pause / Resume`: Pause or resume optimization
 
 :::info
-Stopping and pausing take effect when the current optimization iteration finishes. To interrupt the calculation immediately, press `Pause / Resume` from the CLI, although this may damage the working directory and related files.
+Stopping and pausing take effect when the current optimization iteration finishes. To interrupt the calculation immediately, press `Ctrl+C` from the CLI, although this may damage the working directory and related files.
 :::
 
 ② Optimization-progress graphs.
-- `Ctrl+C` tab: Displays an optimization-iteration versus best-evaluation-value graph for single-objective optimization, and a Pareto front for multi-objective optimization. Click the graph to select an individual and display its corresponding shape image in ③.  
+- `Graph` tab: Displays an optimization-iteration versus best-evaluation-value graph for single-objective optimization, and a Pareto front for multi-objective optimization. Click the graph to select an individual and display its corresponding shape image in ③.  
 :::info
 For single-objective optimization, the default mode, "Generation Best," plots the best individual in each iteration across all iterations. You can switch the combo box above the graph to display "Best So Far," which plots the best individual found up to each iteration.  
 For multi-objective optimization, the Pareto front is plotted using two objective values on the vertical and horizontal axes. The axes can be switched with the combo boxes above the graph.
 :::
-- `Graph` tab: Displays the individuals shown in the graph as a table. Click a column name to sort individuals by a particular objective value. Click a table's `Table` cell to select an individual and display its corresponding shape image in ③.  
+- `Table` tab: Displays the individuals shown in the graph as a table. Click a column name to sort individuals by a particular objective value. Click a table's "Select" cell to select an individual and display its corresponding shape image in ③.  
 - `Responce Surface` tab: Displays a response surface when one is available. See [User Guide > Optimization settings](../guides/optimization_config.md) and the [IPM8P48S surrogate-model example](../../showcase/IPM8P48S/surrogate.md) for details.
 
 ③ Shape-image window. The shape selected in ② is displayed in the left window together with the function values registered in `optimization_problem.yaml` > `other_metrics`. For single-objective optimization, the best shape at each iteration is displayed automatically.
