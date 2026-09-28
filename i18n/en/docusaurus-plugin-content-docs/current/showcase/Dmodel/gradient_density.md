@@ -10,8 +10,8 @@ The `Dmodel_SynRM_gradient` project assumes a synchronous reluctance motor (SynR
 As in the [multi-material optimization example](./multi_material.md), `Dmodel_SynRM_gradient` uses a base mesh whose rotor contains no permanent magnets and consists only of material ID `20` (magnetic core). The air/magnetic-core distribution is optimized throughout the rotor.
 
 ## optimization.yaml (`Dmodel_SynRM_gradient` project)
-In `optimization.yaml`, `level_set_function` is set to `pyemsol_density`. This causes EMSOptimizer to calculate the gradient of objective `W1` (torque) internally. The design region is also set slightly smaller than the rotor region so that a rib remains around the outer circumference.  
-The calculated gradient is used by `optimizer` > `gradient_update` to update the design variables (here, values in [-1,1] representing the material properties of each element in the design region). Setting `scaling_mode: sign` performs optimization with a large step in the gradient direction.  
+In `optimization.yaml`, `level_set_function` is set to `pyemsol_density`. This causes EMSOptimizer to calculate the gradient of objective `W2` (the squared difference from the target torque) internally. Here, the target torque is set to 0.5 Nm. The design region is also set slightly smaller than the rotor region so that a rib remains around the outer circumference.  
+The calculated gradient is used by `optimizer` > `gradient_update` to update the design variables (here, values in [-1,1] representing the material properties of each element in the design region).  
 This example also applies a volume constraint (`constraint_mode: volume_penalty`) so that the magnetic-core area is at most 50% of the total area.  
 ```yaml
 optimizer:
@@ -19,14 +19,15 @@ optimizer:
   kwargs:
     constraint_mode: volume_penalty
     volume_frac_ulim: 0.5
-    scaling_mode: sign
 level_set_function:
   name: pyemsol_density
   kwargs:
     proj_method: heaviside5
-    objective_type: W1
+    objective_type: W2
     torque_scale: 4.0
-    design_region: [[0.0085, 0.0273], [2.0, 45.0]]
+    torque_target: 0.5
+    coordinate: Polar
+    design_region: [[0.0100, 0.0273], [5.0, 45.0]]
 ```
 
 ## optimization_problem.yaml (`Dmodel_SynRM_gradient` project)
@@ -36,10 +37,10 @@ case_names:
   - transient
 
 objectives:
-  - function_name: average_torque
+  - function_name: torque_squared_error
     kwargs:
+      torque_target: 0.5
       torque_scale: 4.0
-    coefficient: -1.0
 
 ineq_constraints: []
 
@@ -48,6 +49,13 @@ eq_constraints: []
 other_metrics:
   - function_name: average_torque
     kwargs:
+      torque_scale: 4.0
+  - function_name: torque_ripple
+    kwargs:
+      torque_scale: 4.0
+  - function_name: torque_squared_error
+    kwargs:
+      torque_target: 0.5
       torque_scale: 4.0
 ```
 

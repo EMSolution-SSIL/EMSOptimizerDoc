@@ -13,10 +13,10 @@ The `Dmodel_SynRM_gradient_ls` project assumes a synchronous reluctance motor (S
 
 ## machine.yaml (`Dmodel_SynRM_gradient_ls` project)
 In `machine.yaml`, set `calc_levelset_init` to `True` to calculate the level set function values (signed distance function) at each position in the initial shape. These values are used as the initial design variables.  
-In the level set method, the design variables must also be reinitialized appropriately. This project performs reinitialization every five generations. See the [Machine Configuration page](../../docs/guides/machine_config.md) for details about these configurations.
+In the level set method, the design variables must also be reinitialized appropriately. This project performs reinitialization every generation. See the [Machine Configuration page](../../docs/guides/machine_config.md) for details about these configurations.
 ```yaml
 calc_levelset_init: True
-levelset_reinit_interval: 5
+levelset_reinit_interval: 1
 levelset_reinit_weight: 0.2
 ```
 
@@ -48,7 +48,8 @@ level_set_function:
     proj_half_width: 0.0005
     objective_type: W1
     torque_scale: 4.0
-    design_region: [[0.0085, 0.0273], [2.0, 45.0]]
+    coordinate: Polar
+    design_region: [[0.0080, 0.0273], [0.0, 45.0]]
 ```
 
 The following figure visualizes the material density values obtained by applying `heaviside5` to the signed distance values of the initial shape (red: magnetic core; blue: air). Changes may occur near material boundaries where the density has an intermediate value.  
@@ -82,7 +83,7 @@ This example performs 50 optimization iterations.
 The following animation shows the shape evolution over 50 iterations (the best shape from each iteration). Gray areas have intermediate material-property values (grayscale), while black areas are magnetic core; the rotor surface can be seen changing gradually.
 ![Dmodel gradient level-set optimization history](/img/ls_best_individuals.gif)
 
-The GUI after completing 50 optimization iterations is shown below. The best value was recorded at iteration 22.  
-Compared with the initial shape (on the right in the figure), the average torque improved from 0.5583 Nm to 0.6808 Nm.  
+The GUI after completing 50 optimization iterations is shown below. The best value was recorded at iteration 19.  
+Compared with the initial shape (on the right in the figure), the average torque improved from 0.56459 Nm to 0.60896 Nm.  
 
 ![Dmodel gradient level-set optimization history](/img/ls_GUI.png)

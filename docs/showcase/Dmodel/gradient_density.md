@@ -10,8 +10,8 @@ sidebar_position: 6
 `Dmodel_SynRM_gradient`では[多材料最適化例](./multi_material.md)と同様に，ベースメッシュとしてロータ部が永久磁石を含まず材料番号`20`（磁性体コア）のみからなるメッシュを使用し，ロータ部全域について空気／磁性体コア分布を最適化します。
 
 ## optimization.yaml（`Dmodel_SynRM_gradient`プロジェクト）
-`optimization.yaml`では，レベルセット関数`level_set_function`に`pyemsol_density`を指定します。これにより，目的関数`W1`（トルク）に関する勾配計算がEMSOptimizer内部で行われます。また，設計領域を回転子領域よりやや小さめに設定し，外周にリブが残るようにします。  
-計算した勾配は`optimizer`の`gradient_update`の中で設計変数（ここでは，設計領域内の各要素の物性値を表現する[-1,1]の値）の更新に利用されます。`scaling_mode: sign`と設定することで，勾配方向に大きく降下する最適化を行います。  
+`optimization.yaml`では，レベルセット関数`level_set_function`に`pyemsol_density`を指定します。これにより，目的関数`W2`（目標トルクとの差の二乗）に関する勾配計算がEMSOptimizer内部で行われます。ここでは、目標トルクを0.5Nmとしています。また，設計領域を回転子領域よりやや小さめに設定し，外周にリブが残るようにします。  
+計算した勾配は`optimizer`の`gradient_update`の中で設計変数（ここでは，設計領域内の各要素の物性値を表現する[-1,1]の値）の更新に利用されます。  
 さらに，ここでは体積制約（`constraint_mode: volume_penalty`）を考慮し，磁性体コア面積が全体の50%以下となるよう制約を加えます。  
 ```yaml
 optimizer:
@@ -19,14 +19,15 @@ optimizer:
   kwargs:
     constraint_mode: volume_penalty
     volume_frac_ulim: 0.5
-    scaling_mode: sign
 level_set_function:
   name: pyemsol_density
   kwargs:
     proj_method: heaviside5
-    objective_type: W1
+    objective_type: W2
     torque_scale: 4.0
-    design_region: [[0.0085, 0.0273], [2.0, 45.0]]
+    torque_target: 0.5
+    coordinate: Polar
+    design_region: [[0.0100, 0.0273], [5.0, 45.0]]
 ```
 
 ## optimization_problem.yaml（`Dmodel_SynRM_gradient`プロジェクト）
@@ -36,10 +37,10 @@ case_names:
   - transient
 
 objectives:
-  - function_name: average_torque
+  - function_name: torque_squared_error
     kwargs:
+      torque_target: 0.5
       torque_scale: 4.0
-    coefficient: -1.0
 
 ineq_constraints: []
 
@@ -48,6 +49,13 @@ eq_constraints: []
 other_metrics:
   - function_name: average_torque
     kwargs:
+      torque_scale: 4.0
+  - function_name: torque_ripple
+    kwargs:
+      torque_scale: 4.0
+  - function_name: torque_squared_error
+    kwargs:
+      torque_target: 0.5
       torque_scale: 4.0
 ```
 
