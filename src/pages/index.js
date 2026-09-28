@@ -48,7 +48,7 @@ function TranslationNotice() {
         <Translate id="homepage.translationNotice.report">
           誤訳や不明瞭な表現を見つけた場合は、
         </Translate>{' '}
-        <Link href="https://github.com/EMSolution-SSIL/EMSOptimizerDoc">GitHub Issues</Link>
+        <Link href="https://github.com/EMSolution-SSIL/EMSOptimizerDoc/issues">GitHub Issues</Link>
         <Translate id="homepage.translationNotice.reportSuffix">
           からお知らせください。
         </Translate>
