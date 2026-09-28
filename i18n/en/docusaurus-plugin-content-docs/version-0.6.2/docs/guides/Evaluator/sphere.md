@@ -3,14 +3,14 @@ sidebar_position: 2
 ---
 
 # sphere
-単目的最適化ベンチマーク関数Sphere\[11\]。
+The Sphere single-objective optimization benchmark function\[11\].
 
-## 概要
-Sphere関数の定義は以下の通りです。最適解が$\boldsymbol{x}=\boldsymbol{0}$である単峰性関数として知られています。
+## Overview
+The Sphere function is defined as follows. It is known as a unimodal function whose optimal solution is $\boldsymbol{x}=\boldsymbol{0}$.
 ```math
 f(\boldsymbol{x}) = \sum_{i=1}^{n} x_{i}^{2}\\
 -5.12 \leq x_i \leq 5.12
 ```
 
-## 設定可能なキーワード引数一覧
-- `dim: int` ... 最適化問題の次元数$n$。
+## Configurable keyword arguments
+- `dim: int` ... Number of dimensions $n$ in the optimization problem.

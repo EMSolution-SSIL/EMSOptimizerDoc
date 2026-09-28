@@ -387,5 +387,14 @@
   },
   "homepage.features.emsolution.description": {
     "message": "Shape optimization requires sophisticated and efficient shape analysis. EMSOptimizer is powered by EMSolution, a powerful and efficient simulation engine. EMSolution provides Python bindings through pyemsol and works with EMSOptimizer's optimization algorithms to efficiently optimize electrical equipment."
+  },
+  "homepage.translationNotice.assistance": {
+    "message": "This English documentation was translated with AI assistance."
+  },
+  "homepage.translationNotice.report": {
+    "message": "If you find any errors or unclear passages, please report them via"
+  },
+  "homepage.translationNotice.reportSuffix": {
+    "message": "."
   }
 }

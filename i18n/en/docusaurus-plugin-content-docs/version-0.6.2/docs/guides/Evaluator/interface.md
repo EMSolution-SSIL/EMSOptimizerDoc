@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# インターフェース
-Evaluatorのインターフェース定義（`EvaluatorInterface`）は以下の通りです。  
-`emsopt_engine.interface.evaluator_interface`からimportできます。
+# Interface
+The interface definition for Evaluator (`EvaluatorInterface`) is shown below.  
+It can be imported from `emsopt_engine.interface.evaluator_interface`.
 
 ```py
 from abc import ABC, abstractmethod

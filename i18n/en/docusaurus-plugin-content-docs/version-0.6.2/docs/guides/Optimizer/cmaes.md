@@ -3,33 +3,33 @@ sidebar_position: 2
 ---
 
 # cmaes
-単目的最適化アルゴリズムCMA-ES\[4\]のpython実装クラスです。  
-アルゴリズム部分はpythonライブラリ`cmaes`\[5\]を呼び出す形で実装しており、このクラスは`cmaes`ライブラリのラッパーとして機能します。
+This is a Python implementation class for the CMA-ES single-objective optimization algorithm\[4\].  
+The algorithm is implemented by calling the Python library `cmaes`\[5\], and this class functions as a wrapper for the `cmaes` library.
 
-## 概要
-CMA-ESでは、下記のように正規分布から個体$\boldsymbol{x}$を複数サンプリングします\[4\]。
+## Overview
+CMA-ES samples multiple individuals $\boldsymbol{x}$ from a normal distribution as follows\[4\].
 ```math
 \boldsymbol{x} \sim \boldsymbol{m} + \sigma \mathcal{N}(\boldsymbol{0}, \boldsymbol{C})
 ```
-CMA-ESでは遺伝的アルゴリズム等とは異なり、明示的な解集団はありません。その代わり、分布パラメータ$\boldsymbol{m}, \sigma, \boldsymbol{C}$等を保持します。  
-個体の優劣関係に基づいて分布パラメータを更新することで、サンプリングされる個体を優れた方向に進化させます。
+Unlike genetic algorithms, CMA-ES does not have an explicit solution population. Instead, it maintains distribution parameters such as $\boldsymbol{m}, \sigma, \boldsymbol{C}$.  
+By updating the distribution parameters based on the relative quality of individuals, the sampled individuals evolve toward better solutions.
 
-また、制約違反した個体は以下のように評価します\[12\]。これにより、実行可能解を優先的に評価しつつ、制約違反量を考慮した評価が可能になります。
+Individuals that violate constraints are evaluated as follows\[12\]. This prioritizes feasible solutions while accounting for the amount of constraint violation.
 ```math
 f(\boldsymbol{x}) = f(\boldsymbol{x}_0) + r(\boldsymbol{x})
 ```
-$f$: 目的関数  
-$f(\boldsymbol{x}_0)$: サンプリング個体中の目的関数の最悪値  
-$r(\boldsymbol{x})$: 制約違反量
+$f$: Objective function  
+$f(\boldsymbol{x}_0)$: Worst objective-function value among the sampled individuals  
+$r(\boldsymbol{x})$: Constraint violation
 
-## 設定可能なキーワード引数一覧
-- `mean: np.ndarray` ... $\boldsymbol{m}$初期値。デフォルト値は$\boldsymbol{m} = \boldsymbol{0}$。
-- `sigma: float` ...ステップサイズ初期値。デフォルト値は`1`。
-- `bounds: tuple[float, float] | list[tuple[float, float]]` ... 各変数の上下限値。
-:::tip `bounds`の挙動
-- デフォルト値（設定無の場合） ... 上下限無し。
-- `bounds: tuple[float, float]`の場合 ... 与えた数値の組がすべての変数の上下限値に設定される。
-- `bounds: list[tuple[float, float]]`の場合 ... 与えた数値の組のリストが各変数の上下限値に設定される。上下限値の設定は途中までで打ち切ることが可能（この場合、打ち切り以降の上下限値は-1~1に自動設定される）。
+## Configurable keyword arguments
+- `mean: np.ndarray` ... Initial value of $\boldsymbol{m}$. The default is $\boldsymbol{m} = \boldsymbol{0}$.
+- `sigma: float` ... Initial step size. The default is `1`.
+- `bounds: tuple[float, float] | list[tuple[float, float]]` ... Lower and upper bounds for each variable.
+:::tip Behavior of `bounds`
+- Default (when not specified) ... No bounds.
+- When `bounds: tuple[float, float]` ... The specified pair is used as the bounds for all variables.
+- When `bounds: list[tuple[float, float]]` ... The specified list of pairs is used as the bounds for each variable. The list may end before all variables are covered; subsequent bounds are then automatically set to -1 to 1.
 :::
-- `seed: int` ... 乱数シード値。デフォルト値は`null`（乱数シード非固定）。
-- `population_size int` ... 1イテレーションあたりサンプリング個体数。デフォルト値はCMA-ES推奨の $4+\lfloor3\ln{n}\rfloor$。
+- `seed: int` ... Random seed. The default is `null` (random seed not fixed).
+- `population_size int` ... Number of individuals sampled per iteration. The default is the CMA-ES recommended value $4+\lfloor3\ln{n}\rfloor$.

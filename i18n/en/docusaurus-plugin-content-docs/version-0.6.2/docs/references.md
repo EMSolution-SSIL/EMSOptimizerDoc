@@ -2,12 +2,12 @@
 sidebar_position: 5
 ---
 
-# 参考文献
-本ドキュメント内にて引用している文献リストです。
+# References
+This is a list of the references cited in this documentation.
 
 \[1\] IEEJ Investigating R&D committee, IEEJ technical report (in Japanese) Inst. Electr. Eng. Japan, Japan, Tech. Rep. 776, 2000.
 
-\[2\] 貝森 弘行，奥松 美宏，山田 俊秀，大口 英樹，公開可能な多極多スロットアウターロータ形PMモータの提案と永久磁石間の材料変更による特性計算の一検討，電磁界解析の高度利用とAIの活用による回転機の先進最適化・性能評価技術調査専門委員会　第6回委員会，2024/12/11．
+\[2\] Hiroyuki Kaimori, Yoshihiro Okumatsu, Toshihide Yamada, and Hideki Oguchi, “Proposal of a publicly available multipole, multislot outer-rotor PM motor and a study of characteristic calculation by changing the material between permanent magnets,” 6th Committee Meeting of the Special Committee on Advanced Optimization and Performance Evaluation Technologies for Rotating Machines through Advanced Use of Electromagnetic Field Analysis and AI, 2024/12/11.
 
 \[3\] Sato, T., Watanabe, K., & Igarashi, H., Multimaterial topology optimization of electric machines based on normalized Gaussian network, IEEE transactions on magnetics, 51(3), 1-4, 2015.
 
@@ -27,7 +27,7 @@ sidebar_position: 5
 
 \[11\] M. Molga, C. Smutnicki, Test functions for optimization needs, https://www.marksmannet.com/RobertMarks/Classes/ENGR5358/Papers/functions.pdf, 2005.
 
-\[12\] 五十嵐 一、電磁界解析による最適設計 ― トポロジー最適化の基礎から機械学習まで（第1版）、森北出版、2023
+\[12\] Hajime Igarashi, “Optimal Design Using Electromagnetic Field Analysis — From the Fundamentals of Topology Optimization to Machine Learning,” 1st ed., Morikita Publishing, 2023.
 
 \[13\] Dapogny, C., Dobrzynski, C., & Frey, P, Three-dimensional adaptive domain remeshing, implicit domain meshing, and applications to free and moving boundary problems, Journal of computational physics, 262, 358-378, 2014.
 
@@ -35,7 +35,7 @@ sidebar_position: 5
 
 \[15\] Mmg's developers and maintainers, https://github.com/MmgTools/mmg.
 
-\[16\] 貝森 弘行、公開可能なバーチャルモータモデルの提案、電学静止器・回転機合同研資、SA-24-025, RM-24-025, 2025.
+\[16\] Hiroyuki Kaimori, “Proposal of a publicly available virtual motor model,” IEEJ Joint Technical Meeting on Static Apparatus and Rotating Machines, SA-24-025, RM-24-025, 2025.
 
 \[17\] H. Sato, S. Hiruma and H. Igarashi, "Multi-material Topology Optimization of Permanent Magnet Motor with Arbitrary Adjacency Relationship of Materials," 2020 IEEE 19th Biennial Conference on Electromagnetic Field Computation (CEFC), Pisa, Italy, 2020, pp. 1-4.
 

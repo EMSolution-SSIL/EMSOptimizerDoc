@@ -1,8 +1,8 @@
 {
-  "label": "基本の数理最適化",
+  "label": "Basic Mathematical Optimization",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "ベンチマーク関数の最適化例をご紹介します。"
+    "description": "This section presents optimization examples using benchmark functions."
   }
 }

@@ -2,31 +2,31 @@
 sidebar_position: 2
 ---
 
-# eMotorSolutionとの連携
-ここでは、モータ設計およびシミュレーションツール「eMotorSolution」との機能連携について説明します。
+# Integration with eMotorSolution
+This page describes integration with the motor design and simulation tool eMotorSolution.
 
-## 連携の有効化
-eMotorSolutionとの連携を有効化するには、**eMotorSolution APIをpython環境にセットアップしたうえで、以下の設定を行います**。
-- `machine.yaml` > `ems_project_filepath`に連携したいeMotorSolutionプロジェクトファイル（json）のパスを設定する。
-- 環境変数`GMSH_EXE_PATH`にメッシュ生成ツールgmsh\[14\]の実行ファイルのパスを設定する。
+## Enabling integration
+To enable integration with eMotorSolution, **set up the eMotorSolution API in the Python environment and configure the following settings**.
+- Set the path to the eMotorSolution project file (JSON) to integrate in `machine.yaml` > `ems_project_filepath`.
+- Set the path to the executable of the mesh-generation tool gmsh\[14\] in the `GMSH_EXE_PATH` environment variable.
 :::info
-eMotorSolution APIのセットアップについては[インストールガイド](../intro.md)ページを参照してください。
+See the [Installation Guide](../intro.md) for setting up the eMotorSolution API.
 :::
 :::info
-eMotorSolution APIはデフォルトのメッシュ生成ツールとしてgmshを外部呼出しします。連携時はgmshの実行ファイルをダウンロードし、環境変数`GMSH_EXE_PATH`に実行ファイルへのパスの設定を行ってください。
+The eMotorSolution API calls gmsh externally as its default mesh-generation tool. When integrating, download the gmsh executable and set its path in the `GMSH_EXE_PATH` environment variable.
 :::
 
-## 機能一覧
-### 寸法最適化
-eMotorSolutionと連携時、**コアオブジェクト`ems_shape_builder`による寸法最適化が実施可能です**。また、eMotorSolution連携時はeMotorSolution API経由でメッシュが動的に生成されます（したがって、EMSOptimizerプロジェクトフォルダにメッシュファイルは不要となります）。
+## Features
+### Dimensional optimization
+When integrated with eMotorSolution, **dimensional optimization can be performed with the `ems_shape_builder` core object**. Meshes are generated dynamically through the eMotorSolution API, so mesh files are not required in the EMSOptimizer project folder.
 :::info
-寸法最適化の設定方法については[基本の使い方 > EMSOptimizerのコンセプト](../getting-started/core_concepts.md)ページ、[ユーザガイド > 最適化の設定](../guides/optimization_config.md)ページ、ユーザガイド > eMotorSolution Shape Builderセクションなどを参照してください。  
-寸法最適化の実施例は[Showcase](../../showcase/IPM8P48S/pto.md)をご覧ください。
+For configuring dimensional optimization, see [Getting Started > EMSOptimizer Concepts](../getting-started/core_concepts.md), [User Guide > Optimization Configuration](../guides/optimization_config.md), and the eMotorSolution Shape Builder section of the User Guide.  
+See the [Showcase](../../showcase/IPM8P48S/pto.md) for an example.
 :::
 
 ### Analysis Case Control
-eMotorSolutionと連携時は形状解析時、連携先プロジェクトの解析ケースフォルダを参照します。したがって、EMSOptimizerプロジェクトフォルダに解析ケースフォルダは不要となります。
+When integrated with eMotorSolution, shape analysis uses the analysis-case folders in the integrated project. Therefore, analysis-case folders are not required in the EMSOptimizer project folder.
 :::info
-連携時はeMotorSolutionプロジェクトに解析ケースが正しく設定されている必要があります。  
-また、解析ケース名は未連携時と同じく、`optimization_problem.yaml` > `case_names`に正しく設定してください。
+When integrating, analysis cases must be configured correctly in the eMotorSolution project.  
+As when running without integration, configure the analysis-case names correctly in `optimization_problem.yaml` > `case_names`.
 :::

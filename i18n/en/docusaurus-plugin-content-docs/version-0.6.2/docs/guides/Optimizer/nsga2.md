@@ -3,25 +3,25 @@ sidebar_position: 3
 ---
 
 # nsga2
-多目的最適化アルゴリズムNSGA-II\[6\]のpython実装クラスです。交叉アルゴリズムなどは原著論文\[6\]に準じています。
+This is a Python implementation class of the NSGA-II multi-objective optimization algorithm\[6\]. The crossover algorithm and other details follow the original paper\[6\].
 
-## 概要
-NSGA-IIでは、非優越ソートによって個体にランクを付けます。高ランクの個体を優先して生存させることで集団の進化を促します。また、同ランクの個体間には混雑度（≒目的関数上の類似度）によって優先順位を付けることで、個体の多様性を確保します。
+## Overview
+NSGA-II ranks individuals by non-dominated sorting. The population evolves by preferentially retaining individuals with higher ranks. Diversity is maintained by prioritizing individuals of the same rank according to crowding distance (approximately, similarity in objective-function space).
 
-（制約条件を考慮した）NSGA-IIでは、以下の場合に個体$i$が$j$に優越すると定義します。
-- $i$が実行可能解（制約違反無）、$j$が実行不可能解（制約違反有）
-- $i$と$j$の両方が実行不可能解　かつ　$i$の方が制約違反量が少ない
-- $i$と$j$の両方が実行可能解　かつ　$i$が目的関数上$j$に優越する
+In NSGA-II with constraints, individual $i$ is defined to dominate $j$ in the following cases.
+- $i$ is feasible (no constraint violation) and $j$ is infeasible (has a constraint violation).
+- Both $i$ and $j$ are infeasible, and $i$ has a smaller constraint violation.
+- Both $i$ and $j$ are feasible, and $i$ dominates $j$ in objective-function space.
 
-この優先関係の定義を各個体間に適用し、被優越数が0の個体群をランク1、ランク1の個体群を除いたときに被優越数が0となる個体群をランク2、...とランク付けします。
+This dominance relation is applied between all individuals. The individuals with zero dominators are assigned rank 1; after removing rank-1 individuals, those with zero dominators are assigned rank 2, and so on.
 
-## 設定可能なキーワード引数一覧
-- `population_size: int` ... 集団サイズ。デフォルト値は $n \times 10$。
-- `num_children int` ... 1イテレーションあたりに生成する子個体数。デフォルトでは`population_size`と同じ値が設定される。
-- `bounds: tuple[float, float] | list[tuple[float, float]]` ... 各変数の上下限値。
-:::tip `bounds`の挙動
-- デフォルト値（設定無の場合） ... \[-1, 1\]がすべての変数の上下限値に適用。
-- `bounds: tuple[float, float]`の場合 ... 与えた数値の組がすべての変数の上下限値に設定される。
-- `bounds: list[tuple[float, float]]`の場合 ... 与えた数値の組のリストが各変数の上下限値に設定される。上下限値の設定は途中までで打ち切ることが可能（この場合、打ち切り以降の上下限値は-1~1に自動設定される）。
+## Configurable keyword arguments
+- `population_size: int` ... Population size. The default is $n \times 10$.
+- `num_children int` ... Number of offspring generated per iteration. The default is the same as `population_size`.
+- `bounds: tuple[float, float] | list[tuple[float, float]]` ... Lower and upper bounds for each variable.
+:::tip Behavior of `bounds`
+- Default (when not specified) ... \[-1, 1\] is applied as the bounds for all variables.
+- When `bounds: tuple[float, float]` ... The specified pair is used as the bounds for all variables.
+- When `bounds: list[tuple[float, float]]` ... The specified list of pairs is used as the bounds for each variable. The list may end early; subsequent bounds are automatically set to -1 to 1.
 :::
-- `seed: int` ... 乱数シード値。デフォルト値は`null`（乱数シード非固定）。
+- `seed: int` ... Random seed. The default is `null` (random seed not fixed).

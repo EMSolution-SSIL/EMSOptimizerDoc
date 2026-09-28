@@ -2,19 +2,19 @@
 sidebar_position: 4
 ---
 
-# Dmodel多材料最適化例
-ここでは、`Dmodel_multi_material`プロジェクトの内容について紹介します。  
-`Dmodel`プロジェクトと比較して、`Dmodel_multi_material`では多材料トポロジー最適化を行います。ここでは、ロータコアにおける空気・磁性体コア・永久磁石の3材料の分布を最適化します。
+# Dmodel Multi-Material Optimization Example
+This page introduces the `Dmodel_multi_material` project.  
+Unlike the `Dmodel` project, `Dmodel_multi_material` performs multi-material topology optimization. It optimizes the distribution of three materials in the rotor core: air, magnetic core, and permanent magnet.
 
-## ベースメッシュについて
-`Dmodel_multi_material`プロジェクトではベースメッシュとして、ロータ部が永久磁石を含まず材料番号`20`（磁性体コア）のみからなるメッシュを使用します。  
-後述の設計対象の設定において材料番号`20`を設定することで、ロータ部全域について多材料分布を最適化します。
+## Base mesh
+The `Dmodel_multi_material` project uses a base mesh whose rotor contains only material ID `20` (magnetic core), without permanent magnets.  
+By setting material ID `20` as the design target, the multi-material distribution is optimized throughout the rotor.
 
 ![Dmodel multimaterial example](/img/Dmodel_multi_material_ex.png)
 
-## machine.yaml（`Dmodel_multi_material`プロジェクト）
-多材料最適化を設定するために、`machine.yaml` > `target_ids_and_onoff`に材料番号`20`, `50000`, `600000`の3材料を設定します。  
-これにより、レベルセット関数`level_set_function`から3つの材料を設定することが可能となります。  
+## machine.yaml (`Dmodel_multi_material` project)
+To configure multi-material optimization, set the three material IDs `machine.yaml`, `target_ids_and_onoff`, and `20` in `50000` > `600000`.  
+This enables the `level_set_function` to configure the three materials.  
 ```yaml
 target_ids_and_onoff:
   20:
@@ -24,12 +24,12 @@ target_ids_and_onoff:
 ```
 
 :::info
-なお、3材料以上を指定時はImplicit Domain Meshing機能は使用不可です。
+Implicit Domain Meshing cannot be used when three or more materials are specified.
 :::
 
-## optimization.yaml（`Dmodel_multi_material`プロジェクト）
-`optimization.yaml`では、レベルセット関数`level_set_function`に`ngnet_multi_material`を指定します。  
-`ngnet_multi_material`は設計変数をもとに、設計領域内の各位置に3つのレベルを設定する実装例です。引数の詳細については[Docs > ユーザガイド > ngnet_multi_material](../../docs/guides/LevelSetFunction/ngnet_multi_material.md)をご参照ください。  
+## optimization.yaml (`Dmodel_multi_material` project)
+In `optimization.yaml`, specify `level_set_function` as the `ngnet_multi_material`.  
+`ngnet_multi_material` is an implementation example that sets three levels at each location in the design region based on the design variables. See [Docs > User Guide > ngnet_multi_material](../../docs/guides/LevelSetFunction/ngnet_multi_material.md) for details about its arguments.  
 ```yaml
 level_set_function:
   name: ngnet_multi_material
@@ -40,15 +40,15 @@ level_set_function:
     angle_1: 240
     angle_2: 60
 ```
-:::tip `angle_1`, `angle_2`の設定
-`angle_1`, `angle_2`は磁性体コア、永久磁石に割り当てられる材料マップ上角度を表します。また、空気に割り当てられる角度は$360-240-60=60$\[deg\]です。  
-`ngnet_multi_material`には「材料マップ上角度の割り当てが大きいほど設計領域上にその材料が出現しやすくなる」という特徴があります\[12\]。一般に永久磁石同期モータのロータは大部分が磁性体コアによって構成されるため、ここでは磁性体コアに対応する`angle_1`の角度を意図的に大きく設定しています。
+:::tip Configuring `angle_1` and `angle_2`
+`angle_1` and `angle_2` represent the angles assigned to the magnetic core and permanent magnet on the material map. The angle assigned to air is $360-240-60=60$\[deg\].  
+`ngnet_multi_material` makes a material more likely to appear in the design region when it is assigned a larger angle on the material map \[12\]. Because the rotor of a permanent-magnet synchronous motor generally consists mostly of magnetic core, `angle_1`, corresponding to the magnetic core, is intentionally set to a large value here.
 :::
 
-## optimization_problem.yaml（`Dmodel_multi_material`プロジェクト）
-目的関数については`Dmodel`プロジェクトと変わらず、平均トルク最大化・トルクリプル最小化の設定となっています。  
-変更点として、`ineq_constraint`に`material_area`（指定材料の面積）が追加されています。指定材料（`physical_tag`）には`50000`（永久磁石）を設定します。  
-本最適化においては、永久磁石面積をオリジナルのDmodelの値（$4.9975\times10^{-5}\text{m}^2$）以下に制約することで、使用する永久磁石量が同等以下という条件下で最適な材料分布を得ることを目指します。
+## optimization_problem.yaml (`Dmodel_multi_material` project)
+The objectives are unchanged from the `Dmodel` project: maximize average torque and minimize torque ripple.  
+The change is the addition of `ineq_constraint` (the area of a specified material) to `material_area`. Set `physical_tag` (permanent magnet) as `50000`.  
+This optimization constrains the permanent-magnet area to no more than the original Dmodel value ($4.9975\times10^{-5}\text{m}^2$), seeking an optimal material distribution while using no more permanent magnet than the original.
 ```yaml
 objectives:
   - function_name: average_torque
@@ -69,12 +69,12 @@ ineq_constraints:
     baseline: 4.9975e-05
 ```
 
-## 最適化の実施例
-今回は200イテレーションの最適化としました。  
-下図は200イテレーションの形状の進化過程です（各イテレーションの最良形状をアニメーション化）。空気／磁性体コア／永久磁石からなる分布が変化しつつ、単層の永久磁石＋フラックスバリア形状に収束していく様子が分かります。  
-![Dmodelマルマテ最適化履歴](/img/Dmodel_multi_material_best_individuals.gif)
+## Optimization example
+This example runs for 200 optimization iterations.  
+The figure below shows the shape evolution over 200 iterations, with the best shape at each iteration animated. The air/magnetic-core/permanent-magnet distribution changes and converges toward a single-layer permanent-magnet and flux-barrier shape.  
+![Dmodel multi-material optimization history](/img/Dmodel_multi_material_best_individuals.gif)
 
-200イテレーション最適化完了後のGUIを以下に示します。  
-他の最適化事例より収束が遅いものの、130イテレーション以降は目的関数値がほぼ横ばいとなっており、最適化が収束したと判断できます。  
-GUIの図に示しているのが最良形状です（$T_\text{avg}$=2.5183Nm, $T_\text{rip}$=24.318%, 永久磁石面積$S=4.7543\times10^{-5}\text{m}^2$）。[基本の最適化](./basic.md)と比較して、特に平均トルクに大きな向上が見られます。永久磁石モータの多材料最適化では永久磁石の修正が可能なため、特に平均トルクの改善に寄与しやすいことが経験的に知られています。また、本事例とは反対に、平均トルク一定以上の制約を与えて永久磁石面積を最小化する最適化計算も可能です。
-![Dmodelマルマテ最適化履歴](/img/Dmodel_multi_material_check.png)
+The GUI after 200 iterations is shown below.  
+Although convergence is slower than in the other examples, the objective values are nearly flat after iteration 130, indicating convergence.  
+The best shape shown in the GUI has $T_\text{avg}$=2.5183 Nm, $T_\text{rip}$=24.318%, and permanent-magnet area $S=4.7543\times10^{-5}\text{m}^2$. Compared with the [basic optimization](./basic.md), average torque improves substantially. In multi-material optimization of permanent-magnet motors, the permanent magnets can be reshaped, which is known empirically to make improvements in average torque easier to achieve. Conversely, it is also possible to minimize permanent-magnet area while constraining average torque to remain above a specified level.
+![Dmodel multi-material optimization history](/img/Dmodel_multi_material_check.png)

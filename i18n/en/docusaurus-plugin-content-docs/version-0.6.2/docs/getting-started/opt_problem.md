@@ -2,12 +2,12 @@
 sidebar_position: 3
 ---
 
-# 最適化問題の設定（optimization_problem.yaml）
-ここでは、形状最適化における最適化問題の定義について紹介します。
+# Optimization Problem Configuration (optimization_problem.yaml)
+This page introduces the definition of an optimization problem for shape optimization.
 
-## 最適化問題の設定
-EMSOptimizerでは、形状最適化における最適化問題を`opimization_problem.yaml`によって管理します。
-`opimization_problem.yaml`を通じて、以下の最適化問題を定義します。
+## Configuring the Optimization Problem
+In EMSOptimizer, the optimization problem for shape optimization is managed with `opimization_problem.yaml`.
+The following optimization problem is defined through `opimization_problem.yaml`.
 ```math
 \begin{align*}
 \text{minimize} \quad & f_i(\boldsymbol{x}) \quad (i = 1, \ldots, n) \\
@@ -16,58 +16,58 @@ EMSOptimizerでは、形状最適化における最適化問題を`opimization_p
                          & \boldsymbol{x} \in X
 \end{align*}
 ```
-$\boldsymbol{x} = \{x_i\}^\text{T}$: 解候補ベクトル  
-$X$: $\boldsymbol{x}$の集合（EMSOptimizerにおいては、$x_i$の上下限値に対応）
+$\boldsymbol{x} = \{x_i\}^\text{T}$: candidate-solution vector  
+$X$: the set of $\boldsymbol{x}$ (in EMSOptimizer, this corresponds to the lower and upper bounds of $x_i$)
 :::info
-各変数の上下限値は`optimization.yaml`にて設定可能です。  
-その他、最適化イテレーション数など最適化そのものの設定に関しては[ユーザガイド > 最適化の設定](../guides/optimization_config.md)ページを参照してください。
+Variable bounds can be configured in `optimization.yaml`.  
+For optimization settings such as the number of iterations, see [User Guide > Optimization settings](../guides/optimization_config.md).
 :::
 
-$f_i$, $g_i$, $h_i$は`opimization_problem.yaml`ファイル内の以下のリストに対応しており、最適化中に参照されます。
+$f_i$, $g_i$, and $h_i$ correspond to the following lists in `opimization_problem.yaml` and are referenced during optimization.
 - $f_i$: `objectives`
 - $g_i$: `ineq_constraints`
 - $h_i$: `eq_costraints`  
-- 例外として、`other_metrics`リストは最適化計算には使われず、GUI表示やファイル出力に利用されます。
+- As an exception, the `other_metrics` list is not used in optimization calculations; it is used for GUI display and file output.
 
-リスト内の各項目はいずれも以下の設定を持ちます。
-- `function_name: str` ... 評価用関数名（下記参照）。`average_torque`, `torque_ripple`など。
-- `case_name: str | null` ... `function_name`を評価する解析ケース名（下記参照）。
-- `kwargs: dict` ... 評価用関数に渡すpythonキーワード引数。省略可能。
-- `normalization_const: float` ... 正規化定数。下式参照。デフォルト値は`1.0`。
-- `coefficient: float` ... 重み係数。下式参照。デフォルト値は`1.0`。
-- `baseline: float` ... バイアス項。下式参照。デフォルト値は`0.0`。
+Each item in these lists has the following settings:
+- `function_name: str` ... Evaluation-function name (see below), such as `average_torque` or `torque_ripple`.
+- `case_name: str | null` ... Name of the analysis case used to evaluate `function_name` (see below).
+- `kwargs: dict` ... Python keyword arguments passed to the evaluation function. Optional.
+- `normalization_const: float` ... Normalization constant; see the equation below. The default is `1.0`.
+- `coefficient: float` ... Weight coefficient; see the equation below. The default is `1.0`.
+- `baseline: float` ... Bias term; see the equation below. The default is `0.0`.
 :::info
-`function_name`に指定可能な評価用関数群、およびそれらの引数`kwargs`の一覧は[ユーザガイド > 評価用関数実装例](../guides/opt_problem_ex.md)をご覧ください。
+For the evaluation functions that can be specified for `function_name` and their `kwargs` arguments, see [User Guide > Evaluation Function Examples](../guides/opt_problem_ex.md).
 :::
-:::tip `case_names`について
-EMSOptimizerにおいては、複数解析ケースに対して目的関数を設定することが可能です。これはモータ等において複数の運転点における性能を同時に最適化したい場合などに活用できます。  
-解析ケース名の一覧は`optimization_problem.yaml` > `case_names`にリストとして設定します。また、同名の解析ケースフォルダ群をプロジェクトフォルダ内に格納します。  
-実際に複数解析ケースを活用した最適化については[Showcase](../../showcase/Dmodel/advanced.md)の例をご覧ください。
+:::tip About `case_names`
+EMSOptimizer can define objectives for multiple analysis cases. This is useful, for example, when optimizing performance at multiple operating points of a motor simultaneously.  
+Set the list of analysis-case names in `optimization_problem.yaml` > `case_names`, and store folders with the same names in the project folder.  
+See the [Showcase](../../showcase/Dmodel/advanced.md) example for optimization using multiple analysis cases.
 :::
 
-以上の設定項目から、各個体に対して$f_i$, $g_i$, $h_i$は以下の式によって計算されます。
+Using these settings, $f_i$, $g_i$, and $h_i$ are calculated for each individual as follows.
 ```math
 \text{coefficient} \times (A - \text{baseline}) / \text{normalization\_const} \\
 ```
-$A$: `case_name`の解析結果に基づき、評価用関数に`kwargs`を与えて計算した結果値
+$A$: Result calculated by the evaluation function with `case_name`, based on the analysis results for `kwargs`.
 
-計算値は各個体に紐づけて保存され、optimizer内にて個体更新の処理に利用されます。
+The calculated values are stored with each individual and used by the optimizer when updating individuals.
 :::info
-個体や計算値の管理方法の技術的詳細については[ユーザガイド > individual関連オブジェクト API](../guides/individual.md)をご覧ください。
+For technical details on managing individuals and calculated values, see [User Guide > Individual-related object API](../guides/individual.md).
 :::
 
-## 最適化問題テンプレートの保存・読込
-`opimization_problem.yaml`の内容は最適化問題テンプレートとして`save_tpl`コマンドによって保存できます。テンプレートは`project/problem_template.yaml`に保存されます。
+## Saving and loading optimization-problem templates
+The contents of `opimization_problem.yaml` can be saved as an optimization-problem template with the `save_tpl` command. The template is saved to `project/problem_template.yaml`.
 ```sh
 python emsopt.py save_tpl Dmodel NewProblem
 ```
-保存した最適化問題は`load_tpl`によって他のプロジェクトにコピーできます。
+The saved optimization problem can be copied to another project with `load_tpl`.
 ```sh
 python emsopt.py load_tpl NewDmodel NewProblem
 ```
 
 ## Example: Dmodel
-例として、単目的最適化を想定した`Dmodel`プロジェクト内の`optimization_problem.yaml`を見てみましょう。
+As an example, consider the `Dmodel` in the `optimization_problem.yaml` project, which is configured for single-objective optimization.
 ```yaml
 case_names:
   - transient
@@ -97,26 +97,26 @@ other_metrics:
       torque_scale: 4.0
 ```
 
-まず、解析ケース名は`transient`（電気角、機械角を動かしながらの多ケース解析）のみです。また、ここでは制約条件を課していないため、`ineq_constraints`および`eq_constraints`は空配列となっています（なお、設定の記載を省略した場合も空配列と同じ扱いになります）。
+First, the only analysis case is `transient` (a multi-case analysis while varying the electrical and mechanical angles). No constraints are imposed here, so `ineq_constraints` and `eq_constraints` are empty arrays. Omitting these settings is treated in the same way.
 
-次に、`objectives`には2つの$f_i$が設定されています。1つ目はモータの平均トルク、2つ目はトルクリプル率（トルク波形のpeak-to-peak振幅を平均トルクによって除した値）を計算する関数です。
+Next, two $f_i$ objectives are configured in `objectives`. The first calculates the motor's average torque, and the second calculates torque ripple (the peak-to-peak amplitude of the torque waveform divided by average torque).
 
-`kwargs`にはトルクに乗じる倍率が登録されています。`Dmodel`プロジェクトではモータの4分の1モデルを解析対象としているため、トルクの値をフルモデル相当に変換するために倍率を4としています。
+`kwargs` contains a torque scale factor. Because the `Dmodel` project analyzes a quarter model of the motor, the factor is set to 4 to convert torque to the full-model equivalent.
 
-また、それぞれの`normalization_const`, `coefficient`はそれぞれ下式$T^\text{ref}, w$を表しています。ここで$T^\text{ref}$は正規化定数であり、目的関数を無次元化するとともに目的関数間のスケールを合わせるために設定される値です。
+The `normalization_const` and `coefficient` values correspond to $T^\text{ref}$ and $w$ in the equation below. $T^\text{ref}$ is the normalization constant, which makes the objective dimensionless and aligns the scales between objectives.
 
 ```math
 w \frac{f_i}{T^\text{ref}}
 ```
 
-なお、正規化定数としては最適化対象モデルの元々の（最適化前の）性能値がよく用いられます。ここで設定されている値もDmodelの元々の性能値（@電流値3.0 Arms、電流位相角20°）です。
+The original performance of the model before optimization is often used as the normalization constant. The values configured here are also the original Dmodel performance at a current of 3.0 Arms and a current phase angle of 20°.
 
-以上を踏まえると本プロジェクトでは以下の通り、負の平均トルクとトルクリプル率の重み付き和を最小化する設定になっています。「負の平均トルクの最大化」＝「（正の）平均トルクの最大化」なので、結果としてこれは平均トルク最大化・トルクリプル率最小化問題となります。
+Thus, this project minimizes the weighted sum of negative average torque and torque ripple. Because maximizing negative average torque is equivalent to maximizing (positive) average torque, this is ultimately a problem that maximizes average torque and minimizes torque ripple.
 
 ```math
 \text{minimize} \quad F=f_1+f_2=-1.0\frac{T_\text{avg}}{2.1} + 0.1\frac{T_\text{rip}}{54.0} \\
 ```
-$T_\text{avg}$：平均トルク [Nm]  
-$T_\text{rip}$：トルクリプル率 [%]
+$T_\text{avg}$: average torque [Nm]  
+$T_\text{rip}$: torque ripple [%]
 
-最後に、`other_metrics`には平均トルクとトルクリプル率（`normalization_const`, `coefficient`無の生データ）が登録されています。これにより、GUIからこれらの値を確認できるようになっています。
+Finally, `other_metrics` contains average torque and torque ripple as raw values without `normalization_const` or `coefficient`. This makes these values available in the GUI.

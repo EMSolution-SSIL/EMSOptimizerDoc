@@ -2,25 +2,25 @@
 sidebar_position: 2
 ---
 
-# Dmodel発展的な最適化例
-ここでは、`Dmodel_advanced`プロジェクトの内容について紹介します。  
-`Dmodel`プロジェクトと比較して、`Dmodel_advanced`では`optimization_problem.yaml`の中身が大きく異なっています。具体的には、最適化時に2つの電流条件を与え、それぞれの条件下におけるトルク特性を同時に考慮した最適化を行います。
+# Dmodel Advanced Optimization Example
+This page introduces the `Dmodel_advanced` project.  
+Compared with the `Dmodel` project, `Dmodel_advanced` has a substantially different `optimization_problem.yaml`. Specifically, the optimization considers torque characteristics under two current conditions simultaneously.
 
-## optimization_problem.yaml（`Dmodel_advanced`プロジェクト）
-では、`optimization_problem.yaml`の中身を確認します。
+## optimization_problem.yaml (`Dmodel_advanced` project)
+Let us examine the contents of `optimization_problem.yaml`.
 
-### 解析ケース
-一番の変更点として、`case_names`が2つ存在します。1つ目は`transient`で、これは`Dmodel`プロジェクトのものと同様の条件（電流3.0Arms, 電流位相角20deg）を与える解析ケースです。  
-2つ目は`transient_high_current`で、電流値が3.0Armsから9.0Armsに、電流位相角が20degから30degに、それぞれ変更されています。  
-これらと同名の解析ケースフォルダが`Dmodel_advanced`プロジェクトフォルダ内にあり、電流条件（およびその他の解析条件）は各解析ケースフォルダ内の同名jsonファイルに記載されています。jsonファイルのフォーマットについては電磁界シミュレータEMSolution(pyemsol)のドキュメントをご覧ください。
+### Analysis cases
+The main change is that `case_names` contains two cases. The first is `transient`, which uses the same conditions as the `Dmodel` project (current 3.0 Arms and current phase angle 20 deg).  
+The second is `transient_high_current`, where the current changes from 3.0 Arms to 9.0 Arms and the current phase angle changes from 20 deg to 30 deg.  
+Folders with these case names are included in the `Dmodel_advanced` project. The current conditions and other analysis settings are specified in same-named JSON files in each case folder. See the EMSolution (pyemsol) electromagnetic-field simulator documentation for the JSON format.
 ```yaml
 case_names:
   - transient
   - transient_high_current
 ```
 
-### 目的関数
-次に、目的関数（`objectives`）です。ここでは、それぞれの解析条件下における平均トルクの重み付き和を最大化する最適化問題を定義しています。
+### Objective function
+The `objectives` section defines an optimization problem that maximizes the weighted sum of average torque under the two analysis conditions.
 ```yaml
 objectives:
   - function_name: average_torque
@@ -36,17 +36,17 @@ objectives:
     normalization_const: 6.3
     coefficient: -1.0
 ```
-これを単目的問題として式で書くと（今回も`optmization.yaml`では単目的最適化アルゴリズム`cmaes`を設定）、以下の通りです。
+Written as a single-objective problem (the single-objective `optmization.yaml` algorithm is configured in `cmaes`), this becomes:
 ```math
 \text{minimize} \quad F=f_1+f_2=-1.0\frac{T_\text{avg}^\text{3.0Arms20deg}}{2.1} - 1.0\frac{T_\text{avg}^\text{9.0Arms30deg}}{6.3} \\
 ```
-$T_\text{avg}^\text{3.0Arms20deg}$：平均トルク@3.0Arms,20deg [Nm]  
-$T_\text{avg}^\text{9.0Arms30deg}$：平均トルク@9.0Arms,30deg [Nm]  
-なお、各項の分母の値（正規化定数）は同条件下におけるオリジナルのDmodelの平均トルクです。
+$T_\text{avg}^\text{3.0Arms20deg}$: average torque at 3.0 Arms and 20 deg [Nm]  
+$T_\text{avg}^\text{9.0Arms30deg}$: average torque at 9.0 Arms and 30 deg [Nm]  
+The denominator of each term (the normalization constant) is the average torque of the original Dmodel under the corresponding condition.
 
-### 不等式制約
-次に、不等式制約（`ineq_constraints`）です。ここでは、それぞれの解析条件下におけるトルクリプルの値に制約をかけています。  
-それぞれ30%以下となるよう制約します。
+### Inequality constraints
+The `ineq_constraints` section constrains torque ripple under each analysis condition.  
+Each torque-ripple value is constrained to be no greater than 30%.
 ```yaml
   - function_name: torque_ripple_percentage
     case_name: transient
@@ -59,18 +59,18 @@ $T_\text{avg}^\text{9.0Arms30deg}$：平均トルク@9.0Arms,30deg [Nm]
       torque_scale: 4.0
     baseline: 30.0
 ```
-式で書くと以下の通りです。
+In equation form:
 ```math
 \begin{align*}
 \text{subject to} \quad & g_1(\boldsymbol{x}) = T_\text{rip}^\text{3.0Arms20deg} - 30.0 \leq 0 \\
                         & g_2(\boldsymbol{x}) = T_\text{rip}^\text{9.0Arms30deg} - 30.0 \leq 0
 \end{align*}
 ```
-$T_\text{rip}^\text{3.0Arms20deg}$：トルクリプル率@3.0Arms,20deg [%]  
-$T_\text{rip}^\text{9.0Arms30deg}$：トルクリプル率@9.0Arms,30deg [%]  
+$T_\text{rip}^\text{3.0Arms20deg}$: torque ripple at 3.0 Arms and 20 deg [%]  
+$T_\text{rip}^\text{9.0Arms30deg}$: torque ripple at 9.0 Arms and 30 deg [%]  
 
-### 等式制約
-次に、等式制約（`eq_constraints`）です。ここでは、[基本の最適化](./basic.md)ページの最後に説明があるように、ロータコアが一体となる（分離した箇所や浮島を生じない）ように制約をかけています。
+### Equality constraints
+The `eq_constraints` section constrains the rotor core to remain connected, as described at the end of the [basic optimization](./basic.md) page.
 ```yaml
 eq_constraints:
   - function_name: num_connected_components
@@ -79,11 +79,11 @@ eq_constraints:
     baseline: 1
 ```
 
-最後に、`other_metrics`では関連する値をGUI用に出力するよう設定してあります。
+Finally, `other_metrics` is configured to output the related values for the GUI.
 
-## 最適化の実施例
-Implicit Domain Meshing有（`use_implicit_domain_meshing: True`）として最適化を実施しました。100イテレーション最適化完了後のGUIを以下に示します。  
-10イテレーション目まではトルクリプル制約を満たさない解も見られますが、最終的には制約違反値は0となり、トルクリプル制約を満たす解が得られたことが分かります。  
-GUIの図に示しているのが最良形状です（$T_\text{avg}^\text{3.0Arms20deg}$=2.13Nm, $T_\text{avg}^\text{9.0Arms30deg}$=6.91Nm, $T_\text{rip}^\text{3.0Arms20deg}$=26.8%, $T_\text{rip}^\text{9.0Arms30deg}$=16.4%）。[基本の最適化](./basic.md)とは違ったフラックスバリア形状となっていることが分かります。  
-また、磁石両端にわずかではありますが磁性体コアの層が存在しており、結合制約を満たす形状となっています。
-![Dmodel最適化履歴](/img/Dmodel_advanced_check.png)
+## Optimization example
+The optimization was run with Implicit Domain Meshing enabled (`use_implicit_domain_meshing: True`). The GUI after 100 iterations is shown below.  
+Some solutions violate the torque-ripple constraints through iteration 10, but the final constraint-violation values are zero, showing that feasible solutions were obtained.  
+The best shape shown in the GUI has $T_\text{avg}^\text{3.0Arms20deg}$=2.13 Nm, $T_\text{avg}^\text{9.0Arms30deg}$=6.91 Nm, $T_\text{rip}^\text{3.0Arms20deg}$=26.8%, and $T_\text{rip}^\text{9.0Arms30deg}$=16.4%. Its flux-barrier shape differs from that in the [basic optimization](./basic.md) example.  
+A thin layer of magnetic-core material remains at both ends of the magnets, satisfying the connectivity constraint.
+![Dmodel optimization history](/img/Dmodel_advanced_check.png)

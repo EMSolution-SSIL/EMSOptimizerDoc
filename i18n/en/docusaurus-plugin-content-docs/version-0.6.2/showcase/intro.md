@@ -2,13 +2,13 @@
 sidebar_position: 1
 ---
 
-# イントロダクション
-ここでは、EMSOptimizerを活用した最適化の実施例を紹介します。
+# Introduction
+This section presents examples of optimization using EMSOptimizer.
 :::info
-形状最適化例（Dmodel, IPM8P48S）の実行には関連パッケージ群が必要です。  
-詳細は[インストールガイド](../docs/intro.md)ページをご参照ください。
+The related packages are required to run the shape optimization examples (Dmodel and IPM8P48S).  
+For details, see the [Installation Guide](../docs/intro.md).
 :::
 :::warning
-各ページの内容は、EMSOptimizerによって実施例の結果が得られることを保証するものではありません。  
-実際に得られる結果はEMSOptimizerのバージョンなどによって異なります。
+The content of each page does not guarantee that the example will produce the same results with EMSOptimizer.  
+Actual results may vary depending on the EMSOptimizer version and other factors.
 :::

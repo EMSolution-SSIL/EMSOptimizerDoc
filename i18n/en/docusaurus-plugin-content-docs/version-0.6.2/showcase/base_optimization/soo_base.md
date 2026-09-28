@@ -2,14 +2,14 @@
 sidebar_position: 1
 ---
 
-# soo_base紹介
-ここでは、`soo_base`プロジェクトの内容について紹介します。  
-本プロジェクトでは、単目的ベンチマーク関数Sphere\[11\]の最適化を行います。
+# soo_base Overview
+This page introduces the `soo_base` project.  
+This project optimizes the single-objective benchmark function Sphere\[11\].
 
-## optimization.yaml（`soo_base`プロジェクト）
-`optimization.yaml`の内容を確認します。  
-評価関数`evaluator`はSphere関数実装`sphere`とし、その設計変数の数（最適化問題の次元）`dim`を`30`に設定しています。  
-最適化手法`optimizer`は単目的最適化アルゴリズム`cmaes`（乱数シード固定）です。ここでは、設計変数の上下限値を\[-5.12, 5.12\] の範囲に制約します。これを`bounds`に設定しています。  
+## optimization.yaml (`soo_base` project)
+The contents of `optimization.yaml` are shown below.  
+The `evaluator` is the `sphere` implementation of the Sphere function, with `dim`, the number of design variables (the dimension of the optimization problem), set to `30`.  
+The `optimizer` is the single-objective optimization algorithm `cmaes` with a fixed random seed. The design variables are constrained to the range \[-5.12, 5.12\] by setting `bounds`.  
 ```yaml
 evaluator:
   name: sphere
@@ -22,12 +22,12 @@ optimizer:
     seed: 42
 ```
 
-今回は100イテレーションの最適化とします。  
+This example performs 100 optimization iterations.  
 ```yaml
 num_iteration: 100
 ```
-（出力周りの設定は省略します）
+(Output-related settings are omitted.)
 
-## 最適化の実施例
-100イテレーション最適化完了後のGUIを以下に示します。関数値が徐々に0に収束していく様子が分かります。  
+## Optimization Example
+The GUI after completing 100 optimization iterations is shown below. The function value gradually converges to 0.  
 ![soo_base GUI](/img/soo_base_GUI.png)

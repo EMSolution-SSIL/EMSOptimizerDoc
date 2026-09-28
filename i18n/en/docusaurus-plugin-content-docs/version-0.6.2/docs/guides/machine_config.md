@@ -2,12 +2,12 @@
 sidebar_position: 3
 ---
 
-# 機器設定（machine.yaml）
-ここでは、`machine.yaml`の内容を説明します。
+# Machine Configuration (`machine.yaml`)
+This page explains the available machine configuration options.
 
 ## Format
-凡例：`{設定項目名}: {型名} = デフォルト値`  
-デフォルト値の無いものは設定必須項目。
+Notation: `{設定項目名}: {型名} = デフォルト値`  
+Options without a default value are required.
 ```yaml
 # Basic Settings
 design_target: str ("pre_geom" | "rotor") = "rotor"
@@ -37,37 +37,37 @@ ems_project_filepath: str | null = null
 
 ## Details
 :::warning
-`machine.yaml`の各種設定は使用する電気機器ベースモデルメッシュおよび各解析ケースフォルダ内のpyemsol入力jsonファイルと整合するように設定する必要があります。  
-実際の設定例は[Showcase](../../showcase/intro.md)をご覧ください。
+The settings in `machine.yaml` must be consistent with the electrical-equipment base-model mesh and the pyemsol input JSON files in the analysis-case folders.  
+See the [Showcase](../../showcase/intro.md) for practical configuration examples.
 :::
-### 基本設定
-- `design_target: str ("pre_geom" | "rotor")` ... 形状最適化のターゲット。
+### Basic settings
+- `design_target: str ("pre_geom" | "rotor")` ... Target of shape optimization.
 :::info
-電磁界シミュレータEMSolution(pyemsol)では入力メッシュファイルが以下の2つに分かれるため、このコンフィグによってどちらを形状最適化するか指定します。   
-- `pre_geom`: 運動を伴わないモデルメッシュ
-- `rotor`: スライド運動部モデルメッシュ（モデルがスライド運動を伴う場合のみ入力）  
+The EMSolution electromagnetic-field simulator (pyemsol) uses two separate input mesh files, so this configuration specifies which one to optimize.   
+- `pre_geom`: Model mesh without motion
+- `rotor`: Mesh for the sliding-motion component (provided only when the model has sliding motion)  
 
-例えば、同期モータ等ではステータが`pre_geom`、ロータが`rotor`に当たります。
+For example, in a synchronous motor, the stator corresponds to `pre_geom` and the rotor to `rotor`.
 :::
-- `coordinate: str ("Cartesian" | "Polar")` ... 計算に用いる座標系。
+- `coordinate: str ("Cartesian" | "Polar")` ... Coordinate system used for the calculation.
 :::info
-直交座標系を用いる形状最適化では`Cartesian`を指定します。  
-一方、例えば同期モータの形状最適化の場合は極座標系（半径と角度）を用いてモデル定義を行うため、`Polar`を指定します。
+Specify `Cartesian` for shape optimization using a Cartesian coordinate system.  
+For example, specify `Polar` for synchronous-motor shape optimization when the model is defined using polar coordinates (radius and angle).
 :::
-- `has_sym_region: bool` ... 鏡面対称領域の有無。鏡面対称領域には設計領域の形状が鏡面コピーされます。
+- `has_sym_region: bool` ... Whether a mirror-symmetric region exists. The design-region shape is mirrored into the mirror-symmetric region.
 :::info
-現在、このオプションは`coordinate`が`Polar`の場合のみ有効です。  
-例えば、同期モータモデルのロータ形状は半極対称であることが多いため、このオプションを`True`に設定します。
+This option is currently effective only when `coordinate` is `Polar`.  
+For example, rotor shapes in synchronous-motor models are often half-pole symmetric, so this option is set to `True`.
 :::
-- `sym_deg: float` ... `has_sym_region`が`True`のとき、その鏡面対称軸角度 \[deg\]。
-- `num_rotate: int` ... `has_sym_region`が`True`かつ、回転対称領域がある場合、その領域数。回転対称領域が無い場合は`0`に設定します。
+- `sym_deg: float` ... Angle of the mirror-symmetry axis \[deg\] when `has_sym_region` is `True`.
+- `num_rotate: int` ... Number of rotationally symmetric regions when `has_sym_region` is `True` and rotational symmetry exists. Set to `0` when no rotationally symmetric region exists.
 :::info
-回転対称領域は`2 × sym_deg`ごとに存在すると仮定し、設計領域と鏡面対称領域を合わせた領域を回転コピーします。  
-例えば、解析対象となる同期モータモデルが複数極を含む場合にこのオプションを設定します。
+Rotationally symmetric regions are assumed to exist every `2 × sym_deg`, and the combined design and mirror-symmetric region is copied by rotation.  
+For example, set this option when the synchronous-motor model being analyzed contains multiple poles.
 :::
 
-### 材料設定
-- `target_ids_and_onoff: dict[int, list[int]]` ... トポロジー最適化において設計対象とする材料ID。`target_id`が割り当てられた領域について、各位置の材料IDをレベルセット関数の値に基づいて`id for level 1`, `id for level 2`, ...に設定します。
+### Material settings
+- `target_ids_and_onoff: dict[int, list[int]]` ... Material IDs targeted for topology optimization. In regions assigned a `target_id`, the material ID at each position is set to `id for level 1`, `id for level 2`, and so on based on the level set function value.
   #### Format
   ```yaml
   target_ids_and_onoff:
@@ -77,26 +77,26 @@ ems_project_filepath: str | null = null
       - ...
     ...
   ```
-:::tip トポロジー最適化の挙動
-トポロジー最適化の挙動は`target_ids_and_onoff`の設定によって変化します。すなわち、**-1~1の範囲を等分割した値が材料IDの切り替わる境界値となります。**  
-レベルセット関数の値を$y$とします。例えば、`id for level 1`および`id for level 2`が設定されているとき、各位置の材料IDは
+:::tip Topology optimization behavior
+Topology optimization behavior depends on `target_ids_and_onoff`. Specifically, **the evenly divided values in the range -1 to 1 become the boundaries at which material IDs switch.**  
+Let the level set function value be $y$. For example, when `id for level 1` and `id for level 2` are configured, the material ID at each position is set as follows.
 ```math
 y > 0 \rightarrow \text{id for level 1} \\
 y \leq 0  \rightarrow \text{id for level 2}
 ```
-と設定されます。  
-これに加えて`id for level 3`が設定されているときは、
+is assigned.  
+This is extended as follows when `id for level 3` is also configured.
 ```math
 y > 0.33  \rightarrow \text{id for level 1}  \\
 -0.33 < y \leq 0.33 \rightarrow \text{id for level 2} \\
 y \leq -0.33 \rightarrow \text{id for level 3} \\
 ```
-と設定されます。  
+  
 
-また、`target_id`は複数設定することが可能です。この場合、各`target_id`ごとに独立した材料設定が行われます。
+Multiple `target_id` values can also be configured. In that case, material settings are applied independently for each `target_id`.
 :::
 
-- `physical_id_to_name: dict[int, str]` ... 材料ID→材料名称マップ。
+- `physical_id_to_name: dict[int, str]` ... Mapping from material IDs to material names.
   #### Format
   ```yaml
   physical_id_to_name:
@@ -104,7 +104,7 @@ y \leq -0.33 \rightarrow \text{id for level 3} \\
     ...
   ```
 
-- `mirror_id_map: dict[int, int]` ... `has_sym_region`が`True`のとき、鏡映コピー元→鏡映コピー先材料IDマップ。例えば、材料ID`50000`の材料が鏡映コピー先では`50001`になる場合、`50000: 50001`と設定する。
+- `mirror_id_map: dict[int, int]` ... Material-ID map from the source to the destination of a mirror copy when `has_sym_region` is `True`. For example, if material ID `50000` becomes `50001` in the mirrored region, specify `50000: 50001`.
   #### Format
   ```yaml
   mirror_id_map:
@@ -112,10 +112,10 @@ y \leq -0.33 \rightarrow \text{id for level 3} \\
     ...
   ```
 :::info
-鏡映コピー時に材料IDが変化しない場合もこのコンフィグに記載してください（例：`20: 20`）。
+Include materials whose IDs do not change during mirror copying in this configuration as well (for example, `20: 20`).
 :::
 
-- `increment_info: dict[int, tuple[int, int, int, str]]` ... `num_rotate > 0`のとき、回転コピー先材料情報。
+- `increment_info: dict[int, tuple[int, int, int, str]]` ... Information about materials in rotational copies when `num_rotate > 0`.
   #### Format
   ```yaml
   increment_info:
@@ -126,8 +126,8 @@ y \leq -0.33 \rightarrow \text{id for level 3} \\
       - {prefix name}  # 材料名の接頭辞
     ...
   ```
-:::tip `increment_info`の挙動
-例えば、`num_rotate: 6`のとき、以下のように`increment_info`を設定したとします。   
+:::tip Behavior of `increment_info`
+For example, when `num_rotate: 6`, suppose `increment_info` is configured as follows.   
 ```yaml
 increment_info:
   50000:
@@ -136,7 +136,7 @@ increment_info:
     - 6
     - "magnet_0_0"
 ```
-この場合、材料IDは回転領域ごとに以下のように作成されます。
+In this case, material IDs are created for each rotational region as follows.
 ```yaml
 51000: "magnet_0_0_1"
 52000: "magnet_0_0_2"
@@ -147,34 +147,34 @@ increment_info:
 ```
 :::
 
-### Implicit Domain Meshing オプション
+### Implicit Domain Meshing options
 :::info
-Implicit Domain Meshingの手法については[Implicit Domain Meshing](../advanced/implicit_domain_meshing.md)ページを参照してください。
+See the [Implicit Domain Meshing](../advanced/implicit_domain_meshing.md) page for details about the method.
 :::
-- `use_implicit_domain_meshing: bool` ... Implicit Domain Meshingの有効化／無効化。
-:::warning 制限事項
-Implicit Domain Meshingの有効化時は以下の点を確認してください。
-- プロジェクトに格納するメッシュファイルは三角形メッシュのみで構成されていること。四角形メッシュ等のImplicit Domain Meshingは実行不可です。
-- `target_ids_and_onoff`に`id for level 1`, `id for level 2`のみ設定されていること。Implicit Domain Meshing時は3材料以上のレベルセットは不可です。
+- `use_implicit_domain_meshing: bool` ... Enable or disable Implicit Domain Meshing.
+:::warning Limitations
+When enabling Implicit Domain Meshing, check the following.
+- Mesh files stored in the project must consist only of triangular elements. Implicit Domain Meshing cannot be run with quadrilateral or other non-triangular meshes.
+- Only `id for level 1` and `id for level 2` may be configured in `target_ids_and_onoff`. Three or more material levels cannot be used with Implicit Domain Meshing.
 :::
-- `no_split_ids: list[int]` ... Implicit Domain Meshing適用時、領域変形の対象外とする材料IDのリスト（ただし、領域内のリメッシュは許容）。
-- `no_remesh_ids: list[int]` ... Implicit Domain Meshing適用時、リメッシュの対象外とする材料IDのリスト。
+- `no_split_ids: list[int]` ... List of material IDs excluded from region deformation when Implicit Domain Meshing is applied (remeshing within the region is still allowed).
+- `no_remesh_ids: list[int]` ... List of material IDs excluded from remeshing when Implicit Domain Meshing is applied.
 :::info
-`no_split_ids`には通常、「モデルには含まれるが`target_ids_and_onoff`に指定しなかった材料ID（＝設計対象外の材料ID）」を列挙します。  
-**その中でも特にメッシュを維持したいもの（例：モータにおけるスライドメッシュ領域）については`no_remesh_ids`に指定します。**
+Normally, `no_split_ids` lists material IDs that are included in the model but not specified in `target_ids_and_onoff` (that is, IDs outside the design target).  
+**Among these, specify materials whose mesh must be preserved, such as a motor's sliding-mesh region, in `no_remesh_ids`.**
 :::
-- `design_region_size: float` ... 設計領域の（大まかな）大きさ \[m\]。以下の`hausd_ratio`および`hmin_ratio`と併せて、リメッシュ時の材料境界の精度に影響します。
-- `hausd_ratio: float` ... リメッシュ時の材料境界の許容誤差率。具体的には、`hausd_raito`×`design_region_size`の値がリメッシュ時に許容誤差として参照されます。
-- `hmin_ratio: float` ... リメッシュ時の要素エッジ長の最小値率。具体的には、`hmin_ratio`×`design_region_size`の値がリメッシュ時に最小エッジ長として参照されます。
-- `bad_mesh_threshold: float` ... リメッシュ時にメッシュの質を表す指標（0~1, 1が最良）がこの値を下回った場合、その形状は評価をスキップする。評価がスキップされた形状には大きなペナルティが与えられるため、最適化アルゴリズムにより淘汰されます。
-:::tip 推奨設定値
-- `hausd_ratio` ... 0.001程度。値が小さいほどレベルセット関数に対する材料境界の忠実度が高くなる代わりにメッシュ要素数が増加し、解析に要する時間が増加します（ただし、メッシュ要素数は`hmin_ratio`によって制限されます）。
-- `hmin_ratio` ... 0.05~0.01程度。値が小さいほどメッシュ全体が細かくなります。
-- `bad_mesh_threshold:` ... 0.05~0.10程度。値が小さいほど質の悪いメッシュも許容されるようになり、形状の解析率が上がる代わりに結果の信頼度が低下します。
+- `design_region_size: float` ... Approximate size of the design region \[m\]. Together with `hausd_ratio` and `hmin_ratio`, this affects material-boundary accuracy during remeshing.
+- `hausd_ratio: float` ... Tolerance ratio for material boundaries during remeshing. Specifically, `hausd_raito` × `design_region_size` is used as the tolerance during remeshing.
+- `hmin_ratio: float` ... Minimum element-edge-length ratio during remeshing. Specifically, `hmin_ratio` × `design_region_size` is used as the minimum edge length during remeshing.
+- `bad_mesh_threshold: float` ... If the mesh-quality metric (0 to 1, where 1 is best) falls below this value during remeshing, evaluation of the shape is skipped. A large penalty is assigned to skipped shapes, so the optimization algorithm eliminates them.
+:::tip Recommended settings
+- `hausd_ratio` ... Approximately 0.001. Smaller values more faithfully reproduce the material boundary of the level set function, but increase the number of mesh elements and analysis time (the number of elements is limited by `hmin_ratio`).
+- `hmin_ratio` ... Approximately 0.05 to 0.01. Smaller values make the entire mesh finer.
+- `bad_mesh_threshold:` ... Approximately 0.05 to 0.10. Smaller values allow lower-quality meshes, increasing the shape-analysis rate but reducing result reliability.
 :::
 
 ### eMotorSolution Link Settings
-`ems_project_filepath: str` ... EMSOptimizerと連携したいeMotorSolutionプロジェクトファイル（.json）へのファイルパス。
+`ems_project_filepath: str` ... File path to the eMotorSolution project file (.json) to integrate with EMSOptimizer.
 :::info
-eMotorSlution連携については[発展的なトピック > eMotorSolutionとの連携](../advanced/link_ems.md)をご覧ください。
+See [Advanced Topics > Integration with eMotorSolution](../advanced/link_ems.md) for details about eMotorSolution integration.
 :::

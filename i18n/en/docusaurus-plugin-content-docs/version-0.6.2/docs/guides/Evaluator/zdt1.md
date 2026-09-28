@@ -3,10 +3,10 @@ sidebar_position: 4
 ---
 
 # zdt1
-多目的最適化ベンチマーク関数ZDT1\[9\]。
+The ZDT1 multi-objective optimization benchmark function\[9\].
 
-## 概要
-ZDT1関数の定義は以下の通りです。
+## Overview
+The ZDT1 function is defined as follows.
 ```math
 f_1(\boldsymbol{x}) = x_1 \\
 f_2(\boldsymbol{x}) = g(\boldsymbol{x}) h(\boldsymbol{x}) \\
@@ -15,5 +15,5 @@ h(\boldsymbol{x}) = 1 - \sqrt{f_1 / g} \\
 0 \leq x_i \leq 1
 ```
 
-## 設定可能なキーワード引数一覧
-- `dim: int` ... 最適化問題の次元数$n$。
+## Configurable keyword arguments
+- `dim: int` ... Number of dimensions $n$ in the optimization problem.

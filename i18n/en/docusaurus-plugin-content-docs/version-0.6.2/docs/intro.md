@@ -2,52 +2,52 @@
 sidebar_position: 1
 ---
 
-# インストールガイド
-## ソフトウェア構成
-**EMSOptimizerは以下の3点（以下、EMSOptimizerパッケージ群）から構成されます**。
+# Installation Guide
+## Software Components
+**EMSOptimizer consists of the following three components (collectively, the EMSOptimizer packages).**
 - EMSOptFree
-    - 公開ソースコード部です。EMSOptimizerのCLIコマンドや最適化ループ、最適化アルゴリズムの実装例などを提供します。
+    - The publicly available source-code component. It provides EMSOptimizer CLI commands, optimization loops, and implementation examples of optimization algorithms.
 - EMSOptEngine
-    - EMSOptFree駆動用のpythonパッケージです。EMSOptFreeを動作させるためには本パッケージのインストールが必要です。
+    - The Python package used to run EMSOptFree. This package must be installed to run EMSOptFree.
 - EMSOptAnalyzer
-    - 形状最適化における形状定義および解析を行うpythonパッケージです。形状最適化を行う場合は上記2点に加えてインストールが必要です。
+    - The Python package for shape definition and analysis in shape optimization. Install it in addition to the two packages above when performing shape optimization.
 
-また、**EMSOptimizerの形状最適化機能を動作させるには以下の関連パッケージ群が必要です\***。
+In addition, **the following related packages are required to use the shape optimization functionality of EMSOptimizer\***.
 - pyemsol
-    - 電磁界シミュレータエンジンEMSolutionのpython版パッケージです。EMSOptAnalyzerを駆動させるために必要です。
+    - The Python package for the EMSolution electromagnetic-field simulator engine. It is required to run EMSOptAnalyzer.
 :::info
-EMSOptAnalyzerの駆動には専用のpyemsolが必要です。これはEMSOptAnalyzer提供時に一緒に提供されます。
+The dedicated pyemsol package is required to run EMSOptAnalyzer. It is provided together with EMSOptAnalyzer.
 :::
-- （任意）eMotorSolution API
-    - eMotorSolutionのpython APIです。eMotorSolutionとEMSOptimizerを連携させたい場合にインストールします。連携機能については[発展的なトピック > eMotorSolutionとの連携](./advanced/link_ems.md)をご覧ください。
-- CodeMeterライセンスキー**
+- (Optional) eMotorSolution API
+    - The eMotorSolution Python API. Install it to integrate eMotorSolution with EMSOptimizer. For integration features, see [Advanced Topics > eMotorSolution Integration](./advanced/link_ems.md).
+- CodeMeter license key**
 
-*形状最適化用の関連パッケージ群が無い状態でも、形状最適化を除いた一部機能（ベンチマーク関数による最適化アルゴリズムのテストなど）は利用可能です。
+*Some functionality excluding shape optimization (such as testing optimization algorithms with benchmark functions) is available even without the related packages for shape optimization.
 
-**EMSOptimizerパッケージ群の一部および関連パッケージ群はCodeMeterによってライセンスプロテクトされており、利用にはライセンス認証が必要です。
+**Some EMSOptimizer packages and related packages are license-protected by CodeMeter and require license authentication to use.
 
-## インストール手順
-*Python 3.11.x (xは任意のマイナーバージョン) 環境およびパッケージ管理ツールpipが必要です。
+## Installation Procedure
+*A Python 3.11.x environment (where x is any minor version) and the pip package manager are required.
 
-### パッケージ群のインストール
-1. EMSOptimierパッケージ群をインストールします。
-- EMSOptFreeは圧縮フォルダ（`EMSOptimizer`）として提供されます。ご使用の環境にて解凍のうえ、任意の場所にフォルダごと配置してください。
-- EMSOptEngine, EMSOptAnalyzerはwhlファイルとして提供されます。以下のコマンドによってインストールしてください。
+### Installing the Packages
+1. Install the EMSOptimizer packages.
+- EMSOptFree is provided as a compressed folder (`EMSOptimizer`). Extract it and place the entire folder in any location in your environment.
+- EMSOptEngine and EMSOptAnalyzer are provided as wheel files. Install them with the following commands.
 ```sh
 pip install emsopt_engine-(version)-(environment)-(os).whl
 pip install emsopt_analyzer-(version)-(environment)-(os).whl
 ```
-2. SSILから提供される関連パッケージ群をそれぞれの手順に従ってインストールします。  
+2. Install the related packages provided by SSIL according to their respective instructions.  
 
-### CodeMeter User Softwareのインストール
-1. CodeMeter User Softwareダウンロードページにアクセスします：https://www.wibu.com/support/user/user-software.html
-2. ご使用のOS（Windows、macOS、Linux）に対応したCodeMeter User Runtimeをダウンロードします。
-3. Webサイト上の指示に従って、CodeMeter User Runtimeをインストールします。
-4. **Linux OSの場合のみ**、CodeMeter User SoftwareダウンロードページからAxProtector Runtime for Linuxをダウンロードします。
-5. **Linux OSの場合のみ**、Webサイト上の指示に従って、AxProtector User Runtimeをインストールします。
-6. インストール完了後、コンピューターを再起動します。
+### Installing CodeMeter User Software
+1. Open the CodeMeter User Software download page: https://www.wibu.com/support/user/user-software.html
+2. Download the CodeMeter User Runtime for your operating system (Windows, macOS, or Linux).
+3. Install CodeMeter User Runtime according to the instructions on the website.
+4. **Linux only:** Download AxProtector Runtime for Linux from the CodeMeter User Software download page.
+5. **Linux only:** Install AxProtector User Runtime according to the instructions on the website.
+6. Restart the computer after installation is complete.
 
-### ライセンスのアクティベーション
-1. SSILから提供されるアクティベーションページのURLをブラウザで開きます。
-2. アクティベーションページの指示に従い、ライセンスをアクティベートします。
-3. アクティベーション後，CodeMeter Control Centerを開き，ライセンスが正しく登録されていることを確認します。
+### Activating the license
+1. Open the activation-page URL provided by SSIL in a browser.
+2. Activate the license according to the instructions on the activation page.
+3. After activation, open CodeMeter Control Center and confirm that the license is registered correctly.

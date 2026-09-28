@@ -2,12 +2,12 @@
 sidebar_position: 2
 ---
 
-# 最適化の設定（optimization.yaml）
-ここでは、`optimization.yaml`の内容を説明します。
+# Optimization Configuration (`optimization.yaml`)
+This page explains the available optimization configuration options.
 
 ## Format
-凡例：`{設定項目名}: {型名} = デフォルト値`  
-デフォルト値の無いものは設定必須項目。
+Notation: `{設定項目名}: {型名} = デフォルト値`  
+Options without a default value are required.
 ```yaml
 # Core Objects
 evaluator:
@@ -56,60 +56,60 @@ enable_progress_gui: bool = True
 
 ## Details
 :::info
-コアオブジェクトの実装例および設定できるキーワード引数については、ユーザガイド内の各セクションを参照してください。  
+See the relevant User Guide sections for core-object implementation examples and configurable keyword arguments.  
 :::
 
-### コアオブジェクト
-- `evaluator` ... 最適化で使用するEvaluator実装。
-    - `name: str` ... 実装名
-    - `kwargs: dict[str, Any]` ... キーワード引数
-- `optimizer` ... 最適化で使用するOptimizer実装。
-    - `name: str` ... 実装名
-    - `kwargs: dict[str, Any]` ... キーワード引数
-- `analysis_conditioner` ... 最適化で使用するAnalysisConditioner実装。省略可能。
-    - `name: str` ... 実装名
-    - `kwargs: dict[str, Any]` ... キーワード引数
-- `level_set_function` ... 最適化で使用するLevel set function実装。省略可能。
-    - `name: str` ... 実装名
-    - `kwargs: dict[str, Any]` ... キーワード引数
-- `ems_shape_builder` ... 最適化で使用するeMotorSolution Shape Builder実装。省略可能。
-    - `name: str` ... 実装名
-    - `kwargs: dict[str, Any]` ... キーワード引数
+### Core objects
+- `evaluator` ... Evaluator implementation used for optimization.
+    - `name: str` ... Implementation name
+    - `kwargs: dict[str, Any]` ... Keyword arguments
+- `optimizer` ... Optimizer implementation used for optimization.
+    - `name: str` ... Implementation name
+    - `kwargs: dict[str, Any]` ... Keyword arguments
+- `analysis_conditioner` ... Analysis Conditioner implementation used for optimization. Optional.
+    - `name: str` ... Implementation name
+    - `kwargs: dict[str, Any]` ... Keyword arguments
+- `level_set_function` ... Level Set Function implementation used for optimization. Optional.
+    - `name: str` ... Implementation name
+    - `kwargs: dict[str, Any]` ... Keyword arguments
+- `ems_shape_builder` ... eMotorSolution Shape Builder implementation used for optimization. Optional.
+    - `name: str` ... Implementation name
+    - `kwargs: dict[str, Any]` ... Keyword arguments
 :::info
-後半3つのコアオブジェクト設定は省略可能です。使用したいもののみ設定してください。  
-特に、`evaluator`にベンチマーク関数を使用した場合は3つすべて無関係のため省略可能です（設定しても無視されます）。
+The last three core object settings are optional. Configure only the objects you want to use.  
+In particular, when a benchmark function is used for `evaluator`, all three are irrelevant and can be omitted (any configured values are ignored).
 :::
 
-### 最適化設定
-- `num_iteration: int` ... 最適化イテレーション数。
+### Optimization settings
+- `num_iteration: int` ... Number of optimization iterations.
 :::info
-ここでは、イテレーションは以下の通り定義します。  
-「`optimizer`が評価対象を`evaluator`に渡し、`evaluator`が評価し、`optimizer`が更新処理をする一連のプロセス」
+Here, an iteration is defined as follows:  
+“The sequence in which `optimizer` passes a candidate to `evaluator`, `evaluator` evaluates it, and `optimizer` performs an update.”
 :::
-- `enable_parallelization: bool`... 並列処理の有効化／無効化。有効化時、形状最適化における形状評価を並列化する。
-- `num_processes: int | null` ... 並列処理の有効化時、並列処理プロセス数。`null`の場合、PCのCPU数から自動的に設定される。
-- `enable_dask_distribution: bool` ... 分散処理の有効化／無効化。有効化時、形状最適化における形状評価を別途立ち上げたworkerノード群に分散する。
-- `dask_scheduler_url: str | null` ... 分散処理の有効化時、workerノード群が接続されたschedulerノードへのアドレス。
-- `num_chunks: int | null` ... 分散処理の有効化時、分散処理数。形状評価タスクは`num_chunks`に分割され、アクティブなworker群に分配される。さらに`enable_parallelization`が`True`ならば、worker内では`num_processes`の数だけプロセス並列して形状評価タスクを処理する。
+- `enable_parallelization: bool` ... Enable or disable parallel processing. When enabled, shape evaluation in shape optimization is parallelized.
+- `num_processes: int | null` ... Number of parallel processes when parallel processing is enabled. When `null`, it is set automatically from the number of CPUs on the PC.
+- `enable_dask_distribution: bool` ... Enable or disable distributed processing. When enabled, shape evaluation in shape optimization is distributed among separately started worker nodes.
+- `dask_scheduler_url: str | null` ... Address of the scheduler node to which worker nodes connect when distributed processing is enabled.
+- `num_chunks: int | null` ... Number of distributed chunks when distributed processing is enabled. Shape-evaluation tasks are divided into `num_chunks` and distributed among active workers. If `enable_parallelization` is `True`, each worker processes them with `num_processes` processes in parallel.
 :::info
-分散処理の詳細については[発展的なトピック > 計算ノード間分散処理](../advanced/distribution.md)をご覧ください。
+See [Advanced Topics > Distributed Processing Across Compute Nodes](../advanced/distribution.md) for details.
 :::
 
-### 出力設定
-- `resource_dir: str | null` ... 形状最適化における作業用フォルダ名。中間ファイル等の出力先であり、eMotorSolution APIやpyemsolの計算結果が格納される。`null`（未指定）の場合、プロジェクトフォルダ内に`resources`ディレクトリが自動的に作られ、作業用フォルダとして使用されます（形状最適化時のみ）。
-- `output_dir: str | null` ... 最適化経過の出力先フォルダ名。`null`（未指定）の場合、プロジェクトフォルダ内に`opt_progress`ディレクトリが自動的に作られ、出力先フォルダとして使用されます。
-- `output_interval: int` ... GUIを含む出力全体のインターバル。1なら毎イテレーション、2なら2イテレーションに1回、...と出力します。
-- `output_control` ... 各出力ファイルの設定。
-  - `best_individual` ... エリート解（多目的最適化においては、パレート解）の情報。
-    - `filename_base: str` ... ファイル名
-    - `enabled: bool` ... 出力の有効化／無効化
-    - `output_interval: int` ... 個別の出力インターバル
-  - `candidate` ... 解析した全個体の情報。
-    - `filename_base: str` ... ファイル名
-    - `enabled: bool` ... 出力の有効化／無効化
-    - `output_interval: int` ... 個別の出力インターバル
-  - `candidate_plot` ... 各世代で生成された解候補ベクトルの分布プロット。
-    - `filename_base: str` ... ファイル名
-    - `enabled: bool` ... 出力の有効化／無効化
-    - `output_interval: int` ... 個別の出力インターバル
-- `enable_progress_gui: bool` ... GUIの有効化／無効化。
+### Output settings
+- `resource_dir: str | null` ... Working-directory name for shape optimization. Intermediate files and results from the eMotorSolution API and pyemsol are stored here. When `null`, a `resources` directory is automatically created in the project folder and used as the working directory (only for shape optimization).
+- `output_dir: str | null` ... Output-directory name for optimization progress. When `null`, an `opt_progress` directory is automatically created in the project folder and used as the output directory.
+- `output_interval: int` ... Interval for all output, including the GUI. With 1, output is produced every iteration; with 2, every two iterations; and so on.
+- `output_control` ... Settings for each output file.
+  - `best_individual` ... Information about the elite solution (Pareto solutions in multi-objective optimization).
+    - `filename_base: str` ... File name
+    - `enabled: bool` ... Enable or disable output
+    - `output_interval: int` ... Individual output interval
+  - `candidate` ... Information about all evaluated individuals.
+    - `filename_base: str` ... File name
+    - `enabled: bool` ... Enable or disable output
+    - `output_interval: int` ... Individual output interval
+  - `candidate_plot` ... Distribution plot of candidate-solution vectors generated in each generation.
+    - `filename_base: str` ... File name
+    - `enabled: bool` ... Enable or disable output
+    - `output_interval: int` ... Individual output interval
+- `enable_progress_gui: bool` ... Enables or disables the GUI.

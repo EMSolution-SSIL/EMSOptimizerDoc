@@ -3,13 +3,13 @@ sidebar_position: 2
 ---
 
 # phase_conditioner
-電流位相角の動的設定を行う実装例。
+An implementation example that dynamically configures the current phase angle.
 
-## 概要
-パラメータ$\boldsymbol{p}=\{p_0\}$から電流位相角を定義します。内部的にはpyemsolの入力jsonデータおよび解析ケース名を受け取り、解析ケース名が引数`case_names`のいずれかと一致するとき、jsonデータの位相角に当たる箇所に`scale`$ \times p_0$を加算します。
+## Overview
+The current phase angle is defined from the parameter $\boldsymbol{p}=\{p_0\}$. Internally, the implementation receives pyemsol input JSON data and an analysis case name. When the analysis case name matches one of the values in `case_names`, it adds `scale`$ \times p_0$ to the phase-angle field in the JSON data.
 
-$p_0$: 電流位相角 \[deg\]。  
+$p_0$: Current phase angle \[deg\].  
 
-## 設定可能なキーワード引数一覧
-`case_names`: 電流位相角を変更する解析ケース名リスト。
-`scale`: 電流位相角スケール。デフォルト値は`1.0`。
+## Configurable keyword arguments
+`case_names`: List of analysis case names for which the current phase angle is changed.
+`scale`: Current phase-angle scale. The default value is `1.0`.

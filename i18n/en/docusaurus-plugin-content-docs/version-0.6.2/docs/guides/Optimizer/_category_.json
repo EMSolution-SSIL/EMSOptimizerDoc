@@ -1,8 +1,8 @@
 {
   "label": "Optimizer",
-  "position": 5,
+  "position": 8,
   "link": {
     "type": "generated-index",
-    "description": "ここでは、Optimizerの実装例 (EMSOptimizer内core/optimizer)を紹介します。"
+    "description": "This section introduces Optimizer implementation examples (EMSOptimizer core/optimizer)."
   }
 }

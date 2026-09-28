@@ -1,8 +1,8 @@
 {
-  "label": "発展的なトピック",
+  "label": "Advanced Topics",
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "ここでは、EMSOptimizerの発展的なトピックを紹介します。"
+    "description": "This section introduces advanced topics in EMSOptimizer."
   }
 }

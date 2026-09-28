@@ -2,34 +2,34 @@
 sidebar_position: 1
 ---
 
-# コアオブジェクトの自作
-ここでは、コアオブジェクト設定の仕組みとユーザ自身がEMSOptimizerのコアオブジェクトを定義する方法を説明します。
+# Creating Custom Core Objects
+This page explains how core object configuration works and how to define your own EMSOptimizer core objects.
 
-## 手順
-**自作コアオブジェクトを定義するには、以下のステップに従います**。  
-1. 自作コアオブジェクト用の新しいpythonファイルを作成する。
-2. 作成したファイル内に、対応するコアオブジェクトのインターフェースを継承したpythonクラスを実装する（下記は`evaluator`の例）。
+## Procedure
+**Follow these steps to define a custom core object.**  
+1. Create a new Python file for the custom core object.
+2. In the file, implement a Python class that inherits the interface for the corresponding core object (the example below is for `evaluator`).
 ```py
 class UserDefinedEvaluator(EvaluatorInterface):
     def __init__(self, kwarg1: int):
         ...
 ```
 :::info
-各コアオブジェクトのインターフェースについてはユーザガイドセクション内の各コアオブジェクトのページをご覧ください。
+See the page for each core object in the User Guide for its interface.
 :::
-3. 作成したファイル内に、対応するコアオブジェクト生成用デコレータ付きのインスタンス化関数（ファクトリ関数）を定義する。
+3. In the file, define a factory function that instantiates the corresponding core object and is decorated for core-object creation.
 ```py
 from emsopt_engine.registry import evaluator
 @evaluator("user_defined_evaluator")
 def build_user_defined_evaluator(kwarg1: int) -> EvaluatorInterface:
     return UserDefinedEvaluator(kwarg1)
 ```
-4. 作成したpythonファイルを各コアオブジェクトフォルダ内の`implementations.py`内でインポートする。
+4. Import the Python file in `implementations.py` inside the corresponding core object folder.
 ```py
 from .examples import rastrigin, zdt1, user_defined
 ```
 
-以上の手続きによって、ほかのコアオブジェクト実装例と同様に`optimization.yaml`にて名前（上記の例では`user_defined_evaluator`）とキーワード引数を指定することで自作コアオブジェクトを利用できるようになります。 
+Following these steps makes the custom core object available like the other core object examples: specify its `name` (in this example, `user_defined_evaluator`) and keyword arguments in `optimization.yaml`. 
 ```yaml
 evaluator:
   name: user_defined_evaluator
@@ -37,14 +37,14 @@ evaluator:
     kwarg1: 1
 ```
 :::info
-既存の実装例も上記の手続きによって作成されてます。  
-コアオブジェクトの作成手順に迷った場合は、既存の実装例をご覧ください。
+The existing implementation examples are also created using this procedure.  
+If you are unsure how to create a core object, refer to an existing implementation example.
 :::
 
-## コアオブジェクトの仕組み
-ここでは、コアオブジェクト設定の仕組みと実装のヒントについて述べます。
-### インターフェース
-コアオブジェクトの仕様はインターフェースクラスによって定義されています。例えば、`evaluator`のインターフェースクラス（`EvaluatorInterface`）の定義は下記のようになっています。
+## How Core Objects Work
+This section describes how core object configuration works and provides implementation tips.
+### Interface
+The specifications of core objects are defined by interface classes. For example, the interface class for `evaluator` (`EvaluatorInterface`) is defined as follows.
 ```py
 class EvaluatorInterface(ABC):
     """Interface to evaluate population"""
@@ -84,50 +84,50 @@ class EvaluatorInterface(ABC):
             int: number of objectives
         """
 ```
-**ユーザは`EvaluatorInterface`を継承し、なおかつインターフェース内で定義されたすべてのメソッドを定義通りに実装する必要があります**。
+**Users must inherit from `EvaluatorInterface` and implement all methods defined by the interface according to their specifications**.
 
-EMSOptimizer内部では、各種コアオブジェクト実装が対応するインターフェースに沿っているかをチェックする機構が各所に施されています。逆に言えば、**自作コアオブジェクトの実装がインターフェースに沿っていれば、EMSOptimizerは即座にオブジェクトと連携することが可能です**。
+EMSOptimizer checks in several places that core object implementations conform to their corresponding interfaces. Conversely, **if a custom core object conforms to its interface, EMSOptimizer can immediately integrate with it**.
 
-### コアオブジェクトの登録
-EMSOptimizerは内部的にコアオブジェクト（正確にはコアオブジェクトインスタンスを生成するファクトリ関数）のレジストリを保持しています。**自作コアオブジェクトを利用するためにはレジストリへの登録が必要です**。
-:::tip レジストリの仕組み
-EMSOptimizerは実行時、
-- `optimization.yaml`内で各コアオブジェクトに設定した`name`コンフィグをレジストリ内検索し、
-- `kwargs`コンフィグをキーワード引数として、`name`コンフィグに該当するファクトリ関数を呼び出し、
-- ファクトリ関数によって生成されたコアオブジェクトを最適化計算に利用する
+### Registering Core Objects
+Internally, EMSOptimizer maintains a registry of core objects (more precisely, factory functions that create core object instances). **Custom core objects must be registered to be used**.
+:::tip Registry mechanism
+At runtime, EMSOptimizer:
+- searches the registry for the name configuration set for each core object in `optimization.yaml`,
+- calls the factory function corresponding to that `name`, passing the `kwargs` configuration as keyword arguments, and
+- uses the core object created by the factory function in the optimization calculation.
 
-仕組みとなっています。レジストリに未登録の名前はコアオブジェクトとして使用できません。
+Names not registered in the registry cannot be used as core objects.
 :::
 
-レジストリへのファクトリ関数の登録は`emsopt_engine.registry`から呼び出せる各種デコレータ関数によって行います。デコレータ関数への引数（`str`型）がそのままレジストリへの登録名になります。  
-冒頭の例では、
+Factory functions are registered in the registry using decorator functions available from `emsopt_engine.registry`. The `str` argument passed to a decorator becomes the registration name.  
+In the example above,
 ```py
 from emsopt_engine.registry import evaluator
 @evaluator("user_defined_evaluator")
 def build_user_defined_evaluator() -> EvaluatorInterface:
     return UserDefinedEvaluator()
 ```
-となっており、`@evaluator`が`evaluator`レジストリ登録用のデコレータ関数、`user_defined_evaluator`が登録名、`build_user_defined_evaluator()`が自作コアオブジェクトのファクトリ関数です。
+`@evaluator` is the decorator function for registering an object in the `evaluator` registry, `user_defined_evaluator` is the registration name, and `build_user_defined_evaluator()` is the factory function for the custom core object.
 
-**デコレータ関数をトリガーするためにはそのpythonファイルをインポートする必要があります**。これは各コアオブジェクトフォルダ内の`implementations.py`内で行います。
+**The Python file must be imported to trigger the decorator function.** This is done in `implementations.py` inside each core-object folder.
 ```py
 from .examples import rastrigin, zdt1, user_defined
 ```
-`implementations.py`はEMSOptimizer実行時に自動的に読み込まれ、このときにデコレータ関数がトリガーされることでファクトリ関数がレジストリへ登録される仕組みになっています。
+`implementations.py` is loaded automatically when EMSOptimizer runs. The decorator is triggered at that time, registering the factory function in the registry.
 
-### Optimizerについて
-コアオブジェクトのうち、**`optimizer`は少し特殊なオブジェクトとなっています**。すなわち、
-- 継承元としてインターフェース（`OptimizerInterface`）のほかに、
-    - 単目的最適化の基底クラス（`SOOptimizerBase`）
-    - 多目的最適化の基底クラス（`MOOptimizerBase`）
-- を有している。ユーザは`optimizer`を自作する際、**インターフェースに加えてどちらかの基底クラスを継承する必要がある**。
-- ファクトリ関数へ`dim`と`num_obj`というキーワード引数が自動的に設定される。したがって、**`optimizer`のファクトリ関数は`dim`と`num_obj`を引数に設定する必要がある**。
+### About optimizer
+Among the core objects, **`optimizer` is somewhat special**:
+- In addition to the interface (`OptimizerInterface`), it inherits one of the following base classes:
+    - single-objective optimization base class (`SOOptimizerBase`)
+    - multi-objective optimization base class (`MOOptimizerBase`)
+- When defining a custom `optimizer`, users **must inherit one of these base classes in addition to the interface**.
+- The keyword arguments `dim` and `num_obj` are automatically passed to the factory function. Therefore, **an `optimizer` factory function must accept `dim` and `num_obj`**.
 :::info
-この引数の自動設定の仕組みは、「形状最適化時に`dim`と`num_obj`を動的に設定する」ためのものです。ほかのコアオブジェクトや`optimization_problem.yaml`などの設定と齟齬が生じないよう、EMSOptimizerが内部でこれらの引数を自動的に計算・設定します。
+This automatic argument configuration dynamically sets `dim` and `num_obj` during shape optimization. EMSOptimizer calculates and sets these arguments internally so that they remain consistent with other core objects and settings such as `optimization_problem.yaml`.
 :::
 
 #### Example
-例として、`cmaes`実装を見てみましょう（一部省略）。
+As an example, consider the `cmaes` implementation (partially omitted).
 ```py
 import numpy as np
 from cmaes import CMA
@@ -150,7 +150,7 @@ class CMAES(SOOptimizerBase, OptimizerInterface):
     ) -> None:
         ...
 ```
-- `cmaes`実装は単目的最適化アルゴリズムであるため、`SOOptimizerBase`を継承しています。`SOOptimizerBase`にはエリート解管理の仕組みなどが実装されており、その仕組みは`CMAES`クラス内でも利用可能です。
+- Because `cmaes` is a single-objective optimization algorithm, its implementation inherits `SOOptimizerBase`. `SOOptimizerBase` implements mechanisms such as elite-solution management, which are also available inside the `CMAES` class.
 ```py
 @optimizer("cmaes")
 def build_cmaes(
@@ -171,13 +171,13 @@ def build_cmaes(
         population_size=population_size,
     )
 ```
-- `dim: int`, `num_obj: int`をファクトリ関数のキーワード引数に受け取っています。このうち`num_obj`は`CMAES`クラスの処理には不要であるため特に使われていません（`optimizer`ファクトリ関数の契約上、キーワード引数としては存在しなければならない）。  
-多目的最適化実装においては`num_obj`を目的関数の数として各種処理に利用できます。
+- The factory function accepts `dim: int` and `num_obj: int` as keyword arguments. `num_obj` is not used by the `CMAES` class because it is unnecessary for its processing, but it must exist as a keyword argument to satisfy the `optimizer` factory contract.  
+Multi-objective optimizer implementations can use `num_obj` as the number of objectives for various operations.
 
-## 形状最適化評価用関数の自作
-`optimization_problem.yaml`に設定できる形状最適化時の評価用関数は`core/opt_problem_functions.py`に実装があり、これらの関数もコアオブジェクトと類似のシステムによってレジストリへ登録されています。したがって、ユーザは自作の評価用関数を作成・登録することも可能です。
+## Defining custom shape-optimization evaluation functions
+Evaluation functions for shape optimization that can be configured in `optimization_problem.yaml` are implemented in `core/opt_problem_functions.py`. These functions are also registered in a system similar to that used for core objects, so users can create and register their own evaluation functions.
 
-以下は`average_torque`（平均トルク評価関数）の実装例です。
+The following is an implementation example for `average_torque` (the average-torque evaluation function).
 ```py
 @opt_problem_function("average_torque")
 def average_torque(working_dir: str, torque_scale: float = 1.0) -> float:
@@ -204,7 +204,7 @@ def average_torque(working_dir: str, torque_scale: float = 1.0) -> float:
     return res
 ```
 
-コアオブジェクトのファクトリ関数の登録時と同様に、デコレータ関数`opt_problem_function`に自作関数の登録名を渡すことで`optimization_problem.yaml`からその関数を呼び出せるようになります（`core/opt_problem_functions.py`自身がEMSOptimizerに自動インポートされるため、追加のインポート記述は不要です）。
+As with registering a core-object factory function, pass the registration name of the custom function to the `opt_problem_function` decorator to make the function callable from `optimization_problem.yaml`. No additional import is required because `core/opt_problem_functions.py` itself is automatically imported by EMSOptimizer.
 
-なお、**評価用関数には`working_dir`を第一引数に必ず含みます**。これはpyemsolによる解析結果が格納されたフォルダ名であり、EMSOptimizer内部で自動的に設定されます。  
-上記の`average_torque`の例ではpyemsol解析結果サマリーファイル`output.json`を読み込み、そこからトルク波形を抽出することで平均トルクを計算しています。
+Note that **an evaluation function must always include `working_dir` as its first argument**. This is the name of the folder containing the pyemsol analysis results and is set automatically within EMSOptimizer.  
+In the `average_torque` example above, the function reads the pyemsol analysis-result summary file `output.json`, extracts the torque waveform, and calculates the average torque.

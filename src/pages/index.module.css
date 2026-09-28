@@ -21,3 +21,15 @@
   align-items: center;
   justify-content: center;
 }
+
+.translationNotice {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.translationNotice p {
+  margin-bottom: 0;
+}

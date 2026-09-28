@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# インターフェース
-eMotorSolution Shape Builderのインターフェース定義（`EMSShapeBuilderInterface`）は以下の通りです。  
-`emsopt_engine.interface.ems_shape_builder_interface`からimportできます。
+# Interface
+The interface definition for eMotorSolution Shape Builder (`EMSShapeBuilderInterface`) is shown below.  
+It can be imported from `emsopt_engine.interface.ems_shape_builder_interface`.
 
 ```py
 from abc import ABC, abstractmethod

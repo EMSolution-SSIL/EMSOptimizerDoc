@@ -3,26 +3,26 @@ sidebar_position: 4
 ---
 
 # NGnetMixture
-[SimpleLevelSetRadius](ls_r.md)と[NGnet](ngnet.md)を組み合わせ、ある半径以内の領域についてNGnet関数を適用する実装例。
+An implementation example that combines [SimpleLevelSetRadius](ls_r.md) and [NGnet](ngnet.md) and applies the NGnet function within a specified radius.
 
-## 概要
-寸法パラメータ$\boldsymbol{w}$、コンフィグ`boundary_r`と設計領域の各点の半径$r$に基づき、以下の値を返します。ただし、引数`inversed`が`True`のときは範囲が逆転します。
-- $r > \text{boundary\_r}$ → 1（材料を`level 0`に固定）
-- $r \leq \text{boundary\_r}$ → 寸法パラメータ$\boldsymbol{w}$を適用したNGnetの出力値
+## Overview
+The following values are returned based on the dimensional parameter $\boldsymbol{w}$, the `boundary_r` configuration, and the radius $r$ at each point in the design region. When the `inversed` argument is `True`, the ranges are reversed.
+- $r > \text{boundary\_r}$ → 1 (fix the material to `level 0`)
+- $r \leq \text{boundary\_r}$ → NGnet output with the dimensional parameter $\boldsymbol{w}$ applied
 
 :::info
-この実装例は例えば、「ロータのある半径から外側は材料を固定したい」場合、あるいは逆に「ロータの表面だけをNGnet on/off法の対象にしたい」場合などに利用することができます。  
-実際の活用例は[Showcase](../../../showcase/IPM8P48S/pto.md)をご覧ください。
+This implementation can be used, for example, when you want to fix the material outside a specified rotor radius, or conversely when you want to apply the NGnet on/off method only to the rotor surface.  
+See the [Showcase](../../../showcase/IPM8P48S/pto.md) for an example.
 :::
 
-## 設定可能なキーワード引数一覧
-- `coordinate: str` ... NGnetの構築に用いる座標系。 "Cartesian"または"Polar"。
-- `sigma: float` ... NGnetを構成するガウス基底関数の標準偏差。デフォルト値は`1`。
-- `design_region: list[list[float, float], list[float, float]]` ... NGnetを構築する範囲（＝設計領域）。`coordinate`が`Cartesian`の場合は矩形領域$[[x_1, x_2], [y_1, y_2]]$、`Polar`の場合は扇状領域$[[r_1, r_2], [\theta_1, \theta_2]]$を設定します。
-- `boundary_r: float` ... NGnet適用の境界となる半径。
-- `inversed: bool`... NGnet適用範囲を逆転するかどうか。デフォルト値は`False`。
-- `distance_factor: float` ... ガウス基底関数同士をどの程度の間隔で配置するかを決める値。1より小さいほど、ガウス基底関数同士が重なるように配置される。デフォルト値は`0.8`。
-- `eliminate_bases_on_edge: bool` ... 領域端のガウス基底関数を排除するかどうか。デフォルト値は`False`。
-- `normalize_output: bool` ... NGnet出力を正規化するかどうか。`False`にすると、  
+## Configurable keyword arguments
+- `coordinate: str` ... Coordinate system used to construct the NGnet: "Cartesian" or "Polar".
+- `sigma: float` ... Standard deviation of the Gaussian basis functions in the NGnet. The default is `1`.
+- `design_region: list[list[float, float], list[float, float]]` ... Region used to construct the NGnet (the design region). When `coordinate` is `Cartesian`, specify a rectangular region $[[x_1, x_2], [y_1, y_2]]$; when it is `Polar`, specify a sector region $[[r_1, r_2], [\theta_1, \theta_2]]$.
+- `boundary_r: float` ... Radius defining the boundary for applying NGnet.
+- `inversed: bool` ... Whether to reverse the range where NGnet is applied. The default is `False`.
+- `distance_factor: float` ... Determines the spacing between Gaussian basis functions. Values below 1 place the functions so that they overlap more. The default is `0.8`.
+- `eliminate_bases_on_edge: bool` ... Whether to remove Gaussian basis functions at the region boundaries. The default is `False`.
+- `normalize_output: bool` ... Whether to normalize the NGnet output. When `False`,  
 $y(\boldsymbol{w}, \boldsymbol{x}) = \sum_{i=1}^{N} w_i G_i(\boldsymbol{x}) \\$
-となります。デフォルト値は`True`。
+is used. The default is `True`.

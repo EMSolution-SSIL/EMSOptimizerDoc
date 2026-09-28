@@ -3,16 +3,16 @@ sidebar_position: 2
 ---
 
 # SimpleLevelSetRadius
-半径ごとにレベルを設定するシンプルなLevelSetFunction実装です。
+A simple LevelSetFunction implementation that assigns levels according to the radius.
 
-## 概要
-例として、コンフィグ`num_level`が`3`のときは、寸法パラメータ$\boldsymbol{w}$と設計領域の各点の半径$r$に基づき以下の値を返します。
+## Overview
+For example, when the configuration `num_level` is `3`, the following values are returned based on the dimensional parameter $\boldsymbol{w}$ and the radius $r$ at each point in the design region.
 - $r < w_0$ → 1
 - $w_0 < r < w_0 + w_1$ → 0
 - $w_0 + w_1 < r$ → -1
 
-これにより、$r < w_0$の領域では`level 0`、$w_0 < r < w_0 + w_1$の領域では`level 1`, $w_0 + w_1 < r2$の領域では`level 2`の材料がそれぞれ割り当てられます。
+This assigns `level 0` material to the region where $r < w_0$, `level 1` material where $w_0 < r < w_0 + w_1$, and `level 2` material where $w_0 + w_1 < r$.
 
-## 設定可能なキーワード引数一覧
-- `num_level: int` ... 設定するレベルの数。
-- `scale: float` ... 寸法パラメータ$\boldsymbol{w}$に乗じるスケール。デフォルト値は`1.0`。
+## Configurable keyword arguments
+- `num_level: int` ... Number of levels to assign.
+- `scale: float` ... Scale multiplied by the dimensional parameter $\boldsymbol{w}$. The default value is `1.0`.

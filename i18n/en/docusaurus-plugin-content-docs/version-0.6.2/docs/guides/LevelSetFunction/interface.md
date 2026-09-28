@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# インターフェース
-Level Set Functionのインターフェース定義（`LevelSetFunctionInterface`）は以下の通りです。  
-`emsopt_engine.interface.level_set_function_interface`からimportできます。
+# Interface
+The interface definition for Level Set Function (`LevelSetFunctionInterface`) is shown below.  
+It can be imported from `emsopt_engine.interface.level_set_function_interface`.
 
 ```py
 from abc import ABC, abstractmethod

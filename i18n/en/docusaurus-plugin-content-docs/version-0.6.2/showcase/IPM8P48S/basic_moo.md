@@ -2,44 +2,43 @@
 sidebar_position: 1
 ---
 
-# IPM8P48S説明＆基本の最適化例
-ここでは、IPM8P48Sの説明、および`IPM8P48S_moo`プロジェクトの内容について紹介します。
+# IPM8P48S Description and Basic Optimization Example
+This page describes IPM8P48S and introduces the contents of the `IPM8P48S_moo` project.
 
-## モデル説明
-IPM8P48Sは8極48スロット（分布巻）の埋め込み型永久磁石同期モータ（IPMSM）バーチャルモデルです。文献\[16\]にて提案されたモータモデル群の一つで、自動車駆動用のモータが元となっています。    
-`IPM8P48S_moo`プロジェクト同梱のメッシュは1/8部分モデルで、各領域には材料情報（材料番号：材料名）が割り当てられています。  
-下図はロータ部分のモデルと材料情報です。トポロジー最適化のため、元のモデルにあった空気穴（フラックスバリア）はロータコアで埋めてあります。
+## Model description
+IPM8P48S is an eight-pole, 48-slot (distributed-winding) interior permanent magnet synchronous motor (IPMSM) virtual model. It is one of the motor models proposed in reference \[16\] and is based on a motor for automotive drive systems.    
+The mesh included with the `IPM8P48S_moo` project is an eighth model, and material information (material ID: material name) is assigned to each region.  
+The figure below shows the rotor model and material information. For topology optimization, the air holes (flux barriers) in the original model have been filled with rotor core.
 
 ![IPM8P48S example](/img/IPM8P48S_ex.png)
 
-## machine.yaml（`IPM8P48S_moo`プロジェクト）
-まず、機器情報を設定する`machine.yaml`の内容を確認します。
-### 基本設定
-IPM8P48Sは半径と角度（`Polar`座標系）によって定義します。
+## machine.yaml (`IPM8P48S_moo` project)
+First, examine `machine.yaml`, which configures the machine information.
+### Basic settings
+IPM8P48S is defined by radius and angle in the `Polar` coordinate system.
 ```yaml
 coordinate: Polar
 ```
 
-IPM8P48Sは半極対称のモデルです。
+IPM8P48S is a half-pole-symmetric model.
 ```yaml
 has_sym_region: True
 ```
 
-対称軸はx軸から22.5°方向です。
+The symmetry axis is at 22.5° from the x-axis.
 ```yaml
 sym_deg: 22.5
 ```
 
-1/8部分モデル中には回転対称の領域は存在しません。
+There is no rotationally symmetric region in the eighth model.
 ```yaml
 num_rotate: 0
 ```
 
-### 材料設定
-今回、設計対象はロータコア（材料番号20）とし、
-- オン材料→ロータコア（材料番号20）
-- オフ材料→空気穴（材料番号600000）
-と設定しました。
+### Material settings
+Here, the design target is the rotor core (material ID 20), with the following settings.
+- ON-state material → rotor core (material ID 20)
+- OFF-state material → air hole (material ID 600000)
 ```yaml
 target_ids_and_onoff:
   20:
@@ -47,7 +46,7 @@ target_ids_and_onoff:
     - 600000
 ```
 
-材料番号と材料名の割り当てです。
+The material IDs and names are assigned as follows.
 ```yaml
 physical_id_to_name:
   20: rotor
@@ -58,7 +57,7 @@ physical_id_to_name:
   600000: hole_0
 ```
 
-対称領域への材料IDマップです。**永久磁石`50000`は対称軸を跨いで`50001`に変化するため、そのマッピングをここで行います**。それ以外の材料は対称軸を跨いで変化しないため、同じ番号にマッピングします。
+This is the material-ID map for the symmetric region. **Permanent magnet `50000` becomes `50001` across the symmetry axis, so this mapping is configured here.** The other materials do not change across the symmetry axis and are mapped to the same IDs.
 ```yaml
 mirror_id_map:
   20: 20
@@ -68,18 +67,18 @@ mirror_id_map:
   600000: 600000
 ```
 
-回転対称領域は無いため、`increment_info`は空です。
+Because there is no rotationally symmetric region, `increment_info` is empty.
 ```yaml
 increment_info: {}
 ```
 
-### Implicit Domain Meshing オプション
-Implicit Domain Meshingはデフォルトで有効としています。
+### Implicit Domain Meshing options
+Implicit Domain Meshing is enabled by default.
 ```yaml
 use_implicit_domain_meshing: True
 ```
 
-設計対象（`20: rotor`）以外は領域分割を行いません。
+Regions other than the design target (`20: rotor`) are not split.
 ```yaml
 no_split_ids:
   - 30
@@ -88,28 +87,28 @@ no_split_ids:
   - 50001
 ```
 
-また、スライドメッシュ領域（`40: air`）はリメッシュさせたくないため、`no_remesh_ids`に設定します。  
-スライドメッシュ領域をリメッシュするとステータ側とのメッシュの整合が取れなくなるためです。
+The sliding-mesh region (`40: air`) is also placed in `no_remesh_ids` because it must not be remeshed.  
+Remeshing this region would make the mesh inconsistent with the stator side.
 ```yaml
 no_remesh_ids:
   - 40
 ```
 
-メッシュの質にかかわる箇所は適当な値に設定します。
+The mesh-quality-related settings are assigned appropriate values.
 ```yaml
 design_region_size: 0.04
 hausd_ratio: 0.0001
 hmin_ratio: 0.02
 ```
 
-最後に、評価スキップ基準値は0.02とします。IPM8P48Sの場合はDmodelと比較して最適化過程で扁平な要素が生成されやすいため、今回は最適化の性能を優先してやや低い基準値としています。
+Finally, the evaluation-skip threshold is set to 0.02. Compared with Dmodel, IPM8P48S is more likely to generate flattened elements during optimization, so a somewhat lower threshold is used here to prioritize optimization performance.
 ```yaml
 bad_mesh_threshold: 0.02
 ```
 
-## optimization.yaml（`IPM8P48S_moo`プロジェクト）
-次に、最適化を設定する`optimization.yaml`の内容を確認します。  
-今回は多目的形状最適化のため、最適化手法に多目的最適化アルゴリズム`decomposition_ensemble`を設定しています。本アルゴリズムの詳細については[docsの該当ページ](../../docs/guides/Optimizer/decomposition_ensemble.md)をご覧ください。  
+## optimization.yaml (`IPM8P48S_moo` project)
+Next, examine `optimization.yaml`, which configures the optimization.  
+Because this is a multi-objective shape optimization, the multi-objective `decomposition_ensemble` algorithm is selected. See the [corresponding documentation page](../../docs/guides/Optimizer/decomposition_ensemble.md) for details.
 ```yaml
 evaluator:
   name: pyemsol_shape_evaluator
@@ -120,7 +119,7 @@ optimizer:
     seed: 42
 ```
 
-レベルセット関数に`ngnet`を設定し、NGnet on/off法によるトポロジー最適化を実施します。
+The `ngnet` level-set function is used to perform topology optimization with the NGnet on/off method.
 ```yaml
 level_set_function:
   name: ngnet
@@ -130,16 +129,16 @@ level_set_function:
     coordinate: Polar
 ```
 
-今回は100イテレーションの最適化とします。  
-並列処理はデフォルトで有効としています。
+This example uses 100 optimization iterations.  
+Parallel processing is enabled by default.
 ```yaml
 num_iteration: 100
 enable_parallelization: True
 num_processes: Null  # if Null, automatically set from cpu counts
 ```
-（出力周りの設定は省略します）
+(Output-related settings are omitted.)
 
-## optimization_problem.yaml（`IPM8P48S_moo`プロジェクト）
+## optimization_problem.yaml (`IPM8P48S_moo` project)
 ```yaml
 case_names:
   - transient
@@ -177,7 +176,7 @@ other_metrics:
     kwargs:
       torque_scale: 8.0
 ```
-最適化問題（多目的）は以下の通りです。ここでは、平均トルクとトルクリプル率の両方を考慮しつつ、平均トルクについてはオリジナルモデルの値14.62Nmを超えるよう制約をかけています。また、ロータコアの結合制約も考慮しています。
+The multi-objective optimization problem is defined below. It considers both average torque and torque ripple, while constraining average torque not to fall below the original-model value of 14.62 Nm. The rotor-core connectivity constraint is also considered.
 ```math
 \begin{align*}
 \text{minimize} \quad & f_1=-\frac{T_\text{avg}}{14.62} \\
@@ -186,11 +185,11 @@ other_metrics:
                         & h_1=N-1 = 0 \\
 \end{align*}
 ```
-$T_\text{avg}$：平均トルク [Nm]  
-$T_\text{rip}$：トルクリプル率 [%]  
-$N$: 連結成分数
+$T_\text{avg}$: average torque [Nm]  
+$T_\text{rip}$: torque ripple [%]  
+$N$: number of connected components
 
-## 最適化の実施例
-100イテレーション最適化完了後のGUIを以下に示します。比較的広範囲に均一なパレートフロントが得られました。  
-表示している形状例はそれぞれパレートフロント図の"Left", "Right"の解形状です。フラックスバリアの配置は似ていますが、回転子表面側のフラックスバリアに特徴がみられます。"Right"では細長いフラックスバリアが得られており、平均トルクとトルクリプル率のバランスが比較的良いと言えます。一方で、"Left"では半円状のフラックスバリアが磁束を閉じ込めるように配置されており、高トルクなモータとなっていると推察されます。
-![IPM8P48Sパレートフロント](/img/IPM8P48S_moo_check.png)
+## Optimization example
+The GUI after 100 optimization iterations is shown below. A relatively broad and uniform Pareto front is obtained.  
+The example shapes shown are the solutions labeled "Left" and "Right" in the Pareto-front plot. Their flux-barrier arrangements are similar, but the rotor-surface-side flux barriers differ. The "Right" solution has elongated flux barriers and offers a relatively good balance between average torque and torque ripple. In contrast, the "Left" solution has semicircular flux barriers arranged to confine the magnetic flux, suggesting a high-torque motor.
+![IPM8P48S Pareto front](/img/IPM8P48S_moo_check.png)

@@ -3,25 +3,25 @@ sidebar_position: 3
 ---
 
 # Implicit Domain Meshing
-## 概要
-Implicit Domain Meshing\[13\]を使用したリメッシュでは、レベルセット関数を適用する領域のメッシュを、レベルセット関数のゼロ等位面に沿うように変形・再生成します。トポロジー最適化においては多くの場合、レベルセット関数のゼロ等位面が材料境界となるため、これは大まかに言いかえると「**材料境界となる位置にちょうどメッシュの節点・エッジが配置されるようにリメッシュする**」手法です。
+## Overview
+In remeshing with Implicit Domain Meshing\[13\], the mesh in the region where the level set function is applied is deformed and regenerated along the zero level set of the function. Since the zero level set is often the material boundary in topology optimization, this can be broadly described as a method that **remeshes the region so that mesh nodes and edges are placed exactly on the material boundary**.
 
-EMSOptimizerにおいてはImplicit Domain Meshingの実行ツールとしてmmg（`mmg2d_O3.exe`）を使用します\[15\]。リメッシュ処理は`machine.yaml` > `use_implicit_domain_meshing`コンフィグが`True`の時に自動実行されます。詳細な設定については[ユーザガイド > 機器設定（machine.yaml）](../guides/machine_config.md)をご覧ください。
+EMSOptimizer uses mmg (`mmg2d_O3.exe`) to perform Implicit Domain Meshing\[15\]. Remeshing is executed automatically when `machine.yaml` > `use_implicit_domain_meshing` is `True`. For detailed settings, see [User Guide > Machine Configuration (machine.yaml)](../guides/machine_config.md).
 
 :::warning
-Implicit Domain Meshing利用時、**プロジェクトに格納するメッシュファイルは三角形メッシュのみで構成されている必要があります**。  
-また、Implicit Domain Meshingにて生成されるメッシュの境界線の再現精度は元のメッシュファイルの解像度（メッシュの細かさ）に依存します。材料境界をより正確に表現したい場合は、メッシュファイルの解像度を上げることを検討してください。
+When using Implicit Domain Meshing, **the mesh files stored in the project must consist only of triangular elements**.  
+The accuracy with which boundaries are reproduced in the generated mesh also depends on the resolution (fineness) of the original mesh file. Consider increasing the mesh-file resolution if more accurate material boundaries are required.
 :::
 
-## Implicit Domain Meshing適用例
-トポロジー最適化（NGnet on/off法）　Implicit Domain Meshing**有**のDmodel形状例。材料境界が滑らかであることが分かる。メッシュ節点数は約3000。
-![IDM Dmodelメッシュ例](/img/IDM_Dmodel.png)
+## Example using Implicit Domain Meshing
+Example Dmodel shape from topology optimization (NGnet on/off method) **with** Implicit Domain Meshing. The material boundary is smooth. The mesh has approximately 3,000 nodes.
+![Dmodel mesh example with IDM](/img/IDM_Dmodel.png)
 
-参考に、同じレベルセット関数に対するImplicit Domain Meshing**無**のDmodel形状例。材料分布は同様だが、固定メッシュに対して計算しているため材料境界が粗くジャギー。メッシュ節点数は約4000。
-![IDM無 Dmodelメッシュ例](/img/NonIDM_Dmodel.png)
+For comparison, this is an example Dmodel shape using the same level set function **without** Implicit Domain Meshing. The material distribution is similar, but the material boundary is coarse and jagged because the calculation uses a fixed mesh. The mesh has approximately 4,000 nodes.
+![Dmodel mesh example without IDM](/img/NonIDM_Dmodel.png)
 
-## より詳細な説明
-on/off法ベースのトポロジー最適化においては通常、固定されたメッシュの各要素に対して材料種のon/offを設定します。しかし、材料境界とメッシュの節点・エッジは必ずしも一致しないため、メッシュが粗いほどレベルセット関数の概形と結果形状との間に誤差が生じたり、材料境界がジャギーになりやすくなります。これを回避するには設計領域のメッシュを細かくすることが考えられますが、メッシュを細かくするほど計算時間は増大します。
+## Detailed explanation
+In topology optimization based on the on/off method, the material is normally switched on or off for each element of a fixed mesh. However, material boundaries do not necessarily coincide with mesh nodes and edges. As the mesh becomes coarser, the difference between the overall level set function and the resulting shape increases, and material boundaries are more likely to become jagged. One way to avoid this is to refine the mesh in the design region, but computation time increases as the mesh is refined.
 
-一方、**Implicit Domain Meshingを使用すると原理的に滑らかな材料境界が得られます**\[10\]。要求精度以上に細かなメッシュを用いた解析が不要となるため、結果的に解析時間の短縮に繋がることもあります。代わりに、形状ごとにリメッシュ処理が必要であったり、EMSOptimizerにおいては`target_ids_and_onoff`に2段階のレベルのみ設定可能であるといった制約事項があります。  
-また、レベルセット関数が複雑なゼロ等位面を含む場合、ゼロ等位面周りにメッシュが集中し、結果としてメッシュが細かくなりすぎる可能性があります。ただし、この現象は`machine.yaml` > `hausd_ratio`および`hmin_ratio`を大きめの値に設定することによりある程度抑制可能です。
+In contrast, **Implicit Domain Meshing provides smooth material boundaries in principle**\[10\]. Because it eliminates the need to analyze with a mesh finer than the required accuracy, it can also reduce analysis time. However, remeshing is required for each shape, and EMSOptimizer has limitations such as allowing only two levels to be configured in `target_ids_and_onoff`.  
+If the level set function contains a complex zero level set, the mesh may concentrate around it and become excessively fine. This can be partially mitigated by setting larger values for `machine.yaml` > `hausd_ratio` and `hmin_ratio`.

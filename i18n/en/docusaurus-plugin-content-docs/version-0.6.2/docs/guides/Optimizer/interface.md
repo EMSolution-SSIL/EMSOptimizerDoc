@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# インターフェース
-Optimizerのインターフェース定義（`OptimizerInterface`）は以下の通りです。  
-`emsopt_engine.interface.optimizer_interface`からimportできます。
+# Interface
+The interface definition for Optimizer (`OptimizerInterface`) is shown below.  
+It can be imported from `emsopt_engine.interface.optimizer_interface`.
 
 ```py
 from abc import ABC, abstractmethod

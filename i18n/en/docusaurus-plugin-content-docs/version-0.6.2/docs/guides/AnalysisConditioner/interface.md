@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# インターフェース
-eMotorSolution Shape Builderのインターフェース定義（`AnalysisConditionerInterface`）は以下の通りです。  
-`emsopt_engine.interface.analysis_conditioner_interface`からimportできます。
+# Interface
+The interface definition for Analysis Conditioner (`AnalysisConditionerInterface`) is shown below.  
+It can be imported from `emsopt_engine.interface.analysis_conditioner_interface`.
 
 ```py
 from abc import ABC, abstractmethod

@@ -4,19 +4,19 @@
     "description": "The label for version 0.6.2"
   },
   "sidebar.docs.category.基本の使い方": {
-    "message": "基本の使い方",
+    "message": "Getting Started",
     "description": "The label for category '基本の使い方' in sidebar 'docs'"
   },
   "sidebar.docs.category.基本の使い方.link.generated-index.description": {
-    "message": "ここでは、EMSOptimizerを開始するのに必要なエッセンスを紹介します。",
+    "message": "This section introduces the essentials for getting started with EMSOptimizer.",
     "description": "The generated-index page description for category '基本の使い方' in sidebar 'docs'"
   },
   "sidebar.docs.category.ユーザガイド": {
-    "message": "ユーザガイド",
+    "message": "User Guide",
     "description": "The label for category 'ユーザガイド' in sidebar 'docs'"
   },
   "sidebar.docs.category.ユーザガイド.link.generated-index.description": {
-    "message": "ここでは、EMSOptimizerの重要な機能について紹介します。",
+    "message": "This section introduces the key features of EMSOptimizer.",
     "description": "The generated-index page description for category 'ユーザガイド' in sidebar 'docs'"
   },
   "sidebar.docs.category.Optimizer": {
@@ -24,7 +24,7 @@
     "description": "The label for category 'Optimizer' in sidebar 'docs'"
   },
   "sidebar.docs.category.Optimizer.link.generated-index.description": {
-    "message": "ここでは、Optimizerの実装例 (EMSOptimizer内core/optimizer)を紹介します。",
+    "message": "This section introduces Optimizer implementation examples from core/optimizer in EMSOptimizer.",
     "description": "The generated-index page description for category 'Optimizer' in sidebar 'docs'"
   },
   "sidebar.docs.category.Evaluator": {
@@ -32,7 +32,7 @@
     "description": "The label for category 'Evaluator' in sidebar 'docs'"
   },
   "sidebar.docs.category.Evaluator.link.generated-index.description": {
-    "message": "ここでは、Evaluatorの実装例 (EMSOptimizer内core/evaluator)を紹介します。",
+    "message": "This section introduces Evaluator implementation examples from core/evaluator in EMSOptimizer.",
     "description": "The generated-index page description for category 'Evaluator' in sidebar 'docs'"
   },
   "sidebar.docs.category.Analysis Conditioner": {
@@ -40,7 +40,7 @@
     "description": "The label for category 'Analysis Conditioner' in sidebar 'docs'"
   },
   "sidebar.docs.category.Analysis Conditioner.link.generated-index.description": {
-    "message": "ここでは、Analysis Conditionerの実装例 (EMSOptimizer内core/analysis_conditioner)を紹介します。",
+    "message": "This section introduces Analysis Conditioner implementation examples from core/analysis_conditioner in EMSOptimizer.",
     "description": "The generated-index page description for category 'Analysis Conditioner' in sidebar 'docs'"
   },
   "sidebar.docs.category.Level Set Function": {
@@ -48,7 +48,7 @@
     "description": "The label for category 'Level Set Function' in sidebar 'docs'"
   },
   "sidebar.docs.category.Level Set Function.link.generated-index.description": {
-    "message": "ここでは、Level Set Functionの実装例 (EMSOptimizer内core/ls_function)を紹介します。",
+    "message": "This section introduces Level Set Function implementation examples from core/ls_function in EMSOptimizer.",
     "description": "The generated-index page description for category 'Level Set Function' in sidebar 'docs'"
   },
   "sidebar.docs.category.eMotorSolution Shape Builder": {
@@ -56,23 +56,23 @@
     "description": "The label for category 'eMotorSolution Shape Builder' in sidebar 'docs'"
   },
   "sidebar.docs.category.eMotorSolution Shape Builder.link.generated-index.description": {
-    "message": "ここでは、eMotorSolution Shape Builderの実装例 (EMSOptimizer内core/ems_shape_builder)を紹介します。",
+    "message": "This section introduces eMotorSolution Shape Builder implementation examples from core/ems_shape_builder in EMSOptimizer.",
     "description": "The generated-index page description for category 'eMotorSolution Shape Builder' in sidebar 'docs'"
   },
   "sidebar.docs.category.発展的なトピック": {
-    "message": "発展的なトピック",
+    "message": "Advanced Topics",
     "description": "The label for category '発展的なトピック' in sidebar 'docs'"
   },
   "sidebar.docs.category.発展的なトピック.link.generated-index.description": {
-    "message": "ここでは、EMSOptimizerの発展的なトピックを紹介します。",
+    "message": "This section introduces advanced topics in EMSOptimizer.",
     "description": "The generated-index page description for category '発展的なトピック' in sidebar 'docs'"
   },
   "sidebar.showcase.category.基本の数理最適化": {
-    "message": "基本の数理最適化",
+    "message": "Basic Mathematical Optimization",
     "description": "The label for category '基本の数理最適化' in sidebar 'showcase'"
   },
   "sidebar.showcase.category.基本の数理最適化.link.generated-index.description": {
-    "message": "ベンチマーク関数の最適化例をご紹介します。",
+    "message": "This section presents optimization examples using benchmark functions.",
     "description": "The generated-index page description for category '基本の数理最適化' in sidebar 'showcase'"
   },
   "sidebar.showcase.category.Dmodel": {
@@ -80,7 +80,7 @@
     "description": "The label for category 'Dmodel' in sidebar 'showcase'"
   },
   "sidebar.showcase.category.Dmodel.link.generated-index.description": {
-    "message": "ベンチマークモータモデル「Dmodel」[1]の形状最適化例をご紹介します。",
+    "message": "This section presents shape optimization examples for the Dmodel benchmark motor model [1].",
     "description": "The generated-index page description for category 'Dmodel' in sidebar 'showcase'"
   },
   "sidebar.showcase.category.IPM8P48S": {
@@ -88,7 +88,7 @@
     "description": "The label for category 'IPM8P48S' in sidebar 'showcase'"
   },
   "sidebar.showcase.category.IPM8P48S.link.generated-index.description": {
-    "message": "バーチャルモータモデル「IPM8P48S」[16]の形状最適化例をご紹介します。",
+    "message": "This section presents shape optimization examples for the IPM8P48S virtual motor model [16].",
     "description": "The generated-index page description for category 'IPM8P48S' in sidebar 'showcase'"
   }
 }

@@ -3,23 +3,23 @@ sidebar_position: 4
 ---
 
 # What's Next?
-- EMSOptimizerで使用できるコマンドを把握したい
-→[ユーザガイド > コマンドリスト](../guides/commands.md)
+- To learn about the commands available in EMSOptimizer
+→ [User Guide > Command List](../guides/commands.md)
 
-- 最適化設定（`optimization.yaml`）を詳細に知りたい
-→[ユーザガイド > 最適化の設定](../guides/optimization_config.md)
+- To learn more about optimization configuration (`optimization.yaml`)
+→ [User Guide > Optimization Configuration](../guides/optimization_config.md)
 
-- 形状最適化における機器設定（`machine.yaml`）を詳細に知りたい
-→[ユーザガイド > 機器設定](../guides/machine_config.md)
+- To learn more about machine configuration (`machine.yaml`) for shape optimization
+→ [User Guide > Machine Configuration](../guides/machine_config.md)
 
-- Optimizer等のコアオブジェクト実装例の詳細と使い方を知りたい
-→ ユーザガイドからそれぞれのセクションを参照
+- To learn more about implementation examples and usage of core objects such as Optimizer
+→ See the relevant sections in the User Guide.
 
-- Optimizer等のコアオブジェクトを自作したい
-→ [発展的なトピック > コアオブジェクトの自作](../advanced/user_define.md)
+- To create your own core objects such as Optimizer
+→ [Advanced Topics > Creating Custom Core Objects](../advanced/user_define.md)
 
-- eMotorSolutionと連携したモータの最適化について知りたい
-→ [発展的なトピック > eMotorSolutionとの連携](../advanced/link_ems.md)
+- To learn about motor optimization integrated with eMotorSolution
+→ [Advanced Topics > Integration with eMotorSolution](../advanced/link_ems.md)
 
-- 形状最適化の実施例を見たい
+- To see shape optimization examples
 → [Showcase](../../showcase/intro.md)
