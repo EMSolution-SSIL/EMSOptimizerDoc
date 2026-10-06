@@ -4,13 +4,15 @@ sidebar_position: 1
 
 # インストールガイド
 ## ソフトウェア構成
-**EMSOptimizerは以下の3点（以下、EMSOptimizerパッケージ群）から構成されます**。
+**EMSOptimizerは以下の3+1点（以下、EMSOptimizerパッケージ群）から構成されます**。
 - EMSOptFree
-    - 公開ソースコード部です。EMSOptimizerのCLIコマンドや最適化ループ、最適化アルゴリズムの実装例などを提供します。
+    - 公開ソースコード部です。EMSOptimizerのCLIコマンドや最適化ループ、最適化アルゴリズムの実装例などを提供します。[Githubページ](https://github.com/EMSolution-SSIL/EMSOptimizer)から閲覧が可能です。
 - EMSOptEngine
-    - EMSOptFree駆動用のpythonパッケージです。EMSOptFreeを動作させるためには本パッケージのインストールが必要です。
+    - EMSOptFree駆動用のpythonパッケージです。EMSOptFreeを動作させるためには本パッケージのインストールが必要です。[Githubページ](https://github.com/EMSolution-SSIL/EMSOptimizer)のReleasesからダウンロード可能です。
 - EMSOptAnalyzer
     - 形状最適化における形状定義および解析を行うpythonパッケージです。形状最適化を行う場合は上記2点に加えてインストールが必要です。
+- pylevelset_reinit
+    - レベルセット関数の再初期化に使用されるpythonパッケージです。EMSOptAnalyzerと一緒に提供されます。
 
 また、**EMSOptimizerの形状最適化機能を動作させるには以下の関連パッケージ群が必要です\***。
 - pyemsol
@@ -38,9 +40,10 @@ EMSOptAnalyzerの駆動には専用のpyemsolが必要です。これはEMSOptAn
 ```sh
 pip install emsopt_engine-(version)-(environment)-(os).whl
 pip install emsopt_analyzer-(version)-(environment)-(os).whl
+pip install pylevelset_reinit-(version)-(environment)-(os).whl
 ```
 :::info
-v0.7.0より、EMSOptFreeもwhlファイルとしてインストール可能になりました。  
+v0.7.0より、EMSOptFreeもwhlファイルとしてインストール可能になりました。[Githubページ](https://github.com/EMSolution-SSIL/EMSOptimizer)のReleasesからもダウンロード可能です。  
 whlインストールすることで、python環境内のどこからでもCLIコマンドを実行できるようになります。  
 一方、最適化手法のカスタマイズなどを頻繁に行う場合は従来通り圧縮フォルダとしてインストールすることを推奨します。
 :::

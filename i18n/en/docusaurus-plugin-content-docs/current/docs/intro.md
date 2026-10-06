@@ -4,13 +4,15 @@ sidebar_position: 1
 
 # Installation Guide
 ## Software Components
-**EMSOptimizer consists of the following three components (collectively, the EMSOptimizer packages).**
+**EMSOptimizer consists of the following three plus one components (collectively, the EMSOptimizer packages).**
 - EMSOptFree
-    - The publicly available source-code component. It provides EMSOptimizer CLI commands, optimization loops, and implementation examples of optimization algorithms.
+    - The publicly available source-code component. It provides EMSOptimizer CLI commands, optimization loops, and implementation examples of optimization algorithms. It is available on the [GitHub page](https://github.com/EMSolution-SSIL/EMSOptimizer).
 - EMSOptEngine
-    - The Python package used to run EMSOptFree. This package must be installed to run EMSOptFree.
+    - The Python package used to run EMSOptFree. This package must be installed to run EMSOptFree. It can be downloaded from Releases on the [GitHub page](https://github.com/EMSolution-SSIL/EMSOptimizer).
 - EMSOptAnalyzer
     - The Python package for shape definition and analysis in shape optimization. Install it in addition to the two packages above when performing shape optimization.
+- pylevelset_reinit
+    - The Python package used to reinitialize level set functions. It is provided together with EMSOptAnalyzer.
 
 In addition, **the following related packages are required to use the shape optimization functionality of EMSOptimizer\***.
 - pyemsol
@@ -38,9 +40,10 @@ The dedicated pyemsol package is required to run EMSOptAnalyzer. It is provided 
 ```sh
 pip install emsopt_engine-(version)-(environment)-(os).whl
 pip install emsopt_analyzer-(version)-(environment)-(os).whl
+pip install pylevelset_reinit-(version)-(environment)-(os).whl
 ```
 :::info
-Starting with v0.7.0, EMSOptFree can also be installed from a wheel file.  
+Starting with v0.7.0, EMSOptFree can also be installed from a wheel file. It can also be downloaded from Releases on the [GitHub page](https://github.com/EMSolution-SSIL/EMSOptimizer).  
 Installing the wheel allows CLI commands to be run from anywhere within the Python environment.  
 However, if you frequently customize optimization methods, installing it as a compressed folder as before is recommended.
 :::

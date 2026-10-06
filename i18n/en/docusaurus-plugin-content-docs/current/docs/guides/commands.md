@@ -128,6 +128,9 @@ This command analyzes the specified Gmsh mesh file and outputs material IDs and 
 When `--machine-config` is specified, it also checks consistency between machine.yaml's target_ids_and_onoff / mirror_id_map / increment_info and the mesh physical IDs.
 #### --machine-config \{machine_yaml_path\}
 Optional path to machine.yaml used to check consistency with mesh physical IDs. If omitted, only mesh information is output.
+:::info
+The EMSOptAnalyzer package is required to run this command.
+:::
 
 ### validate_mesh
 #### Usage
@@ -143,6 +146,9 @@ Root path of the project folders. If omitted, the projects folder in the current
 Study name to reference. If omitted, machine.yaml directly under the project is used.
 #### --mesh \{mesh_path\}
 Explicitly specifies the mesh to inspect. If omitted, the design-target mesh name is resolved from analysis_dimension and design_target in machine.yaml and searched for in the project or study folder.
+:::info
+The EMSOptAnalyzer package is required to run this command.
+:::
 
 ## Execution
 ### run

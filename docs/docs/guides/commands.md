@@ -128,6 +128,9 @@ python emsopt.py inspect_mesh {メッシュファイルパス} [--machine-config
 `--machine-config`を指定した場合は、machine.yaml の target_ids_and_onoff / mirror_id_map / increment_info とメッシュ物理IDの整合性も確認します。
 #### --machine-config \{machine.yamlパス\}
 任意。メッシュ物理IDとの整合性確認に使う machine.yaml のパス。未指定の場合、メッシュ単体の情報のみを出力する。
+:::info
+このコマンドの実行にはEMSOptAnalyzerパッケージが必要です。
+:::
 
 ### validate_mesh
 #### Usage
@@ -143,6 +146,9 @@ machine.yaml を読み込み、設計対象メッシュを解析したうえで�
 参照するスタディ名。未指定の場合、プロジェクト直下の machine.yaml を参照する。
 #### --mesh \{メッシュファイルパス\}
 検査対象メッシュを明示的に指定する。未指定の場合、machine.yaml の analysis_dimension と design_target から設計対象メッシュ名を解決し、プロジェクトまたはスタディ配下から探索する。
+:::info
+このコマンドの実行にはEMSOptAnalyzerパッケージが必要です。
+:::
 
 ## 実行処理
 ### run
