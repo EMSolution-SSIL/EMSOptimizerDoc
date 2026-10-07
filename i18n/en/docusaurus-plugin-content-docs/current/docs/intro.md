@@ -42,11 +42,6 @@ pip install emsopt_engine-(version)-(environment)-(os).whl
 pip install emsopt_analyzer-(version)-(environment)-(os).whl
 pip install pylevelset_reinit-(version)-(environment)-(os).whl
 ```
-:::info
-Starting with v0.7.0, EMSOptFree can also be installed from a wheel file. It can also be downloaded from Releases on the [GitHub page](https://github.com/EMSolution-SSIL/EMSOptimizer).  
-Installing the wheel allows CLI commands to be run from anywhere within the Python environment.  
-However, if you frequently customize optimization methods, installing it as a compressed folder as before is recommended.
-:::
 2. Install the related packages provided by SSIL according to their respective instructions.  
 
 ### Installing CodeMeter User Software

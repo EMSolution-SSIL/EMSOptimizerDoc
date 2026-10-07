@@ -14,10 +14,6 @@ This runs single-objective optimization of a benchmark function.
 :::info
 See the [Showcase](../../showcase/base_optimization/soo_base.md) for an example result from this optimization.
 :::
-:::info
-If you installed EMSOptFree from a wheel, replace `python emsopt.py` with `emsopt`.  
-In general, the `emsopt` command can be run from anywhere within the Python environment.  
-:::
 
 ## Try shape optimization
 To try the shape optimization sample, run the following command in the root of the `EMSOptimizer` folder.

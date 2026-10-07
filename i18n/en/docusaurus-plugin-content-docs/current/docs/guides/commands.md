@@ -12,9 +12,6 @@ python emsopt.py -h
 python emsopt.py {コマンド名} -h
 ```
 :::info
-When EMSOptFree is installed from a wheel, replace `python emsopt.py` with `emsopt`. In general, commands can be run from anywhere within the Python environment.  
-:::
-:::info
 For details about the studies, runs, and jobs mentioned below, see [User Guide > Study control and result review](./study_control_and_results.md).
 :::
 

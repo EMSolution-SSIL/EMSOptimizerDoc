@@ -42,11 +42,6 @@ pip install emsopt_engine-(version)-(environment)-(os).whl
 pip install emsopt_analyzer-(version)-(environment)-(os).whl
 pip install pylevelset_reinit-(version)-(environment)-(os).whl
 ```
-:::info
-v0.7.0より、EMSOptFreeもwhlファイルとしてインストール可能になりました。[Githubページ](https://github.com/EMSolution-SSIL/EMSOptimizer)のReleasesからもダウンロード可能です。  
-whlインストールすることで、python環境内のどこからでもCLIコマンドを実行できるようになります。  
-一方、最適化手法のカスタマイズなどを頻繁に行う場合は従来通り圧縮フォルダとしてインストールすることを推奨します。
-:::
 2. SSILから提供される関連パッケージ群をそれぞれの手順に従ってインストールします。  
 
 ### CodeMeter User Softwareのインストール
