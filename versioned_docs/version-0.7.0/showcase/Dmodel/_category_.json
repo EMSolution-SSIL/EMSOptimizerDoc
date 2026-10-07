@@ -1,0 +1,8 @@
+{
+  "label": "Dmodel",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "ベンチマークモータモデル「Dmodel」[1]の形状最適化例をご紹介します。"
+  }
+}

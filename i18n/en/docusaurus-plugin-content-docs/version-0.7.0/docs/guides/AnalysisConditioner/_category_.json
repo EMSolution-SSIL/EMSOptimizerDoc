@@ -1,0 +1,8 @@
+{
+  "label": "Analysis Conditioner",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "This section introduces Analysis Conditioner implementation examples (EMSOptimizer core/analysis_conditioner)."
+  }
+}

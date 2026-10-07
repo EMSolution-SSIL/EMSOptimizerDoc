@@ -1,0 +1,8 @@
+{
+  "label": "Evaluator",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "description": "This section introduces Evaluator implementation examples (EMSOptimizer core/evaluator)."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "label": "Dmodel",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "This section presents shape optimization examples for the Dmodel benchmark motor model [1]."
+  }
+}

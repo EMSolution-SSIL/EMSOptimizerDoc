@@ -1,0 +1,8 @@
+{
+  "label": "3D_problems",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "This section presents examples of optimization for three-dimensional structures."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "label": "Optimizer",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "This section introduces Optimizer implementation examples (EMSOptimizer core/optimizer)."
+  }
+}

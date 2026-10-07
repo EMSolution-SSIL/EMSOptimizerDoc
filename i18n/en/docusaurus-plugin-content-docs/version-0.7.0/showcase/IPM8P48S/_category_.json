@@ -1,0 +1,8 @@
+{
+  "label": "IPM8P48S",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "This section presents shape optimization examples for the IPM8P48S virtual motor model [16]."
+  }
+}
