@@ -6,7 +6,7 @@ sidebar_position: 1
 This page provides an introduction to optimization with EMSOptimizer.
 
 ## Try mathematical optimization with benchmark functions
-To try the optimization functionality of EMSOptimizer, run the following command in the `EMSOptimizer` folder.
+To try the optimization functionality of EMSOptimizer, run the following command in the `EMSOptFree` folder.
 ```sh
 python emsopt.py run soo_base
 ```
@@ -16,7 +16,7 @@ See the [Showcase](../../showcase/base_optimization/soo_base.md) for an example 
 :::
 
 ## Try shape optimization
-To try the shape optimization sample, run the following command in the root of the `EMSOptimizer` folder.
+To try the shape optimization sample, run the following command in the root of the `EMSOptFree` folder.
 ```sh
 python emsopt.py run Dmodel
 ```

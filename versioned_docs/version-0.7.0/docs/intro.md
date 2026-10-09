@@ -35,7 +35,7 @@ EMSOptAnalyzerの駆動には専用のpyemsolが必要です。これはEMSOptAn
 
 ### パッケージ群のインストール
 1. EMSOptimierパッケージ群をインストールします。
-- EMSOptFreeは圧縮フォルダ（`EMSOptimizer`）として提供されます。ご使用の環境にて解凍のうえ、任意の場所にフォルダごと配置してください。
+- EMSOptFreeは圧縮フォルダとして提供されます。ご使用の環境にて解凍のうえ、任意の場所にフォルダごと配置してください。
 - EMSOptEngine, EMSOptAnalyzerはwhlファイルとして提供されます。以下のコマンドによってインストールしてください。
 ```sh
 pip install emsopt_engine-(version)-(environment)-(os).whl

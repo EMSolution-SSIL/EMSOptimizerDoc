@@ -35,7 +35,7 @@ The dedicated pyemsol package is required to run EMSOptAnalyzer. It is provided 
 
 ### Installing the Packages
 1. Install the EMSOptimizer packages.
-- EMSOptFree is provided as a compressed folder (`EMSOptimizer`). Extract it and place the entire folder in any location in your environment.
+- EMSOptFree is provided as a compressed folder. Extract it and place the entire folder in any location in your environment.
 - EMSOptEngine and EMSOptAnalyzer are provided as wheel files. Install them with the following commands.
 ```sh
 pip install emsopt_engine-(version)-(environment)-(os).whl
