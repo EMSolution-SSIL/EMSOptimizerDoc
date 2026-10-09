@@ -19,7 +19,7 @@ Download the skill from the [GitHub page](https://github.com/EMSolution-SSIL/EMS
 One typical use is to **describe the desired optimization in natural language and have AI generate a draft configuration file**.  
 For example, by entering requirements such as “perform multi-objective shape optimization to maximize average torque and reduce torque ripple,” “use CMA-ES for single-objective optimization,” or “run the analysis in parallel,” you can obtain candidate configuration options and a YAML draft.
 
-The following image shows an example in which the mesh and analysis input files for an 8-pole, 12-slot permanent magnet synchronous motor were provided to an AI agent, which generated the corresponding configuration file. The AI agent configures the settings to the extent that they can be inferred from the input.
+The following image shows an example in which the mesh and analysis input files for an 8-pole, 12-slot permanent magnet synchronous motor were provided to an AI agent, which generated the corresponding configuration file. The AI agent configures the settings to the extent that they can be inferred from the input. In the image, the skill is registered and referenced as a resource on an MCP server.  
 
 ![Example of EMSOptimizer configuration generation by AI](/img/ai_usage_config_generation.png)
 
