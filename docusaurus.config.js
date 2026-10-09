@@ -135,7 +135,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/EMSolution-SSIL/EMSOptimizer',
+            href: 'https://github.com/EMSolution-SSIL/EMSOptFree',
             label: 'GitHub',
             position: 'right',
           },

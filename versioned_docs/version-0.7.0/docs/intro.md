@@ -6,13 +6,13 @@ sidebar_position: 1
 ## ソフトウェア構成
 **EMSOptimizerは以下の3+1点（以下、EMSOptimizerパッケージ群）から構成されます**。
 - EMSOptFree
-    - 公開ソースコード部です。EMSOptimizerのCLIコマンドや最適化ループ、最適化アルゴリズムの実装例などを提供します。[Githubページ](https://github.com/EMSolution-SSIL/EMSOptimizer)から閲覧が可能です。
+    - 公開ソースコード部です。EMSOptimizerのCLIコマンドや最適化ループ、最適化アルゴリズムの実装例などを提供します。[Githubページ](https://github.com/EMSolution-SSIL/EMSOptFree)から閲覧が可能です。
 - EMSOptEngine
-    - EMSOptFree駆動用のpythonパッケージです。EMSOptFreeを動作させるためには本パッケージのインストールが必要です。[Githubページ](https://github.com/EMSolution-SSIL/EMSOptimizer)のReleasesからダウンロード可能です。
+    - EMSOptFree駆動用のpythonパッケージです。EMSOptFreeを動作させるためには本パッケージのインストールが必要です。[Githubページ](https://github.com/EMSolution-SSIL/EMSOptFree)のReleasesからダウンロード可能です。
 - EMSOptAnalyzer
     - 形状最適化における形状定義および解析を行うpythonパッケージです。形状最適化を行う場合は上記2点に加えてインストールが必要です。
 - pylevelset_reinit
-    - レベルセット関数の再初期化に使用されるpythonパッケージです。EMSOptAnalyzerと一緒に提供されます。
+    - レベルセット関数の再初期化に使用されるpythonパッケージです。EMSOptAnalyzerの一部として提供されます。
 
 また、**EMSOptimizerの形状最適化機能を動作させるには以下の関連パッケージ群が必要です\***。
 - pyemsol

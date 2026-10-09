@@ -11,12 +11,9 @@ AI may produce incorrect answers or answers that do not match the user's intent.
 Users must verify the content of AI responses and generated configurations themselves.
 :::
 
-## Configuring the MCP Server
-EMSOptimizer provides product-specific knowledge to AI agents through resources supplied by a local MCP server.  
-- To use the local MCP server, first install the whl file provided by SSIL in the Python environment.
-    - Installing the whl registers `emsopt-docs-mcp` as the MCP server startup command. Normally, the command is placed in the Scripts directory (Windows) or bin directory (Linux) of the Python environment.  
-- Register this command as a reference source in each AI agent service.
-    - See the documentation for the service you use for specific registration instructions.  
+## Configuring the Skill
+EMSOptimizer uses skill-based instructions to provide product-specific knowledge to AI agents.  
+Download the skill from the [GitHub page](https://github.com/EMSolution-SSIL/EMSOptFree) and register it with each AI service. See the documentation for the service you use for specific registration instructions.  
 
 ## Example: Automatically Generating an Optimization Configuration for an 8P12S Permanent Magnet Synchronous Motor
 One typical use is to **describe the desired optimization in natural language and have AI generate a draft configuration file**.  

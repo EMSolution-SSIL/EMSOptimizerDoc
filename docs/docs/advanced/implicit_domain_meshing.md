@@ -10,7 +10,7 @@ EMSOptimizerにおいてはImplicit Domain Meshingの実行ツールとしてmmg
 
 :::info
 mmg実行ファイルはEMSOptimizerのフォルダ直下に格納されています。  
-CLI実行時など、フォルダ外から実行する場合は環境変数`MMG2D_EXE_PATH`(2次元)および`MMG3D_EXE_PATH`(3次元)にmmg実行ファイルへのパスを設定してください。
+フォルダ外から実行する場合は環境変数`MMG2D_EXE_PATH`(2次元)および`MMG3D_EXE_PATH`(3次元)にmmg実行ファイルへのパスを設定してください。
 :::
 
 :::warning

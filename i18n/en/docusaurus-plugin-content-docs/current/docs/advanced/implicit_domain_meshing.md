@@ -10,7 +10,7 @@ EMSOptimizer uses mmg (`mmg2d_O3`, `mmg3d_O3`) as the execution tool for Implici
 
 :::info
 The mmg executables are stored directly under the EMSOptimizer folder.  
-When running from outside the folder, such as through the CLI, set the paths to the mmg executables in the `MMG2D_EXE_PATH` (2D) and `MMG3D_EXE_PATH` (3D) environment variables.
+When running from outside the folder, set the paths to the mmg executables in the `MMG2D_EXE_PATH` (2D) and `MMG3D_EXE_PATH` (3D) environment variables.
 :::
 
 :::warning

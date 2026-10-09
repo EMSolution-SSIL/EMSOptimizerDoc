@@ -6,13 +6,13 @@ sidebar_position: 1
 ## Software Components
 **EMSOptimizer consists of the following three plus one components (collectively, the EMSOptimizer packages).**
 - EMSOptFree
-    - The publicly available source-code component. It provides EMSOptimizer CLI commands, optimization loops, and implementation examples of optimization algorithms. It is available on the [GitHub page](https://github.com/EMSolution-SSIL/EMSOptimizer).
+    - The publicly available source-code component. It provides EMSOptimizer CLI commands, optimization loops, and implementation examples of optimization algorithms. It is available on the [GitHub page](https://github.com/EMSolution-SSIL/EMSOptFree).
 - EMSOptEngine
-    - The Python package used to run EMSOptFree. This package must be installed to run EMSOptFree. It can be downloaded from Releases on the [GitHub page](https://github.com/EMSolution-SSIL/EMSOptimizer).
+    - The Python package used to run EMSOptFree. This package must be installed to run EMSOptFree. It can be downloaded from Releases on the [GitHub page](https://github.com/EMSolution-SSIL/EMSOptFree).
 - EMSOptAnalyzer
     - The Python package for shape definition and analysis in shape optimization. Install it in addition to the two packages above when performing shape optimization.
 - pylevelset_reinit
-    - The Python package used to reinitialize level set functions. It is provided together with EMSOptAnalyzer.
+    - The Python package used to reinitialize level set functions. It is provided as part of EMSOptAnalyzer.
 
 In addition, **the following related packages are required to use the shape optimization functionality of EMSOptimizer\***.
 - pyemsol
