@@ -1,0 +1,102 @@
+{
+  "version.label": {
+    "message": "0.7.0",
+    "description": "The label for version 0.7.0"
+  },
+  "sidebar.docs.category.基本の使い方": {
+    "message": "基本の使い方",
+    "description": "The label for category '基本の使い方' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.基本の使い方.link.generated-index.description": {
+    "message": "ここでは、EMSOptimizerを開始するのに必要なエッセンスを紹介します。",
+    "description": "The generated-index page description for category '基本の使い方' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.ユーザガイド": {
+    "message": "ユーザガイド",
+    "description": "The label for category 'ユーザガイド' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.ユーザガイド.link.generated-index.description": {
+    "message": "ここでは、EMSOptimizerの重要な機能について紹介します。",
+    "description": "The generated-index page description for category 'ユーザガイド' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Optimizer": {
+    "message": "Optimizer",
+    "description": "The label for category 'Optimizer' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Optimizer.link.generated-index.description": {
+    "message": "ここでは、Optimizerの実装例 (EMSOptimizer内core/optimizer)を紹介します。",
+    "description": "The generated-index page description for category 'Optimizer' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Evaluator": {
+    "message": "Evaluator",
+    "description": "The label for category 'Evaluator' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Evaluator.link.generated-index.description": {
+    "message": "ここでは、Evaluatorの実装例 (EMSOptimizer内core/evaluator)を紹介します。",
+    "description": "The generated-index page description for category 'Evaluator' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Analysis Conditioner": {
+    "message": "Analysis Conditioner",
+    "description": "The label for category 'Analysis Conditioner' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Analysis Conditioner.link.generated-index.description": {
+    "message": "ここでは、Analysis Conditionerの実装例 (EMSOptimizer内core/analysis_conditioner)を紹介します。",
+    "description": "The generated-index page description for category 'Analysis Conditioner' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Level Set Function": {
+    "message": "Level Set Function",
+    "description": "The label for category 'Level Set Function' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Level Set Function.link.generated-index.description": {
+    "message": "ここでは、Level Set Functionの実装例 (EMSOptimizer内core/ls_function)を紹介します。",
+    "description": "The generated-index page description for category 'Level Set Function' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.eMotorSolution Shape Builder": {
+    "message": "eMotorSolution Shape Builder",
+    "description": "The label for category 'eMotorSolution Shape Builder' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.eMotorSolution Shape Builder.link.generated-index.description": {
+    "message": "ここでは、eMotorSolution Shape Builderの実装例 (EMSOptimizer内core/ems_shape_builder)を紹介します。",
+    "description": "The generated-index page description for category 'eMotorSolution Shape Builder' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.発展的なトピック": {
+    "message": "発展的なトピック",
+    "description": "The label for category '発展的なトピック' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.発展的なトピック.link.generated-index.description": {
+    "message": "ここでは、EMSOptimizerの発展的なトピックを紹介します。",
+    "description": "The generated-index page description for category '発展的なトピック' in sidebar 'docs'"
+  },
+  "sidebar.showcase.category.基本の数理最適化": {
+    "message": "基本の数理最適化",
+    "description": "The label for category '基本の数理最適化' in sidebar 'showcase'"
+  },
+  "sidebar.showcase.category.基本の数理最適化.link.generated-index.description": {
+    "message": "ベンチマーク関数の最適化例をご紹介します。",
+    "description": "The generated-index page description for category '基本の数理最適化' in sidebar 'showcase'"
+  },
+  "sidebar.showcase.category.Dmodel": {
+    "message": "Dmodel",
+    "description": "The label for category 'Dmodel' in sidebar 'showcase'"
+  },
+  "sidebar.showcase.category.Dmodel.link.generated-index.description": {
+    "message": "ベンチマークモータモデル「Dmodel」[1]の形状最適化例をご紹介します。",
+    "description": "The generated-index page description for category 'Dmodel' in sidebar 'showcase'"
+  },
+  "sidebar.showcase.category.IPM8P48S": {
+    "message": "IPM8P48S",
+    "description": "The label for category 'IPM8P48S' in sidebar 'showcase'"
+  },
+  "sidebar.showcase.category.IPM8P48S.link.generated-index.description": {
+    "message": "バーチャルモータモデル「IPM8P48S」[16]の形状最適化例をご紹介します。",
+    "description": "The generated-index page description for category 'IPM8P48S' in sidebar 'showcase'"
+  },
+  "sidebar.showcase.category.3D_problems": {
+    "message": "3D_problems",
+    "description": "The label for category '3D_problems' in sidebar 'showcase'"
+  },
+  "sidebar.showcase.category.3D_problems.link.generated-index.description": {
+    "message": "3次元構造の最適化例をご紹介します。",
+    "description": "The generated-index page description for category '3D_problems' in sidebar 'showcase'"
+  }
+}

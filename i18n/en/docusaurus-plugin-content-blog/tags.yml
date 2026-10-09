@@ -1,0 +1,12 @@
+docs:
+  label: Docs
+  permalink: /docs
+  description: Documentation updates
+change_log:
+  label: Change log
+  permalink: /change_log
+  description: Release and documentation change logs
+examples:
+  label: Examples
+  permalink: /examples
+  description: Useful examples that do not belong in the showcase
