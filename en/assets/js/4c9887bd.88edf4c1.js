@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkem_opt_solution_doc=self.webpackChunkem_opt_solution_doc||[]).push([["3763"],{8033(e){e.exports=JSON.parse('{"tags":[{"label":"Change log","permalink":"/EMSOptimizerDoc/en/blog/tags/change_log","description":"Change log for verion up and docs` update","count":1}]}')}}]);

@@ -2,23 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://EMSolution-SSIL.github.io/EMSOptimizerDoc/en/blog</id>
     <title>EMSOptimizer Blog</title>
-    <updated>2026-07-09T00:00:00.000Z</updated>
+    <updated>2026-10-09T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/en/blog"/>
     <subtitle>EMSOptimizer Blog</subtitle>
     <icon>https://EMSolution-SSIL.github.io/EMSOptimizerDoc/en/img/favicon.svg</icon>
     <entry>
-        <title type="html"><![CDATA[Pre-Release V0.7.0]]></title>
-        <id>https://EMSolution-SSIL.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0</id>
-        <link href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0"/>
-        <updated>2026-07-09T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[v0.7.0のプレリリース情報です。]]></summary>
-        <content type="html"><![CDATA[<p>v0.7.0のプレリリース情報です。</p>
+        <title type="html"><![CDATA[Release V0.7.0]]></title>
+        <id>https://EMSolution-SSIL.github.io/EMSOptimizerDoc/en/blog/release-v0.7.0</id>
+        <link href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/en/blog/release-v0.7.0"/>
+        <updated>2026-10-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[v0.7.0のリリース情報です。]]></summary>
+        <content type="html"><![CDATA[<p>v0.7.0のリリース情報です。</p>
 <!-- -->
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="v070-プレリリース情報">v0.7.0 プレリリース情報<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0#v070-%E3%83%97%E3%83%AC%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1" class="hash-link" aria-label="Direct link to v0.7.0 プレリリース情報" title="Direct link to v0.7.0 プレリリース情報" translate="no">​</a></h2>
-<p>v0.7.0のリリース準備に伴い，ドキュメントを更新しました。<br>
-<!-- -->主要な更新内容は以下の通り。近日正式リリース予定です。</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="新規機能関連">新規機能関連<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0#%E6%96%B0%E8%A6%8F%E6%A9%9F%E8%83%BD%E9%96%A2%E9%80%A3" class="hash-link" aria-label="Direct link to 新規機能関連" title="Direct link to 新規機能関連" translate="no">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="v070-プレリリース情報">v0.7.0 プレリリース情報<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/release-v0.7.0#v070-%E3%83%97%E3%83%AC%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1" class="hash-link" aria-label="Direct link to v0.7.0 プレリリース情報" title="Direct link to v0.7.0 プレリリース情報" translate="no">​</a></h2>
+<p>v0.7.0をリリースしました。
+主要な更新内容は以下の通りです。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="新規機能関連">新規機能関連<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/release-v0.7.0#%E6%96%B0%E8%A6%8F%E6%A9%9F%E8%83%BD%E9%96%A2%E9%80%A3" class="hash-link" aria-label="Direct link to 新規機能関連" title="Direct link to 新規機能関連" translate="no">​</a></h3>
 <ul>
 <li class="">eMachineSimとの連携<!-- -->
 <ul>
@@ -58,7 +58,7 @@
 <li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/advanced/surrogate_model_usage">サロゲートモデル導入</a>の追加</li>
 <li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/advanced/ai_usage">AIを活用したコンフィグ設定</a>の追加</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="主要な更新追加">主要な更新・追加<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0#%E4%B8%BB%E8%A6%81%E3%81%AA%E6%9B%B4%E6%96%B0%E8%BF%BD%E5%8A%A0" class="hash-link" aria-label="Direct link to 主要な更新・追加" title="Direct link to 主要な更新・追加" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="主要な更新追加">主要な更新・追加<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/release-v0.7.0#%E4%B8%BB%E8%A6%81%E3%81%AA%E6%9B%B4%E6%96%B0%E8%BF%BD%E5%8A%A0" class="hash-link" aria-label="Direct link to 主要な更新・追加" title="Direct link to 主要な更新・追加" translate="no">​</a></h3>
 <ul>
 <li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/getting-started/Introduction">イントロダクション</a>の更新<!-- -->
 <ul>
@@ -82,7 +82,7 @@
 </ul>
 </li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="showcase関連">Showcase関連<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0#showcase%E9%96%A2%E9%80%A3" class="hash-link" aria-label="Direct link to Showcase関連" title="Direct link to Showcase関連" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="showcase関連">Showcase関連<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/release-v0.7.0#showcase%E9%96%A2%E9%80%A3" class="hash-link" aria-label="Direct link to Showcase関連" title="Direct link to Showcase関連" translate="no">​</a></h3>
 <ul>
 <li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/showcase/Dmodel/mixed_variables">Dmodel 混合変数最適化</a>の追加<!-- -->
 <ul>
@@ -97,6 +97,102 @@
 </li>
 <li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/showcase/IPM8P48S/pto">IPM8P48S応力制約下最適化例</a></li>
 <li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/showcase/IPM8P48S/surrogate">IPM8P48Sサロゲート利用例</a></li>
+</ul>]]></content>
+        <author>
+            <name>SSIL</name>
+        </author>
+        <category label="Change log" term="Change log"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Pre-Release V0.7.0]]></title>
+        <id>https://EMSolution-SSIL.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0</id>
+        <link href="https://EMSolution-SSIL.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0"/>
+        <updated>2026-07-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This post provides pre-release information for v0.7.0.]]></summary>
+        <content type="html"><![CDATA[<p>This post provides pre-release information for v0.7.0.</p>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="v070-pre-release-information">v0.7.0 pre-release information<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0#v070-pre-release-information" class="hash-link" aria-label="Direct link to v0.7.0 pre-release information" title="Direct link to v0.7.0 pre-release information" translate="no">​</a></h2>
+<p>The documentation has been updated in preparation for the v0.7.0 release.<br>
+<!-- -->The major updates are listed below. The official release is coming soon.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="new-features">New features<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0#new-features" class="hash-link" aria-label="Direct link to New features" title="Direct link to New features" translate="no">​</a></h3>
+<ul>
+<li class="">Integration with eMachineSim<!-- -->
+<ul>
+<li class="">Added support for integration with eMachineSim, a tool for analyzing electrical equipment and its surroundings.</li>
+<li class="">As with pyemsol, analyses can be run by placing an analysis case folder and specifying it in <code>optimization_problem.yaml</code>.</li>
+</ul>
+</li>
+<li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/study_control_and_results">Study control and results</a>
+<ul>
+<li class="">Added functionality for creating studies. This makes it possible to maintain multiple optimization configurations for a single design target.</li>
+<li class="">The results of each study are now saved as runs and can be reviewed later.</li>
+</ul>
+</li>
+<li class="">Gradient-based method examples (<a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/Optimizer/gradient_update">gradient-based optimizer</a>, <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/LevelSetFunction/pyemsol_density">density-based level_set_function</a>)<!-- -->
+<ul>
+<li class="">The gradient-based optimizer updates the design variables (the density or level set value of each cell in the design elements) based on gradient information.</li>
+<li class="">The density-based level_set_function is a special object defined for pyemsol that triggers gradient computation within pyemsol.</li>
+</ul>
+</li>
+<li class="">Added optimizer examples (<a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/Optimizer/moead">moead</a>, <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/Optimizer/ga">ga</a>, <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/Optimizer/sa_nsga2">sa-nsga2</a>)</li>
+<li class="">Added an ems_shape_builder example (<a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/EMSShapeBuilder/Dmodel_mixed">Dmodel_mixed_builder</a>)</li>
+<li class="">Updated <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/commands">Commands</a></li>
+<li class="">Updated <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/optimization_config">Optimization configuration</a>
+<ul>
+<li class="">Added output settings</li>
+<li class="">Restart functionality</li>
+</ul>
+</li>
+<li class="">Updated <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/machine_config">Machine configuration</a>
+<ul>
+<li class="">Image output settings</li>
+<li class="">Three-dimensional optimization analysis</li>
+<li class="">Level set function computation settings</li>
+</ul>
+</li>
+<li class="">Updated <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/opt_problem_ex">Objective and constraint function examples</a></li>
+<li class="">Added <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/advanced/surrogate_model_usage">Using surrogate models</a></li>
+<li class="">Added <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/advanced/ai_usage">AI-assisted configuration</a></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="major-updates-and-additions">Major updates and additions<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0#major-updates-and-additions" class="hash-link" aria-label="Direct link to Major updates and additions" title="Direct link to Major updates and additions" translate="no">​</a></h3>
+<ul>
+<li class="">Updated the <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/getting-started/Introduction">Introduction</a>
+<ul>
+<li class="">Added information about studies and related concepts.</li>
+<li class="">Updated the GUI.</li>
+</ul>
+</li>
+<li class="">Added <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/optimization_problem_config">Optimization problem configuration</a>
+<ul>
+<li class="">Formally documented the content of the <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/getting-started/opt_problem">Defining an optimization problem</a> page as a configuration schema.</li>
+</ul>
+</li>
+<li class="">Added the <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/emsopt_api">EMSOptimizer Python API</a>
+<ul>
+<li class="">Starting with v0.7.0, the optimization execution modules (classes) are also provided as an API.</li>
+</ul>
+</li>
+<li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/docs/guides/LevelSetFunction/ngnet_multi_material">Multi-material optimization example</a>
+<ul>
+<li class="">Added representations for four and five materials</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="showcase-updates">Showcase updates<a href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/blog/pre-release-v0.7.0#showcase-updates" class="hash-link" aria-label="Direct link to Showcase updates" title="Direct link to Showcase updates" translate="no">​</a></h3>
+<ul>
+<li class="">Added <a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/showcase/Dmodel/mixed_variables">Dmodel mixed-variable optimization</a>
+<ul>
+<li class="">This example optimizes mixed variables including permanent magnet material, the number of coil turns, permanent magnet dimensional parameters, and magnetic core topology.</li>
+</ul>
+</li>
+<li class="">Added Dmodel synchronous reluctance motor optimization<!-- -->
+<ul>
+<li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/showcase/Dmodel/gradient_density">Density-based optimization</a></li>
+<li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/showcase/Dmodel/gradient_levelset">Level set-based optimization</a></li>
+</ul>
+</li>
+<li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/showcase/IPM8P48S/pto">IPM8P48S optimization example with stress constraints</a></li>
+<li class=""><a class="" href="https://emsolution-ssil.github.io/EMSOptimizerDoc/en/docs/next/showcase/IPM8P48S/surrogate">IPM8P48S surrogate model example</a></li>
 </ul>]]></content>
         <author>
             <name>SSIL</name>
